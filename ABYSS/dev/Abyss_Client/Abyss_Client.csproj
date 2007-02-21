@@ -1,0 +1,201 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ED8B8DD8-5893-4A28-9A38-F76DACC58C0A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Abyss_Client</RootNamespace>
+    <AssemblyName>Abyss_Client</AssemblyName>
+    <StartupObject>Abyss_Client.MainForm</StartupObject>
+    <ApplicationIcon>icone.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExtendedDotNET.Controls, Version=1.0.2593.18994, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ExtendedDotNET.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CompBase\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BaseListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseListView.Designer.cs">
+      <DependentUpon>BaseListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BaseMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseMenuStrip.Designer.cs">
+      <DependentUpon>BaseMenuStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BasePictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BasePictureBox.Designer.cs">
+      <DependentUpon>BasePictureBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BaseSmoothProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseSmoothProgressBar.Designer.cs">
+      <DependentUpon>BaseSmoothProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BaseTimer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseTimer.Designer.cs">
+      <DependentUpon>BaseTimer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BaseTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseTreeView.Designer.cs">
+      <DependentUpon>BaseTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="List_AD_Object.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="List_AD_Object.Designer.cs">
+      <DependentUpon>List_AD_Object.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CompBase\BaseForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BaseListView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BaseMenuStrip.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseMenuStrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BasePictureBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BasePictureBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BaseSmoothProgressBar.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseSmoothProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BaseTreeView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="List_AD_Object.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>List_AD_Object.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SingleInstanceApp.cs" />
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{9D18920E-FE4A-4C49-A451-5D957524AD34}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{287588AB-AE94-43CC-BC4A-D8C67C35775C}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistence\Persistence.csproj">
+      <Project>{D42C17B2-E6C2-44C3-9592-69E7BBABCA8E}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{5CEFAFFF-69FB-434E-80D4-2E8298D01579}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icone.ico" />
+    <Content Include="Resources\background.png" />
+    <None Include="Resources\splash%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserControls\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

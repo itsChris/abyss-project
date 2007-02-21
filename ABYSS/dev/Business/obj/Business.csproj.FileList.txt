@@ -1,0 +1,9 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\Business.dll
+bin\Debug\Business.pdb
+bin\Debug\DAO.dll
+bin\Debug\Persistence.dll
+bin\Debug\Persistence.pdb
+bin\Debug\DAO.pdb
+obj\Debug\Business.dll
+obj\Debug\Business.pdb
