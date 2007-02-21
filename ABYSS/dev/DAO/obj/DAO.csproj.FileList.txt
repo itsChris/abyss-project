@@ -1,9 +1,0 @@
-bin\Debug\DAO.dll
-bin\Debug\DAO.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\DAO.dll
-obj\Debug\DAO.pdb
-bin\Debug\Persistence.dll
-bin\Debug\Persistence.pdb
-bin\Debug\Utils.dll
-bin\Debug\Utils.pdb
