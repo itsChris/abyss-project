@@ -1,5 +1,0 @@
-bin\Debug\Persistence.dll
-bin\Debug\Persistence.pdb
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\Persistence.dll
-obj\Debug\Persistence.pdb
