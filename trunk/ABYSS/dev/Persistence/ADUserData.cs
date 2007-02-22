@@ -19,8 +19,10 @@ namespace Persistence {
 
         private string postalAddress;
 
-        
+
         private string mailingAddress; //StreetAddress
+
+       
         private string residentialAddress; //HomePostalAddress
         private string title;
         private string homePhone;
@@ -72,6 +74,10 @@ namespace Persistence {
             set { postalAddress = value; }
         }
 
+        public string MailingAddress {
+            get { return mailingAddress; }
+            set { mailingAddress = value; }
+        }
 
 
 
