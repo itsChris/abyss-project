@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace DAO {
-    class UserDAO {
+    class UserDAO : DAO{
 
 
 

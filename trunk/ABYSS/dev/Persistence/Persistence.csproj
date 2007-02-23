@@ -33,6 +33,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADGroupData.cs" />
     <Compile Include="ADUserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
