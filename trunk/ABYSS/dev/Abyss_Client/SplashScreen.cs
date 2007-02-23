@@ -9,7 +9,7 @@ using Abyss_Client.CompBase;
 using System.Threading;
 
 namespace Abyss_Client {
-    public partial class SplashScreen : BaseForm {
+    public partial class SplashScreen : Form {
         #region Attributes
         private bool loadFinished = false;
         #endregion

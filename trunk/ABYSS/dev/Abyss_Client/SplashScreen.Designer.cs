@@ -43,7 +43,7 @@
             // timer_tmr
             // 
             this.timer_tmr.Enabled = true;
-            this.timer_tmr.Interval = 10;
+            this.timer_tmr.Interval = 30;
             this.timer_tmr.Tick += new System.EventHandler(this.timer_tmr_Tick);
             // 
             // prgBar_pgb
@@ -90,8 +90,8 @@
             this.Controls.Add(this.prgBar_pgb);
             this.Controls.Add(this.clientLogo_pct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.KeyPreview = false;
             this.Name = "SplashScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SplashScreen";
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.Load += new System.EventHandler(this.SplashScreen_Load);

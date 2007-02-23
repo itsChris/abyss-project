@@ -34,9 +34,9 @@ namespace Abyss_Client {
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
-            DirectoryEntry test = Utils.Utility.getDirectoryObject("supinfo-project","Administrator", "password");
-            MessageBox.Show((string)test.Properties["distinguishedName"].Value);
-            MessageBox.Show(Utils.Utility.getUser(test,"Administrator", "password").Name);
+            //DirectoryEntry test = Utils.Utility.getDirectoryObject("supinfo-project","Administrator", "password");
+            //MessageBox.Show((string)test.Properties["distinguishedName"].Value);
+            //MessageBox.Show(Utils.Utility.getUser(test,"Administrator", "password").Name);
         }
 
        
