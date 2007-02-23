@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.DirectoryServices;
 
 namespace Abyss_Client {
     public partial class MainForm : CompBase.BaseForm {
@@ -33,7 +34,9 @@ namespace Abyss_Client {
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
-            new List_AD_Object().ShowDialog();
+            DirectoryEntry test = Utils.Utility.getDirectoryObject("supinfo-project","Administrator", "password");
+            MessageBox.Show((string)test.Properties["distinguishedName"].Value);
+            MessageBox.Show(Utils.Utility.getUser(test,"Administrator", "password").Name);
         }
 
        

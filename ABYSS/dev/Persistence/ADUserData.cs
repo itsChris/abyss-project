@@ -6,23 +6,11 @@ namespace Persistence {
         #region Private Properties
         private string firstName; //givenName
         private string middleInitial; //initials
-
-
         private string lastName; //sn
-
-
         private string displayName; //Name
-
-
         private string userPrincipalName; //userPrincipalName (e.g. user@domain.local)
-
-
-        private string postalAddress;
-
-
+        private string postalAddress; 
         private string mailingAddress; //StreetAddress
-
-       
         private string residentialAddress; //HomePostalAddress
         private string title;
         private string homePhone;
@@ -35,7 +23,6 @@ namespace Persistence {
         private string password;
         private string distinguishedName;
         private bool isAccountActive; //userAccountControl
-        private ArrayList groups;
         #endregion
 
         #region Constructors
@@ -51,7 +38,14 @@ namespace Persistence {
 
         public string MiddleInitial {
             get { return middleInitial; }
-            set { middleInitial = value; }
+            set {
+                if (value.Length > 6) {
+                    throw (new Exception("MiddleInitial cannot be more than six characters"));
+                }
+                else {
+                    middleInitial = value;
+                }
+            }
         }
 
         public string LastName {
@@ -60,8 +54,10 @@ namespace Persistence {
         }
 
         public string DisplayName {
-            get { return displayName; }
-            set { displayName = value; }
+            get {
+                displayName = firstName + middleInitial + "." + lastName;
+                return displayName;
+            }
         }
 
         public string UserPrincipalName {
@@ -79,9 +75,65 @@ namespace Persistence {
             set { mailingAddress = value; }
         }
 
+        public string ResidentialAddress {
+            get { return residentialAddress; }
+            set { residentialAddress = value; }
+        }
 
+        public string Title {
+            get { return title; }
+            set { title = value; }
+        }
 
+        public string HomePhone {
+            get { return homePhone; }
+            set { homePhone = value; }
+        }
+
+        public string OfficePhone {
+            get { return officePhone; }
+            set { officePhone = value; }
+        }
+
+        public string Mobile {
+            get { return mobile; }
+            set { mobile = value; }
+        }
+
+        public string Fax {
+            get { return fax; }
+            set { fax = value; }
+        }
+
+        public string Email {
+            get { return email; }
+            set { email = value; }
+        }
+
+        public string Url {
+            get { return url; }
+            set { url = value; }
+        }
+
+        public string UserName {
+            get { return userName; }
+            set { userName = value; }
+        }
+
+        public string Password {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public string DistinguishedName {
+            get { return distinguishedName; }
+            set { distinguishedName = value; }
+        }
+
+        public bool IsAccountActive {
+            get { return isAccountActive; }
+            set { isAccountActive = value; }
+        }
         #endregion
-
     }
 }
