@@ -116,9 +116,11 @@ namespace Business {
         #endregion
 
         #region Static Methods
-        //public static ArrayList getListUserGroups {
+        public static ADUser getUserByName(string username) {
+            return new ADUser((ADUserData)ADUserDAO.getUser(username));
 
-        //}
+        }
+      
 
 
         #endregion
