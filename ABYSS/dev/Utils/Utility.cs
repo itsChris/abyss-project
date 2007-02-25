@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.DirectoryServices;
 
 namespace Utils {
@@ -19,17 +17,14 @@ namespace Utils {
         #region Properties
         public static string CrtDomain {
             get { return Utility.crtDomain; }
-            set { Utility.crtDomain = value; }
         }
         
         public static string CrtUserName {
             get { return Utility.crtUserName; }
-            set { Utility.crtUserName = value; }
         }
         
         public static string CrtPassword {
             get { return Utility.crtPassword; }
-            set { Utility.crtPassword = value; }
         }
         #endregion
 
@@ -78,7 +73,10 @@ namespace Utils {
         /// <param name="password"></param>
         /// <returns></returns>
         public static DirectoryEntry getDirectoryObject(string path, string userName, string password) {
-            DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + path, userName, password, AuthenticationTypes.Secure);
+            DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + path, userName, password);
+            crtDomain = path;
+            crtUserName = userName;
+            crtPassword = password;
             return directoryEntry;
         }
 
@@ -90,7 +88,10 @@ namespace Utils {
         /// <returns></returns>
         public static DirectoryEntry getDirectoryObject(string userName, string password) {
             DirectoryEntry directoryEntryDSE = new DirectoryEntry(protocolName + defaultDomainPath);
-            DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + (string)directoryEntryDSE.Properties["defaultNamingContext"].Value, userName, password, AuthenticationTypes.Secure);
+            DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + (string)directoryEntryDSE.Properties["defaultNamingContext"].Value, userName, password);
+            crtDomain = (string)directoryEntryDSE.Properties["defaultNamingContext"].Value;
+            crtUserName = userName;
+            crtPassword = password;
             return directoryEntry;
         }
 
@@ -98,9 +99,8 @@ namespace Utils {
         /// Returns the current root node
         /// </summary>
         /// <returns></returns>
-        internal static DirectoryEntry getDirectoryObject() {
-            DirectoryEntry directoryEntry;
-            directoryEntry = new DirectoryEntry(crtDomain, crtUserName, crtPassword, AuthenticationTypes.Secure);
+        public static DirectoryEntry getDirectoryObject() {
+            DirectoryEntry directoryEntry = new DirectoryEntry(protocolName+crtDomain, crtUserName, crtPassword);
             return directoryEntry;
         }
 
@@ -114,11 +114,11 @@ namespace Utils {
             DirectoryEntry directoryEntry = getDirectoryObject(crtDomain, userName, password);
             DirectorySearcher directorySearcher = new DirectorySearcher();
             directorySearcher.SearchRoot = directoryEntry;
-            directorySearcher.Filter = "(&(objectClass=user)(sAMAccountName=" + userName + "))";
+            directorySearcher.Filter = "(&(objectClass=user)(cn=" + userName + "))";
             directorySearcher.SearchScope = SearchScope.Subtree;
             SearchResult results = directorySearcher.FindOne();
             if (!(results == null)) {
-                directoryEntry = new DirectoryEntry(results.Path, crtUserName, crtPassword, AuthenticationTypes.Secure);
+                directoryEntry = new DirectoryEntry(results.Path, crtUserName, crtPassword);
                 return directoryEntry;
             }
             else {
@@ -135,11 +135,11 @@ namespace Utils {
             DirectoryEntry directoryEntry = getDirectoryObject();
             DirectorySearcher directorySearcher = new DirectorySearcher();
             directorySearcher.SearchRoot = directoryEntry;
-            directorySearcher.Filter = "(&(objectClass=user)(sAMAccountName=" + userName + "))";
+            directorySearcher.Filter = "(&(objectClass=user)(cn=" + userName + "))";
             directorySearcher.SearchScope = SearchScope.Subtree;
             SearchResult results = directorySearcher.FindOne();
             if (!(results == null)) {
-                directoryEntry = new DirectoryEntry(results.Path, crtUserName, crtPassword, AuthenticationTypes.Secure);
+                directoryEntry = new DirectoryEntry(results.Path, crtUserName, crtPassword);
                 return directoryEntry;
             }
             else {
@@ -152,7 +152,7 @@ namespace Utils {
         /// </summary>
         /// <returns></returns>
         public static SearchResultCollection getUsers() {
-            DirectoryEntry directoryEntry = Utility.getDirectoryObject();
+            DirectoryEntry directoryEntry = getDirectoryObject();
             DirectorySearcher directorySearcher = new DirectorySearcher();
             directorySearcher.SearchRoot = directoryEntry;
             directorySearcher.Filter = "(&(objectClass=user)(objectCategory=person))";
@@ -173,7 +173,7 @@ namespace Utils {
             directorySearcher.SearchScope = SearchScope.Subtree;
             SearchResult results = directorySearcher.FindOne();
             if (!(results == null)) {
-                directoryEntry = new DirectoryEntry(results.Path, crtUserName, crtPassword, AuthenticationTypes.Secure);
+                directoryEntry = new DirectoryEntry(results.Path, crtUserName, crtPassword);
                 return directoryEntry;
             }
             else {
@@ -194,7 +194,7 @@ namespace Utils {
             directorySearcher.SearchScope = SearchScope.Subtree;
             SearchResult results = directorySearcher.FindOne();
             if (!(results == null)) {
-                directoryEntry = new DirectoryEntry(results.Path, crtUserName, crtPassword, AuthenticationTypes.Secure);
+                directoryEntry = new DirectoryEntry(results.Path, crtUserName, crtPassword);
                 return directoryEntry;
             }
             else {
@@ -208,7 +208,7 @@ namespace Utils {
         /// <param name="objectPath"></param>
         /// <returns></returns>
         public static DirectoryEntry getDirectoryObjectByDistinguishedName(string objectPath) {
-            DirectoryEntry directoryEntry = new DirectoryEntry(objectPath, crtUserName, crtPassword, AuthenticationTypes.Secure);
+            DirectoryEntry directoryEntry = new DirectoryEntry(objectPath, crtUserName, crtPassword);
             return directoryEntry;
         }
 
