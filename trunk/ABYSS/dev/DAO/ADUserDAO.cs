@@ -7,7 +7,8 @@ using System.Collections;
 using System.DirectoryServices;
 
 namespace DAO {
-    public class ADUserDAO{
+    public class ADUserDAO {
+        #region Private Methods
         #region Mapping
         private static ADUserData adUserDataMapping(DirectoryEntry directoryEntry) {
             ADUserData adUserData = new ADUserData();
@@ -32,7 +33,6 @@ namespace DAO {
         }
         #endregion
 
-        #region Private Methods
         private static ArrayList getUsersList(SearchResultCollection searchResultCollection) {
             ArrayList list = new ArrayList();
             foreach (SearchResult searchResult in searchResultCollection) {
@@ -42,49 +42,37 @@ namespace DAO {
             return list;
         }
 
-        private void Add(ADUserData adUserData) {
-            string path;
-            DirectorySearcher directorySearcher = new DirectorySearcher();
-            try {
-                path = directorySearcher.SearchRoot.Path;
-                //path = path.Insert(7, Utility.ADUsersPath);
-                //System.DirectoryServices.DirectoryEntry myDE = new DirectoryEntry(path);
-                //DirectoryEntries myEntries = myDE.Children;
-                //System.DirectoryServices.DirectoryEntry myDirectoryEntry = myEntries.Add("CN=" + UserName, "user");
-                //Utility.SetProperty(myDirectoryEntry, "givenName", FirstName);
-                //Utility.SetProperty(myDirectoryEntry, "initials", MiddleInitial);
-                //Utility.SetProperty(myDirectoryEntry, "sn", LastName);
-                //if (UserPrincipalName != null) {
-                //    Utility.SetProperty(myDirectoryEntry, "UserPrincipalName", UserPrincipalName);
-                //}
-                //else {
-                //    Utility.SetProperty(myDirectoryEntry, "UserPrincipalName", UserName);
-                //}
-                //Utility.SetProperty(myDirectoryEntry, "PostalAddress", PostalAddress);
-                //Utility.SetProperty(myDirectoryEntry, "StreetAddress", MailingAddress);
-                //Utility.SetProperty(myDirectoryEntry, "HomePostalAddress", ResidentialAddress);
-                //Utility.SetProperty(myDirectoryEntry, "Title", Title);
-                //Utility.SetProperty(myDirectoryEntry, "HomePhone", HomePhone);
-                //Utility.SetProperty(myDirectoryEntry, "TelephoneNumber", OfficePhone);
-                //Utility.SetProperty(myDirectoryEntry, "Mobile", Mobile);
-                //Utility.SetProperty(myDirectoryEntry, "FacsimileTelephoneNumber", Fax);
-                //Utility.SetProperty(myDirectoryEntry, "mail", Email);
-                //Utility.SetProperty(myDirectoryEntry, "Url", Url);
-                //Utility.SetProperty(myDirectoryEntry, "sAMAccountName", UserName);
-                //Utility.SetProperty(myDirectoryEntry, "UserPassword", Password);
-                //myDirectoryEntry.Properties["userAccountControl"].Value = Utility.UserStatus.Enable;
-                //myDirectoryEntry.CommitChanges();
-                //myDirectoryEntry = GetUser(UserName);
-                //Utility.SetUserPassword(myDirectoryEntry, Password);
-                //return myDirectoryEntry;
+        private static DirectoryEntry addUser(ADUserData adUserData) {
+            DirectoryEntry directoryEntry = Utility.getDirectoryObject();
+            DirectoryEntries directoryEntries = directoryEntry.Children;
+            directoryEntry = directoryEntries.Add("cn=" + adUserData.UserName+",cn=users", "user");
+            Utility.setProperty(directoryEntry, "givenName", adUserData.FirstName);
+            Utility.setProperty(directoryEntry, "initials", adUserData.MiddleInitial);
+            Utility.setProperty(directoryEntry, "sn", adUserData.LastName);
+            if (adUserData.UserPrincipalName != null) {
+                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserPrincipalName);
             }
-            catch (Exception ex) {
-                throw (ex);
+            else {
+                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserName);
             }
+            Utility.setProperty(directoryEntry, "PostalAddress", adUserData.PostalAddress);
+            Utility.setProperty(directoryEntry, "StreetAddress", adUserData.MailingAddress);
+            Utility.setProperty(directoryEntry, "HomePostalAddress", adUserData.ResidentialAddress);
+            Utility.setProperty(directoryEntry, "Title", adUserData.Title);
+            Utility.setProperty(directoryEntry, "HomePhone", adUserData.HomePhone);
+            Utility.setProperty(directoryEntry, "TelephoneNumber", adUserData.OfficePhone);
+            Utility.setProperty(directoryEntry, "Mobile", adUserData.Mobile);
+            Utility.setProperty(directoryEntry, "FacsimileTelephoneNumber", adUserData.Fax);
+            Utility.setProperty(directoryEntry, "mail", adUserData.Email);
+            Utility.setProperty(directoryEntry, "Url", adUserData.Url);
+            Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
+            Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
+            directoryEntry.Properties["userAccountControl"].Value = Utility.userStatus.Enable;
+            directoryEntry.CommitChanges();
+            directoryEntry = Utility.getUser(adUserData.UserName);
+            Utility.setUserPassword(directoryEntry, adUserData.Password);
+            return directoryEntry;
         }
-
-
-
         #endregion
 
         #region Static Methods
@@ -97,7 +85,7 @@ namespace DAO {
         }
 
         public static ADUserData createUser(ADUserData adUserData) {
-            return null;
+            return adUserDataMapping(addUser(adUserData));
         }
         #endregion
     }

@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 
 namespace Persistence {
     [Serializable()]public class ADUserData {
-        #region Private Properties
+        #region Attributes
         private string firstName; //givenName
         private string middleInitial; //initials
         private string lastName; //sn
