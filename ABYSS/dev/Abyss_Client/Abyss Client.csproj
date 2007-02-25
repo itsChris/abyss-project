@@ -87,6 +87,12 @@
     <Compile Include="CompBase\BaseProgressBar.Designer.cs">
       <DependentUpon>BaseProgressBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompBase\BaseTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseTextBox.Designer.cs">
+      <DependentUpon>BaseTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompBase\BaseTimer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -131,6 +137,10 @@
     <EmbeddedResource Include="CompBase\BaseProgressBar.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BaseProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BaseTextBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompBase\BaseTreeView.resx">
       <SubType>Designer</SubType>
@@ -200,7 +210,6 @@
   <ItemGroup>
     <Content Include="icone.ico" />
     <Content Include="Resources\background.png" />
-    <None Include="Resources\splash%281%29.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
