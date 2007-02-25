@@ -2,24 +2,29 @@ using System;
 using System.Threading;
 
 namespace Abyss_Client {
-    class SingleInstanceApp : IDisposable{
+    class SingleInstanceApp : IDisposable {
+        #region Attributes
+        Mutex siMutex;
+        bool siMutexOwned;
+        #endregion
 
-        Mutex _siMutex;
-        bool _siMutexOwned;
-
+        #region Constructors
         public SingleInstanceApp(string name) {
-            _siMutex = new Mutex(false, name);
-            _siMutexOwned = false;
+            siMutex = new Mutex(false, name);
+            siMutexOwned = false;
         }
+        #endregion
 
+        #region Public Methods
         public bool IsRunning() {
-            _siMutexOwned = _siMutex.WaitOne(0, true);
-            return !(_siMutexOwned);
+            siMutexOwned = siMutex.WaitOne(0, true);
+            return !(siMutexOwned);
         }
 
         public void Dispose() {
-            if (_siMutexOwned)
-                _siMutex.ReleaseMutex();
+            if (siMutexOwned)
+                siMutex.ReleaseMutex();
         }
+        #endregion
     }
 }
