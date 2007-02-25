@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Resources;
 
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("Abyss_Client")]
-[assembly: AssemblyDescription("Administration Oracle et Active directory")]
+[assembly: AssemblyTitle("Abyss Client")]
+[assembly: AssemblyDescription("Oracle and Active Directory Administration")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SUPINFO")]
-[assembly: AssemblyProduct("Abyss_Client")]
+[assembly: AssemblyProduct("Abyss Client")]
 [assembly: AssemblyCopyright("Copyright ©  2007")]
 [assembly: AssemblyTrademark("Abyss Technologies")]
 [assembly: AssemblyCulture("")]
@@ -31,3 +32,4 @@ using System.Runtime.InteropServices;
 //
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguageAttribute("")]

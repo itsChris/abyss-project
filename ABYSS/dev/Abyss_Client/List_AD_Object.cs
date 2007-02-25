@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.DirectoryServices;
 
 namespace Abyss_Client
 {

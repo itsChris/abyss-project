@@ -42,12 +42,10 @@ namespace Abyss_Client {
             prgBar_pgb.PerformStep();
             prgBar_pgb.Invalidate();
             if (loadFinished) {
-               timer_tmr.Stop();
+                timer_tmr.Stop();
                 this.Close();
             }
         }
         #endregion
-        
     }
-
 }
