@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.DirectoryServices;
 using Utils;
 
 namespace Abyss_Client {
@@ -24,6 +23,8 @@ namespace Abyss_Client {
 
         [STAThread]
         static void Main() {
+            Application.EnableVisualStyles();
+            Application.DoEvents(); 
             using (SingleInstanceApp app = new SingleInstanceApp("{567825376 - DGZJ - PODS - 2875 - ABYSS}")) {
                 if (!app.IsRunning()) {
                     MainForm mainForm = new MainForm();
@@ -35,9 +36,9 @@ namespace Abyss_Client {
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
-            Utility.getDirectoryObject("supinfo-project", "Administrator", "password");
-            Utility.getUser("Administrator", "password");
-            Utility.getUser("test");
+            //Utility.getDirectoryObject("supinfo-project", "Administrator", "password");
+            //Utility.getUser("Administrator", "password");
+            //Utility.getUser("test");
         }
 
        

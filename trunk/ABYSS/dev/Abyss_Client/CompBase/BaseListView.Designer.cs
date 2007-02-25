@@ -28,42 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CHeader_Name = new System.Windows.Forms.ColumnHeader();
-            this.CHeader_Type = new System.Windows.Forms.ColumnHeader();
-            this.CHeader_Description = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
-            // 
-            // CHeader_Name
-            // 
-            this.CHeader_Name.Text = "Name";
-            this.CHeader_Name.Width = 256;
-            // 
-            // CHeader_Type
-            // 
-            this.CHeader_Type.Text = "Type";
-            this.CHeader_Type.Width = 166;
-            // 
-            // CHeader_Description
-            // 
-            this.CHeader_Description.Text = "Description";
-            this.CHeader_Description.Width = 266;
             // 
             // BaseListView
             // 
-            this.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.CHeader_Name,
-            this.CHeader_Type,
-            this.CHeader_Description});
-            this.Size = new System.Drawing.Size(692, 526);
-            this.Sorting = System.Windows.Forms.SortOrder.Descending;
+            this.AllowColumnReorder = true;
+            this.FullRowSelect = true;
+            this.MultiSelect = false;
+            this.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.TabStop = false;
+            this.View = System.Windows.Forms.View.Details;
             this.ResumeLayout(false);
 
         }
-
         #endregion
-
-        private System.Windows.Forms.ColumnHeader CHeader_Name;
-        private System.Windows.Forms.ColumnHeader CHeader_Type;
-        private System.Windows.Forms.ColumnHeader CHeader_Description;
     }
 }

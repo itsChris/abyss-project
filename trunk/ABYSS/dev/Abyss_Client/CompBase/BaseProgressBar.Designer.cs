@@ -1,5 +1,5 @@
 ﻿namespace Abyss_Client.CompBase {
-    partial class BaseSmoothProgressBar {
+    partial class BaseProgressBar {
         /// <summary> 
         /// Variable nécessaire au concepteur.
         /// </summary>
@@ -25,9 +25,23 @@
         private void InitializeComponent() {
             this.SuspendLayout();
             // 
-            // BaseSmoothProgressBar
+            // BaseProgressBar
             // 
-            this.Name = "BaseSmoothProgressBar";
+            this.BackColor = System.Drawing.Color.Lavender;
+            this.BarOffset = 0;
+            this.Caption = "<PERCENTAGE>% Completed";
+            this.CaptionMode = ExtendedDotNET.Controls.Progress.ProgressCaptionMode.Custom;
+            this.CaptionShadowColor = System.Drawing.SystemColors.GrayText;
+            this.DashSpace = 1;
+            this.DashWidth = 1;
+            this.Edge = ExtendedDotNET.Controls.Progress.ProgressBarEdge.None;
+            this.EdgeWidth = 0;
+            this.FloodPercentage = 0.5F;
+            this.FloodStyle = ExtendedDotNET.Controls.Progress.ProgressFloodStyle.Horizontal;
+            this.MainColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Name = "BaseProgressBar";
+            this.ProgressBackColor = System.Drawing.Color.Transparent;
+            this.Value = 100;
             this.ResumeLayout(false);
 
         }
