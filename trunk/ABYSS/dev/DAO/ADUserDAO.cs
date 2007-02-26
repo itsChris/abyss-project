@@ -151,28 +151,28 @@ namespace DAO {
             directoryEntry.CommitChanges();
         }
 
-        public static Utility.loginResult login(string UserName, string Password) {
-            if (IsUserValid(UserName, Password)) {
-                DirectoryEntry de = Utility.getUser(UserName);
-                if (!(de == null)) {
-                    if (Utility.userStatus.Enable == (Utility.userStatus)(de.Properties["userAccountControl"][0])) {
-                        de.Close();
-                        return Utility.loginResult.LOGIN_OK;
-                    }
-                    else {
-                        de.Close();
-                        return Utility.loginResult.LOGIN_USER_ACCOUNT_INACTIVE;
-                    }
+        //public static Utility.loginResult login(string UserName, string Password) {
+        //    if (IsUserValid(UserName, Password)) {
+        //        DirectoryEntry de = Utility.getUser(UserName);
+        //        if (!(de == null)) {
+        //            if (Utility.userStatus.Enable == (Utility.userStatus)(de.Properties["userAccountControl"][0])) {
+        //                de.Close();
+        //                return Utility.loginResult.LOGIN_OK;
+        //            }
+        //            else {
+        //                de.Close();
+        //                return Utility.loginResult.LOGIN_USER_ACCOUNT_INACTIVE;
+        //            }
 
-                }
-                else {
-                    return Utility.loginResult.LOGIN_USER_DOESNT_EXIST;
-                }
-            }
-            else {
-                return Utility.loginResult.LOGIN_USER_DOESNT_EXIST;
-            }
-        }
+        //        }
+        //        else {
+        //            return Utility.loginResult.LOGIN_USER_DOESNT_EXIST;
+        //        }
+        //    }
+        //    else {
+        //        return Utility.loginResult.LOGIN_USER_DOESNT_EXIST;
+        //    }
+        //}
         #endregion
     }
 }

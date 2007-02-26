@@ -14,34 +14,34 @@ namespace Abyss_Client {
 
         #region Component events
         private void connect_btn_Click(object sender, EventArgs e) {
-            try {
-                if (setError()) {
-                    return;
-                }
-                Utility.CrtUserName = login_txt.Text;
-                Utility.CrtPassword = password_txt.Text;
+            //try {
+            //    if (setError()) {
+            //        return;
+            //    }
+            //    Utility.CrtUserName = login_txt.Text;
+            //    Utility.CrtPassword = password_txt.Text;
 
-                DirectoryEntry directoryEntry;
-                if (defaultLdap_rbt.Checked) {
-                    directoryEntry = Utility.getDirectoryObject(login_txt.Text, password_txt.Text);
-                    //Utility.CrtDomain = "rootDSE";
-                }
-                else {
-                    directoryEntry = Utility.getDirectoryObject(ldap_txt.Text, login_txt.Text, password_txt.Text);
-                    Utility.CrtDomain = ldap_txt.Text;    
-                }
-                ADUser user = ADUser.getUserByName(login_txt.Text);
-                if (user != null) {
-                    this.Hide();
-                    new ListActiveDirectory(directoryEntry).ShowDialog();
-                    this.Show();
-                }
-            }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message,"ABYSS MANAGEMENT",
-                MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
-            }
+            //    DirectoryEntry directoryEntry;
+            //    if (defaultLdap_rbt.Checked) {
+            //        directoryEntry = Utility.getDirectoryObject(login_txt.Text, password_txt.Text);
+            //        //Utility.CrtDomain = "rootDSE";
+            //    }
+            //    else {
+            //        directoryEntry = Utility.getDirectoryObject(ldap_txt.Text, login_txt.Text, password_txt.Text);
+            //        Utility.CrtDomain = ldap_txt.Text;    
+            //    }
+            //    ADUser user = ADUser.getUserByName(login_txt.Text);
+            //    if (user != null) {
+            //        this.Hide();
+            //        new ListActiveDirectory(directoryEntry).ShowDialog();
+            //        this.Show();
+            //    }
+            //}
+            //catch (Exception ex) {
+            //    MessageBox.Show(ex.Message,"ABYSS MANAGEMENT",
+            //    MessageBoxButtons.OK,MessageBoxIcon.Error);
+            //    return;
+            //}
         }
 
         private void defaultLdap_rbt_Click(object sender, EventArgs e) {

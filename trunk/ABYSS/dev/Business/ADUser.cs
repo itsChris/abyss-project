@@ -125,9 +125,9 @@ namespace Business {
             return ADUserDAO.getUsersList();
         }
 
-        public static Utils.Utility.loginResult checkLogin(string userName, string password) {
-            return ADUserDAO.login(userName, password);
-        }
+        //public static Utils.Utility.loginResult checkLogin(string userName, string password) {
+        //    return ADUserDAO.login(userName, password);
+        //}
         #endregion
 
         #region Public Methods
