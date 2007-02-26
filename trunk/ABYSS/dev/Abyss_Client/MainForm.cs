@@ -1,18 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using Utils;
 
 namespace Abyss_Client {
     public partial class MainForm : CompBase.BaseForm {
-        #region Attributes
-        private bool startOk = true;
-        #endregion
-
         #region Constructors
         public MainForm() {
             InitializeComponent();
@@ -21,6 +11,7 @@ namespace Abyss_Client {
         }
         #endregion
 
+        #region Main [STAThread]
         [STAThread]
         static void Main() {
             Application.EnableVisualStyles();
@@ -28,39 +19,28 @@ namespace Abyss_Client {
             using (SingleInstanceApp app = new SingleInstanceApp("{567825376 - DGZJ - PODS - 2875 - ABYSS}")) {
                 if (!app.IsRunning()) {
                     MainForm mainForm = new MainForm();
-                    if (mainForm.startOk == true) {
-                        Application.Run(mainForm);
-                    }
+                    Application.Run(mainForm);
                 }
             }
         }
+        #endregion
 
-        private void MainForm_Load(object sender, EventArgs e) {
-            //Utility.getDirectoryObject("supinfo-project", "Administrator", "password");
-            //Utility.getUser("Administrator", "password");
-            //Utility.getUser("test");
+        #region Component events
+        private void activeDirectory_btn_Click(object sender, EventArgs e) {
+            this.Hide();
+            ActiveDirectoryLogin login = new ActiveDirectoryLogin();
+            login.ShowDialog();
+            this.Show();
         }
 
-       
-
-        private void connect_btn_Click(object sender, EventArgs e)
-        {
-            //LDAP Connexion
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
+            if (MessageBox.Show("Do you want to close the application", "ABYSS MANAGEMENT", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1) == DialogResult.No) {
+                e.Cancel = true;
+            }
         }
-
-        private void defaultLdap_rbt_Click(object sender, EventArgs e)
-        {
-            otherLdap_rbt.Checked = false;
-            ldap_lbl.Visible = false;
-            ldap_txt.Visible = false;
-        }
-
-        private void otherLdap_rbt_Click(object sender, EventArgs e)
-        {
-            defaultLdap_rbt.Checked = false;
-            ldap_lbl.Visible = true;
-            ldap_txt.Visible = true;
-        }
-
+        #endregion
     }
 }

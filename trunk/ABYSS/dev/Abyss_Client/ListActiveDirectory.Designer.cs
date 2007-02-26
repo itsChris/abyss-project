@@ -1,6 +1,6 @@
 ﻿namespace Abyss_Client
 {
-    partial class List_AD_Object
+    partial class ListActiveDirectory
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -49,7 +49,7 @@
             // toolStripComboBox1
             // 
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 21);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 24);
             // 
             // toolStripSeparator1
             // 
@@ -71,11 +71,15 @@
             // 
             // baseListViewDetailADObject
             // 
+            this.baseListViewDetailADObject.AllowColumnReorder = true;
+            this.baseListViewDetailADObject.FullRowSelect = true;
             this.baseListViewDetailADObject.Location = new System.Drawing.Point(289, 28);
+            this.baseListViewDetailADObject.MultiSelect = false;
             this.baseListViewDetailADObject.Name = "baseListViewDetailADObject";
             this.baseListViewDetailADObject.Size = new System.Drawing.Size(692, 526);
             this.baseListViewDetailADObject.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.baseListViewDetailADObject.TabIndex = 4;
+            this.baseListViewDetailADObject.TabStop = false;
             this.baseListViewDetailADObject.UseCompatibleStateImageBehavior = false;
             this.baseListViewDetailADObject.View = System.Windows.Forms.View.Details;
             // 
@@ -97,21 +101,20 @@
             this.disconnectToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.toolStripMenuItemFiles.Name = "toolStripMenuItemFiles";
-            this.toolStripMenuItemFiles.Size = new System.Drawing.Size(41, 20);
+            this.toolStripMenuItemFiles.Size = new System.Drawing.Size(44, 20);
             this.toolStripMenuItemFiles.Text = "Files";
             // 
             // disconnectToolStripMenuItem
             // 
             this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.disconnectToolStripMenuItem.Text = "Disconnect";
-            this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -122,28 +125,28 @@
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // helpToolStripMenuItem
@@ -151,16 +154,16 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // List_AD_Object
+            // ListActiveDirectory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,9 +171,11 @@
             this.Controls.Add(this.baseListViewDetailADObject);
             this.Controls.Add(this.baseTreeViewListADObject);
             this.Controls.Add(this.baseMenuStripMain);
-            this.Name = "List_AD_Object";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "ListActiveDirectory";
             this.ShowInTaskbar = false;
             this.Text = "FRM_List_AD_Object";
+            this.Load += new System.EventHandler(this.ListActiveDirectory_Load);
             this.baseMenuStripMain.ResumeLayout(false);
             this.baseMenuStripMain.PerformLayout();
             this.ResumeLayout(false);

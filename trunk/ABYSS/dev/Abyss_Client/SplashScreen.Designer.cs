@@ -23,6 +23,7 @@
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
             this.prgBar_pgb = new Abyss_Client.CompBase.BaseProgressBar();
             this.clientLogo_pct = new Abyss_Client.CompBase.BasePictureBox();
             this.timer_tmr = new Abyss_Client.CompBase.BaseTimer();
@@ -46,6 +47,7 @@
             this.prgBar_pgb.EdgeWidth = 0;
             this.prgBar_pgb.FloodPercentage = 0.5F;
             this.prgBar_pgb.FloodStyle = ExtendedDotNET.Controls.Progress.ProgressFloodStyle.Horizontal;
+            this.prgBar_pgb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.prgBar_pgb.Invert = false;
             this.prgBar_pgb.Location = new System.Drawing.Point(203, 281);
             this.prgBar_pgb.MainColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -91,9 +93,9 @@
             this.Controls.Add(this.prgBar_pgb);
             this.Controls.Add(this.clientLogo_pct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SplashScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SplashScreen";
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.Load += new System.EventHandler(this.SplashScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.clientLogo_pct)).EndInit();

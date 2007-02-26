@@ -120,9 +120,44 @@ namespace Business {
             return new ADUser((ADUserData)ADUserDAO.getUser(username));
 
         }
-      
 
+        public static ArrayList getUsersList() {
+            return ADUserDAO.getUsersList();
+        }
 
+        public static Utils.Utility.loginResult checkLogin(string userName, string password) {
+            return ADUserDAO.login(userName, password);
+        }
+        #endregion
+
+        #region Public Methods
+        public void addUser() {
+           ADUserDAO.createUser(adUserData);
+        }
+
+        public void addUserToGroup(string groupDistinguishedName) {
+            ADUserDAO.addUserToGroup(DistinguishedName, groupDistinguishedName);
+        }
+
+        public void saveModification() {
+            ADUserDAO.saveModification(adUserData);
+        }
+
+        public void RemoveUserFromGroup(string groupDistinguishedName) {
+            ADUserDAO.removeUserFromGroup(DistinguishedName, groupDistinguishedName);
+        }
+
+        public void disableUserAccount() {
+            ADUserDAO.disableUserAccount(UserName);
+        }
+
+        public void enableUserAccount() {
+            ADUserDAO.enableUserAccount(UserName);
+        }
+
+        public void deleteUserAccount() {
+            ADUserDAO.deleteUserAccount(UserName);
+        }
         #endregion
     }
 }
