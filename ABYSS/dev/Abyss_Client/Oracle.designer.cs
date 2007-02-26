@@ -26,6 +26,12 @@ namespace Abyss_Client {
             this.sql_rbt = new System.Windows.Forms.RadioButton();
             this.interface_rbl = new System.Windows.Forms.RadioButton();
             this.baseMenuStrip1 = new Abyss_Client.CompBase.BaseMenuStrip();
+            this.switcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableList_lst = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.load_btn = new System.Windows.Forms.Button();
@@ -39,12 +45,6 @@ namespace Abyss_Client {
             this.table_rbt = new System.Windows.Forms.RadioButton();
             this.sql_txt = new System.Windows.Forms.TextBox();
             this.load_ofd = new System.Windows.Forms.OpenFileDialog();
-            this.switcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.interface_gbx.SuspendLayout();
@@ -66,7 +66,7 @@ namespace Abyss_Client {
             // interface_rbl
             // 
             this.interface_rbl.AutoSize = true;
-            this.interface_rbl.Location = new System.Drawing.Point(17, 305);
+            this.interface_rbl.Location = new System.Drawing.Point(17, 293);
             this.interface_rbl.Name = "interface_rbl";
             this.interface_rbl.Size = new System.Drawing.Size(96, 17);
             this.interface_rbl.TabIndex = 1;
@@ -82,9 +82,53 @@ namespace Abyss_Client {
             this.editToolStripMenuItem});
             this.baseMenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.baseMenuStrip1.Name = "baseMenuStrip1";
-            this.baseMenuStrip1.Size = new System.Drawing.Size(988, 24);
+            this.baseMenuStrip1.Size = new System.Drawing.Size(986, 24);
             this.baseMenuStrip1.TabIndex = 2;
             this.baseMenuStrip1.Text = "baseMenuStrip1";
+            // 
+            // switcToolStripMenuItem
+            // 
+            this.switcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quitToolStripMenuItem});
+            this.switcToolStripMenuItem.Name = "switcToolStripMenuItem";
+            this.switcToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.switcToolStripMenuItem.Text = "File";
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cutToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.cutToolStripMenuItem.Text = "Cut";
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // tableList_lst
             // 
@@ -113,7 +157,7 @@ namespace Abyss_Client {
             // 
             this.load_btn.BackColor = System.Drawing.Color.LightGray;
             this.load_btn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.load_btn.Location = new System.Drawing.Point(523, 39);
+            this.load_btn.Location = new System.Drawing.Point(524, 29);
             this.load_btn.Name = "load_btn";
             this.load_btn.Size = new System.Drawing.Size(121, 23);
             this.load_btn.TabIndex = 10;
@@ -124,7 +168,7 @@ namespace Abyss_Client {
             // 
             this.create_btn.BackColor = System.Drawing.Color.LightGray;
             this.create_btn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.create_btn.Location = new System.Drawing.Point(299, 490);
+            this.create_btn.Location = new System.Drawing.Point(299, 469);
             this.create_btn.Name = "create_btn";
             this.create_btn.Size = new System.Drawing.Size(75, 23);
             this.create_btn.TabIndex = 9;
@@ -141,7 +185,7 @@ namespace Abyss_Client {
             this.interface_gbx.Controls.Add(this.view_rbt);
             this.interface_gbx.Controls.Add(this.table_rbt);
             this.interface_gbx.Enabled = false;
-            this.interface_gbx.Location = new System.Drawing.Point(50, 328);
+            this.interface_gbx.Location = new System.Drawing.Point(50, 316);
             this.interface_gbx.Name = "interface_gbx";
             this.interface_gbx.Size = new System.Drawing.Size(324, 147);
             this.interface_gbx.TabIndex = 4;
@@ -209,7 +253,7 @@ namespace Abyss_Client {
             // 
             // sql_txt
             // 
-            this.sql_txt.Location = new System.Drawing.Point(50, 68);
+            this.sql_txt.Location = new System.Drawing.Point(51, 58);
             this.sql_txt.Multiline = true;
             this.sql_txt.Name = "sql_txt";
             this.sql_txt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -220,53 +264,9 @@ namespace Abyss_Client {
             // 
             this.load_ofd.FileName = "load_ofd";
             // 
-            // switcToolStripMenuItem
-            // 
-            this.switcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quitToolStripMenuItem});
-            this.switcToolStripMenuItem.Name = "switcToolStripMenuItem";
-            this.switcToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.switcToolStripMenuItem.Text = "File";
-            // 
-            // quitToolStripMenuItem
-            // 
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
-            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cutToolStripMenuItem.Text = "Cut";
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copyToolStripMenuItem.Text = "Copy";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.pasteToolStripMenuItem.Text = "Paste";
-            // 
             // Oracle
             // 
-            this.ClientSize = new System.Drawing.Size(988, 542);
+            this.ClientSize = new System.Drawing.Size(986, 530);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tableList_lst);
             this.Controls.Add(this.baseMenuStrip1);

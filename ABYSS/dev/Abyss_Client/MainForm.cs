@@ -49,5 +49,12 @@ namespace Abyss_Client {
         }
 
         #endregion
+
+        private void addUser_btn_Click(object sender, EventArgs e) {
+            this.Hide();
+            AddUserAD user = new AddUserAD();
+            user.ShowDialog();
+            this.Show();
+        }
     }
 }
