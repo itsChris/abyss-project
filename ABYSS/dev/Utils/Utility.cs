@@ -12,6 +12,7 @@ namespace Utils {
         private static string crtDomain;
         private static string crtUserName;
         private static string crtPassword;
+        private static bool initFinish = false;
         #endregion
 
         #region Properties
@@ -26,15 +27,13 @@ namespace Utils {
         public static string CrtPassword {
             get { return Utility.crtPassword; }
         }
+
+        public bool InitFinish {
+            set { initFinish = value; }
+        }
         #endregion
 
         #region Enumerations
-        public enum loginResult {
-            LOGIN_OK = 0,
-            LOGIN_USER_DOESNT_EXIST,
-            LOGIN_USER_ACCOUNT_INACTIVE
-        }
-
         public enum userStatus {
             Enable = 544,
             Disable = 546
@@ -66,6 +65,33 @@ namespace Utils {
 
         #region Static Methods
         /// <summary>
+        /// Returns the current connection
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static DirectoryEntry connection(string path, string userName, string password) {
+            if (!initFinish) {
+                crtDomain = path;
+                crtUserName = userName;
+                crtPassword = password;
+                initFinish = true;
+            }
+            return getDirectoryObject(crtDomain, crtUserName, crtPassword);
+        }
+
+        public static DirectoryEntry connection(string userName, string password) {
+            if (!initFinish) {
+                DirectoryEntry directoryEntryDSE = new DirectoryEntry(protocolName + defaultDomainPath);
+                crtDomain = (string)directoryEntryDSE.Properties["defaultNamingContext"].Value;
+                crtUserName = userName;
+                crtPassword = password;
+            }
+            return getDirectoryObject(crtDomain, crtUserName, crtPassword);
+        }
+
+        /// <summary>
         /// Returns the root node
         /// </summary>
         /// <param name="path"></param>
@@ -74,9 +100,6 @@ namespace Utils {
         /// <returns></returns>
         public static DirectoryEntry getDirectoryObject(string path, string userName, string password) {
             DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + path, userName, password);
-            crtDomain = path;
-            crtUserName = userName;
-            crtPassword = password;
             return directoryEntry;
         }
 
@@ -89,9 +112,11 @@ namespace Utils {
         public static DirectoryEntry getDirectoryObject(string userName, string password) {
             DirectoryEntry directoryEntryDSE = new DirectoryEntry(protocolName + defaultDomainPath);
             DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + (string)directoryEntryDSE.Properties["defaultNamingContext"].Value, userName, password);
-            crtDomain = (string)directoryEntryDSE.Properties["defaultNamingContext"].Value;
-            crtUserName = userName;
-            crtPassword = password;
+            if (!initFinish) {
+                crtDomain = (string)directoryEntryDSE.Properties["defaultNamingContext"].Value;
+                crtUserName = userName;
+                crtPassword = password;
+            }
             return directoryEntry;
         }
 

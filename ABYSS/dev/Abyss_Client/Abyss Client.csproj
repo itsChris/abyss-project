@@ -52,16 +52,41 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveDirectoryLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActiveDirectoryLogin.Designer.cs">
+      <DependentUpon>ActiveDirectoryLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BaseButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseButton.Designer.cs">
+      <DependentUpon>BaseButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompBase\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CompBase\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BaseGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseGroupBox.Designer.cs">
+      <DependentUpon>BaseGroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BaseLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseLabel.Designer.cs">
+      <DependentUpon>BaseLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="CompBase\BaseListView.cs">
       <SubType>Component</SubType>
@@ -87,6 +112,12 @@
     <Compile Include="CompBase\BaseProgressBar.Designer.cs">
       <DependentUpon>BaseProgressBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompBase\BaseRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseRadioButton.Designer.cs">
+      <DependentUpon>BaseRadioButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompBase\BaseTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -105,11 +136,11 @@
     <Compile Include="CompBase\BaseTreeView.Designer.cs">
       <DependentUpon>BaseTreeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="List_AD_Object.cs">
+    <Compile Include="ListActiveDirectory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="List_AD_Object.Designer.cs">
-      <DependentUpon>List_AD_Object.cs</DependentUpon>
+    <Compile Include="ListActiveDirectory.Designer.cs">
+      <DependentUpon>ListActiveDirectory.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -118,9 +149,25 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ActiveDirectoryLogin.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ActiveDirectoryLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BaseButton.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CompBase\BaseForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BaseGroupBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseGroupBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BaseLabel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompBase\BaseListView.resx">
       <SubType>Designer</SubType>
@@ -138,6 +185,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>BaseProgressBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CompBase\BaseRadioButton.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseRadioButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CompBase\BaseTextBox.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BaseTextBox.cs</DependentUpon>
@@ -146,9 +197,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>BaseTreeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="List_AD_Object.resx">
+    <EmbeddedResource Include="ListActiveDirectory.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>List_AD_Object.cs</DependentUpon>
+      <DependentUpon>ListActiveDirectory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -177,8 +228,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Settings.cs" />
-    <Compile Include="SingleInstanceApp.cs" />
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,10 +239,6 @@
     <ProjectReference Include="..\Business\Business.csproj">
       <Project>{9D18920E-FE4A-4C49-A451-5D957524AD34}</Project>
       <Name>Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAO\DAO.csproj">
-      <Project>{287588AB-AE94-43CC-BC4A-D8C67C35775C}</Project>
-      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Persistence\Persistence.csproj">
       <Project>{D42C17B2-E6C2-44C3-9592-69E7BBABCA8E}</Project>

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Persistence;
 using Utils;
 using System.Collections;
@@ -42,7 +40,7 @@ namespace DAO {
             return list;
         }
 
-        private static DirectoryEntry addUser(ADUserData adUserData) {
+        private static void addUser(ADUserData adUserData) {
             DirectoryEntry directoryEntry = Utility.getDirectoryObject();
             DirectoryEntries directoryEntries = directoryEntry.Children;
             directoryEntry = directoryEntries.Add("cn=" + adUserData.UserName+",cn=users", "user");
@@ -71,7 +69,41 @@ namespace DAO {
             directoryEntry.CommitChanges();
             directoryEntry = Utility.getUser(adUserData.UserName);
             Utility.setUserPassword(directoryEntry, adUserData.Password);
-            return directoryEntry;
+        }
+
+        private static void modifyUser(ADUserData adUserData) {
+            DirectoryEntry directoryEntry = Utility.getDirectoryObject(adUserData.UserName, adUserData.Password);
+            Utility.setProperty(directoryEntry, "givenName", adUserData.FirstName);
+            Utility.setProperty(directoryEntry, "initials", adUserData.MiddleInitial);
+            Utility.setProperty(directoryEntry, "sn", adUserData.LastName);
+            if (adUserData.UserPrincipalName != null) {
+                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserPrincipalName);
+            }
+            else {
+                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserName);
+            }
+            Utility.setProperty(directoryEntry, "PostalAddress", adUserData.PostalAddress);
+            Utility.setProperty(directoryEntry, "StreetAddress", adUserData.MailingAddress);
+            Utility.setProperty(directoryEntry, "HomePostalAddress", adUserData.ResidentialAddress);
+            Utility.setProperty(directoryEntry, "Title", adUserData.Title);
+            Utility.setProperty(directoryEntry, "HomePhone", adUserData.HomePhone);
+            Utility.setProperty(directoryEntry, "TelephoneNumber", adUserData.OfficePhone);
+            Utility.setProperty(directoryEntry, "Mobile", adUserData.Mobile);
+            Utility.setProperty(directoryEntry, "FacsimileTelephoneNumber", adUserData.Fax);
+            Utility.setProperty(directoryEntry, "mail", adUserData.Email);
+            Utility.setProperty(directoryEntry, "Url", adUserData.Url);
+            Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
+            Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
+            directoryEntry.Properties["userAccountControl"].Value = Utility.userStatus.Enable;
+            directoryEntry.CommitChanges();
+            directoryEntry = Utility.getUser(adUserData.UserName);
+            Utility.setUserPassword(directoryEntry, adUserData.Password);
+        }
+
+        private static bool IsUserValid(string userName, string password) {
+            DirectoryEntry DirectoryEntry = Utility.getUser(userName, password);
+            DirectoryEntry.Close();
+            return true;
         }
         #endregion
 
@@ -84,8 +116,62 @@ namespace DAO {
             return getUsersList(Utility.getUsers());
         }
 
-        public static ADUserData createUser(ADUserData adUserData) {
-            return adUserDataMapping(addUser(adUserData));
+        public static void createUser(ADUserData adUserData) {
+            addUser(adUserData);
+        }
+
+        public static void addUserToGroup(string userDistinguishedName, string groupDistinguishedName) {
+            DirectoryEntry directoryEntry = Utility.getDirectoryObjectByDistinguishedName(groupDistinguishedName);
+            directoryEntry.Invoke("Add", new object[] { userDistinguishedName });
+            directoryEntry.Close();
+        }
+
+        public static void saveModification(ADUserData adUserData){
+            modifyUser(adUserData);
+        }
+
+        public static void removeUserFromGroup(string userDistinguishedName, string groupDistinguishedName) {
+            DirectoryEntry directoryEntry = Utility.getDirectoryObjectByDistinguishedName(groupDistinguishedName);
+            directoryEntry.Invoke("Remove", new object[] { userDistinguishedName });
+            directoryEntry.Close();
+        }
+
+        public static void disableUserAccount(string userName) {
+           Utility.disableUserAccount(Utility.getUser(userName));
+        }
+
+
+        public static void enableUserAccount(string userName) {
+            Utility.enableUserAccount(Utility.getUser(userName));
+        }
+
+        public static void deleteUserAccount(string userName) {
+            DirectoryEntry directoryEntry = Utility.getUser(userName);
+            directoryEntry.DeleteTree();
+            directoryEntry.CommitChanges();
+        }
+
+        public static Utility.loginResult login(string UserName, string Password) {
+            if (IsUserValid(UserName, Password)) {
+                DirectoryEntry de = Utility.getUser(UserName);
+                if (!(de == null)) {
+                    if (Utility.userStatus.Enable == (Utility.userStatus)(de.Properties["userAccountControl"][0])) {
+                        de.Close();
+                        return Utility.loginResult.LOGIN_OK;
+                    }
+                    else {
+                        de.Close();
+                        return Utility.loginResult.LOGIN_USER_ACCOUNT_INACTIVE;
+                    }
+
+                }
+                else {
+                    return Utility.loginResult.LOGIN_USER_DOESNT_EXIST;
+                }
+            }
+            else {
+                return Utility.loginResult.LOGIN_USER_DOESNT_EXIST;
+            }
         }
         #endregion
     }
