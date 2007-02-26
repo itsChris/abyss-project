@@ -64,7 +64,7 @@
             // 
             // baseTreeViewListADObject
             // 
-            this.baseTreeViewListADObject.Location = new System.Drawing.Point(11, 19);
+            this.baseTreeViewListADObject.Location = new System.Drawing.Point(10, 27);
             this.baseTreeViewListADObject.Name = "baseTreeViewListADObject";
             this.baseTreeViewListADObject.Size = new System.Drawing.Size(269, 526);
             this.baseTreeViewListADObject.TabIndex = 3;
@@ -73,10 +73,10 @@
             // 
             this.baseListViewDetailADObject.AllowColumnReorder = true;
             this.baseListViewDetailADObject.FullRowSelect = true;
-            this.baseListViewDetailADObject.Location = new System.Drawing.Point(287, 19);
+            this.baseListViewDetailADObject.Location = new System.Drawing.Point(285, 27);
             this.baseListViewDetailADObject.MultiSelect = false;
             this.baseListViewDetailADObject.Name = "baseListViewDetailADObject";
-            this.baseListViewDetailADObject.Size = new System.Drawing.Size(692, 526);
+            this.baseListViewDetailADObject.Size = new System.Drawing.Size(692, 467);
             this.baseListViewDetailADObject.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.baseListViewDetailADObject.TabIndex = 4;
             this.baseListViewDetailADObject.TabStop = false;
@@ -174,7 +174,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ListActiveDirectory";
             this.ShowInTaskbar = false;
-            this.Text = "FRM_List_AD_Object";
+            this.Text = "Active Directory Object";
             this.Load += new System.EventHandler(this.ListActiveDirectory_Load);
             this.baseMenuStripMain.ResumeLayout(false);
             this.baseMenuStripMain.PerformLayout();

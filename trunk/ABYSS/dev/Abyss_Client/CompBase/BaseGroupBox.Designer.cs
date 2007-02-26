@@ -27,7 +27,7 @@
             // 
             // BaseGroupBox
             // 
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.ResumeLayout(false);
 
