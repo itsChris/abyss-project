@@ -31,8 +31,10 @@ namespace Abyss_Client
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e){
-            DialogResult response = MessageBox.Show("Are you sure to Quit this programs ?", "Exit ?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (response == DialogResult.Yes) {
+
+            if (MessageBox.Show("Do you want quit Active Directory part ?", "ABYSS MANAGEMENT",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes) {
                 this.Close();
             }
         }

@@ -36,11 +36,18 @@ namespace Abyss_Client {
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             if (MessageBox.Show("Do you want to close the application", "ABYSS MANAGEMENT", 
                 MessageBoxButtons.YesNo, 
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button1) == DialogResult.No) {
+                MessageBoxIcon.Question) == DialogResult.No) {
                 e.Cancel = true;
             }
         }
+
+        private void oracle_btn_Click(object sender, EventArgs e) {
+            this.Hide();
+            Oracle oracle = new Oracle();
+            oracle.ShowDialog();
+            this.Show();
+        }
+
         #endregion
     }
 }
