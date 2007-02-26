@@ -87,6 +87,7 @@ namespace Utils {
                 crtDomain = (string)directoryEntryDSE.Properties["defaultNamingContext"].Value;
                 crtUserName = userName;
                 crtPassword = password;
+                initFinish = true;
             }
             return getDirectoryObject(crtDomain, crtUserName, crtPassword);
         }
