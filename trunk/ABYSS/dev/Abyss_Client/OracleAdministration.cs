@@ -7,11 +7,14 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace Abyss_Client {
-    public partial class OracleManagement : Abyss_Client.CompBase.BaseForm {
-        public OracleManagement() {
+    public partial class Oracle : Abyss_Client.CompBase.BaseForm {
+        #region Constructors
+        public Oracle() {
             InitializeComponent();
         }
+        #endregion
 
+        #region Component events
         private void sql_rbt_Click(object sender, EventArgs e) {
             interface_rbl.Checked = false;
             sql_txt.Enabled = true;
@@ -58,12 +61,17 @@ namespace Abyss_Client {
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (MessageBox.Show("Do you want quit Oracle Management ?", this.Text, 
-                MessageBoxButtons.YesNo, 
-                MessageBoxIcon.Question) == DialogResult.Yes) {
-                this.Close();
+            this.Close();
+        }
+
+        private void Oracle_FormClosing(object sender, FormClosingEventArgs e) {
+            if (MessageBox.Show("Do you want to quit ?", this.Text,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.No) {
+                e.Cancel = true;
             }
         }
+        #endregion
     }
 }
 
