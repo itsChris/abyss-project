@@ -159,11 +159,11 @@
     <Compile Include="MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OracleManagement.cs">
+    <Compile Include="OracleAdministration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OracleManagement.designer.cs">
-      <DependentUpon>OracleManagement.cs</DependentUpon>
+    <Compile Include="OracleAdministration.designer.cs">
+      <DependentUpon>OracleAdministration.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ActiveDirectoryManagement.resx">
@@ -230,8 +230,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="OracleManagement.resx">
-      <DependentUpon>OracleManagement.cs</DependentUpon>
+    <EmbeddedResource Include="OracleAdministration.resx">
+      <DependentUpon>OracleAdministration.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

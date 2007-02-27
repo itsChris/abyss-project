@@ -12,7 +12,6 @@ namespace Business {
         #region Properties
         public DirectoryEntry Entry {
             get { return entry; }
-            set { entry = value; }
         }
         #endregion
 

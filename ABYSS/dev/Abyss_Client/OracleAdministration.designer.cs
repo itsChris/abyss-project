@@ -1,5 +1,5 @@
 namespace Abyss_Client {
-    partial class OracleManagement {
+    partial class Oracle {
         /// <summary>
         /// Variable nécessaire au concepteur.
         /// </summary>
@@ -23,40 +23,42 @@ namespace Abyss_Client {
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
-            this.sql_rbt = new System.Windows.Forms.RadioButton();
-            this.interface_rbl = new System.Windows.Forms.RadioButton();
-            this.baseMenuStrip1 = new Abyss_Client.CompBase.BaseMenuStrip();
+            this.sql_rbt = new Abyss_Client.CompBase.BaseRadioButton();
+            this.interface_rbl = new Abyss_Client.CompBase.BaseRadioButton();
+            this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.switcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableList_lst = new System.Windows.Forms.ListView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.load_btn = new System.Windows.Forms.Button();
-            this.create_btn = new System.Windows.Forms.Button();
-            this.interface_gbx = new System.Windows.Forms.GroupBox();
-            this.number_txt = new System.Windows.Forms.TextBox();
-            this.number_lbl = new System.Windows.Forms.Label();
-            this.name_txt = new System.Windows.Forms.TextBox();
-            this.name_lbl = new System.Windows.Forms.Label();
-            this.view_rbt = new System.Windows.Forms.RadioButton();
-            this.table_rbt = new System.Windows.Forms.RadioButton();
-            this.sql_txt = new System.Windows.Forms.TextBox();
+            this.tableList_lst = new Abyss_Client.CompBase.BaseListView();
+            this.panel_pnl = new System.Windows.Forms.Panel();
+            this.load_btn = new Abyss_Client.CompBase.BaseButton();
+            this.create_btn = new Abyss_Client.CompBase.BaseButton();
+            this.interface_gbx = new Abyss_Client.CompBase.BaseGroupBox();
+            this.number_txt = new Abyss_Client.CompBase.BaseTextBox();
+            this.number_lbl = new Abyss_Client.CompBase.BaseLabel();
+            this.name_txt = new Abyss_Client.CompBase.BaseTextBox();
+            this.name_lbl = new Abyss_Client.CompBase.BaseLabel();
+            this.view_rbt = new Abyss_Client.CompBase.BaseRadioButton();
+            this.table_rbt = new Abyss_Client.CompBase.BaseRadioButton();
+            this.sql_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.load_ofd = new System.Windows.Forms.OpenFileDialog();
-            this.baseMenuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.menu_menu.SuspendLayout();
+            this.panel_pnl.SuspendLayout();
             this.interface_gbx.SuspendLayout();
             this.SuspendLayout();
             // 
             // sql_rbt
             // 
             this.sql_rbt.AutoSize = true;
+            this.sql_rbt.BackColor = System.Drawing.Color.LightGray;
             this.sql_rbt.Checked = true;
+            this.sql_rbt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.sql_rbt.Location = new System.Drawing.Point(17, 13);
             this.sql_rbt.Name = "sql_rbt";
-            this.sql_rbt.Size = new System.Drawing.Size(69, 17);
+            this.sql_rbt.Size = new System.Drawing.Size(77, 17);
             this.sql_rbt.TabIndex = 0;
             this.sql_rbt.TabStop = true;
             this.sql_rbt.Text = "Sql mode";
@@ -66,25 +68,27 @@ namespace Abyss_Client {
             // interface_rbl
             // 
             this.interface_rbl.AutoSize = true;
+            this.interface_rbl.BackColor = System.Drawing.Color.LightGray;
+            this.interface_rbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.interface_rbl.Location = new System.Drawing.Point(17, 305);
             this.interface_rbl.Name = "interface_rbl";
-            this.interface_rbl.Size = new System.Drawing.Size(96, 17);
+            this.interface_rbl.Size = new System.Drawing.Size(110, 17);
             this.interface_rbl.TabIndex = 1;
             this.interface_rbl.TabStop = true;
             this.interface_rbl.Text = "Interface mode";
             this.interface_rbl.UseVisualStyleBackColor = true;
             this.interface_rbl.Click += new System.EventHandler(this.interface_rbl_Click);
             // 
-            // baseMenuStrip1
+            // menu_menu
             // 
-            this.baseMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.switcToolStripMenuItem,
             this.editToolStripMenuItem});
-            this.baseMenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.baseMenuStrip1.Name = "baseMenuStrip1";
-            this.baseMenuStrip1.Size = new System.Drawing.Size(988, 24);
-            this.baseMenuStrip1.TabIndex = 2;
-            this.baseMenuStrip1.Text = "baseMenuStrip1";
+            this.menu_menu.Location = new System.Drawing.Point(0, 0);
+            this.menu_menu.Name = "menu_menu";
+            this.menu_menu.Size = new System.Drawing.Size(988, 24);
+            this.menu_menu.TabIndex = 2;
+            this.menu_menu.Text = "baseMenuStrip1";
             // 
             // switcToolStripMenuItem
             // 
@@ -132,52 +136,57 @@ namespace Abyss_Client {
             // 
             // tableList_lst
             // 
+            this.tableList_lst.AllowColumnReorder = true;
+            this.tableList_lst.FullRowSelect = true;
             this.tableList_lst.Location = new System.Drawing.Point(13, 28);
+            this.tableList_lst.MultiSelect = false;
             this.tableList_lst.Name = "tableList_lst";
-            this.tableList_lst.Size = new System.Drawing.Size(308, 526);
+            this.tableList_lst.Size = new System.Drawing.Size(308, 513);
+            this.tableList_lst.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.tableList_lst.TabIndex = 3;
+            this.tableList_lst.TabStop = false;
             this.tableList_lst.UseCompatibleStateImageBehavior = false;
             this.tableList_lst.View = System.Windows.Forms.View.List;
             // 
-            // panel1
+            // panel_pnl
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.load_btn);
-            this.panel1.Controls.Add(this.create_btn);
-            this.panel1.Controls.Add(this.interface_gbx);
-            this.panel1.Controls.Add(this.sql_txt);
-            this.panel1.Controls.Add(this.sql_rbt);
-            this.panel1.Controls.Add(this.interface_rbl);
-            this.panel1.Location = new System.Drawing.Point(328, 28);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(648, 526);
-            this.panel1.TabIndex = 4;
+            this.panel_pnl.BackColor = System.Drawing.Color.Transparent;
+            this.panel_pnl.Controls.Add(this.load_btn);
+            this.panel_pnl.Controls.Add(this.create_btn);
+            this.panel_pnl.Controls.Add(this.interface_gbx);
+            this.panel_pnl.Controls.Add(this.sql_txt);
+            this.panel_pnl.Controls.Add(this.sql_rbt);
+            this.panel_pnl.Controls.Add(this.interface_rbl);
+            this.panel_pnl.Location = new System.Drawing.Point(328, 28);
+            this.panel_pnl.Name = "panel_pnl";
+            this.panel_pnl.Size = new System.Drawing.Size(648, 513);
+            this.panel_pnl.TabIndex = 4;
             // 
             // load_btn
             // 
             this.load_btn.BackColor = System.Drawing.Color.LightGray;
-            this.load_btn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.load_btn.Location = new System.Drawing.Point(523, 39);
+            this.load_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.load_btn.Location = new System.Drawing.Point(524, 39);
             this.load_btn.Name = "load_btn";
             this.load_btn.Size = new System.Drawing.Size(121, 23);
-            this.load_btn.TabIndex = 10;
+            this.load_btn.TabIndex = 12;
             this.load_btn.Text = "Load SQL file";
-            this.load_btn.UseVisualStyleBackColor = false;
+            this.load_btn.UseVisualStyleBackColor = true;
             // 
             // create_btn
             // 
             this.create_btn.BackColor = System.Drawing.Color.LightGray;
-            this.create_btn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.create_btn.Location = new System.Drawing.Point(256, 490);
+            this.create_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.create_btn.Location = new System.Drawing.Point(284, 481);
             this.create_btn.Name = "create_btn";
-            this.create_btn.Size = new System.Drawing.Size(118, 23);
-            this.create_btn.TabIndex = 9;
-            this.create_btn.Text = "Created";
-            this.create_btn.UseVisualStyleBackColor = false;
-            this.create_btn.Click += new System.EventHandler(this.create_btn_Click);
+            this.create_btn.Size = new System.Drawing.Size(90, 23);
+            this.create_btn.TabIndex = 11;
+            this.create_btn.Text = "Create";
+            this.create_btn.UseVisualStyleBackColor = true;
             // 
             // interface_gbx
             // 
+            this.interface_gbx.BackColor = System.Drawing.Color.Transparent;
             this.interface_gbx.Controls.Add(this.number_txt);
             this.interface_gbx.Controls.Add(this.number_lbl);
             this.interface_gbx.Controls.Add(this.name_txt);
@@ -185,6 +194,7 @@ namespace Abyss_Client {
             this.interface_gbx.Controls.Add(this.view_rbt);
             this.interface_gbx.Controls.Add(this.table_rbt);
             this.interface_gbx.Enabled = false;
+            this.interface_gbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.interface_gbx.Location = new System.Drawing.Point(50, 328);
             this.interface_gbx.Name = "interface_gbx";
             this.interface_gbx.Size = new System.Drawing.Size(324, 147);
@@ -194,7 +204,8 @@ namespace Abyss_Client {
             // number_txt
             // 
             this.number_txt.Enabled = false;
-            this.number_txt.Location = new System.Drawing.Point(143, 98);
+            this.number_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.number_txt.Location = new System.Drawing.Point(127, 96);
             this.number_txt.Name = "number_txt";
             this.number_txt.Size = new System.Drawing.Size(38, 20);
             this.number_txt.TabIndex = 10;
@@ -202,17 +213,20 @@ namespace Abyss_Client {
             // number_lbl
             // 
             this.number_lbl.AutoSize = true;
+            this.number_lbl.BackColor = System.Drawing.Color.LightGray;
             this.number_lbl.Enabled = false;
-            this.number_lbl.Location = new System.Drawing.Point(49, 98);
+            this.number_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.number_lbl.Location = new System.Drawing.Point(18, 101);
             this.number_lbl.Name = "number_lbl";
-            this.number_lbl.Size = new System.Drawing.Size(87, 13);
+            this.number_lbl.Size = new System.Drawing.Size(103, 13);
             this.number_lbl.TabIndex = 9;
             this.number_lbl.Text = "Number of rows :";
             // 
             // name_txt
             // 
             this.name_txt.Enabled = false;
-            this.name_txt.Location = new System.Drawing.Point(143, 66);
+            this.name_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.name_txt.Location = new System.Drawing.Point(71, 70);
             this.name_txt.Name = "name_txt";
             this.name_txt.Size = new System.Drawing.Size(150, 20);
             this.name_txt.TabIndex = 8;
@@ -220,19 +234,23 @@ namespace Abyss_Client {
             // name_lbl
             // 
             this.name_lbl.AutoSize = true;
+            this.name_lbl.BackColor = System.Drawing.Color.LightGray;
             this.name_lbl.Enabled = false;
-            this.name_lbl.Location = new System.Drawing.Point(49, 73);
+            this.name_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.name_lbl.Location = new System.Drawing.Point(18, 73);
             this.name_lbl.Name = "name_lbl";
-            this.name_lbl.Size = new System.Drawing.Size(41, 13);
+            this.name_lbl.Size = new System.Drawing.Size(47, 13);
             this.name_lbl.TabIndex = 7;
             this.name_lbl.Text = "Name :";
             // 
             // view_rbt
             // 
             this.view_rbt.AutoSize = true;
+            this.view_rbt.BackColor = System.Drawing.Color.LightGray;
+            this.view_rbt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.view_rbt.Location = new System.Drawing.Point(21, 42);
             this.view_rbt.Name = "view_rbt";
-            this.view_rbt.Size = new System.Drawing.Size(81, 17);
+            this.view_rbt.Size = new System.Drawing.Size(92, 17);
             this.view_rbt.TabIndex = 6;
             this.view_rbt.TabStop = true;
             this.view_rbt.Text = "Create view";
@@ -242,9 +260,11 @@ namespace Abyss_Client {
             // table_rbt
             // 
             this.table_rbt.AutoSize = true;
+            this.table_rbt.BackColor = System.Drawing.Color.LightGray;
+            this.table_rbt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.table_rbt.Location = new System.Drawing.Point(20, 19);
             this.table_rbt.Name = "table_rbt";
-            this.table_rbt.Size = new System.Drawing.Size(82, 17);
+            this.table_rbt.Size = new System.Drawing.Size(94, 17);
             this.table_rbt.TabIndex = 4;
             this.table_rbt.TabStop = true;
             this.table_rbt.Text = "Create table";
@@ -253,6 +273,7 @@ namespace Abyss_Client {
             // 
             // sql_txt
             // 
+            this.sql_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.sql_txt.Location = new System.Drawing.Point(50, 68);
             this.sql_txt.Multiline = true;
             this.sql_txt.Name = "sql_txt";
@@ -264,19 +285,21 @@ namespace Abyss_Client {
             // 
             this.load_ofd.FileName = "load_ofd";
             // 
-            // OracleManagement
+            // Oracle
             // 
             this.ClientSize = new System.Drawing.Size(988, 542);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.tableList_lst);
-            this.Controls.Add(this.baseMenuStrip1);
-            this.MainMenuStrip = this.baseMenuStrip1;
-            this.Name = "OracleManagement";
-            this.Text = "Oracle Administrator view";
-            this.baseMenuStrip1.ResumeLayout(false);
-            this.baseMenuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Controls.Add(this.menu_menu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MainMenuStrip = this.menu_menu;
+            this.Name = "Oracle";
+            this.Text = "Oracle Administration view";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Oracle_FormClosing);
+            this.menu_menu.ResumeLayout(false);
+            this.menu_menu.PerformLayout();
+            this.panel_pnl.ResumeLayout(false);
+            this.panel_pnl.PerformLayout();
             this.interface_gbx.ResumeLayout(false);
             this.interface_gbx.PerformLayout();
             this.ResumeLayout(false);
@@ -286,21 +309,19 @@ namespace Abyss_Client {
 
         #endregion
 
-        private System.Windows.Forms.RadioButton sql_rbt;
-        private System.Windows.Forms.RadioButton interface_rbl;
-        private Abyss_Client.CompBase.BaseMenuStrip baseMenuStrip1;
-        private System.Windows.Forms.ListView tableList_lst;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox sql_txt;
-        private System.Windows.Forms.GroupBox interface_gbx;
-        private System.Windows.Forms.RadioButton table_rbt;
-        private System.Windows.Forms.RadioButton view_rbt;
-        private System.Windows.Forms.Button create_btn;
-        private System.Windows.Forms.TextBox name_txt;
-        private System.Windows.Forms.Label name_lbl;
-        private System.Windows.Forms.Label number_lbl;
-        private System.Windows.Forms.TextBox number_txt;
-        private System.Windows.Forms.Button load_btn;
+        private CompBase.BaseRadioButton sql_rbt;
+        private CompBase.BaseRadioButton interface_rbl;
+        private CompBase.BaseMenuStrip menu_menu;
+        private CompBase.BaseListView tableList_lst;
+        private System.Windows.Forms.Panel panel_pnl;
+        private CompBase.BaseTextBox sql_txt;
+        private CompBase.BaseGroupBox interface_gbx;
+        private CompBase.BaseRadioButton table_rbt;
+        private CompBase.BaseRadioButton view_rbt;
+        private CompBase.BaseTextBox name_txt;
+        private CompBase.BaseLabel name_lbl;
+        private CompBase.BaseLabel number_lbl;
+        private CompBase.BaseTextBox number_txt;
         private System.Windows.Forms.OpenFileDialog load_ofd;
         private System.Windows.Forms.ToolStripMenuItem switcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
@@ -308,6 +329,8 @@ namespace Abyss_Client {
         private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private CompBase.BaseButton create_btn;
+        private Abyss_Client.CompBase.BaseButton load_btn;
 
     }
 }
