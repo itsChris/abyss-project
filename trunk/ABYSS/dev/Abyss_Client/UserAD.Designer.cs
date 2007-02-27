@@ -1,5 +1,5 @@
 namespace Abyss_Client {
-    partial class AddUserAD {
+    partial class UserAD {
         /// <summary>
         /// Variable nécessaire au concepteur.
         /// </summary>

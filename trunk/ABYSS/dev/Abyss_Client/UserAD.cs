@@ -7,8 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace Abyss_Client {
-    public partial class AddUserAD : Abyss_Client.CompBase.BaseForm {
-        public AddUserAD() {
+    public partial class UserAD : Abyss_Client.CompBase.BaseForm {
+        public UserAD() {
             InitializeComponent();
         }
     }
