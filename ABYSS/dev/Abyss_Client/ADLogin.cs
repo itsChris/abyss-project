@@ -12,7 +12,8 @@ namespace Abyss_Client {
 
         #region Component events
         private void connect_btn_Click(object sender, EventArgs e) {
-            LDAP ldap=null;
+            LDAP ldap = null;
+            ADUser user = null;
             Cursor.Current = Cursors.WaitCursor;
             try {
                 if (setError()) {
@@ -24,15 +25,7 @@ namespace Abyss_Client {
                 else {
                     ldap = LDAP.getInstance(ldap_txt.Text, login_txt.Text, password_txt.Text);
                 }
-                ADUser user = ADUser.getUserByName(login_txt.Text);
-                if (user != null) {
-                    MessageBox.Show("Login success. Welcome " + user.DisplayName,
-                    this.Text, MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                    openForm(new ADManagement(ldap));
-                    ldap.setInitToFalse();
-                    reset_btn_Click(new object(), new EventArgs());
-                }
+                user = ADUser.getUserByName(login_txt.Text);
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message, this.Text,
@@ -41,6 +34,14 @@ namespace Abyss_Client {
                     ldap.setInitToFalse();
                 }
                 return;
+            }
+            if (user != null) {
+                MessageBox.Show("Login success. Welcome " + user.DisplayName,
+                this.Text, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+                openForm(new ADManagement(ldap));
+                ldap.setInitToFalse();
+                reset_btn_Click(new object(), new EventArgs());
             }
             Cursor.Current = Cursors.Default;
         }
