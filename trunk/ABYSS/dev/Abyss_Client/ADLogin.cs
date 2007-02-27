@@ -29,7 +29,7 @@ namespace Abyss_Client {
                     MessageBox.Show("Login success. Welcome " + user.DisplayName,
                     this.Text, MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-                    openForm(new ListActiveDirectory(ldap));
+                    openForm(new ADManagement(ldap));
                     ldap.setInitToFalse();
                 }
             }

@@ -1,6 +1,6 @@
 ﻿namespace Abyss_Client
 {
-    partial class ListActiveDirectory
+    partial class ADManagement
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

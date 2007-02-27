@@ -9,7 +9,7 @@ using Business;
 
 namespace Abyss_Client
 {
-    public partial class ListActiveDirectory : CompBase.BaseForm
+    public partial class ADManagement : CompBase.BaseForm
     {
         private enum AdImages {
             AdRoot,
@@ -25,7 +25,7 @@ namespace Abyss_Client
 
        // private DirectoryEntry root;
 
-        public ListActiveDirectory(LDAP ldap) {
+        public ADManagement(LDAP ldap) {
             InitializeComponent();
            // this.root = root;
         }
