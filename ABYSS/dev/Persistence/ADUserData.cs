@@ -9,19 +9,19 @@ namespace Persistence {
         private string displayName; //Name
         private string description; //Description
         private string userPrincipalName; //userPrincipalName (e.g. user@domain.local)
-        private string postalAddress; 
+        private string postalAddress;   // Postal Code
         private string mailingAddress; //StreetAddress
         private string residentialAddress; //HomePostalAddress
-        private string title;
-        private string homePhone;
+        private string title;  // Mr, Ms...
+        private string homePhone; 
         private string officePhone; //TelephoneNumber
         private string mobile;
         private string fax; //FacsimileTelephoneNumber
         private string email; //mail
-        private string url;
+        private string url; // web page
         private string userName; //sAMAccountName
         private string password;
-        private string distinguishedName;
+        private string distinguishedName; // Cn= UserName...
         private bool isAccountActive; //userAccountControl
         #endregion
 
