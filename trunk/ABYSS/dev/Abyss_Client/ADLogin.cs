@@ -31,6 +31,7 @@ namespace Abyss_Client {
                     MessageBoxIcon.Information);
                     openForm(new ADManagement(ldap));
                     ldap.setInitToFalse();
+                    reset_btn_Click(new object(), new EventArgs());
                 }
             }
             catch (Exception ex) {
@@ -67,6 +68,14 @@ namespace Abyss_Client {
                 }      
             }
             login_txt.Select();
+        }
+
+        private void ADLogin_FormClosing(object sender, FormClosingEventArgs e) {
+            if (MessageBox.Show("Do you want to quit ?", this.Text,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.No) {
+                e.Cancel = true;
+            }
         }
         #endregion
 

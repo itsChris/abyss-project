@@ -80,7 +80,7 @@ namespace Abyss_Client {
             this.firstName_lbl.Location = new System.Drawing.Point(6, 27);
             this.firstName_lbl.Name = "firstName_lbl";
             this.firstName_lbl.Size = new System.Drawing.Size(75, 13);
-            this.firstName_lbl.TabIndex = 1;
+            this.firstName_lbl.TabIndex = 0;
             this.firstName_lbl.Text = "First Name :";
             // 
             // lastName_lbl
@@ -102,7 +102,7 @@ namespace Abyss_Client {
             this.displayName_lbl.Location = new System.Drawing.Point(6, 105);
             this.displayName_lbl.Name = "displayName_lbl";
             this.displayName_lbl.Size = new System.Drawing.Size(92, 13);
-            this.displayName_lbl.TabIndex = 3;
+            this.displayName_lbl.TabIndex = 6;
             this.displayName_lbl.Text = "Display Name :";
             // 
             // initials_lbl
@@ -122,7 +122,7 @@ namespace Abyss_Client {
             this.firstName_txt.Location = new System.Drawing.Point(177, 24);
             this.firstName_txt.Name = "firstName_txt";
             this.firstName_txt.Size = new System.Drawing.Size(172, 20);
-            this.firstName_txt.TabIndex = 6;
+            this.firstName_txt.TabIndex = 1;
             // 
             // lastName_txt
             // 
@@ -130,7 +130,7 @@ namespace Abyss_Client {
             this.lastName_txt.Location = new System.Drawing.Point(177, 50);
             this.lastName_txt.Name = "lastName_txt";
             this.lastName_txt.Size = new System.Drawing.Size(172, 20);
-            this.lastName_txt.TabIndex = 7;
+            this.lastName_txt.TabIndex = 3;
             // 
             // initial_txt
             // 
@@ -138,7 +138,7 @@ namespace Abyss_Client {
             this.initial_txt.Location = new System.Drawing.Point(177, 76);
             this.initial_txt.Name = "initial_txt";
             this.initial_txt.Size = new System.Drawing.Size(172, 20);
-            this.initial_txt.TabIndex = 8;
+            this.initial_txt.TabIndex = 5;
             // 
             // displayName_txt
             // 
@@ -146,7 +146,7 @@ namespace Abyss_Client {
             this.displayName_txt.Location = new System.Drawing.Point(177, 102);
             this.displayName_txt.Name = "displayName_txt";
             this.displayName_txt.Size = new System.Drawing.Size(172, 20);
-            this.displayName_txt.TabIndex = 9;
+            this.displayName_txt.TabIndex = 7;
             // 
             // postalAddress_lbl
             // 
@@ -156,7 +156,7 @@ namespace Abyss_Client {
             this.postalAddress_lbl.Location = new System.Drawing.Point(6, 27);
             this.postalAddress_lbl.Name = "postalAddress_lbl";
             this.postalAddress_lbl.Size = new System.Drawing.Size(82, 13);
-            this.postalAddress_lbl.TabIndex = 11;
+            this.postalAddress_lbl.TabIndex = 0;
             this.postalAddress_lbl.Text = "Postal code :";
             // 
             // postalAddress_txt
@@ -165,7 +165,7 @@ namespace Abyss_Client {
             this.postalAddress_txt.Location = new System.Drawing.Point(176, 24);
             this.postalAddress_txt.Name = "postalAddress_txt";
             this.postalAddress_txt.Size = new System.Drawing.Size(172, 20);
-            this.postalAddress_txt.TabIndex = 12;
+            this.postalAddress_txt.TabIndex = 2;
             // 
             // residentialAddress_lbl
             // 
@@ -175,7 +175,7 @@ namespace Abyss_Client {
             this.residentialAddress_lbl.Location = new System.Drawing.Point(509, 27);
             this.residentialAddress_lbl.Name = "residentialAddress_lbl";
             this.residentialAddress_lbl.Size = new System.Drawing.Size(104, 13);
-            this.residentialAddress_lbl.TabIndex = 13;
+            this.residentialAddress_lbl.TabIndex = 4;
             this.residentialAddress_lbl.Text = "Post office box  :";
             // 
             // title_lbl
@@ -186,7 +186,7 @@ namespace Abyss_Client {
             this.title_lbl.Location = new System.Drawing.Point(14, 37);
             this.title_lbl.Name = "title_lbl";
             this.title_lbl.Size = new System.Drawing.Size(60, 13);
-            this.title_lbl.TabIndex = 14;
+            this.title_lbl.TabIndex = 0;
             this.title_lbl.Text = "Job title :";
             // 
             // homePhone_lbl
@@ -197,7 +197,7 @@ namespace Abyss_Client {
             this.homePhone_lbl.Location = new System.Drawing.Point(6, 37);
             this.homePhone_lbl.Name = "homePhone_lbl";
             this.homePhone_lbl.Size = new System.Drawing.Size(86, 13);
-            this.homePhone_lbl.TabIndex = 15;
+            this.homePhone_lbl.TabIndex = 0;
             this.homePhone_lbl.Text = "Home phone :";
             // 
             // maillingAddress_lbl
@@ -208,7 +208,7 @@ namespace Abyss_Client {
             this.maillingAddress_lbl.Location = new System.Drawing.Point(6, 53);
             this.maillingAddress_lbl.Name = "maillingAddress_lbl";
             this.maillingAddress_lbl.Size = new System.Drawing.Size(98, 13);
-            this.maillingAddress_lbl.TabIndex = 16;
+            this.maillingAddress_lbl.TabIndex = 1;
             this.maillingAddress_lbl.Text = "Postal address :";
             // 
             // officePhone
@@ -219,7 +219,7 @@ namespace Abyss_Client {
             this.officePhone.Location = new System.Drawing.Point(509, 37);
             this.officePhone.Name = "officePhone";
             this.officePhone.Size = new System.Drawing.Size(88, 13);
-            this.officePhone.TabIndex = 17;
+            this.officePhone.TabIndex = 6;
             this.officePhone.Text = "Office phone :";
             // 
             // homePhone_txt
@@ -228,7 +228,7 @@ namespace Abyss_Client {
             this.homePhone_txt.Location = new System.Drawing.Point(176, 34);
             this.homePhone_txt.Name = "homePhone_txt";
             this.homePhone_txt.Size = new System.Drawing.Size(172, 20);
-            this.homePhone_txt.TabIndex = 18;
+            this.homePhone_txt.TabIndex = 3;
             // 
             // officePhone_txt
             // 
@@ -236,7 +236,7 @@ namespace Abyss_Client {
             this.officePhone_txt.Location = new System.Drawing.Point(679, 38);
             this.officePhone_txt.Name = "officePhone_txt";
             this.officePhone_txt.Size = new System.Drawing.Size(172, 20);
-            this.officePhone_txt.TabIndex = 19;
+            this.officePhone_txt.TabIndex = 9;
             // 
             // title_txt
             // 
@@ -244,7 +244,7 @@ namespace Abyss_Client {
             this.title_txt.Location = new System.Drawing.Point(184, 32);
             this.title_txt.Name = "title_txt";
             this.title_txt.Size = new System.Drawing.Size(172, 20);
-            this.title_txt.TabIndex = 20;
+            this.title_txt.TabIndex = 1;
             // 
             // residentialAddress_txt
             // 
@@ -252,7 +252,7 @@ namespace Abyss_Client {
             this.residentialAddress_txt.Location = new System.Drawing.Point(680, 21);
             this.residentialAddress_txt.Name = "residentialAddress_txt";
             this.residentialAddress_txt.Size = new System.Drawing.Size(172, 20);
-            this.residentialAddress_txt.TabIndex = 21;
+            this.residentialAddress_txt.TabIndex = 0;
             // 
             // maillingAddress_txt
             // 
@@ -260,7 +260,7 @@ namespace Abyss_Client {
             this.maillingAddress_txt.Location = new System.Drawing.Point(176, 50);
             this.maillingAddress_txt.Name = "maillingAddress_txt";
             this.maillingAddress_txt.Size = new System.Drawing.Size(172, 20);
-            this.maillingAddress_txt.TabIndex = 22;
+            this.maillingAddress_txt.TabIndex = 3;
             // 
             // mobile_lbl
             // 
@@ -270,7 +270,7 @@ namespace Abyss_Client {
             this.mobile_lbl.Location = new System.Drawing.Point(6, 67);
             this.mobile_lbl.Name = "mobile_lbl";
             this.mobile_lbl.Size = new System.Drawing.Size(52, 13);
-            this.mobile_lbl.TabIndex = 23;
+            this.mobile_lbl.TabIndex = 1;
             this.mobile_lbl.Text = "Mobile :";
             // 
             // confirmPassword_lbl
@@ -281,7 +281,7 @@ namespace Abyss_Client {
             this.confirmPassword_lbl.Location = new System.Drawing.Point(6, 92);
             this.confirmPassword_lbl.Name = "confirmPassword_lbl";
             this.confirmPassword_lbl.Size = new System.Drawing.Size(142, 13);
-            this.confirmPassword_lbl.TabIndex = 27;
+            this.confirmPassword_lbl.TabIndex = 4;
             this.confirmPassword_lbl.Text = "Confirm your password :";
             // 
             // password_lbl
@@ -292,7 +292,7 @@ namespace Abyss_Client {
             this.password_lbl.Location = new System.Drawing.Point(7, 66);
             this.password_lbl.Name = "password_lbl";
             this.password_lbl.Size = new System.Drawing.Size(69, 13);
-            this.password_lbl.TabIndex = 28;
+            this.password_lbl.TabIndex = 2;
             this.password_lbl.Text = "Password :";
             // 
             // url_lbl
@@ -303,7 +303,7 @@ namespace Abyss_Client {
             this.url_lbl.Location = new System.Drawing.Point(509, 96);
             this.url_lbl.Name = "url_lbl";
             this.url_lbl.Size = new System.Drawing.Size(40, 13);
-            this.url_lbl.TabIndex = 29;
+            this.url_lbl.TabIndex = 8;
             this.url_lbl.Text = "URL :";
             // 
             // email_lbl
@@ -314,7 +314,7 @@ namespace Abyss_Client {
             this.email_lbl.Location = new System.Drawing.Point(5, 96);
             this.email_lbl.Name = "email_lbl";
             this.email_lbl.Size = new System.Drawing.Size(45, 13);
-            this.email_lbl.TabIndex = 30;
+            this.email_lbl.TabIndex = 2;
             this.email_lbl.Text = "Email :";
             // 
             // fax_lbl
@@ -325,7 +325,7 @@ namespace Abyss_Client {
             this.fax_lbl.Location = new System.Drawing.Point(509, 67);
             this.fax_lbl.Name = "fax_lbl";
             this.fax_lbl.Size = new System.Drawing.Size(35, 13);
-            this.fax_lbl.TabIndex = 31;
+            this.fax_lbl.TabIndex = 7;
             this.fax_lbl.Text = "Fax :";
             // 
             // username_lbl
@@ -336,7 +336,7 @@ namespace Abyss_Client {
             this.username_lbl.Location = new System.Drawing.Point(6, 40);
             this.username_lbl.Name = "username_lbl";
             this.username_lbl.Size = new System.Drawing.Size(71, 13);
-            this.username_lbl.TabIndex = 33;
+            this.username_lbl.TabIndex = 0;
             this.username_lbl.Text = "Username :";
             // 
             // password_txt
@@ -346,7 +346,7 @@ namespace Abyss_Client {
             this.password_txt.Name = "password_txt";
             this.password_txt.PasswordChar = '*';
             this.password_txt.Size = new System.Drawing.Size(172, 20);
-            this.password_txt.TabIndex = 34;
+            this.password_txt.TabIndex = 3;
             // 
             // confirmPassword_txt
             // 
@@ -355,7 +355,7 @@ namespace Abyss_Client {
             this.confirmPassword_txt.Name = "confirmPassword_txt";
             this.confirmPassword_txt.PasswordChar = '*';
             this.confirmPassword_txt.Size = new System.Drawing.Size(172, 20);
-            this.confirmPassword_txt.TabIndex = 36;
+            this.confirmPassword_txt.TabIndex = 5;
             // 
             // fax_txt
             // 
@@ -363,7 +363,7 @@ namespace Abyss_Client {
             this.fax_txt.Location = new System.Drawing.Point(679, 64);
             this.fax_txt.Name = "fax_txt";
             this.fax_txt.Size = new System.Drawing.Size(172, 20);
-            this.fax_txt.TabIndex = 37;
+            this.fax_txt.TabIndex = 10;
             // 
             // mobile_txt
             // 
@@ -371,7 +371,7 @@ namespace Abyss_Client {
             this.mobile_txt.Location = new System.Drawing.Point(176, 64);
             this.mobile_txt.Name = "mobile_txt";
             this.mobile_txt.Size = new System.Drawing.Size(172, 20);
-            this.mobile_txt.TabIndex = 38;
+            this.mobile_txt.TabIndex = 4;
             // 
             // url_txt
             // 
@@ -379,7 +379,7 @@ namespace Abyss_Client {
             this.url_txt.Location = new System.Drawing.Point(679, 93);
             this.url_txt.Name = "url_txt";
             this.url_txt.Size = new System.Drawing.Size(172, 20);
-            this.url_txt.TabIndex = 39;
+            this.url_txt.TabIndex = 11;
             // 
             // mail_txt
             // 
@@ -387,7 +387,7 @@ namespace Abyss_Client {
             this.mail_txt.Location = new System.Drawing.Point(176, 93);
             this.mail_txt.Name = "mail_txt";
             this.mail_txt.Size = new System.Drawing.Size(172, 20);
-            this.mail_txt.TabIndex = 40;
+            this.mail_txt.TabIndex = 5;
             // 
             // username_txt
             // 
@@ -395,7 +395,7 @@ namespace Abyss_Client {
             this.username_txt.Location = new System.Drawing.Point(177, 37);
             this.username_txt.Name = "username_txt";
             this.username_txt.Size = new System.Drawing.Size(172, 20);
-            this.username_txt.TabIndex = 41;
+            this.username_txt.TabIndex = 1;
             // 
             // userInformation_gbx
             // 
@@ -412,7 +412,7 @@ namespace Abyss_Client {
             this.userInformation_gbx.Location = new System.Drawing.Point(12, 30);
             this.userInformation_gbx.Name = "userInformation_gbx";
             this.userInformation_gbx.Size = new System.Drawing.Size(361, 131);
-            this.userInformation_gbx.TabIndex = 43;
+            this.userInformation_gbx.TabIndex = 0;
             this.userInformation_gbx.TabStop = false;
             this.userInformation_gbx.Text = "User Information";
             // 
@@ -427,7 +427,7 @@ namespace Abyss_Client {
             this.contactInformation_gbx.Location = new System.Drawing.Point(12, 167);
             this.contactInformation_gbx.Name = "contactInformation_gbx";
             this.contactInformation_gbx.Size = new System.Drawing.Size(960, 285);
-            this.contactInformation_gbx.TabIndex = 44;
+            this.contactInformation_gbx.TabIndex = 2;
             this.contactInformation_gbx.TabStop = false;
             this.contactInformation_gbx.Text = "Conntact Information";
             // 
@@ -450,7 +450,7 @@ namespace Abyss_Client {
             this.contact_gbx.Location = new System.Drawing.Point(9, 61);
             this.contact_gbx.Name = "contact_gbx";
             this.contact_gbx.Size = new System.Drawing.Size(945, 130);
-            this.contact_gbx.TabIndex = 42;
+            this.contact_gbx.TabIndex = 2;
             this.contact_gbx.TabStop = false;
             this.contact_gbx.Text = "Contact";
             // 
@@ -467,7 +467,7 @@ namespace Abyss_Client {
             this.address_gbx.Location = new System.Drawing.Point(9, 197);
             this.address_gbx.Name = "address_gbx";
             this.address_gbx.Size = new System.Drawing.Size(945, 78);
-            this.address_gbx.TabIndex = 41;
+            this.address_gbx.TabIndex = 3;
             this.address_gbx.TabStop = false;
             this.address_gbx.Text = "Address";
             // 
@@ -485,7 +485,7 @@ namespace Abyss_Client {
             this.accountInformation_gbx.Location = new System.Drawing.Point(402, 30);
             this.accountInformation_gbx.Name = "accountInformation_gbx";
             this.accountInformation_gbx.Size = new System.Drawing.Size(570, 131);
-            this.accountInformation_gbx.TabIndex = 45;
+            this.accountInformation_gbx.TabIndex = 1;
             this.accountInformation_gbx.TabStop = false;
             this.accountInformation_gbx.Text = "Account Information";
             // 
@@ -495,8 +495,8 @@ namespace Abyss_Client {
             this.isAccountActive_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.isAccountActive_chk.Location = new System.Drawing.Point(407, 66);
             this.isAccountActive_chk.Name = "isAccountActive_chk";
-            this.isAccountActive_chk.Size = new System.Drawing.Size(139, 17);
-            this.isAccountActive_chk.TabIndex = 42;
+            this.isAccountActive_chk.Size = new System.Drawing.Size(140, 17);
+            this.isAccountActive_chk.TabIndex = 6;
             this.isAccountActive_chk.Text = "Enable this account";
             this.isAccountActive_chk.UseVisualStyleBackColor = true;
             // 
@@ -507,7 +507,7 @@ namespace Abyss_Client {
             this.addUser_btn.Location = new System.Drawing.Point(551, 485);
             this.addUser_btn.Name = "addUser_btn";
             this.addUser_btn.Size = new System.Drawing.Size(128, 23);
-            this.addUser_btn.TabIndex = 46;
+            this.addUser_btn.TabIndex = 3;
             this.addUser_btn.Text = "Add User";
             this.addUser_btn.UseVisualStyleBackColor = true;
             // 
@@ -518,11 +518,11 @@ namespace Abyss_Client {
             this.reset_btn.Location = new System.Drawing.Point(371, 485);
             this.reset_btn.Name = "reset_btn";
             this.reset_btn.Size = new System.Drawing.Size(128, 23);
-            this.reset_btn.TabIndex = 47;
+            this.reset_btn.TabIndex = 4;
             this.reset_btn.Text = "Reset";
             this.reset_btn.UseVisualStyleBackColor = true;
             // 
-            // AddUserAD
+            // UserAD
             // 
             this.ClientSize = new System.Drawing.Size(988, 542);
             this.Controls.Add(this.reset_btn);
@@ -530,8 +530,9 @@ namespace Abyss_Client {
             this.Controls.Add(this.accountInformation_gbx);
             this.Controls.Add(this.contactInformation_gbx);
             this.Controls.Add(this.userInformation_gbx);
-            this.Name = "AddUserAD";
-            this.Text = "Add an Active Directory user";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "UserAD";
+            this.Text = "Active Directory User";
             this.userInformation_gbx.ResumeLayout(false);
             this.userInformation_gbx.PerformLayout();
             this.contactInformation_gbx.ResumeLayout(false);

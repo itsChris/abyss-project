@@ -109,7 +109,7 @@
             this.user_gbx.Location = new System.Drawing.Point(166, 228);
             this.user_gbx.Name = "user_gbx";
             this.user_gbx.Size = new System.Drawing.Size(356, 130);
-            this.user_gbx.TabIndex = 0;
+            this.user_gbx.TabIndex = 1;
             this.user_gbx.TabStop = false;
             this.user_gbx.Text = "User Information";
             // 
@@ -172,7 +172,7 @@
             this.ldap_gbx.Location = new System.Drawing.Point(166, 70);
             this.ldap_gbx.Name = "ldap_gbx";
             this.ldap_gbx.Size = new System.Drawing.Size(356, 130);
-            this.ldap_gbx.TabIndex = 1;
+            this.ldap_gbx.TabIndex = 0;
             this.ldap_gbx.TabStop = false;
             this.ldap_gbx.Text = "LDAP Information";
             // 
@@ -188,7 +188,7 @@
             this.reset_btn.UseVisualStyleBackColor = true;
             this.reset_btn.Click += new System.EventHandler(this.reset_btn_Click);
             // 
-            // ActiveDirectoryManagement
+            // ADLogin
             // 
             this.AcceptButton = this.connect_btn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,9 +198,9 @@
             this.Controls.Add(this.connect_btn);
             this.Controls.Add(this.user_gbx);
             this.Controls.Add(this.ldap_gbx);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "ActiveDirectoryManagement";
+            this.Name = "ADLogin";
             this.Text = "Abyss Management - Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ADLogin_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.error_prv)).EndInit();
             this.user_gbx.ResumeLayout(false);
             this.user_gbx.PerformLayout();
