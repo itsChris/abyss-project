@@ -26,7 +26,7 @@ namespace Abyss_Client {
 
         #region Component events
         private void activeDirectory_btn_Click(object sender, EventArgs e) {
-            openForm(new ActiveDirectoryManagement());
+            openForm(new ActiveLogin());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
