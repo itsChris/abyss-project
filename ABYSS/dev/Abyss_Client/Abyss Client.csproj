@@ -52,17 +52,16 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
-    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActiveDirectoryLogin.cs">
+    <Compile Include="ActiveDirectoryManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ActiveDirectoryLogin.Designer.cs">
-      <DependentUpon>ActiveDirectoryLogin.cs</DependentUpon>
+    <Compile Include="ActiveDirectoryManagement.Designer.cs">
+      <DependentUpon>ActiveDirectoryManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="CompBase\BaseButton.cs">
       <SubType>Component</SubType>
@@ -160,16 +159,16 @@
     <Compile Include="MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Oracle.cs">
+    <Compile Include="OracleManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Oracle.designer.cs">
-      <DependentUpon>Oracle.cs</DependentUpon>
+    <Compile Include="OracleManagement.designer.cs">
+      <DependentUpon>OracleManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ActiveDirectoryLogin.resx">
+    <EmbeddedResource Include="ActiveDirectoryManagement.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>ActiveDirectoryLogin.cs</DependentUpon>
+      <DependentUpon>ActiveDirectoryManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompBase\BaseButton.resx">
       <SubType>Designer</SubType>
@@ -231,8 +230,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Oracle.resx">
-      <DependentUpon>Oracle.cs</DependentUpon>
+    <EmbeddedResource Include="OracleManagement.resx">
+      <DependentUpon>OracleManagement.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -258,6 +257,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SingleInstanceApp.cs" />
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,10 +273,6 @@
     <ProjectReference Include="..\Persistence\Persistence.csproj">
       <Project>{D42C17B2-E6C2-44C3-9592-69E7BBABCA8E}</Project>
       <Name>Persistence</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{5CEFAFFF-69FB-434E-80D4-2E8298D01579}</Project>
-      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

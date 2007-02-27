@@ -11,5 +11,12 @@ namespace Abyss_Client.CompBase {
         public BaseForm() {
             InitializeComponent();
         }
+
+        public DialogResult openForm(BaseForm form){
+            this.Hide();
+            form.ShowDialog();
+            this.Show();
+            return form.DialogResult;
+        }
     }
 }

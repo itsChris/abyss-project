@@ -27,14 +27,11 @@ namespace Abyss_Client {
 
         #region Component events
         private void activeDirectory_btn_Click(object sender, EventArgs e) {
-            this.Hide();
-            ActiveDirectoryLogin login = new ActiveDirectoryLogin();
-            login.ShowDialog();
-            this.Show();
+            openForm(new ActiveDirectoryManagement());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
-            if (MessageBox.Show("Do you want to close the application", "ABYSS MANAGEMENT", 
+            if (MessageBox.Show("Do you want to close the application", this.Text, 
                 MessageBoxButtons.YesNo, 
                 MessageBoxIcon.Question) == DialogResult.No) {
                 e.Cancel = true;
@@ -42,12 +39,8 @@ namespace Abyss_Client {
         }
 
         private void oracle_btn_Click(object sender, EventArgs e) {
-            this.Hide();
-            Oracle oracle = new Oracle();
-            oracle.ShowDialog();
-            this.Show();
+            openForm(new OracleManagement());
         }
-
         #endregion
 
         private void addUser_btn_Click(object sender, EventArgs e) {
