@@ -141,17 +141,17 @@
     <Compile Include="CompBase\BaseTreeView.Designer.cs">
       <DependentUpon>BaseTreeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddUserAD.cs">
+    <Compile Include="UserAD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddUserAD.Designer.cs">
-      <DependentUpon>AddUserAD.cs</DependentUpon>
+    <Compile Include="UserAD.Designer.cs">
+      <DependentUpon>UserAD.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListActiveDirectory.cs">
+    <Compile Include="ADManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListActiveDirectory.Designer.cs">
-      <DependentUpon>ListActiveDirectory.cs</DependentUpon>
+    <Compile Include="ADManagement.Designer.cs">
+      <DependentUpon>ADManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -218,13 +218,13 @@
       <SubType>Designer</SubType>
       <DependentUpon>BaseTreeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddUserAD.resx">
+    <EmbeddedResource Include="UserAD.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>AddUserAD.cs</DependentUpon>
+      <DependentUpon>UserAD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListActiveDirectory.resx">
+    <EmbeddedResource Include="ADManagement.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>ListActiveDirectory.cs</DependentUpon>
+      <DependentUpon>ADManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
