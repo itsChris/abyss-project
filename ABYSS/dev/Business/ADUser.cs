@@ -37,6 +37,12 @@ namespace Business {
 
         public string DisplayName {
             get { return adUserData.DisplayName; }
+            set { adUserData.DisplayName = value; }
+        }
+
+        public string Description {
+            get { return adUserData.Description; }
+            set { adUserData.Description = value; }
         }
 
         public string UserPrincipalName {
@@ -116,45 +122,65 @@ namespace Business {
         #endregion
 
         #region Static Methods
+        /// <summary>
+        /// Returns a adUser
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public static ADUser getUserByName(string username) {
             return new ADUser((ADUserData)ADUserDAO.getUser(username));
-
         }
 
+        /// <summary>
+        /// Returns a list composed of adUser
+        /// </summary>
+        /// <returns></returns>
         public static ArrayList getUsersList() {
             return ADUserDAO.getUsersList();
         }
-
-        //public static Utils.Utility.loginResult checkLogin(string userName, string password) {
-        //    return ADUserDAO.login(userName, password);
-        //}
         #endregion
 
         #region Public Methods
-        public void addUser() {
-           ADUserDAO.createUser(adUserData);
+        /// <summary>
+        /// Save a user
+        /// </summary>
+        public void save() {
+            ADUserDAO.saveUser(this.adUserData);
         }
 
+        /// <summary>
+        /// Add a user to a group
+        /// </summary>
+        /// <param name="groupDistinguishedName"></param>
         public void addUserToGroup(string groupDistinguishedName) {
             ADUserDAO.addUserToGroup(DistinguishedName, groupDistinguishedName);
         }
 
-        public void saveModification() {
-            ADUserDAO.saveModification(adUserData);
-        }
-
+        /// <summary>
+        /// Remove a user from a group
+        /// </summary>
+        /// <param name="groupDistinguishedName"></param>
         public void RemoveUserFromGroup(string groupDistinguishedName) {
             ADUserDAO.removeUserFromGroup(DistinguishedName, groupDistinguishedName);
         }
 
+        /// <summary>
+        /// Disable user account
+        /// </summary>
         public void disableUserAccount() {
             ADUserDAO.disableUserAccount(UserName);
         }
 
+        /// <summary>
+        /// Enable user account
+        /// </summary>
         public void enableUserAccount() {
             ADUserDAO.enableUserAccount(UserName);
         }
 
+        /// <summary>
+        /// Delete user
+        /// </summary>
         public void deleteUserAccount() {
             ADUserDAO.deleteUserAccount(UserName);
         }
