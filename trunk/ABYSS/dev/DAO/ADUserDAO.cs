@@ -6,13 +6,20 @@ using System.DirectoryServices;
 
 namespace DAO {
     public class ADUserDAO {
-        #region Private Methods
-        #region Mapping
+        #region Static Methods
+        #region Private
+        /// <summary>
+        /// Returns the adUserData from the directoryEntry node.
+        /// </summary>
+        /// <param name="directoryEntry"></param>
+        /// <returns></returns>
         private static ADUserData adUserDataMapping(DirectoryEntry directoryEntry) {
             ADUserData adUserData = new ADUserData();
             adUserData.FirstName = Utility.getProperty(directoryEntry, "givenName");
             adUserData.MiddleInitial = Utility.getProperty(directoryEntry, "initials");
             adUserData.LastName = Utility.getProperty(directoryEntry, "sn");
+            adUserData.DisplayName = Utility.getProperty(directoryEntry, "displayName");
+            adUserData.Description = Utility.getProperty(directoryEntry, "description");
             adUserData.UserPrincipalName = Utility.getProperty(directoryEntry, "UserPrincipalName");
             adUserData.PostalAddress = Utility.getProperty(directoryEntry, "PostalAddress");
             adUserData.MailingAddress = Utility.getProperty(directoryEntry, "StreetAddress");
@@ -29,24 +36,37 @@ namespace DAO {
             adUserData.IsAccountActive = Utility.isAccountActive(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
             return adUserData;
         }
-        #endregion
-
+      
+        /// <summary>
+        /// Returns an list composed of adUserData.
+        /// </summary>
+        /// <param name="searchResultCollection"></param>
+        /// <returns></returns>
         private static ArrayList getUsersList(SearchResultCollection searchResultCollection) {
             ArrayList list = new ArrayList();
             foreach (SearchResult searchResult in searchResultCollection) {
-                ADUserData adUserData = adUserDataMapping(new DirectoryEntry(searchResult.Path, Utility.CrtUserName, Utility.CrtPassword, AuthenticationTypes.Secure));
+                ADUserData adUserData = adUserDataMapping(new DirectoryEntry(searchResult.Path, Utility.CrtUserName, Utility.CrtPassword));
                 list.Add(adUserData);
             }
             return list;
         }
 
-        private static void addUser(ADUserData adUserData) {
-            DirectoryEntry directoryEntry = Utility.getDirectoryObject();
-            DirectoryEntries directoryEntries = directoryEntry.Children;
-            directoryEntry = directoryEntries.Add("cn=" + adUserData.UserName+",cn=users", "user");
+        /// <summary>
+        /// Save a adUserData.
+        /// </summary>
+        /// <param name="adUserData"></param>
+        private static void save(ADUserData adUserData) {
+            DirectoryEntry root = LdapDAO.Root;
+            DirectoryEntry directoryEntry = Utility.getUser(adUserData.UserName);
+            if (directoryEntry == null) {
+                DirectoryEntries directoryEntries = root.Children;
+                directoryEntry = directoryEntries.Add("cn=" + adUserData.UserName + ",cn=users", "user");
+            }
             Utility.setProperty(directoryEntry, "givenName", adUserData.FirstName);
             Utility.setProperty(directoryEntry, "initials", adUserData.MiddleInitial);
             Utility.setProperty(directoryEntry, "sn", adUserData.LastName);
+            Utility.setProperty(directoryEntry, "displayName", adUserData.DisplayName);
+            Utility.setProperty(directoryEntry, "description", adUserData.Description);
             if (adUserData.UserPrincipalName != null) {
                 Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserPrincipalName);
             }
@@ -65,114 +85,90 @@ namespace DAO {
             Utility.setProperty(directoryEntry, "Url", adUserData.Url);
             Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
             Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
-            directoryEntry.Properties["userAccountControl"].Value = Utility.userStatus.Enable;
-            directoryEntry.CommitChanges();
-            directoryEntry = Utility.getUser(adUserData.UserName);
-            Utility.setUserPassword(directoryEntry, adUserData.Password);
-        }
-
-        private static void modifyUser(ADUserData adUserData) {
-            DirectoryEntry directoryEntry = Utility.getDirectoryObject(adUserData.UserName, adUserData.Password);
-            Utility.setProperty(directoryEntry, "givenName", adUserData.FirstName);
-            Utility.setProperty(directoryEntry, "initials", adUserData.MiddleInitial);
-            Utility.setProperty(directoryEntry, "sn", adUserData.LastName);
-            if (adUserData.UserPrincipalName != null) {
-                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserPrincipalName);
+            if (adUserData.IsAccountActive) {
+                directoryEntry.Properties["userAccountControl"].Value = Utility.ADS_USER_FLAG_ENUM.ADS_UF_NORMAL_ACCOUNT;
             }
             else {
-                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserName);
+                directoryEntry.Properties["userAccountControl"].Value = Utility.ADS_USER_FLAG_ENUM.ADS_UF_ACCOUNTDISABLE;
             }
-            Utility.setProperty(directoryEntry, "PostalAddress", adUserData.PostalAddress);
-            Utility.setProperty(directoryEntry, "StreetAddress", adUserData.MailingAddress);
-            Utility.setProperty(directoryEntry, "HomePostalAddress", adUserData.ResidentialAddress);
-            Utility.setProperty(directoryEntry, "Title", adUserData.Title);
-            Utility.setProperty(directoryEntry, "HomePhone", adUserData.HomePhone);
-            Utility.setProperty(directoryEntry, "TelephoneNumber", adUserData.OfficePhone);
-            Utility.setProperty(directoryEntry, "Mobile", adUserData.Mobile);
-            Utility.setProperty(directoryEntry, "FacsimileTelephoneNumber", adUserData.Fax);
-            Utility.setProperty(directoryEntry, "mail", adUserData.Email);
-            Utility.setProperty(directoryEntry, "Url", adUserData.Url);
-            Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
-            Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
-            directoryEntry.Properties["userAccountControl"].Value = Utility.userStatus.Enable;
             directoryEntry.CommitChanges();
-            directoryEntry = Utility.getUser(adUserData.UserName);
-            Utility.setUserPassword(directoryEntry, adUserData.Password);
-        }
-
-        private static bool IsUserValid(string userName, string password) {
-            DirectoryEntry DirectoryEntry = Utility.getUser(userName, password);
-            DirectoryEntry.Close();
-            return true;
         }
         #endregion
 
-        #region Static Methods
+        #region Public
+        /// <summary>
+        /// Returns an adUserData.
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
         public static ADUserData getUser(string userName) {
             return adUserDataMapping(Utility.getUser(userName));
         }
 
-        public static ArrayList getUsersList(){
+        /// <summary>
+        /// Returns an arraylist composed bys adUserData.
+        /// </summary>
+        /// <returns></returns>
+        public static ArrayList getUsersList() {
             return getUsersList(Utility.getUsers());
         }
 
-        public static void createUser(ADUserData adUserData) {
-            addUser(adUserData);
+        /// <summary>
+        /// Save an adUserData.
+        /// </summary>
+        /// <param name="adUserData"></param>
+        public static void saveUser(ADUserData adUserData) {
+            save(adUserData);
         }
 
+        /// <summary>
+        /// Add a user to a group
+        /// </summary>
+        /// <param name="userDistinguishedName"></param>
+        /// <param name="groupDistinguishedName"></param>
         public static void addUserToGroup(string userDistinguishedName, string groupDistinguishedName) {
             DirectoryEntry directoryEntry = Utility.getDirectoryObjectByDistinguishedName(groupDistinguishedName);
             directoryEntry.Invoke("Add", new object[] { userDistinguishedName });
             directoryEntry.Close();
         }
 
-        public static void saveModification(ADUserData adUserData){
-            modifyUser(adUserData);
-        }
-
+        /// <summary>
+        /// Remove a user to a group
+        /// </summary>
+        /// <param name="userDistinguishedName"></param>
+        /// <param name="groupDistinguishedName"></param>
         public static void removeUserFromGroup(string userDistinguishedName, string groupDistinguishedName) {
             DirectoryEntry directoryEntry = Utility.getDirectoryObjectByDistinguishedName(groupDistinguishedName);
             directoryEntry.Invoke("Remove", new object[] { userDistinguishedName });
             directoryEntry.Close();
         }
 
+        /// <summary>
+        /// Disable a user account
+        /// </summary>
+        /// <param name="userName"></param>
         public static void disableUserAccount(string userName) {
-           Utility.disableUserAccount(Utility.getUser(userName));
+            Utility.disableUserAccount(Utility.getUser(userName));
         }
 
-
+        /// <summary>
+        /// Enable a user account
+        /// </summary>
+        /// <param name="userName"></param>
         public static void enableUserAccount(string userName) {
             Utility.enableUserAccount(Utility.getUser(userName));
         }
 
+        /// <summary>
+        /// Remove a user
+        /// </summary>
+        /// <param name="userName"></param>
         public static void deleteUserAccount(string userName) {
             DirectoryEntry directoryEntry = Utility.getUser(userName);
             directoryEntry.DeleteTree();
             directoryEntry.CommitChanges();
         }
-
-        //public static Utility.loginResult login(string UserName, string Password) {
-        //    if (IsUserValid(UserName, Password)) {
-        //        DirectoryEntry de = Utility.getUser(UserName);
-        //        if (!(de == null)) {
-        //            if (Utility.userStatus.Enable == (Utility.userStatus)(de.Properties["userAccountControl"][0])) {
-        //                de.Close();
-        //                return Utility.loginResult.LOGIN_OK;
-        //            }
-        //            else {
-        //                de.Close();
-        //                return Utility.loginResult.LOGIN_USER_ACCOUNT_INACTIVE;
-        //            }
-
-        //        }
-        //        else {
-        //            return Utility.loginResult.LOGIN_USER_DOESNT_EXIST;
-        //        }
-        //    }
-        //    else {
-        //        return Utility.loginResult.LOGIN_USER_DOESNT_EXIST;
-        //    }
-        //}
+        #endregion
         #endregion
     }
 }

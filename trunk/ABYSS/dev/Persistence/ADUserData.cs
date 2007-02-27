@@ -7,6 +7,7 @@ namespace Persistence {
         private string middleInitial; //initials
         private string lastName; //sn
         private string displayName; //Name
+        private string description; //Description
         private string userPrincipalName; //userPrincipalName (e.g. user@domain.local)
         private string postalAddress; 
         private string mailingAddress; //StreetAddress
@@ -37,14 +38,7 @@ namespace Persistence {
 
         public string MiddleInitial {
             get { return middleInitial; }
-            set {
-                if (value.Length > 6) {
-                    throw (new Exception("MiddleInitial cannot be more than six characters"));
-                }
-                else {
-                    middleInitial = value;
-                }
-            }
+            set { middleInitial = value; }
         }
 
         public string LastName {
@@ -53,10 +47,13 @@ namespace Persistence {
         }
 
         public string DisplayName {
-            get {
-                displayName = firstName + middleInitial + "." + lastName;
-                return displayName;
-            }
+            get {return displayName;}
+            set { displayName = value; }
+        }
+
+        public string Description {
+            get { return description; }
+            set { description = value; }
         }
 
         public string UserPrincipalName {
