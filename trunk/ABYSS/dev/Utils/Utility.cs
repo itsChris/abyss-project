@@ -28,7 +28,7 @@ namespace Utils {
             get { return Utility.crtPassword; }
         }
 
-        public bool InitFinish {
+        public static bool InitFinish {
             set { initFinish = value; }
         }
         #endregion
@@ -274,7 +274,6 @@ namespace Utils {
         private static DirectoryEntry getDirectoryObject() {
             DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + crtDomain, crtUserName, crtPassword);
             return directoryEntry;
-
         }
 
         /// <summary>
@@ -287,7 +286,6 @@ namespace Utils {
         private static DirectoryEntry getDirectoryObject(string path, string userName, string password) {
             DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + path, userName, password);
             return directoryEntry;
-
         }
         #endregion
         #endregion

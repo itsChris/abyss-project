@@ -25,6 +25,11 @@ namespace DAO {
             root = Utility.connection(username,password);
             return root;
         }
+
+        public static void setInitToFalse(){
+            Utility.InitFinish = false;
+            root = null;
+        }
         #endregion
     }
 }
