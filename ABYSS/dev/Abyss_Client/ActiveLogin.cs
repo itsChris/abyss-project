@@ -3,9 +3,9 @@ using System.Windows.Forms;
 using Business;
 
 namespace Abyss_Client {
-    public partial class ActiveDirectoryManagement : CompBase.BaseForm {
+    public partial class ActiveLogin : CompBase.BaseForm {
         #region Constructors
-        public ActiveDirectoryManagement() {
+        public ActiveLogin() {
             InitializeComponent();
         }
         #endregion

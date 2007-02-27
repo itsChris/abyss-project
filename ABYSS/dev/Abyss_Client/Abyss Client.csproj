@@ -57,11 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActiveDirectoryManagement.cs">
+    <Compile Include="ActiveLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ActiveDirectoryManagement.Designer.cs">
-      <DependentUpon>ActiveDirectoryManagement.cs</DependentUpon>
+    <Compile Include="ActiveLogin.Designer.cs">
+      <DependentUpon>ActiveLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="CompBase\BaseButton.cs">
       <SubType>Component</SubType>
@@ -166,9 +166,9 @@
       <DependentUpon>OracleAdministration.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ActiveDirectoryManagement.resx">
+    <EmbeddedResource Include="ActiveLogin.resx">
+      <DependentUpon>ActiveLogin.cs</DependentUpon>
       <SubType>Designer</SubType>
-      <DependentUpon>ActiveDirectoryManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompBase\BaseButton.resx">
       <SubType>Designer</SubType>

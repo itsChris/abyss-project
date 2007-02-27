@@ -1,5 +1,5 @@
 ﻿namespace Abyss_Client {
-    partial class ActiveDirectoryManagement {
+    partial class ActiveLogin {
         /// <summary>
         /// Variable nécessaire au concepteur.
         /// </summary>
