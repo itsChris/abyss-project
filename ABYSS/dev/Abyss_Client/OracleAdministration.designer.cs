@@ -73,7 +73,7 @@ namespace Abyss_Client {
             this.interface_rbl.Location = new System.Drawing.Point(17, 305);
             this.interface_rbl.Name = "interface_rbl";
             this.interface_rbl.Size = new System.Drawing.Size(110, 17);
-            this.interface_rbl.TabIndex = 1;
+            this.interface_rbl.TabIndex = 3;
             this.interface_rbl.TabStop = true;
             this.interface_rbl.Text = "Interface mode";
             this.interface_rbl.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@ namespace Abyss_Client {
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
             this.menu_menu.Size = new System.Drawing.Size(988, 24);
-            this.menu_menu.TabIndex = 2;
+            this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
             // switcToolStripMenuItem
@@ -143,7 +143,7 @@ namespace Abyss_Client {
             this.tableList_lst.Name = "tableList_lst";
             this.tableList_lst.Size = new System.Drawing.Size(308, 513);
             this.tableList_lst.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.tableList_lst.TabIndex = 3;
+            this.tableList_lst.TabIndex = 1;
             this.tableList_lst.TabStop = false;
             this.tableList_lst.UseCompatibleStateImageBehavior = false;
             this.tableList_lst.View = System.Windows.Forms.View.List;
@@ -160,7 +160,7 @@ namespace Abyss_Client {
             this.panel_pnl.Location = new System.Drawing.Point(328, 28);
             this.panel_pnl.Name = "panel_pnl";
             this.panel_pnl.Size = new System.Drawing.Size(648, 513);
-            this.panel_pnl.TabIndex = 4;
+            this.panel_pnl.TabIndex = 2;
             // 
             // load_btn
             // 
@@ -169,7 +169,7 @@ namespace Abyss_Client {
             this.load_btn.Location = new System.Drawing.Point(524, 39);
             this.load_btn.Name = "load_btn";
             this.load_btn.Size = new System.Drawing.Size(121, 23);
-            this.load_btn.TabIndex = 12;
+            this.load_btn.TabIndex = 1;
             this.load_btn.Text = "Load SQL file";
             this.load_btn.UseVisualStyleBackColor = true;
             // 
@@ -180,7 +180,7 @@ namespace Abyss_Client {
             this.create_btn.Location = new System.Drawing.Point(284, 481);
             this.create_btn.Name = "create_btn";
             this.create_btn.Size = new System.Drawing.Size(90, 23);
-            this.create_btn.TabIndex = 11;
+            this.create_btn.TabIndex = 5;
             this.create_btn.Text = "Create";
             this.create_btn.UseVisualStyleBackColor = true;
             // 
@@ -208,7 +208,7 @@ namespace Abyss_Client {
             this.number_txt.Location = new System.Drawing.Point(127, 96);
             this.number_txt.Name = "number_txt";
             this.number_txt.Size = new System.Drawing.Size(38, 20);
-            this.number_txt.TabIndex = 10;
+            this.number_txt.TabIndex = 5;
             // 
             // number_lbl
             // 
@@ -219,7 +219,7 @@ namespace Abyss_Client {
             this.number_lbl.Location = new System.Drawing.Point(18, 101);
             this.number_lbl.Name = "number_lbl";
             this.number_lbl.Size = new System.Drawing.Size(103, 13);
-            this.number_lbl.TabIndex = 9;
+            this.number_lbl.TabIndex = 4;
             this.number_lbl.Text = "Number of rows :";
             // 
             // name_txt
@@ -229,7 +229,7 @@ namespace Abyss_Client {
             this.name_txt.Location = new System.Drawing.Point(71, 70);
             this.name_txt.Name = "name_txt";
             this.name_txt.Size = new System.Drawing.Size(150, 20);
-            this.name_txt.TabIndex = 8;
+            this.name_txt.TabIndex = 3;
             // 
             // name_lbl
             // 
@@ -240,7 +240,7 @@ namespace Abyss_Client {
             this.name_lbl.Location = new System.Drawing.Point(18, 73);
             this.name_lbl.Name = "name_lbl";
             this.name_lbl.Size = new System.Drawing.Size(47, 13);
-            this.name_lbl.TabIndex = 7;
+            this.name_lbl.TabIndex = 2;
             this.name_lbl.Text = "Name :";
             // 
             // view_rbt
@@ -251,7 +251,7 @@ namespace Abyss_Client {
             this.view_rbt.Location = new System.Drawing.Point(21, 42);
             this.view_rbt.Name = "view_rbt";
             this.view_rbt.Size = new System.Drawing.Size(92, 17);
-            this.view_rbt.TabIndex = 6;
+            this.view_rbt.TabIndex = 1;
             this.view_rbt.TabStop = true;
             this.view_rbt.Text = "Create view";
             this.view_rbt.UseVisualStyleBackColor = true;
@@ -265,7 +265,7 @@ namespace Abyss_Client {
             this.table_rbt.Location = new System.Drawing.Point(20, 19);
             this.table_rbt.Name = "table_rbt";
             this.table_rbt.Size = new System.Drawing.Size(94, 17);
-            this.table_rbt.TabIndex = 4;
+            this.table_rbt.TabIndex = 0;
             this.table_rbt.TabStop = true;
             this.table_rbt.Text = "Create table";
             this.table_rbt.UseVisualStyleBackColor = true;
