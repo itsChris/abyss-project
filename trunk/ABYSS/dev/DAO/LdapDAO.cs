@@ -16,16 +16,32 @@ namespace DAO {
         #endregion
 
         #region Static Methods
+        /// <summary>
+        /// Returns the current directory Entry root.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static DirectoryEntry getLdapConnection(string path, string username, string password) {
             root = Utility.connection(path, username, password);
             return root;
         }
 
+        /// <summary>
+        /// Returns the current directory Entry root.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static DirectoryEntry getLdapConnection(string username, string password){
             root = Utility.connection(username,password);
             return root;
         }
-
+        
+        /// <summary>
+        /// Cancel he current directory Entry root.
+        /// </summary>
         public static void setInitToFalse(){
             Utility.InitFinish = false;
             root = null;
