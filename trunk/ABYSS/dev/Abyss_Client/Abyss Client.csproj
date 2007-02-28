@@ -149,11 +149,11 @@
     <Compile Include="UserAD.Designer.cs">
       <DependentUpon>UserAD.cs</DependentUpon>
     </Compile>
-    <Compile Include="ADManagement.cs">
+    <Compile Include="ADAdministration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ADManagement.Designer.cs">
-      <DependentUpon>ADManagement.cs</DependentUpon>
+    <Compile Include="ADAdministration.Designer.cs">
+      <DependentUpon>ADAdministration.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -224,9 +224,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>UserAD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ADManagement.resx">
+    <EmbeddedResource Include="ADAdministration.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>ADManagement.cs</DependentUpon>
+      <DependentUpon>ADAdministration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
