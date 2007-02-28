@@ -12,7 +12,7 @@ namespace Abyss_Client {
 
         #region Component events
         private void connect_btn_Click(object sender, EventArgs e) {
-            LDAP ldap = null;
+            ADConnection ldap = null;
             ADUser user = null;
             Cursor.Current = Cursors.WaitCursor;
             try {
@@ -20,10 +20,10 @@ namespace Abyss_Client {
                     return;
                 }
                 if (defaultLdap_rbt.Checked) {
-                    ldap = LDAP.getInstance(login_txt.Text, password_txt.Text);
+                    ldap = ADConnection.getInstance(login_txt.Text, password_txt.Text);
                 }
                 else {
-                    ldap = LDAP.getInstance(ldap_txt.Text, login_txt.Text, password_txt.Text);
+                    ldap = ADConnection.getInstance(ldap_txt.Text, login_txt.Text, password_txt.Text);
                 }
                 user = ADUser.getUserByName(login_txt.Text);
             }

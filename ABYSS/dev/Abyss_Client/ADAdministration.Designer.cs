@@ -112,6 +112,8 @@
             this.list_lst.TabStop = false;
             this.list_lst.UseCompatibleStateImageBehavior = false;
             this.list_lst.View = System.Windows.Forms.View.Details;
+            this.list_lst.DoubleClick += new System.EventHandler(this.list_lst_DoubleClick);
+            this.list_lst.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.list_lst_ColumnClick);
             // 
             // name_clh
             // 

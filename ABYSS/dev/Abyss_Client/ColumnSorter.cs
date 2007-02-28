@@ -154,7 +154,7 @@ namespace Abyss_Client {
 
 		public new int Compare(object x, object y)
 		{
-			if ((x is System.String) && IsWholeNumber((string)x) && (y is System.String) && IsWholeNumber((string)y))
+            if ((x is System.String) && IsWholeNumber((string)x) && (!string.IsNullOrEmpty((string)x)) && (y is System.String) && IsWholeNumber((string)y) && (!string.IsNullOrEmpty((string)y)))
 			{
 				return base.Compare(System.Convert.ToInt32(x),System.Convert.ToInt32(y));
 			}

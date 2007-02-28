@@ -34,7 +34,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LDAP.cs" />
+    <Compile Include="ADConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ADUser.cs" />
   </ItemGroup>

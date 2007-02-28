@@ -6,7 +6,7 @@ using Business;
 namespace Abyss_Client {
     public partial class ADAdministration : CompBase.BaseForm {
         #region Attributes
-        private LDAP ldap;
+        private ADConnection ldap;
         private ListViewColumnSorter lvwColumnSorter;
         #endregion
 
@@ -25,7 +25,7 @@ namespace Abyss_Client {
         #endregion
 
         #region Constructors
-        public ADAdministration(LDAP ldap) {
+        public ADAdministration(ADConnection ldap) {
             InitializeComponent();
             this.ldap = ldap;
         }
@@ -41,7 +41,7 @@ namespace Abyss_Client {
         }
 
         /// <summary>
-        /// Built dynamicly the tree view for eachn node of Active Directory.
+        /// Built dynamically the tree view for each node of Active Directory.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -51,7 +51,6 @@ namespace Abyss_Client {
             // cleanup the current node and list view.
             this.list_lst.Items.Clear();
             e.Node.Nodes.Clear();
-            // Begin tree view creation.
             treeView.BeginUpdate();
             try {
                 foreach (DirectoryEntry child in selectedEntry.Children) {
@@ -64,16 +63,22 @@ namespace Abyss_Client {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
-
 																	}, (int)AdImages.Container);
                             break;
                         case "builtinDomain":
-                            tmpNode = new TreeNode((string)child.Properties["name"].Value, (int)AdImages.Container , (int)AdImages.OpenContainer);
+                            tmpNode = new TreeNode((string)child.Properties["name"].Value, (int)AdImages.Container, (int)AdImages.OpenContainer);
                             tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
-
+																	}, (int)AdImages.Container);
+                            break;
+                        case "container":
+                            tmpNode = new TreeNode((string)child.Properties["name"].Value, (int)AdImages.Container, (int)AdImages.OpenContainer);
+                            tmpItem = new ListViewItem(new string[] {
+																		(string)child.Properties["name"].Value,
+																		child.SchemaClassName,
+																		(string)child.Properties["description"].Value
 																	}, (int)AdImages.Container);
                             break;
                         case "organizationalUnit":
@@ -82,34 +87,21 @@ namespace Abyss_Client {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
-
 																	}, (int)AdImages.Ou);
-                            break;
-                        case "container":
-                            tmpNode = new TreeNode((string)child.Properties["name"].Value, (int)AdImages.Container, (int)AdImages.OpenContainer);
-                            tmpItem = new ListViewItem(new string[] {
-																		(string)child.Properties["name"].Value,
-																		child.SchemaClassName,
-																		(string)child.Properties["description"].Value
-
-																	}, (int)AdImages.Container);
                             break;
                         case "computer":
                             tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
-
 																	}, (int)AdImages.Computer);
                             break;
                         case "user":
                             ADUser user = ADUser.getUserByName((string)child.Properties["name"].Value);
-
                             tmpItem = new ListViewItem(new string[] {
 																		user.UserName,
 																		child.SchemaClassName,
 																		user.Description
-
 																	}, (int)AdImages.User);
                             tmpItem.Tag = user;
                             break;
@@ -118,7 +110,6 @@ namespace Abyss_Client {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
-
 																	}, (int)AdImages.Group);
                             break;
                         default:
@@ -126,31 +117,71 @@ namespace Abyss_Client {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
-
 																	}, (int)AdImages.Unknown);
                             break;
                     }
-                    // save the directory entry reference in the tag
+                    // save the directory entry reference in the tag.
                     if (tmpNode != null) {
                         tmpNode.Tag = child;
                         e.Node.Nodes.Add(tmpNode);
                     }
+                    // save the list view item.
                     if (tmpItem != null) {
-                        //tmpItem.Tag = child;
                         this.list_lst.Items.Add(tmpItem);
                     }
                 }
             }
-            catch (Exception) {
-                //e.Node.ImageIndex = (int)AdImages.Unavailable;
-                //e.Node.SelectedImageIndex = (int)AdImages.Unavailable;
-                //return;
+            catch (Exception ex) {
+                // active directory exception ???
+                MessageBox.Show(ex.Message);
             }
-            
             e.Node.Expand();
             treeView.EndUpdate();
         }
 
+        private void list_lst_DoubleClick(object sender, EventArgs e) {
+            ListView myListView = (ListView)sender;
+            if (myListView.SelectedItems.Count == 1) {
+                ListViewItem myListViewItem = myListView.SelectedItems[0];
+                switch (myListViewItem.ImageIndex) {
+                    case (int)AdImages.Ou:
+                    case (int)AdImages.Container:
+                        foreach (TreeNode tNode in this.tree_trv.SelectedNode.Nodes) {
+                            if (tNode.Text.Equals(myListViewItem.Text)) {
+                                this.tree_trv.SelectedNode = tNode;
+                                if (myListView.Items.Count > 0) {
+                                    myListView.Focus();
+                                    myListView.Items[0].Selected = true;
+                                }
+                                break;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void list_lst_ColumnClick(object sender, ColumnClickEventArgs e) {
+            ListView myListView = (ListView)sender;
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn) {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending) {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+            // Perform the sort with these new sort options.
+			myListView.Sort();
+        }
+          
         private void ADManagement_FormClosing(object sender, FormClosingEventArgs e) {
             if (MessageBox.Show("Do you want to quit ?", this.Text,
                 MessageBoxButtons.YesNo,
