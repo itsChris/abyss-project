@@ -3,9 +3,9 @@ using DAO;
 using System.DirectoryServices;
 
 namespace Business {
-    public class LDAP {
+    public class ADConnection {
         #region Attributes
-        private static LDAP instance = null;
+        private static ADConnection instance = null;
         private DirectoryEntry entry = null;
         #endregion
 
@@ -16,26 +16,26 @@ namespace Business {
         #endregion
 
         #region Constructor
-        private LDAP(string path, string username, string password) {
+        private ADConnection(string path, string username, string password) {
             entry = LdapDAO.getLdapConnection(path, username, password);
         }
 
-        private LDAP(string username, string password) {
+        private ADConnection(string username, string password) {
             entry = LdapDAO.getLdapConnection(username, password);
         }
         #endregion
 
         #region Static Methods
-        public static LDAP getInstance(string path, string username, string password) {
+        public static ADConnection getInstance(string path, string username, string password) {
             if (instance == null) {
-                instance = new LDAP(path, username, password);
+                instance = new ADConnection(path, username, password);
             }
             return instance;
         }
         
-        public static LDAP getInstance(string username, string password) {
+        public static ADConnection getInstance(string username, string password) {
             if (instance == null) {
-                instance = new LDAP(username, password);
+                instance = new ADConnection(username, password);
             }
             return instance;
         }
