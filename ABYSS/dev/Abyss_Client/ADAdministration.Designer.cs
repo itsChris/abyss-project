@@ -1,6 +1,6 @@
 ﻿namespace Abyss_Client
 {
-    partial class ADManagement
+    partial class ADAdministration
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ADManagement));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ADAdministration));
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tree_trv = new Abyss_Client.CompBase.BaseTreeView();
             this.imageList_adObjects = new System.Windows.Forms.ImageList(this.components);
             this.list_lst = new Abyss_Client.CompBase.BaseListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.name_clh = new System.Windows.Forms.ColumnHeader();
+            this.type_cln = new System.Windows.Forms.ColumnHeader();
+            this.desc_cln = new System.Windows.Forms.ColumnHeader();
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.filesStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,10 +72,10 @@
             // 
             this.tree_trv.ImageIndex = 0;
             this.tree_trv.ImageList = this.imageList_adObjects;
-            this.tree_trv.Location = new System.Drawing.Point(10, 27);
+            this.tree_trv.Location = new System.Drawing.Point(10, 28);
             this.tree_trv.Name = "tree_trv";
             this.tree_trv.SelectedImageIndex = 0;
-            this.tree_trv.Size = new System.Drawing.Size(269, 526);
+            this.tree_trv.Size = new System.Drawing.Size(255, 526);
             this.tree_trv.TabIndex = 1;
             this.tree_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_trv_AfterSelect);
             // 
@@ -97,21 +97,36 @@
             // 
             this.list_lst.AllowColumnReorder = true;
             this.list_lst.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
+            this.name_clh,
+            this.type_cln,
+            this.desc_cln});
             this.list_lst.FullRowSelect = true;
             this.list_lst.LargeImageList = this.imageList_adObjects;
-            this.list_lst.Location = new System.Drawing.Point(285, 27);
+            this.list_lst.Location = new System.Drawing.Point(271, 27);
             this.list_lst.MultiSelect = false;
             this.list_lst.Name = "list_lst";
-            this.list_lst.Size = new System.Drawing.Size(692, 526);
+            this.list_lst.Size = new System.Drawing.Size(874, 526);
             this.list_lst.SmallImageList = this.imageList_adObjects;
             this.list_lst.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.list_lst.TabIndex = 2;
             this.list_lst.TabStop = false;
             this.list_lst.UseCompatibleStateImageBehavior = false;
             this.list_lst.View = System.Windows.Forms.View.Details;
+            // 
+            // name_clh
+            // 
+            this.name_clh.Text = "Name";
+            this.name_clh.Width = 191;
+            // 
+            // type_cln
+            // 
+            this.type_cln.Text = "Type";
+            this.type_cln.Width = 150;
+            // 
+            // desc_cln
+            // 
+            this.desc_cln.Text = "Description";
+            this.desc_cln.Width = 517;
             // 
             // menu_menu
             // 
@@ -121,9 +136,9 @@
             this.helpToolStripMenuItem});
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
-            this.menu_menu.Size = new System.Drawing.Size(992, 24);
+            this.menu_menu.Size = new System.Drawing.Size(1157, 24);
             this.menu_menu.TabIndex = 0;
-            this.menu_menu.Text = "baseMenuStrip1";
+            this.menu_menu.Text = "menu_menu";
             // 
             // filesStripMenuItem
             // 
@@ -193,16 +208,16 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // ADManagement
+            // ADAdministration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(992, 566);
+            this.ClientSize = new System.Drawing.Size(1157, 566);
             this.Controls.Add(this.list_lst);
             this.Controls.Add(this.tree_trv);
             this.Controls.Add(this.menu_menu);
-            this.Name = "ADManagement";
-            this.Text = "Active Directory Management";
+            this.Name = "ADAdministration";
+            this.Text = "Active Directory Administration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ADManagement_FormClosing);
             this.Load += new System.EventHandler(this.ListActiveDirectory_Load);
             this.menu_menu.ResumeLayout(false);
@@ -230,8 +245,8 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ImageList imageList_adObjects;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader name_clh;
+        private System.Windows.Forms.ColumnHeader type_cln;
+        private System.Windows.Forms.ColumnHeader desc_cln;
     }
 }
