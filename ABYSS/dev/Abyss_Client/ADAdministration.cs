@@ -189,6 +189,14 @@ namespace Abyss_Client {
                 e.Cancel = true;
             }
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e) {
+            openForm(new ADUserUpdate());
+        }
+
+        private void contextMenu_stp_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+            
+        }
         #endregion
 
         #region Private Methods
