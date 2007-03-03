@@ -1,5 +1,5 @@
 namespace Abyss_Client {
-    partial class UserAD {
+    partial class ADUserUpdate {
         /// <summary>
         /// Variable nécessaire au concepteur.
         /// </summary>
@@ -510,6 +510,7 @@ namespace Abyss_Client {
             this.addUser_btn.TabIndex = 3;
             this.addUser_btn.Text = "Add User";
             this.addUser_btn.UseVisualStyleBackColor = true;
+            this.addUser_btn.Click += new System.EventHandler(this.addUser_btn_Click);
             // 
             // reset_btn
             // 
@@ -522,7 +523,7 @@ namespace Abyss_Client {
             this.reset_btn.Text = "Reset";
             this.reset_btn.UseVisualStyleBackColor = true;
             // 
-            // UserAD
+            // ADUserUpdate
             // 
             this.ClientSize = new System.Drawing.Size(988, 542);
             this.Controls.Add(this.reset_btn);
@@ -530,9 +531,9 @@ namespace Abyss_Client {
             this.Controls.Add(this.accountInformation_gbx);
             this.Controls.Add(this.contactInformation_gbx);
             this.Controls.Add(this.userInformation_gbx);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "UserAD";
+            this.Name = "ADUserUpdate";
             this.Text = "Active Directory User";
+            this.Load += new System.EventHandler(this.ADUserUpdate_Load);
             this.userInformation_gbx.ResumeLayout(false);
             this.userInformation_gbx.PerformLayout();
             this.contactInformation_gbx.ResumeLayout(false);

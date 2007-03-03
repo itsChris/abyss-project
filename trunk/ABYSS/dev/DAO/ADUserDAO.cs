@@ -86,10 +86,10 @@ namespace DAO {
             Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
             Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
             if (adUserData.IsAccountActive) {
-                directoryEntry.Properties["userAccountControl"].Value = Utility.ADS_USER_FLAG_ENUM.ADS_UF_NORMAL_ACCOUNT;
+                directoryEntry.Properties["userAccountControl"].Value = Convert.ToInt32(Utility.UserStatus.Enable);
             }
             else {
-                directoryEntry.Properties["userAccountControl"].Value = Utility.ADS_USER_FLAG_ENUM.ADS_UF_ACCOUNTDISABLE;
+                directoryEntry.Properties["userAccountControl"].Value = Convert.ToInt32(Utility.UserStatus.Disable);
             }
             directoryEntry.CommitChanges();
         }

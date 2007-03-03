@@ -34,7 +34,12 @@ namespace Utils {
         #endregion
 
         #region Enumerations
-        public enum ADS_USER_FLAG_ENUM : long{
+        public enum UserStatus : long{
+			Enable = 0x220,
+			Disable = 0x222
+		}
+
+        public enum ADS_USER_FLAG_ENUM : long {
             ADS_UF_SCRIPT = 0x1, //The logon script is executed.
             ADS_UF_ACCOUNTDISABLE = 0x2, //The user account is disabled.
             ADS_UF_HOMEDIR_REQUIRED = 0x8, //The home directory is required.
@@ -43,7 +48,7 @@ namespace Utils {
             ADS_UF_PASSWD_CANT_CHANGE = 0x40, //The user cannot change the password.    
             ADS_UF_ENCRYPTED_TEXT_PASSWORD_ALLOWED = 0x80, //The user can send an encrypted password.
             ADS_UF_TEMP_DUPLICATE_ACCOUNT = 0x100, //This is an account for users whose primary account is in another domain. 
-            ADS_UF_NORMAL_ACCOUNT = 0x200, //This is a default account type that represents a typical user. 
+            ADS_UF_NORMAL_ACCOUNT = 0x0200, //This is a default account type that represents a typical user. 
             ADS_UF_INTERDOMAIN_TRUST_ACCOUNT = 0x800, //This is a permit to trust account for a system domain that trusts other domains.
             ADS_UF_WORKSTATION_TRUST_ACCOUNT = 0x1000, //This is a computer account for a Microsoft Windows NT Workstation/Windows 2000 Professional.
             ADS_UF_SERVER_TRUST_ACCOUNT = 0x2000, //This is a computer account for a system backup domain controller that is a member of this domain.
@@ -202,7 +207,7 @@ namespace Utils {
         /// </summary>
         /// <param name="directoryEntry"></param>
         public static void enableUserAccount(DirectoryEntry directoryEntry) {
-            directoryEntry.Properties["userAccountControl"].Value = ADS_USER_FLAG_ENUM.ADS_UF_NORMAL_ACCOUNT;
+            directoryEntry.Properties["userAccountControl"].Value = UserStatus.Enable;
             directoryEntry.CommitChanges();
             directoryEntry.Close();
         }
@@ -212,7 +217,7 @@ namespace Utils {
         /// </summary>
         /// <param name="directoryEntry"></param>
         public static void disableUserAccount(DirectoryEntry directoryEntry) {
-            directoryEntry.Properties["userAccountControl"].Value = ADS_USER_FLAG_ENUM.ADS_UF_ACCOUNTDISABLE;
+            directoryEntry.Properties["userAccountControl"].Value = UserStatus.Disable;
             directoryEntry.CommitChanges();
             directoryEntry.Close();
         }
