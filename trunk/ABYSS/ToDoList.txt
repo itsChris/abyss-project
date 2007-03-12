@@ -1,1 +1,9 @@
 Faire le point sur le projet.
+
+
+Formulaire ADAdministration.
+
+Faire une méthode refresh, pour raffraichir, le node sélectionnée.
+Cette méthode sera appelé après l'ajout ou la suppression d'un élément, ainsi qu'en cas d'erreur
+
+(par exemple lorsqu'on sélectionne un object qui n'existe plus).
