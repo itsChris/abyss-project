@@ -20,7 +20,8 @@ namespace Abyss_Client {
             User,
             Group,
             Unknown,
-            Unavailable
+            Unavailable,
+            Disable
         }
         #endregion
 
@@ -102,7 +103,7 @@ namespace Abyss_Client {
 																		user.UserName,
 																		child.SchemaClassName,
 																		user.Description
-																	}, (int)AdImages.User);
+																	}, user.IsAccountActive?(int)AdImages.User:(int)AdImages.Disable);
                             tmpItem.Tag = user;
                             break;
                         case "group":
@@ -133,12 +134,12 @@ namespace Abyss_Client {
             }
             catch (Exception ex) {
                 // active directory exception ???
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
             e.Node.Expand();
             treeView.EndUpdate();
         }
-
+        
         private void list_lst_DoubleClick(object sender, EventArgs e) {
             ListView myListView = (ListView)sender;
             if (myListView.SelectedItems.Count == 1) {
@@ -190,12 +191,8 @@ namespace Abyss_Client {
             }
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e) {
+        private void user_tmi_Click(object sender, EventArgs e) {
             openForm(new ADUserUpdate());
-        }
-
-        private void contextMenu_stp_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-            
         }
         #endregion
 

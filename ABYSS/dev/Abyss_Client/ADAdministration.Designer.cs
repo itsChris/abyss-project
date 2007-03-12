@@ -34,9 +34,13 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tree_trv = new Abyss_Client.CompBase.BaseTreeView();
+            this.treeView_ctm = new Abyss_Client.CompBase.BaseContextMenu();
+            this.new_tmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.computer_tmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.group_tmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.user_tmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.imageList_adObjects = new System.Windows.Forms.ImageList(this.components);
-            this.contextMenu_stp = new Abyss_Client.CompBase.BaseContextMenu();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.list_lst = new Abyss_Client.CompBase.BaseListView();
             this.name_clh = new System.Windows.Forms.ColumnHeader();
             this.type_cln = new System.Windows.Forms.ColumnHeader();
@@ -51,7 +55,7 @@
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenu_stp.SuspendLayout();
+            this.treeView_ctm.SuspendLayout();
             this.menu_stp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +77,7 @@
             // 
             // tree_trv
             // 
+            this.tree_trv.ContextMenuStrip = this.treeView_ctm;
             this.tree_trv.ImageIndex = 0;
             this.tree_trv.ImageList = this.imageList_adObjects;
             this.tree_trv.Location = new System.Drawing.Point(10, 27);
@@ -81,6 +86,55 @@
             this.tree_trv.Size = new System.Drawing.Size(255, 527);
             this.tree_trv.TabIndex = 1;
             this.tree_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_trv_AfterSelect);
+            // 
+            // treeView_ctm
+            // 
+            this.treeView_ctm.BackgroundImage = global::Abyss_Client.Properties.Resources.splash;
+            this.treeView_ctm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.new_tmi,
+            this.toolStripSeparator2});
+            this.treeView_ctm.Name = "baseContextMenu1";
+            this.treeView_ctm.ShowImageMargin = false;
+            this.treeView_ctm.Size = new System.Drawing.Size(74, 32);
+            // 
+            // new_tmi
+            // 
+            this.new_tmi.BackgroundImage = global::Abyss_Client.Properties.Resources.splash;
+            this.new_tmi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.computer_tmi,
+            this.group_tmi,
+            this.user_tmi});
+            this.new_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
+            this.new_tmi.Name = "new_tmi";
+            this.new_tmi.Size = new System.Drawing.Size(73, 22);
+            this.new_tmi.Text = "New";
+            // 
+            // computer_tmi
+            // 
+            this.computer_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
+            this.computer_tmi.Name = "computer_tmi";
+            this.computer_tmi.Size = new System.Drawing.Size(130, 22);
+            this.computer_tmi.Text = "Computer";
+            // 
+            // group_tmi
+            // 
+            this.group_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
+            this.group_tmi.Name = "group_tmi";
+            this.group_tmi.Size = new System.Drawing.Size(130, 22);
+            this.group_tmi.Text = "Group";
+            // 
+            // user_tmi
+            // 
+            this.user_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
+            this.user_tmi.Name = "user_tmi";
+            this.user_tmi.Size = new System.Drawing.Size(130, 22);
+            this.user_tmi.Text = "User";
+            this.user_tmi.Click += new System.EventHandler(this.user_tmi_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(70, 6);
             // 
             // imageList_adObjects
             // 
@@ -95,22 +149,7 @@
             this.imageList_adObjects.Images.SetKeyName(6, "");
             this.imageList_adObjects.Images.SetKeyName(7, "");
             this.imageList_adObjects.Images.SetKeyName(8, "");
-            // 
-            // contextMenu_stp
-            // 
-            this.contextMenu_stp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.contextMenu_stp.Name = "baseContextMenu1";
-            this.contextMenu_stp.ShowImageMargin = false;
-            this.contextMenu_stp.Size = new System.Drawing.Size(128, 48);
-            this.contextMenu_stp.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_stp_Opening);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
-            this.toolStripMenuItem1.Text = "test";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.imageList_adObjects.Images.SetKeyName(9, "disable.png");
             // 
             // list_lst
             // 
@@ -119,7 +158,6 @@
             this.name_clh,
             this.type_cln,
             this.desc_cln});
-            this.list_lst.ContextMenuStrip = this.contextMenu_stp;
             this.list_lst.FullRowSelect = true;
             this.list_lst.LargeImageList = this.imageList_adObjects;
             this.list_lst.Location = new System.Drawing.Point(271, 27);
@@ -243,7 +281,7 @@
             this.Text = "Active Directory Administration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ADManagement_FormClosing);
             this.Load += new System.EventHandler(this.ListActiveDirectory_Load);
-            this.contextMenu_stp.ResumeLayout(false);
+            this.treeView_ctm.ResumeLayout(false);
             this.menu_stp.ResumeLayout(false);
             this.menu_stp.PerformLayout();
             this.ResumeLayout(false);
@@ -272,7 +310,11 @@
         private System.Windows.Forms.ColumnHeader name_clh;
         private System.Windows.Forms.ColumnHeader type_cln;
         private System.Windows.Forms.ColumnHeader desc_cln;
-        private Abyss_Client.CompBase.BaseContextMenu contextMenu_stp;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private Abyss_Client.CompBase.BaseContextMenu treeView_ctm;
+        private System.Windows.Forms.ToolStripMenuItem new_tmi;
+        private System.Windows.Forms.ToolStripMenuItem computer_tmi;
+        private System.Windows.Forms.ToolStripMenuItem group_tmi;
+        private System.Windows.Forms.ToolStripMenuItem user_tmi;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

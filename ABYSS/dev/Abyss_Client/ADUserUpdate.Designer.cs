@@ -59,6 +59,8 @@ namespace Abyss_Client {
             this.username_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.userInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.contactInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
+            this.desc_lbl = new Abyss_Client.CompBase.BaseLabel();
+            this.desc_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.contact_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.address_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.accountInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
@@ -123,6 +125,7 @@ namespace Abyss_Client {
             this.firstName_txt.Name = "firstName_txt";
             this.firstName_txt.Size = new System.Drawing.Size(172, 20);
             this.firstName_txt.TabIndex = 1;
+            this.firstName_txt.TextChanged += new System.EventHandler(this.firstName_txt_TextChanged);
             // 
             // lastName_txt
             // 
@@ -131,14 +134,17 @@ namespace Abyss_Client {
             this.lastName_txt.Name = "lastName_txt";
             this.lastName_txt.Size = new System.Drawing.Size(172, 20);
             this.lastName_txt.TabIndex = 3;
+            this.lastName_txt.TextChanged += new System.EventHandler(this.firstName_txt_TextChanged);
             // 
             // initial_txt
             // 
             this.initial_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.initial_txt.Location = new System.Drawing.Point(177, 76);
+            this.initial_txt.MaxLength = 6;
             this.initial_txt.Name = "initial_txt";
-            this.initial_txt.Size = new System.Drawing.Size(172, 20);
+            this.initial_txt.Size = new System.Drawing.Size(58, 20);
             this.initial_txt.TabIndex = 5;
+            this.initial_txt.TextChanged += new System.EventHandler(this.firstName_txt_TextChanged);
             // 
             // displayName_txt
             // 
@@ -419,6 +425,8 @@ namespace Abyss_Client {
             // contactInformation_gbx
             // 
             this.contactInformation_gbx.BackColor = System.Drawing.Color.Transparent;
+            this.contactInformation_gbx.Controls.Add(this.desc_lbl);
+            this.contactInformation_gbx.Controls.Add(this.desc_txt);
             this.contactInformation_gbx.Controls.Add(this.contact_gbx);
             this.contactInformation_gbx.Controls.Add(this.address_gbx);
             this.contactInformation_gbx.Controls.Add(this.title_lbl);
@@ -430,6 +438,25 @@ namespace Abyss_Client {
             this.contactInformation_gbx.TabIndex = 2;
             this.contactInformation_gbx.TabStop = false;
             this.contactInformation_gbx.Text = "Conntact Information";
+            // 
+            // desc_lbl
+            // 
+            this.desc_lbl.AutoSize = true;
+            this.desc_lbl.BackColor = System.Drawing.Color.LightGray;
+            this.desc_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.desc_lbl.Location = new System.Drawing.Point(518, 35);
+            this.desc_lbl.Name = "desc_lbl";
+            this.desc_lbl.Size = new System.Drawing.Size(107, 13);
+            this.desc_lbl.TabIndex = 4;
+            this.desc_lbl.Text = "User description :";
+            // 
+            // desc_txt
+            // 
+            this.desc_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.desc_txt.Location = new System.Drawing.Point(688, 30);
+            this.desc_txt.Name = "desc_txt";
+            this.desc_txt.Size = new System.Drawing.Size(172, 20);
+            this.desc_txt.TabIndex = 5;
             // 
             // contact_gbx
             // 
@@ -504,11 +531,11 @@ namespace Abyss_Client {
             // 
             this.addUser_btn.BackColor = System.Drawing.Color.LightGray;
             this.addUser_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.addUser_btn.Location = new System.Drawing.Point(551, 485);
+            this.addUser_btn.Location = new System.Drawing.Point(700, 485);
             this.addUser_btn.Name = "addUser_btn";
-            this.addUser_btn.Size = new System.Drawing.Size(128, 23);
+            this.addUser_btn.Size = new System.Drawing.Size(67, 23);
             this.addUser_btn.TabIndex = 3;
-            this.addUser_btn.Text = "Add User";
+            this.addUser_btn.Text = "Save";
             this.addUser_btn.UseVisualStyleBackColor = true;
             this.addUser_btn.Click += new System.EventHandler(this.addUser_btn_Click);
             // 
@@ -516,9 +543,9 @@ namespace Abyss_Client {
             // 
             this.reset_btn.BackColor = System.Drawing.Color.LightGray;
             this.reset_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.reset_btn.Location = new System.Drawing.Point(371, 485);
+            this.reset_btn.Location = new System.Drawing.Point(579, 485);
             this.reset_btn.Name = "reset_btn";
-            this.reset_btn.Size = new System.Drawing.Size(128, 23);
+            this.reset_btn.Size = new System.Drawing.Size(85, 23);
             this.reset_btn.TabIndex = 4;
             this.reset_btn.Text = "Reset";
             this.reset_btn.UseVisualStyleBackColor = true;
@@ -533,6 +560,7 @@ namespace Abyss_Client {
             this.Controls.Add(this.userInformation_gbx);
             this.Name = "ADUserUpdate";
             this.Text = "Active Directory User";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ADUserUpdate_FormClosing);
             this.Load += new System.EventHandler(this.ADUserUpdate_Load);
             this.userInformation_gbx.ResumeLayout(false);
             this.userInformation_gbx.PerformLayout();
@@ -592,5 +620,7 @@ namespace Abyss_Client {
         private Abyss_Client.CompBase.BaseCheckBox isAccountActive_chk;
         private Abyss_Client.CompBase.BaseButton addUser_btn;
         private Abyss_Client.CompBase.BaseButton reset_btn;
+        private Abyss_Client.CompBase.BaseLabel desc_lbl;
+        private Abyss_Client.CompBase.BaseTextBox desc_txt;
     }
 }

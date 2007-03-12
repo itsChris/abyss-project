@@ -36,7 +36,7 @@ namespace Abyss_Client {
                 return;
             }
             if (user != null) {
-                MessageBox.Show("Login success. Welcome " + user.DisplayName,
+                MessageBox.Show("Login success. Welcome " + user.UserName,
                 this.Text, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
                 openForm(new ADAdministration(ldap));
