@@ -7,3 +7,7 @@ Faire une méthode refresh, pour raffraichir, le node sélectionnée.
 Cette méthode sera appelé après l'ajout ou la suppression d'un élément, ainsi qu'en cas d'erreur
 
 (par exemple lorsqu'on sélectionne un object qui n'existe plus).
+
+
+
+si vous modifiez une méthode méttez ce que vous modifiez en commentaire

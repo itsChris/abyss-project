@@ -122,19 +122,21 @@ namespace Abyss_Client {
             // 
             this.firstName_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.firstName_txt.Location = new System.Drawing.Point(177, 24);
+            this.firstName_txt.MaxLength = 50;
             this.firstName_txt.Name = "firstName_txt";
             this.firstName_txt.Size = new System.Drawing.Size(172, 20);
             this.firstName_txt.TabIndex = 1;
-            this.firstName_txt.TextChanged += new System.EventHandler(this.firstName_txt_TextChanged);
+            this.firstName_txt.TextChanged += new System.EventHandler(this.displayName_txt_TextChanged);
             // 
             // lastName_txt
             // 
             this.lastName_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.lastName_txt.Location = new System.Drawing.Point(177, 50);
+            this.lastName_txt.MaxLength = 50;
             this.lastName_txt.Name = "lastName_txt";
             this.lastName_txt.Size = new System.Drawing.Size(172, 20);
             this.lastName_txt.TabIndex = 3;
-            this.lastName_txt.TextChanged += new System.EventHandler(this.firstName_txt_TextChanged);
+            this.lastName_txt.TextChanged += new System.EventHandler(this.displayName_txt_TextChanged);
             // 
             // initial_txt
             // 
@@ -144,7 +146,7 @@ namespace Abyss_Client {
             this.initial_txt.Name = "initial_txt";
             this.initial_txt.Size = new System.Drawing.Size(58, 20);
             this.initial_txt.TabIndex = 5;
-            this.initial_txt.TextChanged += new System.EventHandler(this.firstName_txt_TextChanged);
+            this.initial_txt.TextChanged += new System.EventHandler(this.displayName_txt_TextChanged);
             // 
             // displayName_txt
             // 

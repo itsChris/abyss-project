@@ -27,19 +27,20 @@ namespace Abyss_Client {
             initFormData();
         }
 
-        private void firstName_txt_TextChanged(object sender, EventArgs e) {
-            string display;
-            if (!string.IsNullOrEmpty(lastName_txt.Text)) {
-                display = firstName_txt.Text + " ";
+        private void displayName_txt_TextChanged(object sender, EventArgs e) {
+            string displayName;
+            if (!string.IsNullOrEmpty(firstName_txt.Text)) {
+                displayName = firstName_txt.Text + " ";
             }
             else {
-                display = firstName_txt.Text;
+                displayName = firstName_txt.Text;
             }
-            if(!string.IsNullOrEmpty(initial_txt.Text)){
-                display+=initial_txt.Text+ ". ";
+            if (!string.IsNullOrEmpty(initial_txt.Text)) {
+                displayName += initial_txt.Text + ". ";
             }
-            display+= lastName_txt.Text;
-            displayName_txt.Text = display;
+            displayName += lastName_txt.Text;
+            displayName_txt.Text = displayName;
+            displayName_txt.Text = displayName;
         }
 
         private void addUser_btn_Click(object sender, EventArgs e) {
