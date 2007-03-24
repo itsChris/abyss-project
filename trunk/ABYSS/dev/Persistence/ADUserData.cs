@@ -23,6 +23,9 @@ namespace Persistence {
         private string password;
         private string distinguishedName; // Cn= UserName...
         private bool isAccountActive; //userAccountControl
+        private bool changePasswordNextLogon;
+        private bool changePasswordRight;
+        private bool passwordNeverExpired;
         #endregion
 
         #region Constructors
@@ -129,6 +132,21 @@ namespace Persistence {
         public bool IsAccountActive {
             get { return isAccountActive; }
             set { isAccountActive = value; }
+        }
+
+        public bool ChangePasswordNextLogon {
+            get { return changePasswordNextLogon; }
+            set { changePasswordNextLogon = value; }
+        }
+
+        public bool ChangePasswordRight {
+            get { return changePasswordRight; }
+            set { changePasswordRight = value; }
+        }
+
+        public bool PasswordNeverExpired {
+            get { return passwordNeverExpired; }
+            set { passwordNeverExpired = value; }
         }
         #endregion
     }

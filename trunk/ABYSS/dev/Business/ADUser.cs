@@ -119,6 +119,21 @@ namespace Business {
             get { return adUserData.IsAccountActive; }
             set { adUserData.IsAccountActive = value; }
         }
+
+        public bool ChangePasswordNextLogon {
+            get { return adUserData.ChangePasswordNextLogon; }
+            set { adUserData.ChangePasswordNextLogon = value; }
+        }
+
+        public bool ChangePasswordRight {
+            get { return adUserData.ChangePasswordRight; }
+            set { adUserData.ChangePasswordRight = value; }
+        }
+
+        public bool PasswordNeverExpired {
+            get { return adUserData.PasswordNeverExpired; }
+            set { adUserData.PasswordNeverExpired = value; }
+        }
         #endregion
 
         #region Static Methods

@@ -34,6 +34,7 @@ namespace DAO {
             adUserData.UserName = Utility.getProperty(directoryEntry, "sAMAccountName");
             adUserData.DistinguishedName = "LDAP://" + Utility.CrtDomain + "/" + Utility.getProperty(directoryEntry, "DistinguishedName");
             adUserData.IsAccountActive = Utility.isAccountActive(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
+            adUserData.ChangePasswordNextLogon = string.IsNullOrEmpty(Utility.getProperty(directoryEntry, "pwdLastSet")) ? false : false;
             return adUserData;
         }
       
@@ -85,6 +86,7 @@ namespace DAO {
             Utility.setProperty(directoryEntry, "Url", adUserData.Url);
             Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
             Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
+            Utility.setProperty(directoryEntry, "pwdLastSet", adUserData.ChangePasswordNextLogon ?"0" : "-1");
             if (adUserData.IsAccountActive) {
                 directoryEntry.Properties["userAccountControl"].Value = Convert.ToInt32(Utility.UserStatus.Enable);
             }
@@ -168,6 +170,8 @@ namespace DAO {
             directoryEntry.DeleteTree();
             directoryEntry.CommitChanges();
         }
+
+
         #endregion
         #endregion
     }

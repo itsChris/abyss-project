@@ -33,6 +33,15 @@ namespace Abyss_Client.CompBase {
 
         #region Protected
         /// <summary>
+        /// Check all mandatory fields
+        /// </summary>
+        /// <returns>true if all mandatory fields are set
+        /// false elsewhere</returns>
+        protected bool checkMandatoryFields() {
+            return recurControlsCheck(this);
+        }
+
+        /// <summary>
         /// Open a form - this is a generic method used to open each form of the application
         /// the same way
         /// </summary>
@@ -64,17 +73,22 @@ namespace Abyss_Client.CompBase {
         /// false elsewhere</returns>
         private bool recurControlsCheck(Control parent) {
             bool result = true;
-            foreach (Control control in parent.Controls) {
-                if (control.Visible) {
-                    if (control is BaseTextBox) {
-                        BaseTextBox tb = (BaseTextBox)control;
-                        if (tb.Mandatory && string.IsNullOrEmpty(tb.Text.Trim())) {
-                            tb.setErrorBackColor(true);
-                            result = false;
+            foreach (Control group in parent.Controls) {
+                if (group.Visible) {
+                    if (group is BaseGroupBox) {
+                        foreach (Control control in group.Controls) {
+                            if (control is BaseTextBox) {
+                                BaseTextBox tb = (BaseTextBox)control;
+                                if (tb.Mandatory && string.IsNullOrEmpty(tb.Text.Trim())) {
+                                    tb.setErrorBackColor(true);
+                                    result = false;
+                                }
+                                else {
+                                    tb.setErrorBackColor(false);
+                                }
+                            }
                         }
-                        else {
-                            tb.setErrorBackColor(false);
-                        }
+                   
                     }
                 }
             }

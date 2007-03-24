@@ -44,20 +44,57 @@ namespace Abyss_Client {
         }
 
         private void addUser_btn_Click(object sender, EventArgs e) {
-            // Si il s'agit d'un ajout, vérif si le username existe déja
-            // si oui on sort, sinon on ajoute
+            if (checkMandatoryFields()) {
+                // Check if the passwords are correct
+                if (!checkPasswords()) {
+                    MessageBox.Show("The passwords do not match", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    password_txt.Text = string.Empty;
+                    confirmPassword_txt.Text = string.Empty;
+                    return;
+                }
+                try {
+                    if (!update) {
+                        ADUser anUser = ADUser.getUserByName(username_txt.Text);
+                        if (anUser != null) {
+                            MessageBox.Show("The logon name you have chosen is already in use in this domain",
+                                this.Text,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+                            return;
+                        }
+                    }
+                    ADUser user = new ADUser();
+                    user.FirstName = firstName_txt.Text;
+                    user.LastName = lastName_txt.Text;
+                    user.MiddleInitial = initial_txt.Text;
+                    user.DisplayName = displayName_txt.Text;
+                    user.Description = desc_txt.Text;
+                    user.OfficePhone = officePhone_txt.Text;
+                    user.Fax = fax_txt.Text;
+                    user.Url = url_txt.Text;
+                    user.ResidentialAddress = residentialAddress_txt.Text;
+                    user.Title = title_txt.Text;
+                    user.HomePhone = homePhone_txt.Text;
+                    user.Mobile = mobile_txt.Text;
+                    user.Email = email_lbl.Text;
+                    user.PostalAddress = postalAddress_txt.Text;
+                    user.MailingAddress = maillingAddress_txt.Text;
+                    user.UserName = username_txt.Text;
+                    user.UserPrincipalName = user.UserPrincipalName + "@abyss.lan";
+                    user.Password = password_txt.Text;
+                    user.IsAccountActive = !isAccountActive_chk.Checked;
+                    user.ChangePasswordNextLogon = changePassword_chk.Checked;
+                    user.ChangePasswordRight = deniedChangePassword_chk.Checked;
+                    user.PasswordNeverExpired = neverExpires_chk.Checked;
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
 
-
-            user.FirstName = this.firstName_txt.Text;
-            user.MiddleInitial = this.firstName_txt.Text;
-            user.LastName = this.lastName_txt.Text;
-            user.DisplayName = this.displayName_txt.Text;
-            //user.Description = 
-            user.UserPrincipalName = this.username_txt.Text + "@abyss.lan";
-            user.UserName = this.username_txt.Text;
-            user.Password = this.password_txt.Text;
-            user.IsAccountActive = this.isAccountActive_chk.Checked;
-            user.save();
+        private void reset_btn_Click(object sender, EventArgs e) {
+            this.Close();
         }
 
         private void ADUserUpdate_FormClosing(object sender, FormClosingEventArgs e) {
@@ -76,26 +113,42 @@ namespace Abyss_Client {
             lastName_txt.Text = user.LastName;
             initial_txt.Text = user.MiddleInitial;
             displayName_txt.Text = user.DisplayName;
+
+            title_txt.Text = user.Title;
             desc_txt.Text = user.Description;
+
+            homePhone_txt.Text = user.HomePhone;
             officePhone_txt.Text = user.OfficePhone;
             fax_txt.Text = user.Fax;
-            url_txt.Text = user.Url;
-            residentialAddress_txt.Text = user.ResidentialAddress;
-            title_txt.Text = user.Title;
-            homePhone_txt.Text = user.HomePhone;
             mobile_txt.Text = user.Mobile;
             email_lbl.Text = user.Email;
+            url_txt.Text = user.Url;
+
+            residentialAddress_txt.Text = user.ResidentialAddress;
             postalAddress_txt.Text = user.PostalAddress;
             maillingAddress_txt.Text = user.MailingAddress;
-            if (update == true) {
+            if (update) {
                 username_txt.Enabled = false;
             }
             username_txt.Text = user.UserName;
-            isAccountActive_chk.Enabled = user.IsAccountActive;          
+            password_txt.Text = user.Password;
+            confirmPassword_txt.Text = user.Password;
+            isAccountActive_chk.Checked = !user.IsAccountActive;
+            changePassword_chk.Checked = user.ChangePasswordNextLogon;
+            deniedChangePassword_chk.Checked = user.ChangePasswordRight;
+            neverExpires_chk.Checked = user.PasswordNeverExpired;
+          
         }
-        #endregion
 
-        
+        private bool checkPasswords(){
+            string password = password_txt.Text.Trim();
+            string confirmPassword = confirmPassword_txt.Text.Trim();
+            if (password.Equals(confirmPassword)) {
+                return true;
+            }
+            return false;  
+        }
+         #endregion 
     }
 }
 

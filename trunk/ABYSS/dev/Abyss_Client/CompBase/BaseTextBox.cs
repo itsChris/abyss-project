@@ -34,6 +34,14 @@ namespace Abyss_Client.CompBase {
         }
         #endregion
 
+        #region Protected
+        protected void BaseTextBox_Validating(object sender, CancelEventArgs e) {
+            if (BackColor == errorBackColor && !string.IsNullOrEmpty(this.Text)) {
+                BackColor = saveBackColor;
+            }
+        }
+        #endregion
+
         #region Public methods
         public void setErrorBackColor(bool dspError) {
             if (dspError) {
@@ -44,6 +52,9 @@ namespace Abyss_Client.CompBase {
             }
         }
         #endregion
+
+        
     }
 }
+
 
