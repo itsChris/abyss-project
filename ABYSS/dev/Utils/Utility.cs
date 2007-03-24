@@ -1,5 +1,7 @@
 using System;
 using System.DirectoryServices;
+using System.Security.Principal;
+using System.Security.AccessControl;
 
 namespace Utils {
     public class Utility {
@@ -292,6 +294,79 @@ namespace Utils {
             DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + path, userName, password);
             return directoryEntry;
         }
+
+        //private static void DenyChangePassword(DirectoryEntry directoryEntry) {
+        //    // Create a Guid that identifies the Change Password right.
+        //    Guid changePasswordGuid =
+        //        new Guid("{AB721A53-1E2F-11D0-9819-00AA0040529B}");
+
+        //    // Get the ActiveDirectorySecurity for the user.
+        //    ActiveDirectorySecurity userSecurity = directoryEntry.ObjectSecurity;
+
+        //    // Create a SecurityIdentifier object for "everyone".
+        //    SecurityIdentifier everyoneSid =
+        //        new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+
+        //    // Create a SecurityIdentifier object for "self".
+        //    SecurityIdentifier selfSid =
+        //        new SecurityIdentifier(WellKnownSidType.SelfSid, null);
+
+        //    // Create an access rule to allow everyone the change password 
+        //    // right. 
+        //    // This is used to remove any existing access rules.
+        //    ActiveDirectoryAccessRule allowEveryone =
+        //        new ActiveDirectoryAccessRule(
+        //            everyoneSid,
+        //            ActiveDirectoryRights.ExtendedRight,
+        //            AccessControlType.Allow,
+        //            changePasswordGuid);
+
+        //    // Create an access rule to deny everyone the change password right.
+        //    ActiveDirectoryAccessRule denyEveryone =
+        //        new ActiveDirectoryAccessRule(
+        //            everyoneSid,
+        //            ActiveDirectoryRights.ExtendedRight,
+        //            AccessControlType.Deny,
+        //            changePasswordGuid);
+
+        //    // Create an access rule to allow self the change password right.
+        //    // This is used to remove any existing access rules.
+        //    ActiveDirectoryAccessRule allowSelf =
+        //        new ActiveDirectoryAccessRule(
+        //            selfSid,
+        //            ActiveDirectoryRights.ExtendedRight,
+        //            AccessControlType.Allow,
+        //            changePasswordGuid);
+
+        //    // Create an access rule to deny self the change password right.
+        //    ActiveDirectoryAccessRule denySelf =
+        //        new ActiveDirectoryAccessRule(
+        //            selfSid,
+        //            ActiveDirectoryRights.ExtendedRight,
+        //            AccessControlType.Deny,
+        //            changePasswordGuid);
+
+        //    // Remove any existing rule that gives "everyone" the change 
+        //    // password right.
+        //    userSecurity.RemoveAccessRuleSpecific(allowEveryone);
+
+        //    // Add a new access rule to deny "everyone" the change password 
+        //    // right.
+        //    userSecurity.AddAccessRule(denyEveryone);
+        //    foreach (AuthorizationRule test in userSecurity.AccessRightType.atrue, true, typeof(System.Security.Principal.NTAccount))) {
+        //        test.
+        //    }
+
+        //    // Remove any existing rule that gives "self" the change password 
+        //    // right.
+        //    userSecurity.RemoveAccessRuleSpecific(allowSelf);
+
+        //    // Add a new access rule to deny "self" the change password right.
+        //    userSecurity.AddAccessRule(denySelf);
+
+        //    // Commit the changes.
+        //    directoryEntry.CommitChanges();
+        //}
         #endregion
         #endregion
     }
