@@ -34,7 +34,18 @@ namespace DAO {
             adUserData.UserName = Utility.getProperty(directoryEntry, "sAMAccountName");
             adUserData.DistinguishedName = "LDAP://" + Utility.CrtDomain + "/" + Utility.getProperty(directoryEntry, "DistinguishedName");
             adUserData.IsAccountActive = Utility.isAccountActive(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
-            adUserData.ChangePasswordNextLogon = string.IsNullOrEmpty(Utility.getProperty(directoryEntry, "pwdLastSet")) ? false : false;
+            adUserData.PasswordNeverExpired = Utility.isDontExpiredPassword(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
+            adUserData.ChangePasswordRight = Utility.isPasswordCantbeChange(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
+            string pwdLastSet = Utility.getProperty(directoryEntry, "pwdLastSet");
+            if (pwdLastSet == "0") {
+                adUserData.ChangePasswordNextLogon = true;
+            }
+            else if (pwdLastSet == "-1") {
+                adUserData.ChangePasswordNextLogon = false;
+            }
+            else {
+                adUserData.ChangePasswordNextLogon = false;
+            }
             return adUserData;
         }
       
@@ -72,7 +83,7 @@ namespace DAO {
                 Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserPrincipalName);
             }
             else {
-                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserName);
+                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserName + "@" + Utility.PurgeDC(Utility.getProperty(root, "distinguishedName")));
             }
             Utility.setProperty(directoryEntry, "PostalAddress", adUserData.PostalAddress);
             Utility.setProperty(directoryEntry, "StreetAddress", adUserData.MailingAddress);
@@ -86,13 +97,17 @@ namespace DAO {
             Utility.setProperty(directoryEntry, "Url", adUserData.Url);
             Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
             Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
-            Utility.setProperty(directoryEntry, "pwdLastSet", adUserData.ChangePasswordNextLogon ?"0" : "-1");
+            
+            
             if (adUserData.IsAccountActive) {
                 directoryEntry.Properties["userAccountControl"].Value = Convert.ToInt32(Utility.UserStatus.Enable);
             }
             else {
                 directoryEntry.Properties["userAccountControl"].Value = Convert.ToInt32(Utility.UserStatus.Disable);
             }
+
+
+            Utility.setProperty(directoryEntry, "pwdLastSet", adUserData.ChangePasswordNextLogon ? "0" : "-1");
             directoryEntry.CommitChanges();
         }
         #endregion
@@ -104,7 +119,11 @@ namespace DAO {
         /// <param name="userName"></param>
         /// <returns></returns>
         public static ADUserData getUser(string userName) {
-            return adUserDataMapping(Utility.getUser(userName));
+            DirectoryEntry directoryEntry = Utility.getUser(userName);
+            if (directoryEntry != null) {
+                return adUserDataMapping(directoryEntry);
+            }
+            return null;
         }
 
         /// <summary>
@@ -170,8 +189,6 @@ namespace DAO {
             directoryEntry.DeleteTree();
             directoryEntry.CommitChanges();
         }
-
-
         #endregion
         #endregion
     }

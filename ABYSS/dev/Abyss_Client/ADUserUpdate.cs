@@ -53,15 +53,13 @@ namespace Abyss_Client {
                     return;
                 }
                 try {
-                    if (!update) {
-                        ADUser anUser = ADUser.getUserByName(username_txt.Text);
-                        if (anUser != null) {
-                            MessageBox.Show("The logon name you have chosen is already in use in this domain",
-                                this.Text,
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Exclamation);
-                            return;
-                        }
+                    // Check if the use already exist
+                    if (!update && checkUser(username_txt.Text)) {
+                        MessageBox.Show("The logon name you have chosen is already in use in this domain",
+                            this.Text,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
+                        return;
                     }
                     ADUser user = new ADUser();
                     user.FirstName = firstName_txt.Text;
@@ -80,12 +78,14 @@ namespace Abyss_Client {
                     user.PostalAddress = postalAddress_txt.Text;
                     user.MailingAddress = maillingAddress_txt.Text;
                     user.UserName = username_txt.Text;
-                    user.UserPrincipalName = user.UserPrincipalName + "@abyss.lan";
                     user.Password = password_txt.Text;
                     user.IsAccountActive = !isAccountActive_chk.Checked;
                     user.ChangePasswordNextLogon = changePassword_chk.Checked;
                     user.ChangePasswordRight = deniedChangePassword_chk.Checked;
                     user.PasswordNeverExpired = neverExpires_chk.Checked;
+                    user.save();
+                    dialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
@@ -98,11 +98,13 @@ namespace Abyss_Client {
         }
 
         private void ADUserUpdate_FormClosing(object sender, FormClosingEventArgs e) {
-            if (MessageBox.Show("Do you want to quit ?",
-            this.Text,
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question) == DialogResult.No) {
-                e.Cancel = true;
+            if (dialogResult != DialogResult.OK) {
+                if (MessageBox.Show("Do you want to quit ?",
+                this.Text,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.No) {
+                    e.Cancel = true;
+                }
             }
         }
         #endregion 
@@ -133,6 +135,7 @@ namespace Abyss_Client {
             username_txt.Text = user.UserName;
             password_txt.Text = user.Password;
             confirmPassword_txt.Text = user.Password;
+
             isAccountActive_chk.Checked = !user.IsAccountActive;
             changePassword_chk.Checked = user.ChangePasswordNextLogon;
             deniedChangePassword_chk.Checked = user.ChangePasswordRight;
@@ -147,6 +150,14 @@ namespace Abyss_Client {
                 return true;
             }
             return false;  
+        }
+
+        private bool checkUser(string name) {
+            ADUser anUser = ADUser.getUserByName(name);
+            if (anUser != null) {
+                return true;
+            }
+            return false;
         }
          #endregion 
     }

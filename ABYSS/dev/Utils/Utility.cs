@@ -241,6 +241,33 @@ namespace Utils {
         }
 
         /// <summary>
+        /// Verify if the user account password can expired
+        /// </summary>
+        /// <param name="userAccountControl"></param>
+        /// <returns></returns>
+        public static bool isDontExpiredPassword(int userAccountControl) {
+            int userPasswordNeverExpired = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD);
+            int flagExists = userAccountControl & userPasswordNeverExpired;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public static bool isPasswordCantbeChange(int userAccountControl) {
+            int passwordCantBeChange = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_PASSWD_CANT_CHANGE );
+            int flagExists = userAccountControl & passwordCantBeChange;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Set the property for the object in the node
         /// </summary>
         /// <param name="directoryEntry"></param>
@@ -271,6 +298,19 @@ namespace Utils {
                 return string.Empty;
             }
         }
+
+        /// <summary>
+        /// Return the domain string for UPN
+        /// </summary>
+        /// <param name="dc"></param>
+        /// <returns></returns>
+        public static String PurgeDC(String dc) {
+
+            String DCpropre = dc.Replace("DC=", "");
+            DCpropre = DCpropre.Replace(",", ".");
+
+            return DCpropre;
+        }
         #endregion
 
         #region Private
@@ -294,79 +334,6 @@ namespace Utils {
             DirectoryEntry directoryEntry = new DirectoryEntry(protocolName + path, userName, password);
             return directoryEntry;
         }
-
-        //private static void DenyChangePassword(DirectoryEntry directoryEntry) {
-        //    // Create a Guid that identifies the Change Password right.
-        //    Guid changePasswordGuid =
-        //        new Guid("{AB721A53-1E2F-11D0-9819-00AA0040529B}");
-
-        //    // Get the ActiveDirectorySecurity for the user.
-        //    ActiveDirectorySecurity userSecurity = directoryEntry.ObjectSecurity;
-
-        //    // Create a SecurityIdentifier object for "everyone".
-        //    SecurityIdentifier everyoneSid =
-        //        new SecurityIdentifier(WellKnownSidType.WorldSid, null);
-
-        //    // Create a SecurityIdentifier object for "self".
-        //    SecurityIdentifier selfSid =
-        //        new SecurityIdentifier(WellKnownSidType.SelfSid, null);
-
-        //    // Create an access rule to allow everyone the change password 
-        //    // right. 
-        //    // This is used to remove any existing access rules.
-        //    ActiveDirectoryAccessRule allowEveryone =
-        //        new ActiveDirectoryAccessRule(
-        //            everyoneSid,
-        //            ActiveDirectoryRights.ExtendedRight,
-        //            AccessControlType.Allow,
-        //            changePasswordGuid);
-
-        //    // Create an access rule to deny everyone the change password right.
-        //    ActiveDirectoryAccessRule denyEveryone =
-        //        new ActiveDirectoryAccessRule(
-        //            everyoneSid,
-        //            ActiveDirectoryRights.ExtendedRight,
-        //            AccessControlType.Deny,
-        //            changePasswordGuid);
-
-        //    // Create an access rule to allow self the change password right.
-        //    // This is used to remove any existing access rules.
-        //    ActiveDirectoryAccessRule allowSelf =
-        //        new ActiveDirectoryAccessRule(
-        //            selfSid,
-        //            ActiveDirectoryRights.ExtendedRight,
-        //            AccessControlType.Allow,
-        //            changePasswordGuid);
-
-        //    // Create an access rule to deny self the change password right.
-        //    ActiveDirectoryAccessRule denySelf =
-        //        new ActiveDirectoryAccessRule(
-        //            selfSid,
-        //            ActiveDirectoryRights.ExtendedRight,
-        //            AccessControlType.Deny,
-        //            changePasswordGuid);
-
-        //    // Remove any existing rule that gives "everyone" the change 
-        //    // password right.
-        //    userSecurity.RemoveAccessRuleSpecific(allowEveryone);
-
-        //    // Add a new access rule to deny "everyone" the change password 
-        //    // right.
-        //    userSecurity.AddAccessRule(denyEveryone);
-        //    foreach (AuthorizationRule test in userSecurity.AccessRightType.atrue, true, typeof(System.Security.Principal.NTAccount))) {
-        //        test.
-        //    }
-
-        //    // Remove any existing rule that gives "self" the change password 
-        //    // right.
-        //    userSecurity.RemoveAccessRuleSpecific(allowSelf);
-
-        //    // Add a new access rule to deny "self" the change password right.
-        //    userSecurity.AddAccessRule(denySelf);
-
-        //    // Commit the changes.
-        //    directoryEntry.CommitChanges();
-        //}
         #endregion
         #endregion
     }
