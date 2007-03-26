@@ -140,16 +140,16 @@
             // 
             this.imageList_adObjects.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_adObjects.ImageStream")));
             this.imageList_adObjects.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList_adObjects.Images.SetKeyName(0, "");
+            this.imageList_adObjects.Images.SetKeyName(0, "DCIcon.png");
             this.imageList_adObjects.Images.SetKeyName(1, "");
             this.imageList_adObjects.Images.SetKeyName(2, "");
-            this.imageList_adObjects.Images.SetKeyName(3, "");
-            this.imageList_adObjects.Images.SetKeyName(4, "");
-            this.imageList_adObjects.Images.SetKeyName(5, "");
-            this.imageList_adObjects.Images.SetKeyName(6, "");
+            this.imageList_adObjects.Images.SetKeyName(3, "ContainerIcon.png");
+            this.imageList_adObjects.Images.SetKeyName(4, "ComputerIcon.png");
+            this.imageList_adObjects.Images.SetKeyName(5, "UserIcon.png");
+            this.imageList_adObjects.Images.SetKeyName(6, "GroupIcon.png");
             this.imageList_adObjects.Images.SetKeyName(7, "");
             this.imageList_adObjects.Images.SetKeyName(8, "");
-            this.imageList_adObjects.Images.SetKeyName(9, "disable.png");
+            this.imageList_adObjects.Images.SetKeyName(9, "UserBlockIcon.png");
             // 
             // list_lst
             // 
