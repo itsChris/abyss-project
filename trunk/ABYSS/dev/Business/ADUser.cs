@@ -143,7 +143,11 @@ namespace Business {
         /// <param name="username"></param>
         /// <returns></returns>
         public static ADUser getUserByName(string username) {
-            return new ADUser((ADUserData)ADUserDAO.getUser(username));
+            ADUserData userData = ADUserDAO.getUser(username);
+            if (userData != null) {
+                return new ADUser((ADUserData)userData);
+            }
+            return null;
         }
 
         /// <summary>

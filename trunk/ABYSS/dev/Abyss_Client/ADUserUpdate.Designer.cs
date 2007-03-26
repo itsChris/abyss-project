@@ -583,8 +583,6 @@ namespace Abyss_Client {
             // 
             // changePassword_chk
             // 
-            this.changePassword_chk.Checked = true;
-            this.changePassword_chk.CheckState = System.Windows.Forms.CheckState.Checked;
             this.changePassword_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changePassword_chk.Location = new System.Drawing.Point(358, 10);
             this.changePassword_chk.Name = "changePassword_chk";
