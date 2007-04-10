@@ -86,7 +86,7 @@ namespace Abyss_Client {
             this.editToolStripMenuItem});
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
-            this.menu_menu.Size = new System.Drawing.Size(988, 24);
+            this.menu_menu.Size = new System.Drawing.Size(984, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
@@ -94,16 +94,16 @@ namespace Abyss_Client {
             // 
             this.switcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quitToolStripMenuItem});
-            this.switcToolStripMenuItem.Font = new System.Drawing.Font("Lucida Grande", 8.25F);
+            this.switcToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.switcToolStripMenuItem.Name = "switcToolStripMenuItem";
-            this.switcToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.switcToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.switcToolStripMenuItem.Text = "File";
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -114,25 +114,25 @@ namespace Abyss_Client {
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // tableList_lst
@@ -288,7 +288,7 @@ namespace Abyss_Client {
             // 
             // Oracle
             // 
-            this.ClientSize = new System.Drawing.Size(988, 542);
+            this.ClientSize = new System.Drawing.Size(984, 528);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.tableList_lst);
             this.Controls.Add(this.menu_menu);
@@ -297,6 +297,7 @@ namespace Abyss_Client {
             this.Name = "Oracle";
             this.Text = "Oracle Administration view";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Oracle_FormClosing);
+            this.Load += new System.EventHandler(this.Oracle_Load);
             this.menu_menu.ResumeLayout(false);
             this.menu_menu.PerformLayout();
             this.panel_pnl.ResumeLayout(false);

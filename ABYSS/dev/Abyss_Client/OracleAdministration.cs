@@ -5,6 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
+using System.Configuration;
 
 namespace Abyss_Client {
     public partial class Oracle : Abyss_Client.CompBase.BaseForm {
@@ -72,6 +75,17 @@ namespace Abyss_Client {
             }
         }
         #endregion
+
+        private void Oracle_Load(object sender, EventArgs e) {
+
+            OracleConnection con = new OracleConnection();
+            con = ConfigurationSettings.GetConfig("OraConnect");
+
+            con.Open();
+
+            con.
+        
+        }
     }
 }
 
