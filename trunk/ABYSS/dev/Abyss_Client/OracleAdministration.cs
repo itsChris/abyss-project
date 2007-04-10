@@ -89,9 +89,7 @@ namespace Abyss_Client {
                 Console.WriteLine("Error : " + ex.Message);
             }*/
 
-            System.Configuration
-
-            MessageBox.Show("test");
+            
 
             //MessageBox.Show((string)conf.Settings.Get("OraConnect").Value);
         }
