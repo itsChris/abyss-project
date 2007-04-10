@@ -289,6 +289,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="OracleConf\properties.config" />
     <None Include="Resources\splash.png" />
   </ItemGroup>
   <ItemGroup>
