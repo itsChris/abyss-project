@@ -45,6 +45,9 @@
             this.name_clh = new System.Windows.Forms.ColumnHeader();
             this.type_cln = new System.Windows.Forms.ColumnHeader();
             this.desc_cln = new System.Windows.Forms.ColumnHeader();
+            this.listView_ctm = new Abyss_Client.CompBase.BaseContextMenu();
+            this.modify_tmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menu_stp = new Abyss_Client.CompBase.BaseMenuStrip();
             this.filesStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +59,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView_ctm.SuspendLayout();
+            this.listView_ctm.SuspendLayout();
             this.menu_stp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,21 +117,21 @@
             // 
             this.computer_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
             this.computer_tmi.Name = "computer_tmi";
-            this.computer_tmi.Size = new System.Drawing.Size(130, 22);
+            this.computer_tmi.Size = new System.Drawing.Size(152, 22);
             this.computer_tmi.Text = "Computer";
             // 
             // group_tmi
             // 
             this.group_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
             this.group_tmi.Name = "group_tmi";
-            this.group_tmi.Size = new System.Drawing.Size(130, 22);
+            this.group_tmi.Size = new System.Drawing.Size(152, 22);
             this.group_tmi.Text = "Group";
             // 
             // user_tmi
             // 
             this.user_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
             this.user_tmi.Name = "user_tmi";
-            this.user_tmi.Size = new System.Drawing.Size(130, 22);
+            this.user_tmi.Size = new System.Drawing.Size(152, 22);
             this.user_tmi.Text = "User";
             this.user_tmi.Click += new System.EventHandler(this.user_tmi_Click);
             // 
@@ -158,6 +162,7 @@
             this.name_clh,
             this.type_cln,
             this.desc_cln});
+            this.list_lst.ContextMenuStrip = this.listView_ctm;
             this.list_lst.FullRowSelect = true;
             this.list_lst.LargeImageList = this.imageList_adObjects;
             this.list_lst.Location = new System.Drawing.Point(271, 27);
@@ -187,6 +192,30 @@
             // 
             this.desc_cln.Text = "Description";
             this.desc_cln.Width = 517;
+            // 
+            // listView_ctm
+            // 
+            this.listView_ctm.BackgroundImage = global::Abyss_Client.Properties.Resources.splash;
+            this.listView_ctm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modify_tmi,
+            this.toolStripSeparator3});
+            this.listView_ctm.Name = "baseContextMenu1";
+            this.listView_ctm.ShowImageMargin = false;
+            this.listView_ctm.Size = new System.Drawing.Size(128, 54);
+            // 
+            // modify_tmi
+            // 
+            this.modify_tmi.BackgroundImage = global::Abyss_Client.Properties.Resources.splash;
+            this.modify_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
+            this.modify_tmi.Name = "modify_tmi";
+            this.modify_tmi.Size = new System.Drawing.Size(127, 22);
+            this.modify_tmi.Text = "Modify";
+            this.modify_tmi.Click += new System.EventHandler(this.modify_tmi_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(124, 6);
             // 
             // menu_stp
             // 
@@ -282,6 +311,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ADManagement_FormClosing);
             this.Load += new System.EventHandler(this.ListActiveDirectory_Load);
             this.treeView_ctm.ResumeLayout(false);
+            this.listView_ctm.ResumeLayout(false);
             this.menu_stp.ResumeLayout(false);
             this.menu_stp.PerformLayout();
             this.ResumeLayout(false);
@@ -316,5 +346,8 @@
         private System.Windows.Forms.ToolStripMenuItem group_tmi;
         private System.Windows.Forms.ToolStripMenuItem user_tmi;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private Abyss_Client.CompBase.BaseContextMenu listView_ctm;
+        private System.Windows.Forms.ToolStripMenuItem modify_tmi;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
