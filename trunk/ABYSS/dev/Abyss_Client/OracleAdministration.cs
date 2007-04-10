@@ -79,11 +79,15 @@ namespace Abyss_Client {
         private void Oracle_Load(object sender, EventArgs e) {
 
             OracleConnection con = new OracleConnection();
-            con = ConfigurationSettings.GetConfig("OraConnect");
+            con.ConnectionString = ConfigurationSettings.GetConfig("OraConnect");
 
-            con.Open();
+            try {
+                con.Open();
 
-            con.
+            }
+            catch (OracleException ex) {
+                Console.WriteLine("Error : " + ex.Message);
+            }
         
         }
     }
