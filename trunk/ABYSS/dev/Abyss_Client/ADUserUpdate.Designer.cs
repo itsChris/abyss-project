@@ -342,7 +342,7 @@ namespace Abyss_Client {
             this.email_lbl.AutoSize = true;
             this.email_lbl.BackColor = System.Drawing.Color.LightGray;
             this.email_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.email_lbl.Location = new System.Drawing.Point(5, 96);
+            this.email_lbl.Location = new System.Drawing.Point(6, 96);
             this.email_lbl.Name = "email_lbl";
             this.email_lbl.Size = new System.Drawing.Size(45, 13);
             this.email_lbl.TabIndex = 4;

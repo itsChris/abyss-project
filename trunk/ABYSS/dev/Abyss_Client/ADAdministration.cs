@@ -194,6 +194,44 @@ namespace Abyss_Client {
         private void user_tmi_Click(object sender, EventArgs e) {
             openForm(new ADUserUpdate());
         }
+
+        private void modify_tmi_Click(object sender, EventArgs e) {
+            if (this.list_lst.SelectedItems.Count != 0) {
+                if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                    ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                    openForm(new ADUserUpdate(user));
+                }
+                eles
+
+                ///try
+                ////{
+                //if ((this.listViewLdap.SelectedItems[0].Tag).GetType() == typeof(User))
+                //    {
+                //        User myObject = (User)this.listViewLdap.SelectedItems[0].Tag;
+                //        (new frm_user(myObject.accessorUsrdata)).ShowDialog();
+                //        displayList("user");
+                //    }
+                //    else if ((this.listViewLdap.SelectedItems[0].Tag).GetType() == typeof(Computer))
+                //    {
+                //        Computer myObject = (Computer)this.listViewLdap.SelectedItems[0].Tag;
+                //        (new frm_computer(myObject.accessorCompdata)).ShowDialog();
+                //        displayList("computer");
+                //    }
+                //    else if ((this.listViewLdap.SelectedItems[0].Tag).GetType() == typeof(Group))
+                //    {
+                //        Group myObject = (Group)this.listViewLdap.SelectedItems[0].Tag;
+                //        (new frm_group(myObject.accessorGroupdata)).ShowDialog();
+                //        displayList("group");
+                //    }
+                ////}
+                ////catch
+                ////{
+                ////    MessageBox.Show("This object can't be edited");
+                ////}
+            }
+
+
+        }
         #endregion
 
         #region Private Methods
@@ -206,6 +244,6 @@ namespace Abyss_Client {
             this.tree_trv.Nodes.Clear();
             this.tree_trv.Nodes.Add(root);
         }
-        #endregion
+        #endregion 
     }
 }

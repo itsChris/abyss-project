@@ -123,7 +123,7 @@ namespace Abyss_Client {
             officePhone_txt.Text = user.OfficePhone;
             fax_txt.Text = user.Fax;
             mobile_txt.Text = user.Mobile;
-            email_lbl.Text = user.Email;
+            mail_txt.Text = user.Email;
             url_txt.Text = user.Url;
 
             residentialAddress_txt.Text = user.ResidentialAddress;
