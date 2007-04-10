@@ -292,7 +292,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="properties.config" />
+    <None Include="app.config" />
     <None Include="Resources\splash.png" />
   </ItemGroup>
   <ItemGroup>
