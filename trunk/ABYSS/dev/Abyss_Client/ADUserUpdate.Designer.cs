@@ -186,7 +186,7 @@ namespace Abyss_Client {
             this.postalAddress_txt.Mandatory = false;
             this.postalAddress_txt.Name = "postalAddress_txt";
             this.postalAddress_txt.Size = new System.Drawing.Size(172, 20);
-            this.postalAddress_txt.TabIndex = 2;
+            this.postalAddress_txt.TabIndex = 1;
             // 
             // residentialAddress_lbl
             // 
@@ -229,7 +229,7 @@ namespace Abyss_Client {
             this.maillingAddress_lbl.Location = new System.Drawing.Point(6, 53);
             this.maillingAddress_lbl.Name = "maillingAddress_lbl";
             this.maillingAddress_lbl.Size = new System.Drawing.Size(98, 13);
-            this.maillingAddress_lbl.TabIndex = 1;
+            this.maillingAddress_lbl.TabIndex = 2;
             this.maillingAddress_lbl.Text = "Postal address :";
             // 
             // officePhone
@@ -251,7 +251,7 @@ namespace Abyss_Client {
             this.homePhone_txt.Mandatory = false;
             this.homePhone_txt.Name = "homePhone_txt";
             this.homePhone_txt.Size = new System.Drawing.Size(172, 20);
-            this.homePhone_txt.TabIndex = 3;
+            this.homePhone_txt.TabIndex = 1;
             // 
             // officePhone_txt
             // 
@@ -261,7 +261,7 @@ namespace Abyss_Client {
             this.officePhone_txt.Mandatory = false;
             this.officePhone_txt.Name = "officePhone_txt";
             this.officePhone_txt.Size = new System.Drawing.Size(172, 20);
-            this.officePhone_txt.TabIndex = 9;
+            this.officePhone_txt.TabIndex = 7;
             // 
             // title_txt
             // 
@@ -281,7 +281,7 @@ namespace Abyss_Client {
             this.residentialAddress_txt.Mandatory = false;
             this.residentialAddress_txt.Name = "residentialAddress_txt";
             this.residentialAddress_txt.Size = new System.Drawing.Size(172, 20);
-            this.residentialAddress_txt.TabIndex = 0;
+            this.residentialAddress_txt.TabIndex = 5;
             // 
             // maillingAddress_txt
             // 
@@ -301,7 +301,7 @@ namespace Abyss_Client {
             this.mobile_lbl.Location = new System.Drawing.Point(6, 67);
             this.mobile_lbl.Name = "mobile_lbl";
             this.mobile_lbl.Size = new System.Drawing.Size(52, 13);
-            this.mobile_lbl.TabIndex = 1;
+            this.mobile_lbl.TabIndex = 2;
             this.mobile_lbl.Text = "Mobile :";
             // 
             // confirmPassword_lbl
@@ -334,7 +334,7 @@ namespace Abyss_Client {
             this.url_lbl.Location = new System.Drawing.Point(509, 96);
             this.url_lbl.Name = "url_lbl";
             this.url_lbl.Size = new System.Drawing.Size(40, 13);
-            this.url_lbl.TabIndex = 8;
+            this.url_lbl.TabIndex = 10;
             this.url_lbl.Text = "URL :";
             // 
             // email_lbl
@@ -345,7 +345,7 @@ namespace Abyss_Client {
             this.email_lbl.Location = new System.Drawing.Point(5, 96);
             this.email_lbl.Name = "email_lbl";
             this.email_lbl.Size = new System.Drawing.Size(45, 13);
-            this.email_lbl.TabIndex = 2;
+            this.email_lbl.TabIndex = 4;
             this.email_lbl.Text = "Email :";
             // 
             // fax_lbl
@@ -356,7 +356,7 @@ namespace Abyss_Client {
             this.fax_lbl.Location = new System.Drawing.Point(509, 67);
             this.fax_lbl.Name = "fax_lbl";
             this.fax_lbl.Size = new System.Drawing.Size(35, 13);
-            this.fax_lbl.TabIndex = 7;
+            this.fax_lbl.TabIndex = 8;
             this.fax_lbl.Text = "Fax :";
             // 
             // username_lbl
@@ -400,7 +400,7 @@ namespace Abyss_Client {
             this.fax_txt.Mandatory = false;
             this.fax_txt.Name = "fax_txt";
             this.fax_txt.Size = new System.Drawing.Size(172, 20);
-            this.fax_txt.TabIndex = 10;
+            this.fax_txt.TabIndex = 9;
             // 
             // mobile_txt
             // 
@@ -410,7 +410,7 @@ namespace Abyss_Client {
             this.mobile_txt.Mandatory = false;
             this.mobile_txt.Name = "mobile_txt";
             this.mobile_txt.Size = new System.Drawing.Size(172, 20);
-            this.mobile_txt.TabIndex = 4;
+            this.mobile_txt.TabIndex = 3;
             // 
             // url_txt
             // 
@@ -486,7 +486,7 @@ namespace Abyss_Client {
             this.desc_lbl.Location = new System.Drawing.Point(518, 35);
             this.desc_lbl.Name = "desc_lbl";
             this.desc_lbl.Size = new System.Drawing.Size(107, 13);
-            this.desc_lbl.TabIndex = 4;
+            this.desc_lbl.TabIndex = 2;
             this.desc_lbl.Text = "User description :";
             // 
             // desc_txt
@@ -497,7 +497,7 @@ namespace Abyss_Client {
             this.desc_txt.Mandatory = false;
             this.desc_txt.Name = "desc_txt";
             this.desc_txt.Size = new System.Drawing.Size(172, 20);
-            this.desc_txt.TabIndex = 5;
+            this.desc_txt.TabIndex = 3;
             // 
             // contact_gbx
             // 
@@ -518,7 +518,7 @@ namespace Abyss_Client {
             this.contact_gbx.Location = new System.Drawing.Point(9, 61);
             this.contact_gbx.Name = "contact_gbx";
             this.contact_gbx.Size = new System.Drawing.Size(945, 130);
-            this.contact_gbx.TabIndex = 2;
+            this.contact_gbx.TabIndex = 5;
             this.contact_gbx.TabStop = false;
             this.contact_gbx.Text = "Contact";
             // 
@@ -535,7 +535,7 @@ namespace Abyss_Client {
             this.address_gbx.Location = new System.Drawing.Point(9, 197);
             this.address_gbx.Name = "address_gbx";
             this.address_gbx.Size = new System.Drawing.Size(945, 78);
-            this.address_gbx.TabIndex = 3;
+            this.address_gbx.TabIndex = 0;
             this.address_gbx.TabStop = false;
             this.address_gbx.Text = "Address";
             // 
@@ -567,7 +567,7 @@ namespace Abyss_Client {
             this.neverExpires_chk.Location = new System.Drawing.Point(358, 75);
             this.neverExpires_chk.Name = "neverExpires_chk";
             this.neverExpires_chk.Size = new System.Drawing.Size(161, 17);
-            this.neverExpires_chk.TabIndex = 9;
+            this.neverExpires_chk.TabIndex = 8;
             this.neverExpires_chk.Text = "Password never expires";
             this.neverExpires_chk.UseVisualStyleBackColor = true;
             // 
@@ -577,7 +577,7 @@ namespace Abyss_Client {
             this.deniedChangePassword_chk.Location = new System.Drawing.Point(358, 39);
             this.deniedChangePassword_chk.Name = "deniedChangePassword_chk";
             this.deniedChangePassword_chk.Size = new System.Drawing.Size(209, 30);
-            this.deniedChangePassword_chk.TabIndex = 8;
+            this.deniedChangePassword_chk.TabIndex = 7;
             this.deniedChangePassword_chk.Text = "User cannot change password";
             this.deniedChangePassword_chk.UseVisualStyleBackColor = true;
             // 
@@ -587,7 +587,7 @@ namespace Abyss_Client {
             this.changePassword_chk.Location = new System.Drawing.Point(358, 10);
             this.changePassword_chk.Name = "changePassword_chk";
             this.changePassword_chk.Size = new System.Drawing.Size(209, 30);
-            this.changePassword_chk.TabIndex = 7;
+            this.changePassword_chk.TabIndex = 6;
             this.changePassword_chk.Text = "User must change password at the next logon";
             this.changePassword_chk.UseVisualStyleBackColor = true;
             // 
@@ -598,7 +598,7 @@ namespace Abyss_Client {
             this.isAccountActive_chk.Location = new System.Drawing.Point(358, 105);
             this.isAccountActive_chk.Name = "isAccountActive_chk";
             this.isAccountActive_chk.Size = new System.Drawing.Size(118, 17);
-            this.isAccountActive_chk.TabIndex = 6;
+            this.isAccountActive_chk.TabIndex = 9;
             this.isAccountActive_chk.Text = "Account disable";
             this.isAccountActive_chk.UseVisualStyleBackColor = true;
             // 
