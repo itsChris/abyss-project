@@ -90,7 +90,7 @@ namespace Abyss_Client {
                 Console.WriteLine("Error : " + ex.Message);
             }*/
 
-            
+            MessageBox.Show(con.ConnectionString);
             
 
         }
