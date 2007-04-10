@@ -78,7 +78,7 @@ namespace Abyss_Client {
 
         private void Oracle_Load(object sender, EventArgs e) {
 
-            OracleConnection con = new OracleConnection();
+            /*OracleConnection con = new OracleConnection();
             con.ConnectionString = ConfigurationSettings.GetConfig("OraConnect");
 
             try {
@@ -87,8 +87,13 @@ namespace Abyss_Client {
             }
             catch (OracleException ex) {
                 Console.WriteLine("Error : " + ex.Message);
-            }
-        
+            }*/
+
+            System.Configuration
+
+            MessageBox.Show("test");
+
+            //MessageBox.Show((string)conf.Settings.Get("OraConnect").Value);
         }
     }
 }

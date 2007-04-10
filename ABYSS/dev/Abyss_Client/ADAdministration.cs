@@ -201,7 +201,7 @@ namespace Abyss_Client {
                     ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
                     openForm(new ADUserUpdate(user));
                 }
-                eles
+                
 
                 ///try
                 ////{
