@@ -12,6 +12,8 @@ namespace Business {
         #region Constructors
         public ADUser() {
             this.adUserData = new ADUserData();
+            this.adUserData.IsAccountActive = true;
+            this.adUserData.ChangePasswordNextLogon = true;
         }
 
         public ADUser(ADUserData adUserData) {

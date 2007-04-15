@@ -3,9 +3,10 @@ using Persistence;
 using Utils;
 using System.Collections;
 using System.DirectoryServices;
+using System.Reflection;
 
 namespace DAO {
-    public class ADUserDAO {
+    public class ADUserDAO : LdapDAO{
         #region Static Methods
         #region Private
         /// <summary>
@@ -33,22 +34,27 @@ namespace DAO {
             adUserData.Url = Utility.getProperty(directoryEntry, "Url");
             adUserData.UserName = Utility.getProperty(directoryEntry, "sAMAccountName");
             adUserData.DistinguishedName = "LDAP://" + Utility.CrtDomain + "/" + Utility.getProperty(directoryEntry, "DistinguishedName");
-            adUserData.IsAccountActive = Utility.isAccountActive(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
-            adUserData.PasswordNeverExpired = Utility.isDontExpiredPassword(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
-            adUserData.ChangePasswordRight = Utility.isPasswordCantbeChange(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
-            string pwdLastSet = Utility.getProperty(directoryEntry, "pwdLastSet");
-            if (pwdLastSet == "0") {
+            long fileTime = longFromLargeInteger(directoryEntry.Properties["pwdLastSet"].Value);
+            DateTime pwdSet = DateTime.FromFileTime(fileTime);
+            if (pwdSet.ToString() == "01/01/1601 01:00:00") {
                 adUserData.ChangePasswordNextLogon = true;
-            }
-            else if (pwdLastSet == "-1") {
-                adUserData.ChangePasswordNextLogon = false;
             }
             else {
                 adUserData.ChangePasswordNextLogon = false;
             }
+            adUserData.IsAccountActive = Utility.isAccountActive(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
+            adUserData.PasswordNeverExpired = Utility.isDontExpiredPassword(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
             return adUserData;
         }
-      
+
+        private static long longFromLargeInteger(object largeInteger) {
+            System.Type type = largeInteger.GetType();
+            int highPart = (int)type.InvokeMember("HighPart", BindingFlags.GetProperty, null, largeInteger, null);
+            int lowPart = (int)type.InvokeMember("LowPart", BindingFlags.GetProperty, null, largeInteger, null);
+
+            return (long)highPart << 32 | (uint)lowPart;
+        }
+
         /// <summary>
         /// Returns an list composed of adUserData.
         /// </summary>

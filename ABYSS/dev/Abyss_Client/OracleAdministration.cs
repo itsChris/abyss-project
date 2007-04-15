@@ -74,13 +74,11 @@ namespace Abyss_Client {
         #endregion
 
         private void OracleAdministration_Load(object sender, EventArgs e) {
-            
-            
-        }
-
-        private void create_btn_Click_1(object sender, EventArgs e) {
 
         }
+
+        
+        
     }
 }
 
