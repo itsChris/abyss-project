@@ -4,9 +4,10 @@ using System.Text;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using System.Configuration;
+using System.Data;
 
 namespace Business {
-    class Oracle {
+    public class Oracle {
 
         #region Constructors
 

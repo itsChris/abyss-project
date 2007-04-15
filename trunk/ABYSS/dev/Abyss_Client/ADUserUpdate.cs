@@ -74,7 +74,7 @@ namespace Abyss_Client {
                     user.Title = title_txt.Text;
                     user.HomePhone = homePhone_txt.Text;
                     user.Mobile = mobile_txt.Text;
-                    user.Email = email_lbl.Text;
+                    user.Email = mail_txt.Text;
                     user.PostalAddress = postalAddress_txt.Text;
                     user.MailingAddress = maillingAddress_txt.Text;
                     user.UserName = username_txt.Text;
@@ -93,7 +93,7 @@ namespace Abyss_Client {
             }
         }
 
-        private void reset_btn_Click(object sender, EventArgs e) {
+        private void cancel_btn_Click(object sender, EventArgs e) {
             this.Close();
         }
 
@@ -131,6 +131,8 @@ namespace Abyss_Client {
             maillingAddress_txt.Text = user.MailingAddress;
             if (update) {
                 username_txt.Enabled = false;
+                password_txt.Enabled = false;
+                confirmPassword_txt.Enabled = false;
             }
             username_txt.Text = user.UserName;
             password_txt.Text = user.Password;
@@ -159,7 +161,7 @@ namespace Abyss_Client {
             }
             return false;
         }
-         #endregion 
+         #endregion    
     }
 }
 

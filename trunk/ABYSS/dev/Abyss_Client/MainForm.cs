@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using Business;
 
 namespace Abyss_Client {
     public partial class MainForm : CompBase.BaseForm {
@@ -38,7 +39,7 @@ namespace Abyss_Client {
         }
 
         private void oracle_btn_Click(object sender, EventArgs e) {
-            openForm(new Oracle());
+            openForm(new OracleAdministration());
         }
         #endregion
 

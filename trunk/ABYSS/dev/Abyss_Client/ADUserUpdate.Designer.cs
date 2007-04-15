@@ -96,7 +96,7 @@ namespace Abyss_Client {
             this.lastName_lbl.Location = new System.Drawing.Point(6, 53);
             this.lastName_lbl.Name = "lastName_lbl";
             this.lastName_lbl.Size = new System.Drawing.Size(75, 13);
-            this.lastName_lbl.TabIndex = 2;
+            this.lastName_lbl.TabIndex = 1;
             this.lastName_lbl.Text = "Last Name :";
             // 
             // displayName_lbl
@@ -107,7 +107,7 @@ namespace Abyss_Client {
             this.displayName_lbl.Location = new System.Drawing.Point(6, 105);
             this.displayName_lbl.Name = "displayName_lbl";
             this.displayName_lbl.Size = new System.Drawing.Size(92, 13);
-            this.displayName_lbl.TabIndex = 6;
+            this.displayName_lbl.TabIndex = 3;
             this.displayName_lbl.Text = "Display Name :";
             // 
             // initials_lbl
@@ -118,7 +118,7 @@ namespace Abyss_Client {
             this.initials_lbl.Location = new System.Drawing.Point(6, 79);
             this.initials_lbl.Name = "initials_lbl";
             this.initials_lbl.Size = new System.Drawing.Size(52, 13);
-            this.initials_lbl.TabIndex = 4;
+            this.initials_lbl.TabIndex = 2;
             this.initials_lbl.Text = "Initials :";
             // 
             // firstName_txt
@@ -130,7 +130,7 @@ namespace Abyss_Client {
             this.firstName_txt.MaxLength = 50;
             this.firstName_txt.Name = "firstName_txt";
             this.firstName_txt.Size = new System.Drawing.Size(172, 20);
-            this.firstName_txt.TabIndex = 1;
+            this.firstName_txt.TabIndex = 4;
             this.firstName_txt.TextChanged += new System.EventHandler(this.displayName_txt_TextChanged);
             // 
             // lastName_txt
@@ -142,7 +142,7 @@ namespace Abyss_Client {
             this.lastName_txt.MaxLength = 50;
             this.lastName_txt.Name = "lastName_txt";
             this.lastName_txt.Size = new System.Drawing.Size(172, 20);
-            this.lastName_txt.TabIndex = 3;
+            this.lastName_txt.TabIndex = 5;
             this.lastName_txt.TextChanged += new System.EventHandler(this.displayName_txt_TextChanged);
             // 
             // initial_txt
@@ -154,7 +154,7 @@ namespace Abyss_Client {
             this.initial_txt.MaxLength = 6;
             this.initial_txt.Name = "initial_txt";
             this.initial_txt.Size = new System.Drawing.Size(58, 20);
-            this.initial_txt.TabIndex = 5;
+            this.initial_txt.TabIndex = 6;
             this.initial_txt.TextChanged += new System.EventHandler(this.displayName_txt_TextChanged);
             // 
             // displayName_txt
@@ -186,7 +186,7 @@ namespace Abyss_Client {
             this.postalAddress_txt.Mandatory = false;
             this.postalAddress_txt.Name = "postalAddress_txt";
             this.postalAddress_txt.Size = new System.Drawing.Size(172, 20);
-            this.postalAddress_txt.TabIndex = 1;
+            this.postalAddress_txt.TabIndex = 2;
             // 
             // residentialAddress_lbl
             // 
@@ -229,7 +229,7 @@ namespace Abyss_Client {
             this.maillingAddress_lbl.Location = new System.Drawing.Point(6, 53);
             this.maillingAddress_lbl.Name = "maillingAddress_lbl";
             this.maillingAddress_lbl.Size = new System.Drawing.Size(98, 13);
-            this.maillingAddress_lbl.TabIndex = 2;
+            this.maillingAddress_lbl.TabIndex = 1;
             this.maillingAddress_lbl.Text = "Postal address :";
             // 
             // officePhone
@@ -251,7 +251,7 @@ namespace Abyss_Client {
             this.homePhone_txt.Mandatory = false;
             this.homePhone_txt.Name = "homePhone_txt";
             this.homePhone_txt.Size = new System.Drawing.Size(172, 20);
-            this.homePhone_txt.TabIndex = 1;
+            this.homePhone_txt.TabIndex = 3;
             // 
             // officePhone_txt
             // 
@@ -261,7 +261,7 @@ namespace Abyss_Client {
             this.officePhone_txt.Mandatory = false;
             this.officePhone_txt.Name = "officePhone_txt";
             this.officePhone_txt.Size = new System.Drawing.Size(172, 20);
-            this.officePhone_txt.TabIndex = 7;
+            this.officePhone_txt.TabIndex = 9;
             // 
             // title_txt
             // 
@@ -301,7 +301,7 @@ namespace Abyss_Client {
             this.mobile_lbl.Location = new System.Drawing.Point(6, 67);
             this.mobile_lbl.Name = "mobile_lbl";
             this.mobile_lbl.Size = new System.Drawing.Size(52, 13);
-            this.mobile_lbl.TabIndex = 2;
+            this.mobile_lbl.TabIndex = 1;
             this.mobile_lbl.Text = "Mobile :";
             // 
             // confirmPassword_lbl
@@ -312,7 +312,7 @@ namespace Abyss_Client {
             this.confirmPassword_lbl.Location = new System.Drawing.Point(6, 92);
             this.confirmPassword_lbl.Name = "confirmPassword_lbl";
             this.confirmPassword_lbl.Size = new System.Drawing.Size(142, 13);
-            this.confirmPassword_lbl.TabIndex = 4;
+            this.confirmPassword_lbl.TabIndex = 2;
             this.confirmPassword_lbl.Text = "Confirm your password :";
             // 
             // password_lbl
@@ -323,7 +323,7 @@ namespace Abyss_Client {
             this.password_lbl.Location = new System.Drawing.Point(7, 66);
             this.password_lbl.Name = "password_lbl";
             this.password_lbl.Size = new System.Drawing.Size(69, 13);
-            this.password_lbl.TabIndex = 2;
+            this.password_lbl.TabIndex = 1;
             this.password_lbl.Text = "Password :";
             // 
             // url_lbl
@@ -334,7 +334,7 @@ namespace Abyss_Client {
             this.url_lbl.Location = new System.Drawing.Point(509, 96);
             this.url_lbl.Name = "url_lbl";
             this.url_lbl.Size = new System.Drawing.Size(40, 13);
-            this.url_lbl.TabIndex = 10;
+            this.url_lbl.TabIndex = 8;
             this.url_lbl.Text = "URL :";
             // 
             // email_lbl
@@ -345,7 +345,7 @@ namespace Abyss_Client {
             this.email_lbl.Location = new System.Drawing.Point(6, 96);
             this.email_lbl.Name = "email_lbl";
             this.email_lbl.Size = new System.Drawing.Size(45, 13);
-            this.email_lbl.TabIndex = 4;
+            this.email_lbl.TabIndex = 2;
             this.email_lbl.Text = "Email :";
             // 
             // fax_lbl
@@ -356,7 +356,7 @@ namespace Abyss_Client {
             this.fax_lbl.Location = new System.Drawing.Point(509, 67);
             this.fax_lbl.Name = "fax_lbl";
             this.fax_lbl.Size = new System.Drawing.Size(35, 13);
-            this.fax_lbl.TabIndex = 8;
+            this.fax_lbl.TabIndex = 7;
             this.fax_lbl.Text = "Fax :";
             // 
             // username_lbl
@@ -379,7 +379,7 @@ namespace Abyss_Client {
             this.password_txt.Name = "password_txt";
             this.password_txt.PasswordChar = '*';
             this.password_txt.Size = new System.Drawing.Size(172, 20);
-            this.password_txt.TabIndex = 3;
+            this.password_txt.TabIndex = 4;
             // 
             // confirmPassword_txt
             // 
@@ -400,7 +400,7 @@ namespace Abyss_Client {
             this.fax_txt.Mandatory = false;
             this.fax_txt.Name = "fax_txt";
             this.fax_txt.Size = new System.Drawing.Size(172, 20);
-            this.fax_txt.TabIndex = 9;
+            this.fax_txt.TabIndex = 10;
             // 
             // mobile_txt
             // 
@@ -410,7 +410,7 @@ namespace Abyss_Client {
             this.mobile_txt.Mandatory = false;
             this.mobile_txt.Name = "mobile_txt";
             this.mobile_txt.Size = new System.Drawing.Size(172, 20);
-            this.mobile_txt.TabIndex = 3;
+            this.mobile_txt.TabIndex = 4;
             // 
             // url_txt
             // 
@@ -440,7 +440,7 @@ namespace Abyss_Client {
             this.username_txt.Mandatory = true;
             this.username_txt.Name = "username_txt";
             this.username_txt.Size = new System.Drawing.Size(172, 20);
-            this.username_txt.TabIndex = 1;
+            this.username_txt.TabIndex = 3;
             // 
             // userInformation_gbx
             // 
@@ -518,7 +518,7 @@ namespace Abyss_Client {
             this.contact_gbx.Location = new System.Drawing.Point(9, 61);
             this.contact_gbx.Name = "contact_gbx";
             this.contact_gbx.Size = new System.Drawing.Size(945, 130);
-            this.contact_gbx.TabIndex = 5;
+            this.contact_gbx.TabIndex = 4;
             this.contact_gbx.TabStop = false;
             this.contact_gbx.Text = "Contact";
             // 
@@ -535,7 +535,7 @@ namespace Abyss_Client {
             this.address_gbx.Location = new System.Drawing.Point(9, 197);
             this.address_gbx.Name = "address_gbx";
             this.address_gbx.Size = new System.Drawing.Size(945, 78);
-            this.address_gbx.TabIndex = 0;
+            this.address_gbx.TabIndex = 5;
             this.address_gbx.TabStop = false;
             this.address_gbx.Text = "Address";
             // 
@@ -609,7 +609,7 @@ namespace Abyss_Client {
             this.addUser_btn.Location = new System.Drawing.Point(700, 485);
             this.addUser_btn.Name = "addUser_btn";
             this.addUser_btn.Size = new System.Drawing.Size(67, 23);
-            this.addUser_btn.TabIndex = 3;
+            this.addUser_btn.TabIndex = 4;
             this.addUser_btn.Text = "Save";
             this.addUser_btn.UseVisualStyleBackColor = true;
             this.addUser_btn.Click += new System.EventHandler(this.addUser_btn_Click);
@@ -621,10 +621,10 @@ namespace Abyss_Client {
             this.cancel_btn.Location = new System.Drawing.Point(579, 485);
             this.cancel_btn.Name = "cancel_btn";
             this.cancel_btn.Size = new System.Drawing.Size(85, 23);
-            this.cancel_btn.TabIndex = 4;
+            this.cancel_btn.TabIndex = 3;
             this.cancel_btn.Text = "Cancel";
             this.cancel_btn.UseVisualStyleBackColor = true;
-            this.cancel_btn.Click += new System.EventHandler(this.reset_btn_Click);
+            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
             // 
             // ADUserUpdate
             // 

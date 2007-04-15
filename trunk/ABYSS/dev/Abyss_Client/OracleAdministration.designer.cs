@@ -1,5 +1,5 @@
 namespace Abyss_Client {
-    partial class Oracle {
+    partial class OracleAdministration {
         /// <summary>
         /// Variable nécessaire au concepteur.
         /// </summary>
@@ -114,25 +114,25 @@ namespace Abyss_Client {
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // tableList_lst
@@ -184,7 +184,7 @@ namespace Abyss_Client {
             this.create_btn.TabIndex = 5;
             this.create_btn.Text = "Create";
             this.create_btn.UseVisualStyleBackColor = true;
-            this.create_btn.Click += new System.EventHandler(this.create_btn_Click_1);
+            this.create_btn.Click += new System.EventHandler(this.create_btn_Click);
             // 
             // interface_gbx
             // 
@@ -293,17 +293,17 @@ namespace Abyss_Client {
             // 
             this.load_ofd.FileName = "load_ofd";
             // 
-            // Oracle
+            // OracleAdministration
             // 
             this.ClientSize = new System.Drawing.Size(980, 543);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.tableList_lst);
             this.Controls.Add(this.menu_menu);
             this.MainMenuStrip = this.menu_menu;
-            this.Name = "Oracle";
+            this.Name = "OracleAdministration";
             this.Text = "Oracle Administration view";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Oracle_FormClosing);
-            this.Load += new System.EventHandler(this.Oracle_Load);
+            this.Load += new System.EventHandler(this.OracleAdministration_Load);
             this.menu_menu.ResumeLayout(false);
             this.menu_menu.PerformLayout();
             this.panel_pnl.ResumeLayout(false);
