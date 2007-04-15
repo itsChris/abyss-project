@@ -5,14 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
-using System.Configuration;
 
 namespace Abyss_Client {
-    public partial class Oracle : Abyss_Client.CompBase.BaseForm {
+    public partial class OracleAdministration : Abyss_Client.CompBase.BaseForm {
         #region Constructors
-        public Oracle() {
+        public OracleAdministration() {
             InitializeComponent();
         }
         #endregion
@@ -76,22 +73,12 @@ namespace Abyss_Client {
         }
         #endregion
 
-        private void Oracle_Load(object sender, EventArgs e) {
+        private void OracleAdministration_Load(object sender, EventArgs e) {
             
-            OracleConnection con = new OracleConnection(ConfigurationManager.ConnectionStrings["OraConnect"].ConnectionString);
             
-            /*con.ConnectionString = ConfigurationManager.ConnectionStrings["OraConnect"].ConnectionString;
+        }
 
-            try {
-                con.Open();
-
-            }
-            catch (OracleException ex) {
-                Console.WriteLine("Error : " + ex.Message);
-            }*/
-
-            MessageBox.Show(con.ConnectionString);
-            
+        private void create_btn_Click_1(object sender, EventArgs e) {
 
         }
     }

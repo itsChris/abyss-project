@@ -86,7 +86,7 @@ namespace Abyss_Client {
             this.editToolStripMenuItem});
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
-            this.menu_menu.Size = new System.Drawing.Size(984, 24);
+            this.menu_menu.Size = new System.Drawing.Size(980, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
@@ -184,6 +184,7 @@ namespace Abyss_Client {
             this.create_btn.TabIndex = 5;
             this.create_btn.Text = "Create";
             this.create_btn.UseVisualStyleBackColor = true;
+            this.create_btn.Click += new System.EventHandler(this.create_btn_Click_1);
             // 
             // interface_gbx
             // 
@@ -205,8 +206,10 @@ namespace Abyss_Client {
             // number_txt
             // 
             this.number_txt.Enabled = false;
+            this.number_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.number_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.number_txt.Location = new System.Drawing.Point(127, 96);
+            this.number_txt.Mandatory = false;
             this.number_txt.Name = "number_txt";
             this.number_txt.Size = new System.Drawing.Size(38, 20);
             this.number_txt.TabIndex = 5;
@@ -226,8 +229,10 @@ namespace Abyss_Client {
             // name_txt
             // 
             this.name_txt.Enabled = false;
+            this.name_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.name_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.name_txt.Location = new System.Drawing.Point(71, 70);
+            this.name_txt.Mandatory = false;
             this.name_txt.Name = "name_txt";
             this.name_txt.Size = new System.Drawing.Size(150, 20);
             this.name_txt.TabIndex = 3;
@@ -274,8 +279,10 @@ namespace Abyss_Client {
             // 
             // sql_txt
             // 
+            this.sql_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.sql_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.sql_txt.Location = new System.Drawing.Point(50, 68);
+            this.sql_txt.Mandatory = false;
             this.sql_txt.Multiline = true;
             this.sql_txt.Name = "sql_txt";
             this.sql_txt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -288,11 +295,10 @@ namespace Abyss_Client {
             // 
             // Oracle
             // 
-            this.ClientSize = new System.Drawing.Size(984, 528);
+            this.ClientSize = new System.Drawing.Size(980, 543);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.tableList_lst);
             this.Controls.Add(this.menu_menu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menu_menu;
             this.Name = "Oracle";
             this.Text = "Oracle Administration view";
