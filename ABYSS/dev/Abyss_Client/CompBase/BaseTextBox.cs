@@ -39,7 +39,7 @@ namespace Abyss_Client.CompBase {
             if (BackColor == errorBackColor && !string.IsNullOrEmpty(this.Text)) {
                 BackColor = saveBackColor;
             }
-            if (this.Text == string.Empty) {
+            if (this.Text == string.Empty && this.mandatory) {
                 BackColor = errorBackColor;
             }
         }

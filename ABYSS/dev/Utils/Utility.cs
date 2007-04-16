@@ -116,7 +116,7 @@ namespace Utils {
             DirectoryEntry directoryEntry = getDirectoryObject();
             DirectorySearcher directorySearcher = new DirectorySearcher();
             directorySearcher.SearchRoot = directoryEntry;
-            directorySearcher.Filter = "(&(objectClass=user)(cn=" + userName + "))";
+            directorySearcher.Filter = "(&(objectClass=user)(sAMAccountName=" + userName + "))";
             directorySearcher.SearchScope = SearchScope.Subtree;
             SearchResult results = directorySearcher.FindOne();
             if (!(results == null)) {
@@ -259,10 +259,10 @@ namespace Utils {
         /// </summary>
         /// <param name="directoryEntry"></param>
         /// <param name="propertyName"></param>
-        /// <param name="propertyValue"></param>
+        /// <param name="propertyValue"></param>propertyName
         public static void setProperty(DirectoryEntry directoryEntry, string propertyName, string propertyValue) {
             if (!string.IsNullOrEmpty(propertyValue)) {
-                if (directoryEntry.Properties.Contains(propertyName)) {
+                if (directoryEntry.Properties[propertyName].Count != 0) {
                     directoryEntry.Properties[propertyName][0] = propertyValue;
                 }
                 else {

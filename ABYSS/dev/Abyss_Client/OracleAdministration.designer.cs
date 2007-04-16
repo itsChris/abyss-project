@@ -312,9 +312,7 @@ namespace Abyss_Client {
             this.interface_gbx.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-
         #endregion
 
         private CompBase.BaseRadioButton sql_rbt;

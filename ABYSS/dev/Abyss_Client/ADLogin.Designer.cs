@@ -23,12 +23,10 @@
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.ldap_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.otherLdap_rbt = new Abyss_Client.CompBase.BaseRadioButton();
             this.defaultLdap_rbt = new Abyss_Client.CompBase.BaseRadioButton();
             this.connect_btn = new Abyss_Client.CompBase.BaseButton();
-            this.error_prv = new System.Windows.Forms.ErrorProvider(this.components);
             this.user_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.login_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.password_lbl = new Abyss_Client.CompBase.BaseLabel();
@@ -37,7 +35,6 @@
             this.ldap_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.ldap_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.reset_btn = new Abyss_Client.CompBase.BaseButton();
-            ((System.ComponentModel.ISupportInitialize)(this.error_prv)).BeginInit();
             this.user_gbx.SuspendLayout();
             this.ldap_gbx.SuspendLayout();
             this.SuspendLayout();
@@ -93,10 +90,6 @@
             this.connect_btn.Text = "Connect";
             this.connect_btn.UseVisualStyleBackColor = true;
             this.connect_btn.Click += new System.EventHandler(this.connect_btn_Click);
-            // 
-            // error_prv
-            // 
-            this.error_prv.ContainerControl = this;
             // 
             // user_gbx
             // 
@@ -207,7 +200,6 @@
             this.Name = "ADLogin";
             this.Text = "Abyss Management - Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ADLogin_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.error_prv)).EndInit();
             this.user_gbx.ResumeLayout(false);
             this.user_gbx.PerformLayout();
             this.ldap_gbx.ResumeLayout(false);
@@ -222,7 +214,6 @@
         private Abyss_Client.CompBase.BaseRadioButton otherLdap_rbt;
         private Abyss_Client.CompBase.BaseRadioButton defaultLdap_rbt;
         private Abyss_Client.CompBase.BaseButton connect_btn;
-        private System.Windows.Forms.ErrorProvider error_prv;
         private Abyss_Client.CompBase.BaseGroupBox user_gbx;
         private Abyss_Client.CompBase.BaseLabel login_lbl;
         private Abyss_Client.CompBase.BaseLabel password_lbl;
