@@ -1,7 +1,5 @@
 using System;
 using System.DirectoryServices;
-using System.Security.Principal;
-using System.Security.AccessControl;
 
 namespace Utils {
     public class Utility {
@@ -248,17 +246,6 @@ namespace Utils {
         public static bool isDontExpiredPassword(int userAccountControl) {
             int userPasswordNeverExpired = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD);
             int flagExists = userAccountControl & userPasswordNeverExpired;
-            if (flagExists > 0) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-
-        public static bool isPasswordCantbeChange(int userAccountControl) {
-            int passwordCantBeChange = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_PASSWD_CANT_CHANGE );
-            int flagExists = userAccountControl & passwordCantBeChange;
             if (flagExists > 0) {
                 return true;
             }
