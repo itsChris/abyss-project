@@ -39,6 +39,13 @@ namespace Abyss_Client.CompBase {
             if (BackColor == errorBackColor && !string.IsNullOrEmpty(this.Text)) {
                 BackColor = saveBackColor;
             }
+            if (this.Text == string.Empty) {
+                BackColor = errorBackColor;
+            }
+        }
+
+        protected void BaseTextBox_TextChanged(object sender, EventArgs e) {
+            BaseTextBox_Validating(sender, new CancelEventArgs());
         }
         #endregion
 
@@ -52,8 +59,6 @@ namespace Abyss_Client.CompBase {
             }
         }
         #endregion
-
-        
     }
 }
 
