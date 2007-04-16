@@ -29,6 +29,7 @@
             // 
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.Validating += new System.ComponentModel.CancelEventHandler(this.BaseTextBox_Validating);
+            this.TextChanged += new System.EventHandler(this.BaseTextBox_TextChanged);
             this.ResumeLayout(false);
 
         }

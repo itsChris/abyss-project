@@ -79,7 +79,7 @@ namespace Abyss_Client.CompBase {
                         foreach (Control control in group.Controls) {
                             if (control is BaseTextBox) {
                                 BaseTextBox tb = (BaseTextBox)control;
-                                if (tb.Mandatory && string.IsNullOrEmpty(tb.Text.Trim()) && tb.Enabled) {
+                                if (tb.Mandatory && string.IsNullOrEmpty(tb.Text.Trim()) && tb.Enabled && tb.Visible) {
                                     tb.setErrorBackColor(true);
                                     result = false;
                                 }
