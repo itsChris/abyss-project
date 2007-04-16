@@ -13,6 +13,7 @@ namespace Persistence {
         private string profile;
         private bool passwordExpire;
         private bool account; //Lock (true) or Unlock(false)
+        private string createdDate; //Creation date of an Oracle user
         #endregion
 
         #region Constructors
