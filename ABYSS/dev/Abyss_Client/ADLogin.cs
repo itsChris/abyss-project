@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using Business;
 using System.DirectoryServices;
+using System.Runtime.InteropServices;
 
 namespace Abyss_Client {
     public partial class ADLogin : CompBase.BaseForm {
@@ -17,9 +18,9 @@ namespace Abyss_Client {
             ADUser user = null;
             Cursor.Current = Cursors.WaitCursor;
             try {
-                //if (setError()) {
-                //    return;
-                //}
+                if (!checkMandatoryFields()) {
+                    return;
+                }
                 if (defaultLdap_rbt.Checked) {
                     connexion = ADConnection.getInstance(login_txt.Text, password_txt.Text);
                 }
@@ -28,8 +29,8 @@ namespace Abyss_Client {
                 }   
                 user = ADUser.getUserByName(login_txt.Text);
             }
-            catch (DirectoryServicesCOMException DSComEx) {
-                MessageBox.Show(DSComEx.Message, this.Text,
+            catch (COMException ComEx) {
+                MessageBox.Show(ComEx.Message, this.Text,
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (connexion != null) {
                     ADConnection.setInitToFalse();
@@ -78,54 +79,6 @@ namespace Abyss_Client {
                 MessageBoxIcon.Question) == DialogResult.No) {
                 e.Cancel = true;
             }
-        }
-        #endregion
-
-        #region Private Methods
-        /// <summary>
-        /// Returns the status of the control
-        /// </summary>
-        /// <param name="control"></param>
-        /// <returns></returns>
-        private bool isValide(Control control) {
-            if (control.GetType() == typeof(CompBase.BaseTextBox)) {
-                if (string.IsNullOrEmpty(control.Text)) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// Check if all fields have been writed.
-        /// </summary>
-        /// <returns></returns>
-        private bool setError() {
-            bool error = false;
-            if (!defaultLdap_rbt.Checked) {
-                if (!isValide(ldap_txt)) {
-                    error_prv.SetError(ldap_txt, "A domain controlor must be specified");
-                    error = true;
-                }
-                else {
-                    error_prv.SetError(ldap_txt, "");
-                }
-            }
-            if (!isValide(login_txt)) {
-                error_prv.SetError(login_txt, "A login must be specified");
-                error = true;
-            }
-            else {
-                error_prv.SetError(login_txt, "");
-            }
-            if (!isValide(password_txt)) {
-                error_prv.SetError(password_txt, "A password must be specified");
-                error = true;
-            }
-            else {
-                error_prv.SetError(password_txt, "");
-            }
-            return error;
         }
         #endregion
     }

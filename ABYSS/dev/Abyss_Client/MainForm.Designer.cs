@@ -25,7 +25,6 @@
         private void InitializeComponent() {
             this.activeDirectory_btn = new Abyss_Client.CompBase.BaseButton();
             this.oracle_btn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // activeDirectory_btn
@@ -50,22 +49,11 @@
             this.oracle_btn.UseVisualStyleBackColor = true;
             this.oracle_btn.Click += new System.EventHandler(this.oracle_btn_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(70, 131);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 22);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Oracle";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(255, 214);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.oracle_btn);
             this.Controls.Add(this.activeDirectory_btn);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,7 +69,6 @@
 
         private Abyss_Client.CompBase.BaseButton activeDirectory_btn;
         private System.Windows.Forms.Button oracle_btn;
-        private System.Windows.Forms.Button button1;
 
     }
 }
