@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="ADGroupData.cs" />
     <Compile Include="ADUserData.cs" />
+    <Compile Include="OracleUserData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
