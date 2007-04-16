@@ -137,16 +137,20 @@
             // 
             // login_txt
             // 
+            this.login_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.login_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.login_txt.Location = new System.Drawing.Point(170, 33);
+            this.login_txt.Mandatory = true;
             this.login_txt.Name = "login_txt";
             this.login_txt.Size = new System.Drawing.Size(150, 20);
             this.login_txt.TabIndex = 1;
             // 
             // password_txt
             // 
+            this.password_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.password_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.password_txt.Location = new System.Drawing.Point(170, 79);
+            this.password_txt.Mandatory = true;
             this.password_txt.Name = "password_txt";
             this.password_txt.PasswordChar = '*';
             this.password_txt.Size = new System.Drawing.Size(150, 20);
@@ -154,8 +158,10 @@
             // 
             // ldap_txt
             // 
+            this.ldap_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.ldap_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.ldap_txt.Location = new System.Drawing.Point(76, 92);
+            this.ldap_txt.Mandatory = true;
             this.ldap_txt.Name = "ldap_txt";
             this.ldap_txt.Size = new System.Drawing.Size(181, 20);
             this.ldap_txt.TabIndex = 3;

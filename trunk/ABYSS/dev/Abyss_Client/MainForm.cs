@@ -42,9 +42,5 @@ namespace Abyss_Client {
             openForm(new OracleAdministration());
         }
         #endregion
-
-        private void button1_Click(object sender, EventArgs e) {
-            new ADUserUpdate().ShowDialog();
-        }
     }
 }
