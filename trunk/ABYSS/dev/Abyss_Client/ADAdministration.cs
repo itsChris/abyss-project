@@ -201,9 +201,10 @@ namespace Abyss_Client {
                     ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
                     openForm(new ADUserUpdate(user));
                 }
-                
+            }
 
-                ///try
+
+                //try
                 ////{
                 //if ((this.listViewLdap.SelectedItems[0].Tag).GetType() == typeof(User))
                 //    {
@@ -223,14 +224,24 @@ namespace Abyss_Client {
                 //        (new frm_group(myObject.accessorGroupdata)).ShowDialog();
                 //        displayList("group");
                 //    }
-                ////}
-                ////catch
-                ////{
-                ////    MessageBox.Show("This object can't be edited");
-                ////}
+                //}
+                //catch
+                //{
+                //    MessageBox.Show("This object can't be edited");
+                //}
+            //}
+        }
+
+        private void listView_ctm_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+            if (this.list_lst.SelectedItems.Count != 0) {
+                if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                    ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                    this.listView_ctm.Items.Clear();
+                    this.listView_ctm.Items.AddRange(new ToolStripItem[] { this.modify_tmi, this.separator1,
+                        user.IsAccountActive?this.disable_tmi:this.enable_tmi, this.separator2,
+                        this.delete_tmi, this.separator3, this.changePwd_tmi});
+                }
             }
-
-
         }
         #endregion
 

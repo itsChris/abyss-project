@@ -65,7 +65,6 @@ namespace Abyss_Client {
             this.address_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.accountInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.neverExpires_chk = new Abyss_Client.CompBase.BaseCheckBox();
-            this.deniedChangePassword_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.changePassword_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.isAccountActive_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.addUser_btn = new Abyss_Client.CompBase.BaseButton();
@@ -543,7 +542,6 @@ namespace Abyss_Client {
             // 
             this.accountInformation_gbx.BackColor = System.Drawing.Color.Transparent;
             this.accountInformation_gbx.Controls.Add(this.neverExpires_chk);
-            this.accountInformation_gbx.Controls.Add(this.deniedChangePassword_chk);
             this.accountInformation_gbx.Controls.Add(this.changePassword_chk);
             this.accountInformation_gbx.Controls.Add(this.isAccountActive_chk);
             this.accountInformation_gbx.Controls.Add(this.username_lbl);
@@ -570,16 +568,6 @@ namespace Abyss_Client {
             this.neverExpires_chk.TabIndex = 8;
             this.neverExpires_chk.Text = "Password never expires";
             this.neverExpires_chk.UseVisualStyleBackColor = true;
-            // 
-            // deniedChangePassword_chk
-            // 
-            this.deniedChangePassword_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deniedChangePassword_chk.Location = new System.Drawing.Point(358, 39);
-            this.deniedChangePassword_chk.Name = "deniedChangePassword_chk";
-            this.deniedChangePassword_chk.Size = new System.Drawing.Size(209, 30);
-            this.deniedChangePassword_chk.TabIndex = 7;
-            this.deniedChangePassword_chk.Text = "User cannot change password";
-            this.deniedChangePassword_chk.UseVisualStyleBackColor = true;
             // 
             // changePassword_chk
             // 
@@ -699,7 +687,6 @@ namespace Abyss_Client {
         private Abyss_Client.CompBase.BaseLabel desc_lbl;
         private Abyss_Client.CompBase.BaseTextBox desc_txt;
         private Abyss_Client.CompBase.BaseCheckBox changePassword_chk;
-        private Abyss_Client.CompBase.BaseCheckBox deniedChangePassword_chk;
         private Abyss_Client.CompBase.BaseCheckBox neverExpires_chk;
     }
 }

@@ -45,6 +45,11 @@ namespace Abyss_Client {
                 ADConnection.setInitToFalse();
                 reset_btn_Click(new object(), new EventArgs());
             }
+            else {
+                MessageBox.Show("Login failed", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ADConnection.setInitToFalse();
+            }
+           
             Cursor.Current = Cursors.Default;
         }
 

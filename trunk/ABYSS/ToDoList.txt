@@ -15,3 +15,15 @@ si vous modifiez une méthode méttez ce que vous modifiez en commentaire
 
 -Rajouter dans le process d'ajout d'un user, l'ajout dans oracle aussi via un "create user".
 -Gérer le "cant change password".
+
+
+Gestion des User
+
+Rajouté un user dans un group
+Retiré unser 'un group*
+disable user account
+Activé user account
+Supprimer un user
+Change mot de passe
+
+
