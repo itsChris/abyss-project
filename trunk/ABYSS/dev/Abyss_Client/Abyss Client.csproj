@@ -53,7 +53,6 @@
       <HintPath>..\..\..\..\..\..\..\..\..\..\oracle\product\10.2.0\client_2\odp.net\bin\2.x\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.DirectoryServices" />
@@ -292,7 +291,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Resources\splash.png" />
   </ItemGroup>
   <ItemGroup>

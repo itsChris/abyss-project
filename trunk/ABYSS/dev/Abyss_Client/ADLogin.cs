@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using Business;
+using System.DirectoryServices;
 
 namespace Abyss_Client {
     public partial class ADLogin : CompBase.BaseForm {
@@ -12,26 +13,26 @@ namespace Abyss_Client {
 
         #region Component events
         private void connect_btn_Click(object sender, EventArgs e) {
-            ADConnection ldap = null;
+            DirectoryEntry connexion = null;
             ADUser user = null;
             Cursor.Current = Cursors.WaitCursor;
             try {
-                if (setError()) {
-                    return;
-                }
+                //if (setError()) {
+                //    return;
+                //}
                 if (defaultLdap_rbt.Checked) {
-                    ldap = ADConnection.getInstance(login_txt.Text, password_txt.Text);
+                    connexion = ADConnection.getInstance(login_txt.Text, password_txt.Text);
                 }
                 else {
-                    ldap = ADConnection.getInstance(ldap_txt.Text, login_txt.Text, password_txt.Text);
-                }
+                    connexion = ADConnection.getInstance(ldap_txt.Text, login_txt.Text, password_txt.Text);
+                }   
                 user = ADUser.getUserByName(login_txt.Text);
             }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message, this.Text,
+            catch (DirectoryServicesCOMException DSComEx) {
+                MessageBox.Show(DSComEx.Message, this.Text,
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (ldap != null) {
-                    ldap.setInitToFalse();
+                if (connexion != null) {
+                    ADConnection.setInitToFalse();
                 }
                 return;
             }
@@ -39,8 +40,8 @@ namespace Abyss_Client {
                 MessageBox.Show("Login success. Welcome " + user.UserName,
                 this.Text, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-                openForm(new ADAdministration(ldap));
-                ldap.setInitToFalse();
+                openForm(new ADAdministration(connexion));
+                ADConnection.setInitToFalse();
                 reset_btn_Click(new object(), new EventArgs());
             }
             Cursor.Current = Cursors.Default;

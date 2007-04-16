@@ -81,7 +81,6 @@ namespace Abyss_Client {
                     user.Password = password_txt.Text;
                     user.IsAccountActive = !isAccountActive_chk.Checked;
                     user.ChangePasswordNextLogon = changePassword_chk.Checked;
-                    user.ChangePasswordRight = deniedChangePassword_chk.Checked;
                     user.PasswordNeverExpired = neverExpires_chk.Checked;
                     user.save();
                     dialogResult = DialogResult.OK;
@@ -140,7 +139,6 @@ namespace Abyss_Client {
 
             isAccountActive_chk.Checked = !user.IsAccountActive;
             changePassword_chk.Checked = user.ChangePasswordNextLogon;
-            deniedChangePassword_chk.Checked = user.ChangePasswordRight;
             neverExpires_chk.Checked = user.PasswordNeverExpired;
           
         }

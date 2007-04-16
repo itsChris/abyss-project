@@ -6,7 +6,7 @@ using Business;
 namespace Abyss_Client {
     public partial class ADAdministration : CompBase.BaseForm {
         #region Attributes
-        private ADConnection ldap;
+        private DirectoryEntry ldap;
         private ListViewColumnSorter lvwColumnSorter;
         #endregion
 
@@ -26,7 +26,7 @@ namespace Abyss_Client {
         #endregion
 
         #region Constructors
-        public ADAdministration(ADConnection ldap) {
+        public ADAdministration(DirectoryEntry ldap) {
             InitializeComponent();
             this.ldap = ldap;
         }
@@ -238,7 +238,7 @@ namespace Abyss_Client {
         private void initView() {
             this.lvwColumnSorter = new ListViewColumnSorter();
             this.list_lst.ListViewItemSorter = lvwColumnSorter;
-            DirectoryEntry entry = ldap.Entry;
+            DirectoryEntry entry = ldap;
             TreeNode root = new TreeNode((string)entry.Properties["distinguishedName"].Value, (int)AdImages.AdRoot, (int)AdImages.AdRoot);
             root.Tag = entry;
             this.tree_trv.Nodes.Clear();

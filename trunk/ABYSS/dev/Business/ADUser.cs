@@ -127,11 +127,6 @@ namespace Business {
             set { adUserData.ChangePasswordNextLogon = value; }
         }
 
-        public bool ChangePasswordRight {
-            get { return adUserData.ChangePasswordRight; }
-            set { adUserData.ChangePasswordRight = value; }
-        }
-
         public bool PasswordNeverExpired {
             get { return adUserData.PasswordNeverExpired; }
             set { adUserData.PasswordNeverExpired = value; }
@@ -183,6 +178,14 @@ namespace Business {
         /// <param name="groupDistinguishedName"></param>
         public void RemoveUserFromGroup(string groupDistinguishedName) {
             ADUserDAO.removeUserFromGroup(DistinguishedName, groupDistinguishedName);
+        }
+
+        /// <summary>
+        /// Set a new password
+        /// </summary>
+        /// <param name="newPassword"></param>
+        public void setUserPassword(string newPassword) {
+            ADUserDAO.setUserPassword(newPassword, adUserData.UserName);
         }
 
         /// <summary>

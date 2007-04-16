@@ -41,7 +41,7 @@ namespace DAO {
         /// Return the cuurent instance
         /// </summary>
         /// <returns></returns>
-        protected static DirectoryEntry getInstance() {
+        public static DirectoryEntry getInstance() {
             return instance;
         }
         
