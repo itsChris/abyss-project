@@ -39,6 +39,7 @@
     <Compile Include="ADUserDAO.cs" />
     <Compile Include="LdapDAO.cs" />
     <Compile Include="OracleDAO.cs" />
+    <Compile Include="OracleUserDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Persistence\Persistence.csproj">
