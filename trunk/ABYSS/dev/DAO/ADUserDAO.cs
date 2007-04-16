@@ -51,7 +51,6 @@ namespace DAO {
             System.Type type = largeInteger.GetType();
             int highPart = (int)type.InvokeMember("HighPart", BindingFlags.GetProperty, null, largeInteger, null);
             int lowPart = (int)type.InvokeMember("LowPart", BindingFlags.GetProperty, null, largeInteger, null);
-
             return (long)highPart << 32 | (uint)lowPart;
         }
 
@@ -74,10 +73,10 @@ namespace DAO {
         /// </summary>
         /// <param name="adUserData"></param>
         private static void save(ADUserData adUserData) {
-            DirectoryEntry root = LdapDAO.Root;
+            DirectoryEntry entry = getInstance();
             DirectoryEntry directoryEntry = Utility.getUser(adUserData.UserName);
             if (directoryEntry == null) {
-                DirectoryEntries directoryEntries = root.Children;
+                DirectoryEntries directoryEntries = entry.Children;
                 directoryEntry = directoryEntries.Add("cn=" + adUserData.UserName + ",cn=users", "user");
             }
             Utility.setProperty(directoryEntry, "givenName", adUserData.FirstName);
@@ -89,7 +88,7 @@ namespace DAO {
                 Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserPrincipalName);
             }
             else {
-                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserName + "@" + Utility.PurgeDC(Utility.getProperty(root, "distinguishedName")));
+                Utility.setProperty(directoryEntry, "UserPrincipalName", adUserData.UserName + "@" + Utility.PurgeDC(Utility.getProperty(entry, "distinguishedName")));
             }
             Utility.setProperty(directoryEntry, "PostalAddress", adUserData.PostalAddress);
             Utility.setProperty(directoryEntry, "StreetAddress", adUserData.MailingAddress);
@@ -103,16 +102,17 @@ namespace DAO {
             Utility.setProperty(directoryEntry, "Url", adUserData.Url);
             Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
             Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
-            
-            
+            Int32 userAccountControl;
             if (adUserData.IsAccountActive) {
-                directoryEntry.Properties["userAccountControl"].Value = Convert.ToInt32(Utility.UserStatus.Enable);
+                userAccountControl = Convert.ToInt32(Utility.UserStatus.Enable);
             }
             else {
-                directoryEntry.Properties["userAccountControl"].Value = Convert.ToInt32(Utility.UserStatus.Disable);
+                userAccountControl = Convert.ToInt32(Utility.UserStatus.Disable);
             }
-
-
+            if (adUserData.PasswordNeverExpired) {
+                userAccountControl += Convert.ToInt32(Utility.ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD);
+            }
+            directoryEntry.Properties["userAccountControl"].Value = userAccountControl;
             Utility.setProperty(directoryEntry, "pwdLastSet", adUserData.ChangePasswordNextLogon ? "0" : "-1");
             directoryEntry.CommitChanges();
         }
@@ -168,6 +168,15 @@ namespace DAO {
             DirectoryEntry directoryEntry = Utility.getDirectoryObjectByDistinguishedName(groupDistinguishedName);
             directoryEntry.Invoke("Remove", new object[] { userDistinguishedName });
             directoryEntry.Close();
+        }
+
+        /// <summary>
+        /// Change user password
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="userName"></param>
+        public static void setUserPassword(string password, string userName){
+            Utility.setUserPassword(Utility.getUser(userName), password);
         }
 
         /// <summary>
