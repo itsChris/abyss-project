@@ -87,12 +87,24 @@ namespace Abyss_Client.CompBase {
                                     tb.setErrorBackColor(false);
                                 }
                             }
+                            if (control is BaseGroupBox) {
+                                foreach (Control textBoxControl in control.Controls) {
+                                    if (textBoxControl is BaseTextBox) {
+                                        BaseTextBox tb = (BaseTextBox)textBoxControl;
+                                        if (tb.Mandatory && string.IsNullOrEmpty(tb.Text.Trim()) && tb.Enabled && tb.Visible) {
+                                            tb.setErrorBackColor(true);
+                                            result = false;
+                                        }
+                                        else {
+                                            tb.setErrorBackColor(false);
+                                        }
+                                    }
+                                }
+                            }
                         }
-                   
                     }
                 }
             }
-
             return result;
         }
         #endregion
