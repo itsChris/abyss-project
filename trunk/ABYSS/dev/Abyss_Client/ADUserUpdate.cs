@@ -1,6 +1,7 @@
 using System;
 using Business;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Abyss_Client {
     public partial class ADUserUpdate : Abyss_Client.CompBase.BaseForm {
@@ -44,6 +45,7 @@ namespace Abyss_Client {
         }
 
         private void addUser_btn_Click(object sender, EventArgs e) {
+            // Check all mandatory fields
             if (checkMandatoryFields()) {
                 // Check if the passwords are correct
                 if (!checkPasswords()) {
@@ -61,6 +63,7 @@ namespace Abyss_Client {
                             MessageBoxIcon.Exclamation);
                         return;
                     }
+                    // Takes the parameters
                     ADUser user = new ADUser();
                     user.FirstName = firstName_txt.Text;
                     user.LastName = lastName_txt.Text;
@@ -82,13 +85,25 @@ namespace Abyss_Client {
                     user.IsAccountActive = !isAccountActive_chk.Checked;
                     user.ChangePasswordNextLogon = changePassword_chk.Checked;
                     user.PasswordNeverExpired = neverExpires_chk.Checked;
+                    // Save the user
                     user.save();
                     dialogResult = DialogResult.OK;
                     this.Close();
                 }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
+                catch (UnauthorizedAccessException uaex) {
+                    MessageBox.Show(uaex.Message);
                 }
+                catch (COMException comex) {
+                    MessageBox.Show(comex.Message);
+                }
+            }
+        }
+
+        private void neverExpires_chk_Click(object sender, EventArgs e) {
+            if (neverExpires_chk.Checked && changePassword_chk.Checked) {
+                MessageBox.Show("You specified that the password should never expire. The user will not be required to change the password at next logon",
+                    this.Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                changePassword_chk.Checked = false;
             }
         }
 
@@ -140,7 +155,6 @@ namespace Abyss_Client {
             isAccountActive_chk.Checked = !user.IsAccountActive;
             changePassword_chk.Checked = user.ChangePasswordNextLogon;
             neverExpires_chk.Checked = user.PasswordNeverExpired;
-          
         }
 
         private bool checkPasswords(){

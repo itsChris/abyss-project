@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms; 
 using System.DirectoryServices;
 using Business;
+using System.Runtime.InteropServices;
 
 namespace Abyss_Client {
     public partial class ADAdministration : CompBase.BaseForm {
@@ -18,10 +19,9 @@ namespace Abyss_Client {
             OpenContainer,
             Computer,
             User,
+            Disable,
             Group,
-            Unknown,
-            Unavailable,
-            Disable
+            Unknown
         }
         #endregion
 
@@ -33,10 +33,11 @@ namespace Abyss_Client {
         #endregion
 
         #region Component events
-        private void quitToolStripMenuItem_Click(object sender, EventArgs e){
-            this.Close();
-        }
-
+        /// <summary>
+        /// Load 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListActiveDirectory_Load(object sender, EventArgs e) {
             initView();
         }
@@ -132,14 +133,18 @@ namespace Abyss_Client {
                     }
                 }
             }
-            catch (Exception ex) {
-                // active directory exception ???
-                //MessageBox.Show(ex.Message);
+            catch (COMException ) {
             }
             e.Node.Expand();
             treeView.EndUpdate();
         }
-        
+
+        /// <summary>
+        /// When double click on a container, expand it and show what it contains in the listview
+        /// When double click, if its a user, a group or a compunter, open it and show informations about it
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void list_lst_DoubleClick(object sender, EventArgs e) {
             ListView myListView = (ListView)sender;
             if (myListView.SelectedItems.Count == 1) {
@@ -158,10 +163,27 @@ namespace Abyss_Client {
                             }
                         }
                         break;
+                    case (int)AdImages.Group:
+                    case (int)AdImages.Computer:
+                    case (int)AdImages.User:
+                        if (this.list_lst.SelectedItems[0].Tag != null) {
+                            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                                if (DialogResult.OK == openForm(new ADUserUpdate(user))) {
+                                    refreshCurrentNode();
+                                }
+                            }
+                        }
+                        break;
                 }
             }
         }
 
+        /// <summary>
+        /// Sort the column when click on it
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void list_lst_ColumnClick(object sender, ColumnClickEventArgs e) {
             ListView myListView = (ListView)sender;
             // Determine if clicked column is already the column that is being sorted.
@@ -182,7 +204,107 @@ namespace Abyss_Client {
             // Perform the sort with these new sort options.
 			myListView.Sort();
         }
+
+        /// <summary>
+        /// When the context menu opening, showing choise depend off the business object
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listView_ctm_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+            if (this.list_lst.SelectedItems.Count == 1) {
+                if (this.list_lst.SelectedItems[0].Tag != null) {
+                    this.listView_ctm.Items.Clear();
+                    if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                        ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                        this.listView_ctm.Items.AddRange(new ToolStripItem[] { this.modify_tmi, this.separator1,
+                        user.IsAccountActive?this.disable_tmi:this.enable_tmi, this.separator2,
+                        this.delete_tmi, this.separator3, this.changePwd_tmi});
+                    }
+                    else {
+                        e.Cancel = true;
+                    }
+                }
+                else {
+                    e.Cancel = true;
+                }
+            }
+        }
           
+        /// <summary>
+        /// Open the form for the creation off a new user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void user_tmi_Click(object sender, EventArgs e) {
+            if (DialogResult.OK == openForm(new ADUserUpdate())) {
+                refreshCurrentNode();
+            }
+        }
+
+        /// <summary>
+        /// Open the form for the modification of an business object that you choose
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void modify_tmi_Click(object sender, EventArgs e) {
+            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                if (DialogResult.OK == openForm(new ADUserUpdate(user))) {
+                    refreshCurrentNode();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Disable an business object
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void disable_tmi_Click(object sender, EventArgs e) {
+            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                user.disableUserAccount();
+                refreshCurrentNode();
+            }
+        }
+
+        /// <summary>
+        /// Enable an business object
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void enable_tmi_Click(object sender, EventArgs e) {
+            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                user.enableUserAccount();
+                refreshCurrentNode();
+            }
+        }
+
+        /// <summary>
+        /// Delete an business object
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void delete_tmi_Click(object sender, EventArgs e) {
+            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                user.deleteUserAccount();
+                refreshCurrentNode();
+            }
+        }
+
+        private void changePwd_tmi_Click(object sender, EventArgs e) {
+
+        }
+
+        
+
+        /// <summary>
+        /// Close the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ADManagement_FormClosing(object sender, FormClosingEventArgs e) {
             if (MessageBox.Show("Do you want to quit ?", this.Text,
                 MessageBoxButtons.YesNo,
@@ -191,57 +313,13 @@ namespace Abyss_Client {
             }
         }
 
-        private void user_tmi_Click(object sender, EventArgs e) {
-            openForm(new ADUserUpdate());
-        }
-
-        private void modify_tmi_Click(object sender, EventArgs e) {
-            if (this.list_lst.SelectedItems.Count != 0) {
-                if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
-                    ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
-                    openForm(new ADUserUpdate(user));
-                }
-            }
-
-
-                //try
-                ////{
-                //if ((this.listViewLdap.SelectedItems[0].Tag).GetType() == typeof(User))
-                //    {
-                //        User myObject = (User)this.listViewLdap.SelectedItems[0].Tag;
-                //        (new frm_user(myObject.accessorUsrdata)).ShowDialog();
-                //        displayList("user");
-                //    }
-                //    else if ((this.listViewLdap.SelectedItems[0].Tag).GetType() == typeof(Computer))
-                //    {
-                //        Computer myObject = (Computer)this.listViewLdap.SelectedItems[0].Tag;
-                //        (new frm_computer(myObject.accessorCompdata)).ShowDialog();
-                //        displayList("computer");
-                //    }
-                //    else if ((this.listViewLdap.SelectedItems[0].Tag).GetType() == typeof(Group))
-                //    {
-                //        Group myObject = (Group)this.listViewLdap.SelectedItems[0].Tag;
-                //        (new frm_group(myObject.accessorGroupdata)).ShowDialog();
-                //        displayList("group");
-                //    }
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("This object can't be edited");
-                //}
-            //}
-        }
-
-        private void listView_ctm_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
-            if (this.list_lst.SelectedItems.Count != 0) {
-                if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
-                    ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
-                    this.listView_ctm.Items.Clear();
-                    this.listView_ctm.Items.AddRange(new ToolStripItem[] { this.modify_tmi, this.separator1,
-                        user.IsAccountActive?this.disable_tmi:this.enable_tmi, this.separator2,
-                        this.delete_tmi, this.separator3, this.changePwd_tmi});
-                }
-            }
+        /// <summary>
+        /// Quit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.Close();
         }
         #endregion
 
@@ -249,12 +327,25 @@ namespace Abyss_Client {
         private void initView() {
             this.lvwColumnSorter = new ListViewColumnSorter();
             this.list_lst.ListViewItemSorter = lvwColumnSorter;
-            DirectoryEntry entry = ldap;
-            TreeNode root = new TreeNode((string)entry.Properties["distinguishedName"].Value, (int)AdImages.AdRoot, (int)AdImages.AdRoot);
-            root.Tag = entry;
+            TreeNode root = new TreeNode((string)ldap.Properties["distinguishedName"].Value, (int)AdImages.AdRoot, (int)AdImages.AdRoot);
+            root.Tag = ldap;
             this.tree_trv.Nodes.Clear();
             this.tree_trv.Nodes.Add(root);
         }
+
+        private void refreshCurrentNode() {
+            TreeNode node = this.tree_trv.SelectedNode;
+            TreeViewEventArgs tvea = new TreeViewEventArgs(node);
+            this.tree_trv_AfterSelect(this.tree_trv, tvea);
+        }
         #endregion 
+
+        
+
+        
+
+        
+
+        
     }
 }

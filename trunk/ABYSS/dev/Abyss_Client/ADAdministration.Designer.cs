@@ -152,16 +152,15 @@
             // 
             this.imageList_adObjects.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_adObjects.ImageStream")));
             this.imageList_adObjects.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList_adObjects.Images.SetKeyName(0, "DCIcon.png");
+            this.imageList_adObjects.Images.SetKeyName(0, "");
             this.imageList_adObjects.Images.SetKeyName(1, "");
             this.imageList_adObjects.Images.SetKeyName(2, "");
-            this.imageList_adObjects.Images.SetKeyName(3, "ContainerIcon.png");
-            this.imageList_adObjects.Images.SetKeyName(4, "ComputerIcon.png");
-            this.imageList_adObjects.Images.SetKeyName(5, "UserIcon.png");
-            this.imageList_adObjects.Images.SetKeyName(6, "GroupIcon.png");
+            this.imageList_adObjects.Images.SetKeyName(3, "");
+            this.imageList_adObjects.Images.SetKeyName(4, "");
+            this.imageList_adObjects.Images.SetKeyName(5, "");
+            this.imageList_adObjects.Images.SetKeyName(6, "");
             this.imageList_adObjects.Images.SetKeyName(7, "");
             this.imageList_adObjects.Images.SetKeyName(8, "");
-            this.imageList_adObjects.Images.SetKeyName(9, "UserBlockIcon.png");
             // 
             // list_lst
             // 
@@ -218,7 +217,7 @@
             this.listView_ctm.Name = "baseContextMenu1";
             this.listView_ctm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.listView_ctm.ShowImageMargin = false;
-            this.listView_ctm.Size = new System.Drawing.Size(147, 138);
+            this.listView_ctm.Size = new System.Drawing.Size(147, 160);
             this.listView_ctm.Opening += new System.ComponentModel.CancelEventHandler(this.listView_ctm_Opening);
             // 
             // modify_tmi
@@ -238,6 +237,7 @@
             this.disable_tmi.Name = "disable_tmi";
             this.disable_tmi.Size = new System.Drawing.Size(146, 22);
             this.disable_tmi.Text = "Disable account";
+            this.disable_tmi.Click += new System.EventHandler(this.disable_tmi_Click);
             // 
             // separator2
             // 
@@ -249,6 +249,7 @@
             this.enable_tmi.Name = "enable_tmi";
             this.enable_tmi.Size = new System.Drawing.Size(146, 22);
             this.enable_tmi.Text = "Enable Account";
+            this.enable_tmi.Click += new System.EventHandler(this.enable_tmi_Click);
             // 
             // separator3
             // 
@@ -260,6 +261,7 @@
             this.delete_tmi.Name = "delete_tmi";
             this.delete_tmi.Size = new System.Drawing.Size(146, 22);
             this.delete_tmi.Text = "Delete Account";
+            this.delete_tmi.Click += new System.EventHandler(this.delete_tmi_Click);
             // 
             // separator4
             // 
@@ -271,6 +273,7 @@
             this.changePwd_tmi.Name = "changePwd_tmi";
             this.changePwd_tmi.Size = new System.Drawing.Size(146, 22);
             this.changePwd_tmi.Text = "Change Password";
+            this.changePwd_tmi.Click += new System.EventHandler(this.changePwd_tmi_Click);
             // 
             // menu_stp
             // 

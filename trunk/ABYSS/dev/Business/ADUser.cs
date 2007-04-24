@@ -29,7 +29,7 @@ namespace Business {
 
         public string MiddleInitial {
             get { return adUserData.MiddleInitial; }
-            set { adUserData.MailingAddress = value; }
+            set { adUserData.MiddleInitial = value; }
         }
 
         public string LastName {

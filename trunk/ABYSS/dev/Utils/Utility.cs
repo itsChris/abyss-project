@@ -207,7 +207,7 @@ namespace Utils {
         /// </summary>
         /// <param name="directoryEntry"></param>
         public static void enableUserAccount(DirectoryEntry directoryEntry) {
-            directoryEntry.Properties["userAccountControl"].Value = UserStatus.Enable;
+            directoryEntry.Properties["userAccountControl"].Value = Convert.ToInt32(UserStatus.Enable);
             directoryEntry.CommitChanges();
             directoryEntry.Close();
         }
@@ -217,7 +217,7 @@ namespace Utils {
         /// </summary>
         /// <param name="directoryEntry"></param>
         public static void disableUserAccount(DirectoryEntry directoryEntry) {
-            directoryEntry.Properties["userAccountControl"].Value = UserStatus.Disable;
+            directoryEntry.Properties["userAccountControl"].Value = Convert.ToInt32(UserStatus.Disable); ;
             directoryEntry.CommitChanges();
             directoryEntry.Close();
         }
