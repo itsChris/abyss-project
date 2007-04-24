@@ -149,7 +149,7 @@ namespace Abyss_Client {
             this.initial_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.initial_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.initial_txt.Location = new System.Drawing.Point(177, 76);
-            this.initial_txt.Mandatory = false;
+            this.initial_txt.Mandatory = true;
             this.initial_txt.MaxLength = 6;
             this.initial_txt.Name = "initial_txt";
             this.initial_txt.Size = new System.Drawing.Size(58, 20);
@@ -161,7 +161,7 @@ namespace Abyss_Client {
             this.displayName_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.displayName_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.displayName_txt.Location = new System.Drawing.Point(177, 102);
-            this.displayName_txt.Mandatory = false;
+            this.displayName_txt.Mandatory = true;
             this.displayName_txt.Name = "displayName_txt";
             this.displayName_txt.Size = new System.Drawing.Size(172, 20);
             this.displayName_txt.TabIndex = 7;
@@ -562,28 +562,30 @@ namespace Abyss_Client {
             // 
             this.neverExpires_chk.AutoSize = true;
             this.neverExpires_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.neverExpires_chk.Location = new System.Drawing.Point(358, 75);
+            this.neverExpires_chk.Location = new System.Drawing.Point(355, 66);
             this.neverExpires_chk.Name = "neverExpires_chk";
             this.neverExpires_chk.Size = new System.Drawing.Size(161, 17);
             this.neverExpires_chk.TabIndex = 8;
             this.neverExpires_chk.Text = "Password never expires";
             this.neverExpires_chk.UseVisualStyleBackColor = true;
+            this.neverExpires_chk.Click += new System.EventHandler(this.neverExpires_chk_Click);
             // 
             // changePassword_chk
             // 
             this.changePassword_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changePassword_chk.Location = new System.Drawing.Point(358, 10);
+            this.changePassword_chk.Location = new System.Drawing.Point(355, 32);
             this.changePassword_chk.Name = "changePassword_chk";
             this.changePassword_chk.Size = new System.Drawing.Size(209, 30);
             this.changePassword_chk.TabIndex = 6;
             this.changePassword_chk.Text = "User must change password at the next logon";
             this.changePassword_chk.UseVisualStyleBackColor = true;
+            this.changePassword_chk.Click += new System.EventHandler(this.neverExpires_chk_Click);
             // 
             // isAccountActive_chk
             // 
             this.isAccountActive_chk.AutoSize = true;
             this.isAccountActive_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isAccountActive_chk.Location = new System.Drawing.Point(358, 105);
+            this.isAccountActive_chk.Location = new System.Drawing.Point(355, 92);
             this.isAccountActive_chk.Name = "isAccountActive_chk";
             this.isAccountActive_chk.Size = new System.Drawing.Size(118, 17);
             this.isAccountActive_chk.TabIndex = 9;
@@ -594,7 +596,7 @@ namespace Abyss_Client {
             // 
             this.addUser_btn.BackColor = System.Drawing.Color.LightGray;
             this.addUser_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.addUser_btn.Location = new System.Drawing.Point(700, 485);
+            this.addUser_btn.Location = new System.Drawing.Point(700, 468);
             this.addUser_btn.Name = "addUser_btn";
             this.addUser_btn.Size = new System.Drawing.Size(67, 23);
             this.addUser_btn.TabIndex = 4;
@@ -606,7 +608,7 @@ namespace Abyss_Client {
             // 
             this.cancel_btn.BackColor = System.Drawing.Color.LightGray;
             this.cancel_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.cancel_btn.Location = new System.Drawing.Point(579, 485);
+            this.cancel_btn.Location = new System.Drawing.Point(579, 468);
             this.cancel_btn.Name = "cancel_btn";
             this.cancel_btn.Size = new System.Drawing.Size(85, 23);
             this.cancel_btn.TabIndex = 3;
@@ -616,7 +618,7 @@ namespace Abyss_Client {
             // 
             // ADUserUpdate
             // 
-            this.ClientSize = new System.Drawing.Size(988, 542);
+            this.ClientSize = new System.Drawing.Size(988, 498);
             this.Controls.Add(this.cancel_btn);
             this.Controls.Add(this.addUser_btn);
             this.Controls.Add(this.accountInformation_gbx);

@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADUserPasswordUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADUserPasswordUpdate.Designer.cs">
+      <DependentUpon>ADUserPasswordUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="ADUserUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
