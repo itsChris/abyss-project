@@ -154,13 +154,14 @@
             this.imageList_adObjects.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList_adObjects.Images.SetKeyName(0, "");
             this.imageList_adObjects.Images.SetKeyName(1, "");
-            this.imageList_adObjects.Images.SetKeyName(2, "");
-            this.imageList_adObjects.Images.SetKeyName(3, "");
+            this.imageList_adObjects.Images.SetKeyName(2, "5485-cameleonhelp-Dossiervistaferme.png");
+            this.imageList_adObjects.Images.SetKeyName(3, "5493-cameleonhelp-dossiervistaouvert.png");
             this.imageList_adObjects.Images.SetKeyName(4, "");
             this.imageList_adObjects.Images.SetKeyName(5, "");
             this.imageList_adObjects.Images.SetKeyName(6, "");
             this.imageList_adObjects.Images.SetKeyName(7, "");
             this.imageList_adObjects.Images.SetKeyName(8, "");
+            this.imageList_adObjects.Images.SetKeyName(9, "computerblocked.png");
             // 
             // list_lst
             // 
@@ -217,7 +218,7 @@
             this.listView_ctm.Name = "baseContextMenu1";
             this.listView_ctm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.listView_ctm.ShowImageMargin = false;
-            this.listView_ctm.Size = new System.Drawing.Size(147, 160);
+            this.listView_ctm.Size = new System.Drawing.Size(147, 138);
             this.listView_ctm.Opening += new System.ComponentModel.CancelEventHandler(this.listView_ctm_Opening);
             // 
             // modify_tmi
