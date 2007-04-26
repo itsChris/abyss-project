@@ -71,11 +71,19 @@ namespace Abyss_Client {
                 e.Cancel = true;
             }
         }
+
+        private void addUserToolStripMenuItem_Click(object sender, EventArgs e) {
+            OracleUserAdd f = new OracleUserAdd();
+            f.Show();
+        }
+
         #endregion
 
         private void OracleAdministration_Load(object sender, EventArgs e) {
 
         }
+
+        
 
         
         

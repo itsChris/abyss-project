@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="ADConnection.cs" />
     <Compile Include="ADUser.cs" />
+    <Compile Include="OracleUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">
