@@ -182,6 +182,12 @@
     <Compile Include="OracleAdministration.designer.cs">
       <DependentUpon>OracleAdministration.cs</DependentUpon>
     </Compile>
+    <Compile Include="OracleUserAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OracleUserAdd.Designer.cs">
+      <DependentUpon>OracleUserAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ADUserUpdate.resx">
       <DependentUpon>ADUserUpdate.cs</DependentUpon>
@@ -254,6 +260,10 @@
     <EmbeddedResource Include="OracleAdministration.resx">
       <DependentUpon>OracleAdministration.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OracleUserAdd.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OracleUserAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
