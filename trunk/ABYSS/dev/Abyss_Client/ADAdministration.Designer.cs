@@ -153,7 +153,7 @@
             this.imageList_adObjects.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_adObjects.ImageStream")));
             this.imageList_adObjects.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList_adObjects.Images.SetKeyName(0, "");
-            this.imageList_adObjects.Images.SetKeyName(1, "");
+            this.imageList_adObjects.Images.SetKeyName(1, "ou.png");
             this.imageList_adObjects.Images.SetKeyName(2, "5485-cameleonhelp-Dossiervistaferme.png");
             this.imageList_adObjects.Images.SetKeyName(3, "5493-cameleonhelp-dossiervistaouvert.png");
             this.imageList_adObjects.Images.SetKeyName(4, "");
