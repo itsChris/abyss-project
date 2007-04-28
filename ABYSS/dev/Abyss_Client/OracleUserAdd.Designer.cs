@@ -24,22 +24,22 @@
         /// </summary>
         private void InitializeComponent() {
             this.userInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
-            this.userLogin_lbl = new Abyss_Client.CompBase.BaseLabel();
-            this.userPassword_lbl = new Abyss_Client.CompBase.BaseLabel();
-            this.userLogin_txt = new Abyss_Client.CompBase.BaseTextBox();
-            this.userPassword_txt = new Abyss_Client.CompBase.BaseTextBox();
-            this.externalUser_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.globalUser_chk = new Abyss_Client.CompBase.BaseCheckBox();
+            this.externalUser_chk = new Abyss_Client.CompBase.BaseCheckBox();
+            this.userPassword_txt = new Abyss_Client.CompBase.BaseTextBox();
+            this.userLogin_txt = new Abyss_Client.CompBase.BaseTextBox();
+            this.userPassword_lbl = new Abyss_Client.CompBase.BaseLabel();
+            this.userLogin_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.tablespace_gbx = new Abyss_Client.CompBase.BaseGroupBox();
-            this.defaultTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
-            this.defaultTablespace_txt = new Abyss_Client.CompBase.BaseTextBox();
-            this.temporaryTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.temporaryTablespace_txt = new Abyss_Client.CompBase.BaseTextBox();
+            this.temporaryTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
+            this.defaultTablespace_txt = new Abyss_Client.CompBase.BaseTextBox();
+            this.defaultTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.accountInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
-            this.profile_lbl = new Abyss_Client.CompBase.BaseLabel();
-            this.passwordExpire_chk = new Abyss_Client.CompBase.BaseCheckBox();
-            this.accountLock_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.profile_txt = new Abyss_Client.CompBase.BaseTextBox();
+            this.accountLock_chk = new Abyss_Client.CompBase.BaseCheckBox();
+            this.passwordExpire_chk = new Abyss_Client.CompBase.BaseCheckBox();
+            this.profile_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.createUser_btn = new Abyss_Client.CompBase.BaseButton();
             this.userInformation_gbx.SuspendLayout();
             this.tablespace_gbx.SuspendLayout();
@@ -63,38 +63,27 @@
             this.userInformation_gbx.TabStop = false;
             this.userInformation_gbx.Text = "User Information";
             // 
-            // userLogin_lbl
+            // globalUser_chk
             // 
-            this.userLogin_lbl.AutoSize = true;
-            this.userLogin_lbl.BackColor = System.Drawing.Color.LightGray;
-            this.userLogin_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.userLogin_lbl.Location = new System.Drawing.Point(33, 32);
-            this.userLogin_lbl.Name = "userLogin_lbl";
-            this.userLogin_lbl.Size = new System.Drawing.Size(46, 13);
-            this.userLogin_lbl.TabIndex = 0;
-            this.userLogin_lbl.Text = "Login :";
+            this.globalUser_chk.AutoSize = true;
+            this.globalUser_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.globalUser_chk.Location = new System.Drawing.Point(163, 93);
+            this.globalUser_chk.Name = "globalUser_chk";
+            this.globalUser_chk.Size = new System.Drawing.Size(92, 17);
+            this.globalUser_chk.TabIndex = 8;
+            this.globalUser_chk.Text = "Global User";
+            this.globalUser_chk.UseVisualStyleBackColor = true;
             // 
-            // userPassword_lbl
+            // externalUser_chk
             // 
-            this.userPassword_lbl.AutoSize = true;
-            this.userPassword_lbl.BackColor = System.Drawing.Color.LightGray;
-            this.userPassword_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.userPassword_lbl.Location = new System.Drawing.Point(33, 58);
-            this.userPassword_lbl.Name = "userPassword_lbl";
-            this.userPassword_lbl.Size = new System.Drawing.Size(69, 13);
-            this.userPassword_lbl.TabIndex = 1;
-            this.userPassword_lbl.Text = "Password :";
-            // 
-            // userLogin_txt
-            // 
-            this.userLogin_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.userLogin_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.userLogin_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.userLogin_txt.Location = new System.Drawing.Point(114, 29);
-            this.userLogin_txt.Mandatory = false;
-            this.userLogin_txt.Name = "userLogin_txt";
-            this.userLogin_txt.Size = new System.Drawing.Size(141, 20);
-            this.userLogin_txt.TabIndex = 4;
+            this.externalUser_chk.AutoSize = true;
+            this.externalUser_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.externalUser_chk.Location = new System.Drawing.Point(36, 93);
+            this.externalUser_chk.Name = "externalUser_chk";
+            this.externalUser_chk.Size = new System.Drawing.Size(102, 17);
+            this.externalUser_chk.TabIndex = 7;
+            this.externalUser_chk.Text = "External User";
+            this.externalUser_chk.UseVisualStyleBackColor = true;
             // 
             // userPassword_txt
             // 
@@ -108,27 +97,38 @@
             this.userPassword_txt.Size = new System.Drawing.Size(141, 20);
             this.userPassword_txt.TabIndex = 5;
             // 
-            // externalUser_chk
+            // userLogin_txt
             // 
-            this.externalUser_chk.AutoSize = true;
-            this.externalUser_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.externalUser_chk.Location = new System.Drawing.Point(36, 93);
-            this.externalUser_chk.Name = "externalUser_chk";
-            this.externalUser_chk.Size = new System.Drawing.Size(102, 17);
-            this.externalUser_chk.TabIndex = 7;
-            this.externalUser_chk.Text = "External User";
-            this.externalUser_chk.UseVisualStyleBackColor = true;
+            this.userLogin_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.userLogin_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.userLogin_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.userLogin_txt.Location = new System.Drawing.Point(114, 29);
+            this.userLogin_txt.Mandatory = false;
+            this.userLogin_txt.Name = "userLogin_txt";
+            this.userLogin_txt.Size = new System.Drawing.Size(141, 20);
+            this.userLogin_txt.TabIndex = 4;
             // 
-            // globalUser_chk
+            // userPassword_lbl
             // 
-            this.globalUser_chk.AutoSize = true;
-            this.globalUser_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.globalUser_chk.Location = new System.Drawing.Point(163, 93);
-            this.globalUser_chk.Name = "globalUser_chk";
-            this.globalUser_chk.Size = new System.Drawing.Size(92, 17);
-            this.globalUser_chk.TabIndex = 8;
-            this.globalUser_chk.Text = "Global User";
-            this.globalUser_chk.UseVisualStyleBackColor = true;
+            this.userPassword_lbl.AutoSize = true;
+            this.userPassword_lbl.BackColor = System.Drawing.Color.LightGray;
+            this.userPassword_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.userPassword_lbl.Location = new System.Drawing.Point(33, 58);
+            this.userPassword_lbl.Name = "userPassword_lbl";
+            this.userPassword_lbl.Size = new System.Drawing.Size(69, 13);
+            this.userPassword_lbl.TabIndex = 1;
+            this.userPassword_lbl.Text = "Password :";
+            // 
+            // userLogin_lbl
+            // 
+            this.userLogin_lbl.AutoSize = true;
+            this.userLogin_lbl.BackColor = System.Drawing.Color.LightGray;
+            this.userLogin_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.userLogin_lbl.Location = new System.Drawing.Point(33, 32);
+            this.userLogin_lbl.Name = "userLogin_lbl";
+            this.userLogin_lbl.Size = new System.Drawing.Size(46, 13);
+            this.userLogin_lbl.TabIndex = 0;
+            this.userLogin_lbl.Text = "Login :";
             // 
             // tablespace_gbx
             // 
@@ -145,27 +145,16 @@
             this.tablespace_gbx.TabStop = false;
             this.tablespace_gbx.Text = "Tablespace Information";
             // 
-            // defaultTablespace_lbl
+            // temporaryTablespace_txt
             // 
-            this.defaultTablespace_lbl.AutoSize = true;
-            this.defaultTablespace_lbl.BackColor = System.Drawing.Color.LightGray;
-            this.defaultTablespace_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.defaultTablespace_lbl.Location = new System.Drawing.Point(34, 32);
-            this.defaultTablespace_lbl.Name = "defaultTablespace_lbl";
-            this.defaultTablespace_lbl.Size = new System.Drawing.Size(126, 13);
-            this.defaultTablespace_lbl.TabIndex = 0;
-            this.defaultTablespace_lbl.Text = "Default Tablespace :";
-            // 
-            // defaultTablespace_txt
-            // 
-            this.defaultTablespace_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.defaultTablespace_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.defaultTablespace_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.defaultTablespace_txt.Location = new System.Drawing.Point(192, 29);
-            this.defaultTablespace_txt.Mandatory = false;
-            this.defaultTablespace_txt.Name = "defaultTablespace_txt";
-            this.defaultTablespace_txt.Size = new System.Drawing.Size(145, 20);
-            this.defaultTablespace_txt.TabIndex = 1;
+            this.temporaryTablespace_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.temporaryTablespace_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.temporaryTablespace_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.temporaryTablespace_txt.Location = new System.Drawing.Point(192, 77);
+            this.temporaryTablespace_txt.Mandatory = false;
+            this.temporaryTablespace_txt.Name = "temporaryTablespace_txt";
+            this.temporaryTablespace_txt.Size = new System.Drawing.Size(145, 20);
+            this.temporaryTablespace_txt.TabIndex = 3;
             // 
             // temporaryTablespace_lbl
             // 
@@ -178,16 +167,27 @@
             this.temporaryTablespace_lbl.TabIndex = 2;
             this.temporaryTablespace_lbl.Text = "Temporary Tablespace :";
             // 
-            // temporaryTablespace_txt
+            // defaultTablespace_txt
             // 
-            this.temporaryTablespace_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.temporaryTablespace_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.temporaryTablespace_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.temporaryTablespace_txt.Location = new System.Drawing.Point(192, 77);
-            this.temporaryTablespace_txt.Mandatory = false;
-            this.temporaryTablespace_txt.Name = "temporaryTablespace_txt";
-            this.temporaryTablespace_txt.Size = new System.Drawing.Size(145, 20);
-            this.temporaryTablespace_txt.TabIndex = 3;
+            this.defaultTablespace_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.defaultTablespace_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.defaultTablespace_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.defaultTablespace_txt.Location = new System.Drawing.Point(192, 29);
+            this.defaultTablespace_txt.Mandatory = false;
+            this.defaultTablespace_txt.Name = "defaultTablespace_txt";
+            this.defaultTablespace_txt.Size = new System.Drawing.Size(145, 20);
+            this.defaultTablespace_txt.TabIndex = 1;
+            // 
+            // defaultTablespace_lbl
+            // 
+            this.defaultTablespace_lbl.AutoSize = true;
+            this.defaultTablespace_lbl.BackColor = System.Drawing.Color.LightGray;
+            this.defaultTablespace_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.defaultTablespace_lbl.Location = new System.Drawing.Point(34, 32);
+            this.defaultTablespace_lbl.Name = "defaultTablespace_lbl";
+            this.defaultTablespace_lbl.Size = new System.Drawing.Size(126, 13);
+            this.defaultTablespace_lbl.TabIndex = 0;
+            this.defaultTablespace_lbl.Text = "Default Tablespace :";
             // 
             // accountInformation_gbx
             // 
@@ -204,27 +204,16 @@
             this.accountInformation_gbx.TabStop = false;
             this.accountInformation_gbx.Text = "Account Information :";
             // 
-            // profile_lbl
+            // profile_txt
             // 
-            this.profile_lbl.AutoSize = true;
-            this.profile_lbl.BackColor = System.Drawing.Color.LightGray;
-            this.profile_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.profile_lbl.Location = new System.Drawing.Point(33, 33);
-            this.profile_lbl.Name = "profile_lbl";
-            this.profile_lbl.Size = new System.Drawing.Size(51, 13);
-            this.profile_lbl.TabIndex = 0;
-            this.profile_lbl.Text = "Profile :";
-            // 
-            // passwordExpire_chk
-            // 
-            this.passwordExpire_chk.AutoSize = true;
-            this.passwordExpire_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordExpire_chk.Location = new System.Drawing.Point(36, 76);
-            this.passwordExpire_chk.Name = "passwordExpire_chk";
-            this.passwordExpire_chk.Size = new System.Drawing.Size(119, 17);
-            this.passwordExpire_chk.TabIndex = 1;
-            this.passwordExpire_chk.Text = "Password Expire";
-            this.passwordExpire_chk.UseVisualStyleBackColor = true;
+            this.profile_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.profile_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.profile_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.profile_txt.Location = new System.Drawing.Point(114, 30);
+            this.profile_txt.Mandatory = false;
+            this.profile_txt.Name = "profile_txt";
+            this.profile_txt.Size = new System.Drawing.Size(258, 20);
+            this.profile_txt.TabIndex = 3;
             // 
             // accountLock_chk
             // 
@@ -237,16 +226,27 @@
             this.accountLock_chk.Text = "Lock Account";
             this.accountLock_chk.UseVisualStyleBackColor = true;
             // 
-            // profile_txt
+            // passwordExpire_chk
             // 
-            this.profile_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.profile_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.profile_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.profile_txt.Location = new System.Drawing.Point(114, 30);
-            this.profile_txt.Mandatory = false;
-            this.profile_txt.Name = "profile_txt";
-            this.profile_txt.Size = new System.Drawing.Size(258, 20);
-            this.profile_txt.TabIndex = 3;
+            this.passwordExpire_chk.AutoSize = true;
+            this.passwordExpire_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordExpire_chk.Location = new System.Drawing.Point(36, 76);
+            this.passwordExpire_chk.Name = "passwordExpire_chk";
+            this.passwordExpire_chk.Size = new System.Drawing.Size(119, 17);
+            this.passwordExpire_chk.TabIndex = 1;
+            this.passwordExpire_chk.Text = "Password Expire";
+            this.passwordExpire_chk.UseVisualStyleBackColor = true;
+            // 
+            // profile_lbl
+            // 
+            this.profile_lbl.AutoSize = true;
+            this.profile_lbl.BackColor = System.Drawing.Color.LightGray;
+            this.profile_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.profile_lbl.Location = new System.Drawing.Point(33, 33);
+            this.profile_lbl.Name = "profile_lbl";
+            this.profile_lbl.Size = new System.Drawing.Size(51, 13);
+            this.profile_lbl.TabIndex = 0;
+            this.profile_lbl.Text = "Profile :";
             // 
             // createUser_btn
             // 
@@ -258,12 +258,13 @@
             this.createUser_btn.TabIndex = 3;
             this.createUser_btn.Text = "Create User";
             this.createUser_btn.UseVisualStyleBackColor = true;
+            this.createUser_btn.Click += new System.EventHandler(this.createUser_btn_Click);
             // 
             // OracleUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 329);
+            this.ClientSize = new System.Drawing.Size(673, 325);
             this.Controls.Add(this.createUser_btn);
             this.Controls.Add(this.accountInformation_gbx);
             this.Controls.Add(this.tablespace_gbx);

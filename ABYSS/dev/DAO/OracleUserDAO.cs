@@ -7,7 +7,7 @@ using Oracle.DataAccess.Types;
 using System.Data;
 
 namespace DAO {
-    class OracleUserDAO:OracleDAO {
+    public class OracleUserDAO : OracleDAO {
 
         #region Public Static Methods
         public static void SaveOracleUser(OracleUserData oracleUserData) {
