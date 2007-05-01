@@ -1,12 +1,21 @@
 using System;
+using System.Collections;
 
 namespace Persistence {
     [Serializable]public class ADGroupData {
         #region Attributes
-        private string name; //(cn ) in Active Directory
-        private string displayName;
-        private string distinguishedName;
+        private string name;
         private string description;
+        private GroupeScope scope;
+        private bool securityGroupe;
+        #endregion
+
+        #region Enum
+        public enum GroupeScope {
+            Global,
+            DomainLocal,
+            Universel
+        }
         #endregion
 
         #region Constructors
@@ -20,14 +29,14 @@ namespace Persistence {
             set { name = value; }
         }
 
-        public string DisplayName {
-            get { return displayName; }
-            set { displayName = value; }
+        public bool SecurityGroupe {
+            get { return securityGroupe; }
+            set { securityGroupe = value; }
         }
 
-        public string DistinguishedName {
-            get { return distinguishedName; }
-            set { distinguishedName = value; }
+        public GroupeScope Scope {
+            get { return scope; }
+            set { scope = value; }
         }
 
         public string Description {

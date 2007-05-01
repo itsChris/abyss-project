@@ -10,6 +10,15 @@ namespace Abyss_Client {
         private bool update = false;
         #endregion Attributes
 
+        #region enum
+        private enum StrongPassword {
+            Weak,
+            Ok,
+            Good,
+            Perfect
+        }
+        #endregion
+
         #region Constructors
         public ADUserUpdate() {
             InitializeComponent();
@@ -92,9 +101,11 @@ namespace Abyss_Client {
                 }
                 catch (UnauthorizedAccessException uaex) {
                     MessageBox.Show(uaex.Message);
+                    return;
                 }
                 catch (COMException comex) {
                     MessageBox.Show(comex.Message);
+                    return;
                 }
             }
         }
@@ -120,6 +131,10 @@ namespace Abyss_Client {
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void password_txt_TextChanged(object sender, EventArgs e) {
+            strong_lbl.Text = StrongPasswordChecker.CheckEffectiveBitSize(password_txt.Text).ToString();
         }
         #endregion 
   

@@ -64,6 +64,7 @@ namespace Abyss_Client {
             this.contact_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.address_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.accountInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
+            this.strong_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.neverExpires_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.changePassword_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.isAccountActive_chk = new Abyss_Client.CompBase.BaseCheckBox();
@@ -379,6 +380,7 @@ namespace Abyss_Client {
             this.password_txt.PasswordChar = '*';
             this.password_txt.Size = new System.Drawing.Size(172, 20);
             this.password_txt.TabIndex = 4;
+            this.password_txt.TextChanged += new System.EventHandler(this.password_txt_TextChanged);
             // 
             // confirmPassword_txt
             // 
@@ -541,6 +543,7 @@ namespace Abyss_Client {
             // accountInformation_gbx
             // 
             this.accountInformation_gbx.BackColor = System.Drawing.Color.Transparent;
+            this.accountInformation_gbx.Controls.Add(this.strong_lbl);
             this.accountInformation_gbx.Controls.Add(this.neverExpires_chk);
             this.accountInformation_gbx.Controls.Add(this.changePassword_chk);
             this.accountInformation_gbx.Controls.Add(this.isAccountActive_chk);
@@ -557,6 +560,17 @@ namespace Abyss_Client {
             this.accountInformation_gbx.TabIndex = 1;
             this.accountInformation_gbx.TabStop = false;
             this.accountInformation_gbx.Text = "Account Information";
+            // 
+            // strong_lbl
+            // 
+            this.strong_lbl.AutoSize = true;
+            this.strong_lbl.BackColor = System.Drawing.Color.Transparent;
+            this.strong_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.strong_lbl.Location = new System.Drawing.Point(174, 112);
+            this.strong_lbl.Name = "strong_lbl";
+            this.strong_lbl.Size = new System.Drawing.Size(110, 13);
+            this.strong_lbl.TabIndex = 10;
+            this.strong_lbl.Text = "Password Strong :";
             // 
             // neverExpires_chk
             // 
@@ -690,5 +704,6 @@ namespace Abyss_Client {
         private Abyss_Client.CompBase.BaseTextBox desc_txt;
         private Abyss_Client.CompBase.BaseCheckBox changePassword_chk;
         private Abyss_Client.CompBase.BaseCheckBox neverExpires_chk;
+        private Abyss_Client.CompBase.BaseLabel strong_lbl;
     }
 }
