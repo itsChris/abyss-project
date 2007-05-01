@@ -189,6 +189,10 @@
       <DependentUpon>OracleUserAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ADUserPasswordUpdate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ADUserPasswordUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ADUserUpdate.resx">
       <DependentUpon>ADUserUpdate.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -295,6 +299,7 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="StrongPasswordChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj">

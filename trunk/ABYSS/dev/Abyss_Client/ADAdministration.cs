@@ -21,7 +21,8 @@ namespace Abyss_Client {
             User,
             Disable,
             Group,
-            Unknown
+            Unknown,
+            DisableCompunter
         }
         #endregion
 
@@ -101,7 +102,7 @@ namespace Abyss_Client {
                         case "user":
                             ADUser user = ADUser.getUserByName((string)child.Properties["name"].Value);
                             tmpItem = new ListViewItem(new string[] {
-																		user.UserName,
+																		string.IsNullOrEmpty(user.DisplayName)?user.UserName : user.DisplayName,
 																		child.SchemaClassName,
 																		user.Description
 																	}, user.IsAccountActive?(int)AdImages.User:(int)AdImages.Disable);
@@ -133,7 +134,7 @@ namespace Abyss_Client {
                     }
                 }
             }
-            catch (COMException ) {
+            catch (COMException) {
             }
             e.Node.Expand();
             treeView.EndUpdate();
@@ -261,10 +262,20 @@ namespace Abyss_Client {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void disable_tmi_Click(object sender, EventArgs e) {
-            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
-                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
-                user.disableUserAccount();
-                refreshCurrentNode();
+            try {
+                if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                    ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                    user.disableUserAccount();
+                    refreshCurrentNode();
+                }
+            }
+            catch (COMException comex) {
+                MessageBox.Show(comex.Message,this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            catch (UnauthorizedAccessException uaex) {
+                MessageBox.Show(uaex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -274,10 +285,20 @@ namespace Abyss_Client {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void enable_tmi_Click(object sender, EventArgs e) {
-            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
-                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
-                user.enableUserAccount();
-                refreshCurrentNode();
+            try {
+                if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                    ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                    user.enableUserAccount();
+                    refreshCurrentNode();
+                }
+            }
+            catch (COMException comex) {
+                MessageBox.Show(comex.Message,this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            catch (UnauthorizedAccessException uaex) {
+                MessageBox.Show(uaex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -287,18 +308,45 @@ namespace Abyss_Client {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void delete_tmi_Click(object sender, EventArgs e) {
-            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
-                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
-                user.deleteUserAccount();
-                refreshCurrentNode();
+            try {
+                if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                    ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                    user.deleteUserAccount();
+                    refreshCurrentNode();
+                }
+            }
+            catch (COMException comex) {
+                MessageBox.Show(comex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            catch (UnauthorizedAccessException uaex) {
+                MessageBox.Show(uaex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
+        /// <summary>
+        /// Change the user password
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changePwd_tmi_Click(object sender, EventArgs e) {
-
+            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                if (DialogResult.OK == openForm(new ADUserPasswordUpdate(user))) {
+                    refreshCurrentNode();
+                }
+            }
         }
 
-        
+        /// <summary>
+        /// Exit AD Administration form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.Close();
+        }
 
         /// <summary>
         /// Close the form
@@ -311,19 +359,13 @@ namespace Abyss_Client {
                 MessageBoxIcon.Question) == DialogResult.No) {
                 e.Cancel = true;
             }
-        }
-
-        /// <summary>
-        /// Quit
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
-            this.Close();
-        }
+        } 
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Init the trewView
+        /// </summary>
         private void initView() {
             this.lvwColumnSorter = new ListViewColumnSorter();
             this.list_lst.ListViewItemSorter = lvwColumnSorter;
@@ -333,6 +375,9 @@ namespace Abyss_Client {
             this.tree_trv.Nodes.Add(root);
         }
 
+        /// <summary>
+        /// Refresh the current node
+        /// </summary>
         private void refreshCurrentNode() {
             TreeNode node = this.tree_trv.SelectedNode;
             TreeViewEventArgs tvea = new TreeViewEventArgs(node);
@@ -340,12 +385,18 @@ namespace Abyss_Client {
         }
         #endregion 
 
-        
+        #region a finir
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
+            
+        }
 
+        private void oracleToolStripMenuItem_Click(object sender, EventArgs e) {
         
+        }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
         
-
-        
+        }
+        #endregion
     }
 }

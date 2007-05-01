@@ -150,7 +150,7 @@ namespace Utils {
             DirectoryEntry directoryEntry = getDirectoryObject();
             DirectorySearcher directorySearcher = new DirectorySearcher();
             directorySearcher.SearchRoot = directoryEntry;
-            directorySearcher.Filter = "(&(objectClass=group)(cn=" + groupName + "))";
+            directorySearcher.Filter = "(&(objectClass=group)(sAMAccountName=" + groupName + "))";
             directorySearcher.SearchScope = SearchScope.Subtree;
             SearchResult results = directorySearcher.FindOne();
             if (!(results == null)) {
@@ -160,6 +160,19 @@ namespace Utils {
             else {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Returns the results of the research of all groups 
+        /// </summary>
+        /// <returns></returns>
+        public static SearchResultCollection getGroups() {
+            DirectoryEntry directoryEntry = getDirectoryObject();
+            DirectorySearcher directorySearcher = new DirectorySearcher();
+            directorySearcher.SearchRoot = directoryEntry;
+            directorySearcher.Filter = "(&(objectClass=group)(objectCategory=group)(description=*))";
+            directorySearcher.SearchScope = SearchScope.Subtree;
+            return directorySearcher.FindAll();
         }
 
         /// <summary>
@@ -246,6 +259,50 @@ namespace Utils {
         public static bool isDontExpiredPassword(int userAccountControl) {
             int userPasswordNeverExpired = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD);
             int flagExists = userAccountControl & userPasswordNeverExpired;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public static bool isGlobalScope(int groupScope) {
+            int globalScope = Convert.ToInt32(ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_GLOBAL_GROUP);
+            int flagExists = groupScope & globalScope;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public static bool isDomainLocalScope(int groupScope) {
+            int doamainLocalScopeScope = Convert.ToInt32(ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_DOMAIN_LOCAL_GROUP);
+            int flagExists = groupScope & doamainLocalScopeScope;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public static bool isUniversalScope(int groupScope) {
+            int universalScope = Convert.ToInt32(ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_UNIVERSAL_GROUP);
+            int flagExists = groupScope & universalScope;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public static bool isSecurityEnable(Int64 groupType) {
+            Int64 securityType = Convert.ToInt64(ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_SECURITY_ENABLED);
+            Int64 flagExists = groupType & securityType;
             if (flagExists > 0) {
                 return true;
             }

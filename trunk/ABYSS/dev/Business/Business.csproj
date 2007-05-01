@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ADConnection.cs" />
+    <Compile Include="ADGroup.cs" />
     <Compile Include="ADUser.cs" />
     <Compile Include="OracleUser.cs" />
   </ItemGroup>

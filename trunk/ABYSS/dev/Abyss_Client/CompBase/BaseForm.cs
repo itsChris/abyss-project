@@ -103,6 +103,16 @@ namespace Abyss_Client.CompBase {
                             }
                         }
                     }
+                    if (group is BaseTextBox) {
+                        BaseTextBox tb = (BaseTextBox)group;
+                        if (tb.Mandatory && string.IsNullOrEmpty(tb.Text.Trim()) && tb.Enabled && tb.Visible) {
+                            tb.setErrorBackColor(true);
+                            result = false;
+                        }
+                        else {
+                            tb.setErrorBackColor(false);
+                        }
+                    }
                 }
             }
             return result;
