@@ -16,7 +16,6 @@ si vous modifiez une méthode méttez ce que vous modifiez en commentaire
 -Rajouter dans le process d'ajout d'un user, l'ajout dans oracle aussi via un "create user".
 -Gérer le "cant change password".
 
-test
 
 
 
