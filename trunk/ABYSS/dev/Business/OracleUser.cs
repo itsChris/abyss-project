@@ -26,6 +26,7 @@ namespace Business {
         public void save() {
             OracleUserDAO.SaveOracleUser(this.oracleUserData);
         }
+
         #endregion
 
         #region Properties
@@ -40,10 +41,6 @@ namespace Business {
         public bool ExternalUser {
             get { return oracleUserData.ExternalUser; }
             set { oracleUserData.ExternalUser = value; }
-        }
-        public bool GlobalUser {
-            get { return oracleUserData.GlobalUser; }
-            set { oracleUserData.GlobalUser = value; }
         }
         public string DefaultTablespace {
             get { return oracleUserData.DefaultTablespace; }
@@ -64,6 +61,10 @@ namespace Business {
         public bool Account {
             get { return oracleUserData.Account; }
             set { oracleUserData.Account = value; }
+        }
+        public string CreatedDate {
+            get { return oracleUserData.createdDate; }
+            set { oracleUserData.createdDate = value; }
         }
         #endregion
 

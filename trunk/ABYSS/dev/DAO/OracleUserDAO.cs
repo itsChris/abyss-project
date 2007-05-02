@@ -11,11 +11,19 @@ namespace DAO {
 
         #region Public Static Methods
         public static void SaveOracleUser(OracleUserData oracleUserData) {
-            string query = "CREATE USER " + oracleUserData.UserLogin +
-                    " IDENTIFIED BY " + oracleUserData.UserPassword +
-                    " DEFAULT TABLESPACE " + oracleUserData.DefaultTablespace +
-                    " TEMPORARY TABLESPACE " + oracleUserData.TemporatyTablespace +
-                    " PROFILE " + oracleUserData.Profile;
+            string query = "CREATE USER " + oracleUserData.UserLogin;
+
+            if (oracleUserData.ExternalUser) {
+                query += " IDENTIFIED EXTERNALLY ";
+            }
+            else
+            {
+                query += " IDENTIFIED BY " + oracleUserData.UserPassword;
+            }
+
+            query += " DEFAULT TABLESPACE " + oracleUserData.DefaultTablespace +
+              " TEMPORARY TABLESPACE " + oracleUserData.TemporatyTablespace +
+              " PROFILE " + oracleUserData.Profile;
 
             if (oracleUserData.PasswordExpire) {
                 query += " PASSWORD EXPIRE";
@@ -69,6 +77,16 @@ namespace DAO {
             "from DBA_USERS " +
             "order by USERNAME";
 
+            return ExecuteReader(query);
+        }
+
+        public static OracleDataReader GetDefaultTablespace() {
+            string query = "select TABLESPACE_NAME from DBA_DATA_FILES order by TABLESPACE_NAME";
+            return ExecuteReader(query);
+        }
+
+        public static OracleDataReader GetTemporatyTablespace() {
+            string query = "select TABLESPACE_NAME from DBA_TEMP_FILES order by TABLESPACE_NAME";
             return ExecuteReader(query);
         }
 

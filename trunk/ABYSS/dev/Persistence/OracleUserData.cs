@@ -7,7 +7,6 @@ namespace Persistence {
         private string userLogin;
         private string userPassword;
         private bool externalUser;
-        private bool globalUser;
         private string defaultTablespace;
         private string temporatyTablespace;
         private string profile;
@@ -34,10 +33,6 @@ namespace Persistence {
             get { return externalUser; }
             set { externalUser = value; }
         }
-        public bool GlobalUser {
-            get { return globalUser; }
-            set { globalUser = value; }
-        }
         public string DefaultTablespace {
             get { return defaultTablespace; }
             set { defaultTablespace = value; }
@@ -57,6 +52,11 @@ namespace Persistence {
         public bool Account {
             get { return account; }
             set { account = value; }
+        }
+
+        public string CreatedDate {
+            get { return createdDate; }
+            set { createdDate = value; }
         }
         #endregion
     }

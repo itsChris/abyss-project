@@ -28,6 +28,7 @@ namespace Abyss_Client {
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.switcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,6 @@ namespace Abyss_Client {
             this.table_rbt = new Abyss_Client.CompBase.BaseRadioButton();
             this.sql_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.load_ofd = new System.Windows.Forms.OpenFileDialog();
-            this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_menu.SuspendLayout();
             this.panel_pnl.SuspendLayout();
             this.interface_gbx.SuspendLayout();
@@ -87,15 +87,15 @@ namespace Abyss_Client {
             this.editToolStripMenuItem});
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
-            this.menu_menu.Size = new System.Drawing.Size(976, 24);
+            this.menu_menu.Size = new System.Drawing.Size(972, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
             // switcToolStripMenuItem
             // 
             this.switcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quitToolStripMenuItem,
-            this.addUserToolStripMenuItem});
+            this.addUserToolStripMenuItem,
+            this.quitToolStripMenuItem});
             this.switcToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.switcToolStripMenuItem.Name = "switcToolStripMenuItem";
             this.switcToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
@@ -105,9 +105,16 @@ namespace Abyss_Client {
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            // 
+            // addUserToolStripMenuItem
+            // 
+            this.addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
+            this.addUserToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.addUserToolStripMenuItem.Text = "Add User";
+            this.addUserToolStripMenuItem.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -295,16 +302,9 @@ namespace Abyss_Client {
             // 
             this.load_ofd.FileName = "load_ofd";
             // 
-            // addUserToolStripMenuItem
-            // 
-            this.addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
-            this.addUserToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addUserToolStripMenuItem.Text = "Add User";
-            this.addUserToolStripMenuItem.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
-            // 
             // OracleAdministration
             // 
-            this.ClientSize = new System.Drawing.Size(976, 529);
+            this.ClientSize = new System.Drawing.Size(972, 555);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.tableList_lst);
             this.Controls.Add(this.menu_menu);
