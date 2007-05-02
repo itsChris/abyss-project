@@ -35,3 +35,7 @@ Supprimer un user
 Change mot de passe
 
 
+
+Oracle USer Add
+
+retirer le nom de domaine en dur

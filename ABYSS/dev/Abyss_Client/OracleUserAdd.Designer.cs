@@ -24,7 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             this.userInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
-            this.globalUser_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.externalUser_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.userPassword_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.userLogin_txt = new Abyss_Client.CompBase.BaseTextBox();
@@ -49,7 +48,6 @@
             // userInformation_gbx
             // 
             this.userInformation_gbx.BackColor = System.Drawing.Color.Transparent;
-            this.userInformation_gbx.Controls.Add(this.globalUser_chk);
             this.userInformation_gbx.Controls.Add(this.externalUser_chk);
             this.userInformation_gbx.Controls.Add(this.userPassword_txt);
             this.userInformation_gbx.Controls.Add(this.userLogin_txt);
@@ -63,31 +61,21 @@
             this.userInformation_gbx.TabStop = false;
             this.userInformation_gbx.Text = "User Information";
             // 
-            // globalUser_chk
-            // 
-            this.globalUser_chk.AutoSize = true;
-            this.globalUser_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.globalUser_chk.Location = new System.Drawing.Point(163, 93);
-            this.globalUser_chk.Name = "globalUser_chk";
-            this.globalUser_chk.Size = new System.Drawing.Size(92, 17);
-            this.globalUser_chk.TabIndex = 8;
-            this.globalUser_chk.Text = "Global User";
-            this.globalUser_chk.UseVisualStyleBackColor = true;
-            // 
             // externalUser_chk
             // 
             this.externalUser_chk.AutoSize = true;
             this.externalUser_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.externalUser_chk.Location = new System.Drawing.Point(36, 93);
+            this.externalUser_chk.Location = new System.Drawing.Point(103, 94);
             this.externalUser_chk.Name = "externalUser_chk";
             this.externalUser_chk.Size = new System.Drawing.Size(102, 17);
             this.externalUser_chk.TabIndex = 7;
             this.externalUser_chk.Text = "External User";
             this.externalUser_chk.UseVisualStyleBackColor = true;
+            this.externalUser_chk.Click += new System.EventHandler(this.externalUser_chk_Click);
             // 
             // userPassword_txt
             // 
-            this.userPassword_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.userPassword_txt.BackColor = System.Drawing.Color.White;
             this.userPassword_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.userPassword_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.userPassword_txt.Location = new System.Drawing.Point(114, 55);
@@ -99,7 +87,7 @@
             // 
             // userLogin_txt
             // 
-            this.userLogin_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.userLogin_txt.BackColor = System.Drawing.Color.White;
             this.userLogin_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.userLogin_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.userLogin_txt.Location = new System.Drawing.Point(114, 29);
@@ -147,7 +135,7 @@
             // 
             // temporaryTablespace_txt
             // 
-            this.temporaryTablespace_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.temporaryTablespace_txt.BackColor = System.Drawing.Color.White;
             this.temporaryTablespace_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.temporaryTablespace_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.temporaryTablespace_txt.Location = new System.Drawing.Point(192, 77);
@@ -169,7 +157,7 @@
             // 
             // defaultTablespace_txt
             // 
-            this.defaultTablespace_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.defaultTablespace_txt.BackColor = System.Drawing.Color.White;
             this.defaultTablespace_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.defaultTablespace_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.defaultTablespace_txt.Location = new System.Drawing.Point(192, 29);
@@ -206,7 +194,7 @@
             // 
             // profile_txt
             // 
-            this.profile_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.profile_txt.BackColor = System.Drawing.Color.White;
             this.profile_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.profile_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.profile_txt.Location = new System.Drawing.Point(114, 30);
@@ -264,7 +252,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 325);
+            this.ClientSize = new System.Drawing.Size(681, 319);
             this.Controls.Add(this.createUser_btn);
             this.Controls.Add(this.accountInformation_gbx);
             this.Controls.Add(this.tablespace_gbx);
@@ -289,7 +277,6 @@
         private Abyss_Client.CompBase.BaseLabel userPassword_lbl;
         private Abyss_Client.CompBase.BaseTextBox userPassword_txt;
         private Abyss_Client.CompBase.BaseTextBox userLogin_txt;
-        private Abyss_Client.CompBase.BaseCheckBox globalUser_chk;
         private Abyss_Client.CompBase.BaseCheckBox externalUser_chk;
         private Abyss_Client.CompBase.BaseGroupBox tablespace_gbx;
         private Abyss_Client.CompBase.BaseLabel defaultTablespace_lbl;
