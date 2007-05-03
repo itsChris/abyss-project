@@ -13,6 +13,7 @@ namespace DAO {
             ADGroupData adGroupData = new ADGroupData();
             adGroupData.Name = Utility.getProperty(directoryEntry, "sAMAccountName");
             adGroupData.Description = Utility.getProperty(directoryEntry, "description");
+            adGroupData.DistinguishedName = Utility.getProperty(directoryEntry, "distinguishedName");
             Int32 groupeScope = Convert.ToInt32(Utility.getProperty(directoryEntry, "groupType"));
             if (Utility.isGlobalScope(groupeScope)) {
                 adGroupData.Scope = ADGroupData.GroupeScope.Global;
@@ -99,6 +100,28 @@ namespace DAO {
 
         public static void deleteGroup(string Name) {
             throw new Exception("The method or operation is not implemented.");
+        }
+
+        public static ArrayList getMembersList(string DistinguishedName) {
+            int index;
+            DirectoryEntry de = Utility.getDirectoryObjectByDistinguishedName(DistinguishedName);
+            ArrayList list = new ArrayList();
+            for (index = 0; index <= de.Properties["member"].Count - 1; index++) {
+                DirectoryEntry temp = Utility.getDirectoryObjectByDistinguishedName(getInstance().Path + "/" + de.Properties["member"][index].ToString());
+                list.Add(temp);
+            }
+            return list;
+        }
+
+        public static ArrayList getMemberOfList(string DistinguishedName) {
+            int index;
+            DirectoryEntry de = Utility.getDirectoryObjectByDistinguishedName(DistinguishedName);
+            ArrayList list = new ArrayList();
+            for (index = 0; index <= de.Properties["memberOf"].Count - 1; index++) {
+                DirectoryEntry temp = Utility.getDirectoryObjectByDistinguishedName(getInstance().Path + "/" + de.Properties["member"][index].ToString());
+                list.Add(temp);
+            }
+            return list;
         }
     }
 }

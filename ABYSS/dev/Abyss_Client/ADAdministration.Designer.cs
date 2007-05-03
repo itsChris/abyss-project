@@ -97,25 +97,23 @@
             // 
             // treeView_ctm
             // 
-            this.treeView_ctm.BackgroundImage = global::Abyss_Client.Properties.Resources.splash;
+            this.treeView_ctm.BackColor = System.Drawing.Color.AliceBlue;
             this.treeView_ctm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.new_tmi,
             this.toolStripSeparator2});
             this.treeView_ctm.Name = "baseContextMenu1";
             this.treeView_ctm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.treeView_ctm.ShowImageMargin = false;
-            this.treeView_ctm.Size = new System.Drawing.Size(74, 32);
+            this.treeView_ctm.Size = new System.Drawing.Size(128, 54);
             // 
             // new_tmi
             // 
-            this.new_tmi.BackgroundImage = global::Abyss_Client.Properties.Resources.splash;
             this.new_tmi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.computer_tmi,
             this.group_tmi,
             this.user_tmi});
-            this.new_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
             this.new_tmi.Name = "new_tmi";
-            this.new_tmi.Size = new System.Drawing.Size(73, 22);
+            this.new_tmi.Size = new System.Drawing.Size(127, 22);
             this.new_tmi.Text = "New";
             // 
             // computer_tmi
@@ -143,7 +141,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(70, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(124, 6);
             // 
             // imageList_adObjects
             // 

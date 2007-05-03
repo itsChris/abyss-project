@@ -2,11 +2,15 @@ using System;
 using DAO;
 using Persistence;
 using System.Collections;
+using System.DirectoryServices;
+using Utils;
 
 namespace Business {
     public class ADGroup {
         #region Attributes
         private ADGroupData aDGroupData;
+        private ArrayList members = null;
+        private ArrayList memberof;
         #endregion
 
         #region enum
@@ -33,6 +37,11 @@ namespace Business {
             set { aDGroupData.Name = value; }
         }
 
+        public string DistinguishedName {
+            get { return aDGroupData.DistinguishedName; }
+            set { aDGroupData.DistinguishedName = value; }
+        }
+
         public bool SecurityGroupe {
             get { return aDGroupData.SecurityGroupe; }
             set { aDGroupData.SecurityGroupe = value; }
@@ -46,6 +55,21 @@ namespace Business {
         public string Description {
             get { return aDGroupData.Description; }
             set { aDGroupData.Description = value; }
+        }
+
+        public ArrayList Members {
+            get {
+                if (members == null) {
+                      members = ADGroupDAO.getMembersList(DistinguishedName);
+                      
+
+                }
+                return members;  
+
+
+
+
+            }
         }
         #endregion
 
@@ -73,5 +97,18 @@ namespace Business {
         }
         #endregion
 
+        #region Private Methods
+        //private ArrayList getMembersList() {
+        //    DirectoryEntry de = Utility.getDirectoryObjectByDistinguishedName(DistinguishedName);
+        //    int index;
+        //    ArrayList list = new ArrayList();
+        //    for (index = 0; index <= de.Properties["member"].Count - 1; index++) {
+        //       DictionaryEntry temp = Utility.getDirectoryObjectByDistinguishedName(
+
+        //        list.Add(Load(Utility.GetDirectoryObjectByDistinguishedName(Utility.ADPath + "/" + _de.Properties["member"][index].ToString())));
+        //    }
+        //    return list;
+        //}
+        #endregion
     }
 }
