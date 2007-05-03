@@ -5,6 +5,7 @@ namespace Persistence {
     [Serializable]public class ADGroupData {
         #region Attributes
         private string name;
+        private string distinguishedName;
         private string description;
         private GroupeScope scope;
         private bool securityGroupe;
@@ -27,6 +28,11 @@ namespace Persistence {
         public string Name {
             get { return name; }
             set { name = value; }
+        }
+
+        public string DistinguishedName {
+            get { return distinguishedName; }
+            set { distinguishedName = value; }
         }
 
         public bool SecurityGroupe {

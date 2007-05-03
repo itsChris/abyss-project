@@ -202,7 +202,11 @@ namespace Utils {
         /// <param name="objectPath"></param>
         /// <returns></returns>
         public static DirectoryEntry getDirectoryObjectByDistinguishedName(string objectPath) {
-            DirectoryEntry directoryEntry = new DirectoryEntry(objectPath, crtUserName, crtPassword);
+            String path = objectPath;
+            if (!objectPath.StartsWith("LDAP://")) {
+                path = protocolName + crtDomain + "/" + objectPath;
+            }
+            DirectoryEntry directoryEntry = new DirectoryEntry(path, crtUserName, crtPassword);
             return directoryEntry;
         }
 

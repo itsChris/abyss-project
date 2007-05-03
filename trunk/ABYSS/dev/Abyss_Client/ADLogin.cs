@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Business;
 using System.DirectoryServices;
 using System.Runtime.InteropServices;
+using System.Collections;
 
 namespace Abyss_Client {
     public partial class ADLogin : CompBase.BaseForm {
@@ -28,11 +29,8 @@ namespace Abyss_Client {
                     connexion = ADConnection.getInstance(ldap_txt.Text, login_txt.Text, password_txt.Text);
                 }   
                 user = ADUser.getUserByName(login_txt.Text);
-                ADGroup test = new ADGroup();
-                test.Name = "toto";
-                test.Scope = Persistence.ADGroupData.GroupeScope.Universel;
-                test.SecurityGroupe = false;
-                test.save();
+                ADGroup test = ADGroup.getGroupByName("toto");
+                ArrayList a = test.Members;
                 
             }
             catch (COMException ComEx) {
