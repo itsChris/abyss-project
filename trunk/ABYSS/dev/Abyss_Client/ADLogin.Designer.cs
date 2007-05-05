@@ -35,6 +35,7 @@
             this.ldap_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.ldap_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.reset_btn = new Abyss_Client.CompBase.BaseButton();
+            this.quit_btn = new Abyss_Client.CompBase.BaseButton();
             this.user_gbx.SuspendLayout();
             this.ldap_gbx.SuspendLayout();
             this.SuspendLayout();
@@ -81,25 +82,25 @@
             // 
             // connect_btn
             // 
-            this.connect_btn.BackColor = System.Drawing.Color.LightGray;
+            this.connect_btn.BackColor = System.Drawing.Color.Transparent;
             this.connect_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.connect_btn.Location = new System.Drawing.Point(447, 390);
+            this.connect_btn.Location = new System.Drawing.Point(205, 328);
             this.connect_btn.Name = "connect_btn";
             this.connect_btn.Size = new System.Drawing.Size(75, 23);
             this.connect_btn.TabIndex = 2;
             this.connect_btn.Text = "Connect";
-            this.connect_btn.UseVisualStyleBackColor = true;
+            this.connect_btn.UseVisualStyleBackColor = false;
             this.connect_btn.Click += new System.EventHandler(this.connect_btn_Click);
             // 
             // user_gbx
             // 
-            this.user_gbx.BackColor = System.Drawing.Color.LightGray;
+            this.user_gbx.BackColor = System.Drawing.Color.Transparent;
             this.user_gbx.Controls.Add(this.login_lbl);
             this.user_gbx.Controls.Add(this.password_lbl);
             this.user_gbx.Controls.Add(this.login_txt);
             this.user_gbx.Controls.Add(this.password_txt);
             this.user_gbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.user_gbx.Location = new System.Drawing.Point(166, 228);
+            this.user_gbx.Location = new System.Drawing.Point(12, 170);
             this.user_gbx.Name = "user_gbx";
             this.user_gbx.Size = new System.Drawing.Size(356, 130);
             this.user_gbx.TabIndex = 1;
@@ -168,7 +169,7 @@
             this.ldap_gbx.Controls.Add(this.otherLdap_rbt);
             this.ldap_gbx.Controls.Add(this.defaultLdap_rbt);
             this.ldap_gbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.ldap_gbx.Location = new System.Drawing.Point(166, 70);
+            this.ldap_gbx.Location = new System.Drawing.Point(12, 12);
             this.ldap_gbx.Name = "ldap_gbx";
             this.ldap_gbx.Size = new System.Drawing.Size(356, 130);
             this.ldap_gbx.TabIndex = 0;
@@ -177,22 +178,35 @@
             // 
             // reset_btn
             // 
-            this.reset_btn.BackColor = System.Drawing.Color.LightGray;
+            this.reset_btn.BackColor = System.Drawing.Color.Transparent;
             this.reset_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.reset_btn.Location = new System.Drawing.Point(348, 390);
+            this.reset_btn.Location = new System.Drawing.Point(106, 328);
             this.reset_btn.Name = "reset_btn";
             this.reset_btn.Size = new System.Drawing.Size(75, 23);
             this.reset_btn.TabIndex = 3;
             this.reset_btn.Text = "Reset";
-            this.reset_btn.UseVisualStyleBackColor = true;
+            this.reset_btn.UseVisualStyleBackColor = false;
             this.reset_btn.Click += new System.EventHandler(this.reset_btn_Click);
+            // 
+            // quit_btn
+            // 
+            this.quit_btn.BackColor = System.Drawing.Color.Transparent;
+            this.quit_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.quit_btn.Location = new System.Drawing.Point(12, 328);
+            this.quit_btn.Name = "quit_btn";
+            this.quit_btn.Size = new System.Drawing.Size(75, 23);
+            this.quit_btn.TabIndex = 4;
+            this.quit_btn.Text = "Quit";
+            this.quit_btn.UseVisualStyleBackColor = false;
+            this.quit_btn.Click += new System.EventHandler(this.quit_btn_Click);
             // 
             // ADLogin
             // 
             this.AcceptButton = this.connect_btn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 487);
+            this.ClientSize = new System.Drawing.Size(395, 379);
+            this.Controls.Add(this.quit_btn);
             this.Controls.Add(this.reset_btn);
             this.Controls.Add(this.connect_btn);
             this.Controls.Add(this.user_gbx);
@@ -222,6 +236,7 @@
         private Abyss_Client.CompBase.BaseGroupBox ldap_gbx;
         private Abyss_Client.CompBase.BaseTextBox ldap_txt;
         private Abyss_Client.CompBase.BaseButton reset_btn;
+        private Abyss_Client.CompBase.BaseButton quit_btn;
 
     }
 }

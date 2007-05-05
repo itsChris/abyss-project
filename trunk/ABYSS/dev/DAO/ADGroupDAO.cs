@@ -123,7 +123,6 @@ namespace DAO {
             if (directoryEntry != null) {
                 return adGroupDataMapping(directoryEntry);
             }
-            directoryEntry.Close();
             return null;
         }
 

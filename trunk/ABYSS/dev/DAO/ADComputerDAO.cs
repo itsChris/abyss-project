@@ -11,8 +11,10 @@ namespace DAO {
         private static ADComputerData adComputerDataMapping(DirectoryEntry directoryEntry) {
             ADComputerData adComputerData = new ADComputerData();
             adComputerData.ComputerName = Utility.getProperty(directoryEntry, "sAMAccountName");
-            String computerName = adComputerData.ComputerName.Remove(adComputerData.ComputerName.Length - 1);
-            adComputerData.ComputerName = computerName;
+            if (adComputerData.ComputerName.EndsWith("$")) {
+                String computerName = adComputerData.ComputerName.Remove(adComputerData.ComputerName.Length - 1);
+                adComputerData.ComputerName = computerName;
+            }
             adComputerData.Description = Utility.getProperty(directoryEntry, "description");
             adComputerData.DnsName = Utility.getProperty(directoryEntry, "dNSHostName");
             adComputerData.DistinguishedName = Utility.getProperty(directoryEntry, "distinguishedName");
@@ -116,7 +118,6 @@ namespace DAO {
             if (directoryEntry != null) {
                 return adComputerDataMapping(directoryEntry);
             }
-            directoryEntry.Close();
             return null;
         }
 

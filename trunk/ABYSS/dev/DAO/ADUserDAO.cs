@@ -130,7 +130,6 @@ namespace DAO {
             if (directoryEntry != null) {
                 return adUserDataMapping(directoryEntry);
             }
-            directoryEntry.Close();
             return null;
         }
 
