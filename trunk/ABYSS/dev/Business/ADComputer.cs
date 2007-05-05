@@ -1,84 +1,85 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Persistence;
+using DAO;
+using System.Collections;
 
 namespace Business {
     public class ADComputer {
-    //     #region Attributes
-    //    private string computerName;
-    //    private string dnsName;
-    //    private Computer role;
-    //    private string description;
-    //    private bool trustForDelegation;
-    //    private string operatingSystem;
-    //    private string operatingSystemVersion;
-    //    private string operatingSystemServicePack;
-    //    private ArrayList memberof;
-    //    private bool enabled;
-    //    #endregion
+        #region Attributes
+        private ADComputerData adComputerData;
+        #endregion
        
-    //    #region Enunumeration
-    //    public enum Computer {
-    //        WORKSTATION_TRUST_ACCOUNT,
-    //        SERVER_TRUST_ACCOUNT
-    //    }
-    //    #endregion
+        #region Enunumeration
+        public enum Computer {
+            WORKSTATION_TRUST_ACCOUNT,
+            SERVER_TRUST_ACCOUNT
+        }
+        #endregion
 
-    //    #region Constructor
-    //    public ADComputerData() {
-    //    }
-    //    #endregion
+        #region Constructor
+        public ADComputer() {
+            this.adComputerData = new ADComputerData();
+        }
 
-    //    #region Properties
-    //    public string ComputerName {
-    //        get { return computerName; }
-    //        set { computerName = value; }
-    //    }
+        public ADComputer(ADComputerData adComputerData) {
+            this.adComputerData = adComputerData;
+        }
+        #endregion
 
-    //    public string DnsName {
-    //        get { return dnsName; }
-    //        set { dnsName = value; }
-    //    }
+        #region Properties
+        public string ComputerName {
+            get { return adComputerData.ComputerName; }
+            set { adComputerData.ComputerName = value; }
+        }
 
-    //    public Computer Role {
-    //        get { return role; }
-    //        set { role = value; }
-    //    }
+        public string DnsName {
+            get { return adComputerData.DnsName; }
+            set { adComputerData.DnsName = value; }
+        }
 
-    //    public string Description {
-    //        get { return description; }
-    //        set { description = value; }
-    //    }
+        public ADComputerData.Computer Role {
+            get { return adComputerData.Role; }
+            set { adComputerData.Role = value; }
+        }
 
-    //    public bool TrustForDelegation {
-    //        get { return trustForDelegation; }
-    //        set { trustForDelegation = value; }
-    //    }
+        public string Description {
+            get { return adComputerData.Description; }
+            set { adComputerData.Description = value; }
+        }
 
-    //    public string OperatingSystem {
-    //        get { return operatingSystem; }
-    //        set { operatingSystem = value; }
-    //    }
+        public bool TrustForDelegation {
+            get { return adComputerData.TrustForDelegation; }
+            set { adComputerData.TrustForDelegation = value; }
+        }
 
-    //    public string OperatingSystemVersion {
-    //        get { return operatingSystemVersion; }
-    //        set { operatingSystemVersion = value; }
-    //    }
+        public string OperatingSystem {
+            get { return adComputerData.OperatingSystem; }
+            set { adComputerData.OperatingSystem = value; }
+        }
 
-    //    public string OperatingSystemServicePack {
-    //        get { return operatingSystemServicePack; }
-    //        set { operatingSystemServicePack = value; }
-    //    }
+        public string OperatingSystemVersion {
+            get { return adComputerData.OperatingSystemVersion; }
+            set { adComputerData.OperatingSystemVersion = value; }
+        }
 
-    //    public ArrayList Memberof {
-    //        get { return memberof; }
-    //        set { memberof = value; }
-    //    }
+        public string OperatingSystemServicePack {
+            get { return adComputerData.OperatingSystemServicePack; }
+            set { adComputerData.OperatingSystemServicePack = value; }
+        }
 
-    //    public bool Enabled {
-    //        get { return enabled; }
-    //        set { enabled = value; }
-    //    }
-    //    #endregion 
+        public ArrayList Memberof {
+            get { return adComputerData.Memberof; }
+            set { adComputerData.Memberof = value; }
+        }
+
+        public bool Enabled {
+            get { return adComputerData.Enabled; }
+            set { adComputerData.Enabled = value; }
+        }
+        #endregion 
+
+        #region Static Methods
+
+        #endregion
     }
 }
