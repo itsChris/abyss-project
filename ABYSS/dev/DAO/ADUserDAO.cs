@@ -130,6 +130,7 @@ namespace DAO {
             if (directoryEntry != null) {
                 return adUserDataMapping(directoryEntry);
             }
+            directoryEntry.Close();
             return null;
         }
 
@@ -204,6 +205,7 @@ namespace DAO {
             DirectoryEntry directoryEntry = Utility.getUser(userName);
             directoryEntry.DeleteTree();
             directoryEntry.CommitChanges();
+            directoryEntry.Close();
         }
         #endregion
         #endregion

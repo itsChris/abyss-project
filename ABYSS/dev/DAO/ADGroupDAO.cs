@@ -123,6 +123,7 @@ namespace DAO {
             if (directoryEntry != null) {
                 return adGroupDataMapping(directoryEntry);
             }
+            directoryEntry.Close();
             return null;
         }
 
@@ -138,6 +139,7 @@ namespace DAO {
             DirectoryEntry directoryEntry = Utility.getGroup(name);
             directoryEntry.DeleteTree();
             directoryEntry.CommitChanges();
+            directoryEntry.Close();
         }
         #endregion
         #endregion

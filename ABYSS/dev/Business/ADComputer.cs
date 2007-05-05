@@ -42,6 +42,11 @@ namespace Business {
             set { adComputerData.Role = value; }
         }
 
+        public String DistinguishedName {
+            get { return adComputerData.DistinguishedName; }
+            set { adComputerData.DistinguishedName = value; }
+        }
+
         public string Description {
             get { return adComputerData.Description; }
             set { adComputerData.Description = value; }
@@ -98,15 +103,15 @@ namespace Business {
         }
 
         public void disableComputerAccount() {
-            ADComputerDAO.disableComputerAccount(ComputerName);
+            ADComputerDAO.disableComputerAccount(ComputerName,Role);
         }
 
         public void enableComputerAccount() {
-            ADComputerDAO.enableComputerAccount(ComputerName);
+            ADComputerDAO.enableComputerAccount(ComputerName, Role);
         }
 
         public void deleteComputerAccount() {
-            ADUserDAO.deleteUserAccount(ComputerName);
+            ADComputerDAO.deleteUserAccount(ComputerName);
         }
         #endregion
     }
