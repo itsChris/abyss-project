@@ -15,6 +15,22 @@ namespace Abyss_Client {
             InitializeComponent();
 
             passwordExpire_chk.Checked = true;
+                        
+            OracleUser user = new OracleUser();
+
+            OracleDataReader reader = user.GetDefaultTablespace();
+
+            while (reader.Read()) {
+                defaultTablespace_cbx.Items.Add(reader.GetValue(0));
+            }
+            reader.Close();
+
+            reader = user.GetTemporaryTablespace();
+
+            while (reader.Read()) {
+                temporaryTablespace_cbx.Items.Add(reader.GetValue(0));
+            }
+            reader.Close();
 
         }
 
@@ -25,8 +41,8 @@ namespace Abyss_Client {
             OracleUser user = new OracleUser();
 
             user.Profile = profile_txt.Text;
-            user.DefaultTablespace = defaultTablespace_txt.Text;
-            user.TemporatyTablespace = temporaryTablespace_txt.Text;
+            user.DefaultTablespace = defaultTablespace_cbx.SelectedItem.ToString();
+            user.TemporatyTablespace = temporaryTablespace_cbx.SelectedItem.ToString();
             user.CreatedDate = DateTime.Now.ToString();
 
             if (accountLock_chk.Checked) {

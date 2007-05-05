@@ -27,8 +27,8 @@ namespace Abyss_Client {
             this.interface_rbl = new Abyss_Client.CompBase.BaseRadioButton();
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.switcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +87,7 @@ namespace Abyss_Client {
             this.editToolStripMenuItem});
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
-            this.menu_menu.Size = new System.Drawing.Size(972, 24);
+            this.menu_menu.Size = new System.Drawing.Size(979, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
@@ -101,6 +101,13 @@ namespace Abyss_Client {
             this.switcToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.switcToolStripMenuItem.Text = "File";
             // 
+            // addUserToolStripMenuItem
+            // 
+            this.addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
+            this.addUserToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.addUserToolStripMenuItem.Text = "Add User";
+            this.addUserToolStripMenuItem.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
+            // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
@@ -108,13 +115,6 @@ namespace Abyss_Client {
             this.quitToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
-            // 
-            // addUserToolStripMenuItem
-            // 
-            this.addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
-            this.addUserToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.addUserToolStripMenuItem.Text = "Add User";
-            this.addUserToolStripMenuItem.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -304,7 +304,7 @@ namespace Abyss_Client {
             // 
             // OracleAdministration
             // 
-            this.ClientSize = new System.Drawing.Size(972, 555);
+            this.ClientSize = new System.Drawing.Size(979, 541);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.tableList_lst);
             this.Controls.Add(this.menu_menu);

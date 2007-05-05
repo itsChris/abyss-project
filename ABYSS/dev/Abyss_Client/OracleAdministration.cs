@@ -55,8 +55,15 @@ namespace Abyss_Client {
 
             if (interface_rbl.Enabled && view_rbt.Enabled) {
             }
-            if (sql_rbt.Enabled) {
 
+            if (sql_rbt.Enabled) {
+                if (!sql_txt.Text.Contains("SELECT")) {
+                    //execute non query
+                    
+                }
+                else {
+                    //error
+                }
             }
         }
 
