@@ -46,7 +46,9 @@ namespace Abyss_Client {
                 MessageBox.Show("Login success. Welcome " + user.DisplayName,
                 this.Text, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-                openForm(new ADAdministration(connexion));
+                if (openForm(new ADAdministration(connexion)) == DialogResult.OK) {
+                    Application.ExitThread();
+                }
                 ADConnection.setInitToFalse();
                 reset_btn_Click(new object(), new EventArgs());
             }

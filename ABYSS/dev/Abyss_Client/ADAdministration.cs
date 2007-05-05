@@ -348,6 +348,19 @@ namespace Abyss_Client {
             this.Close();
         }
 
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
+            dialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void oracleToolStripMenuItem_Click(object sender, EventArgs e) {
+            openForm(new OracleAdministration());
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
         /// <summary>
         /// Close the form
         /// </summary>
@@ -384,19 +397,5 @@ namespace Abyss_Client {
             this.tree_trv_AfterSelect(this.tree_trv, tvea);
         }
         #endregion 
-
-        #region a finir
-        private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
-            
-        }
-
-        private void oracleToolStripMenuItem_Click(object sender, EventArgs e) {
-        
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
-        
-        }
-        #endregion
     }
 }
