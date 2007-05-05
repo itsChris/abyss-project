@@ -9,7 +9,7 @@ namespace Business {
         private ADGroupData aDGroupData;
         #endregion
 
-        #region enum
+        #region enumeration
         public enum GroupeScope {
             Global,
             DomainLocal,
