@@ -38,6 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADComputerDAO.cs" />
     <Compile Include="ADGroupDAO.cs" />
     <Compile Include="ADUserDAO.cs" />
     <Compile Include="LdapDAO.cs" />

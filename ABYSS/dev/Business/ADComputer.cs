@@ -79,12 +79,30 @@ namespace Business {
         #endregion 
 
         #region Static Methods
-        public static ADComputer getComputerByName(string username) {
-            ADUserData userData = ADUserDAO.getUser(username);
-            if (userData != null) {
-                //return new ADUser((ADUserData)userData);
+        public static ADComputer getComputerByName(string computerName) {
+            ADComputerData adComputerData = ADComputerDAO.getComputerByName(computerName);
+            if (adComputerData != null) {
+                return new ADComputer((ADComputerData)adComputerData);
             }
             return null;
+        }
+
+        public static ArrayList getComputersList() {
+            return ADComputerDAO.getComputersList();
+        }
+        #endregion
+
+        #region Public Methods
+        public void save() {
+            ADComputerDAO.saveComputer(this.adComputerData);
+        }
+
+        public void disableComputerAccount() {
+            ADComputerDAO.disableComputerAccount(ComputerName);
+        }
+
+        public void enableComputerAccount() {
+            ADComputerDAO.enableComputerAccount(ComputerName);
         }
         #endregion
     }
