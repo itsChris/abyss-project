@@ -15,6 +15,7 @@ namespace Abyss_Client {
         #region Constructors
         public ADLogin() {
             InitializeComponent();
+            new SplashScreen().ShowDialog();
         }
         #endregion
 
@@ -90,7 +91,7 @@ namespace Abyss_Client {
         }
 
         private void quit_btn_Click(object sender, EventArgs e) {
-            this.Close();
+            Application.ExitThread();
         }
         #endregion    
     }
