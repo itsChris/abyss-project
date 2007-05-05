@@ -29,11 +29,6 @@ namespace Abyss_Client {
                     connexion = ADConnection.getInstance(ldap_txt.Text, login_txt.Text, password_txt.Text);
                 }   
                 user = ADUser.getUserByName(login_txt.Text);
-                //ADGroup test = ADGroup.getGroupByName("test");
-                //test.save();
-                //test.deleteGroup();
-               
-                
             }
             catch (COMException ComEx) {
                 MessageBox.Show(ComEx.Message, this.Text,

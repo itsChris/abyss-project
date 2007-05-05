@@ -8,6 +8,7 @@ namespace Persistence {
         private string dnsName;
         private Computer role;
         private string description;
+        private string distinguishedName;
         private bool trustForDelegation;
         private string operatingSystem;
         private string operatingSystemVersion;
@@ -37,6 +38,11 @@ namespace Persistence {
         public string DnsName {
             get { return dnsName; }
             set { dnsName = value; }
+        }
+
+        public string DistinguishedName {
+            get { return distinguishedName; }
+            set { distinguishedName = value; }
         }
 
         public Computer Role {

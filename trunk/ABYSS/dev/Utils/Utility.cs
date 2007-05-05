@@ -361,6 +361,17 @@ namespace Utils {
             }
         }
 
+        public static bool isComputerTrustedDelegation(int userAccountControl) {
+            int trustedDelegation = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_TRUSTED_FOR_DELEGATION);
+            int flagExists = userAccountControl & trustedDelegation;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
         /// <summary>
         /// Set the property for the object in the node
         /// </summary>
