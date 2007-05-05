@@ -9,6 +9,8 @@ namespace Persistence {
         private string description;
         private GroupeScope scope;
         private bool securityGroupe;
+        private ArrayList members;
+        private ArrayList memberof;
         #endregion
 
         #region Enum
@@ -48,6 +50,16 @@ namespace Persistence {
         public string Description {
             get { return description; }
             set { description = value; }
+        }
+
+        public ArrayList Members {
+            get { return members; }
+            set { members = value; }
+        }
+
+        public ArrayList Memberof {
+            get { return memberof; }
+            set { memberof = value; }
         }
         #endregion
     }

@@ -63,8 +63,8 @@ namespace Business {
             set { oracleUserData.Account = value; }
         }
         public string CreatedDate {
-            get { return oracleUserData.createdDate; }
-            set { oracleUserData.createdDate = value; }
+            get { return oracleUserData.CreatedDate; }
+            set { oracleUserData.CreatedDate = value; }
         }
         #endregion
 

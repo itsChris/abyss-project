@@ -27,7 +27,7 @@ namespace Abyss_Client {
             user.Profile = profile_txt.Text;
             user.DefaultTablespace = defaultTablespace_txt.Text;
             user.TemporatyTablespace = temporaryTablespace_txt.Text;
-            user.CreatedDate = DateTime.Now;
+            user.CreatedDate = DateTime.Now.ToString();
 
             if (accountLock_chk.Checked) {
                 user.Account = false;
