@@ -3,14 +3,11 @@ using DAO;
 using Persistence;
 using System.Collections;
 using System.DirectoryServices;
-using Utils;
 
 namespace Business {
     public class ADGroup {
         #region Attributes
         private ADGroupData aDGroupData;
-        private ArrayList members = null;
-        private ArrayList memberof;
         #endregion
 
         #region enum
@@ -57,20 +54,20 @@ namespace Business {
             set { aDGroupData.Description = value; }
         }
 
-        public ArrayList Members {
-            get {
-                if (members == null) {
-                      members = ADGroupDAO.getMembersList(DistinguishedName);
+        //public ArrayList Members {
+        //    get {
+        //        if (members == null) {
+        //              members = ADGroupDAO.getMembersList(DistinguishedName);
                       
 
-                }
-                return members;  
+        //        }
+        //        return members;  
 
 
 
 
-            }
-        }
+        //    }
+        //}
         #endregion
 
         #region Static Methods
