@@ -2,7 +2,6 @@ using System;
 using DAO;
 using Persistence;
 using System.Collections;
-using System.DirectoryServices;
 
 namespace Business {
     public class ADGroup {
