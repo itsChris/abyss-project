@@ -3,7 +3,6 @@ using Persistence;
 using Utils;
 using System.Collections;
 using System.DirectoryServices;
-using System.Reflection;
 
 namespace DAO {
     public class ADGroupDAO : LdapDAO {
