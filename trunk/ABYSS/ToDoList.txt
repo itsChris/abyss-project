@@ -1,20 +1,7 @@
-Faire le point sur le projet.
-
-
 Formulaire ADAdministration.
-
-Faire une méthode refresh, pour raffraichir, le node sélectionnée.
-Cette méthode sera appelé après l'ajout ou la suppression d'un élément, ainsi qu'en cas d'erreur
-
-(par exemple lorsqu'on sélectionne un object qui n'existe plus).
-
-
-
-si vous modifiez une méthode méttez ce que vous modifiez en commentaire
-
-
--Rajouter dans le process d'ajout d'un user, l'ajout dans oracle aussi via un "create user".
--Gérer le "cant change password".
+- Faire une méthode refresh, pour raffraichir, le node sélectionnée.
+- Optionel : Dans les process lié au user AD faire en sorte que l'orsque le compte est supprimé, suprim aussi ds oracle. Idem pour Add, modify...
+- Faire le formulaire About, qui pourra permettre par exemple via un F1, l'ouverture du fichier d'aide.
 
 
 
