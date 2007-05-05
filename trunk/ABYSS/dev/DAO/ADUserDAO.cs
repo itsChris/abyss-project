@@ -115,6 +115,7 @@ namespace DAO {
             directoryEntry.Properties["userAccountControl"].Value = userAccountControl;
             Utility.setProperty(directoryEntry, "pwdLastSet", adUserData.ChangePasswordNextLogon ? "0" : "-1");
             directoryEntry.CommitChanges();
+            directoryEntry.Close();
         }
         #endregion
 

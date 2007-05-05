@@ -65,7 +65,8 @@ namespace DAO {
                 group+= Convert.ToInt64(Utility.ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_SECURITY_ENABLED);
             }
             Utility.setProperty(directoryEntry, "groupType", group+"");
-            directoryEntry.CommitChanges();          
+            directoryEntry.CommitChanges();
+            directoryEntry.Close();
         }
 
         private static void updateMembersAndMemberOfList(ADGroupData adGroupData, DirectoryEntry directoryEntry) {
@@ -99,6 +100,7 @@ namespace DAO {
                 DirectoryEntry temp = Utility.getDirectoryObjectByDistinguishedName(getInstance().Path + "/" + de.Properties["member"][index].ToString());
                 list.Add(Utility.getProperty(temp, "distinguishedName"));
             }
+            de.Close();
             return list;
         }
 
@@ -110,6 +112,7 @@ namespace DAO {
                 DirectoryEntry temp = Utility.getDirectoryObjectByDistinguishedName(getInstance().Path + "/" + de.Properties["memberOf"][index].ToString());
                 list.Add(Utility.getProperty(temp, "distinguishedName"));
             }
+            de.Close();
             return list;
         }
         #endregion
