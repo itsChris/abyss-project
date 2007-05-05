@@ -79,7 +79,13 @@ namespace Business {
         #endregion 
 
         #region Static Methods
-
+        public static ADComputer getComputerByName(string username) {
+            ADUserData userData = ADUserDAO.getUser(username);
+            if (userData != null) {
+                //return new ADUser((ADUserData)userData);
+            }
+            return null;
+        }
         #endregion
     }
 }
