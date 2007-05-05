@@ -34,6 +34,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADComputer.cs" />
     <Compile Include="ADConnection.cs" />
     <Compile Include="ADGroup.cs" />
     <Compile Include="ADUser.cs" />

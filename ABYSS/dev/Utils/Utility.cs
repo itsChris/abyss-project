@@ -197,6 +197,19 @@ namespace Utils {
         }
 
         /// <summary>
+        /// Returns the results of the research of all computers 
+        /// </summary>
+        /// <returns></returns>
+        public static SearchResultCollection getComputers() {
+            DirectoryEntry directoryEntry = getDirectoryObject();
+            DirectorySearcher directorySearcher = new DirectorySearcher();
+            directorySearcher.SearchRoot = directoryEntry;
+            directorySearcher.Filter = "(&(objectClass=computer)(objectCategory=computer)(description=*))";
+            directorySearcher.SearchScope = SearchScope.Subtree;
+            return directorySearcher.FindAll();
+        }
+
+        /// <summary>
         /// Returns the node for the object path
         /// </summary>
         /// <param name="objectPath"></param>
@@ -307,6 +320,39 @@ namespace Utils {
         public static bool isSecurityEnable(long groupType) {
             long securityType = Convert.ToInt64(ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_SECURITY_ENABLED);
             long flagExists = groupType & securityType;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public static bool isComputerEnabled(int userAccountControl) {
+            int computerEnabled = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_PASSWD_NOTREQD) + Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_WORKSTATION_TRUST_ACCOUNT);
+            int flagExists = userAccountControl & computerEnabled;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public static bool isComputerWorkStationAccount(int userAccountControl) {
+            int computerWorkstation = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_WORKSTATION_TRUST_ACCOUNT);
+            int flagExists = userAccountControl & computerWorkstation;
+            if (flagExists > 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public static bool isComputerServerAccount(int userAccountControl) {
+            int computerServer = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_SERVER_TRUST_ACCOUNT);
+            int flagExists = userAccountControl & computerServer;
             if (flagExists > 0) {
                 return true;
             }
