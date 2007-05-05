@@ -104,6 +104,10 @@ namespace Business {
         public void enableComputerAccount() {
             ADComputerDAO.enableComputerAccount(ComputerName);
         }
+
+        public void deleteComputerAccount() {
+            ADUserDAO.deleteUserAccount(ComputerName);
+        }
         #endregion
     }
 }
