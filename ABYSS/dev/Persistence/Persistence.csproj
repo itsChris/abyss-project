@@ -33,6 +33,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADComputerData.cs" />
     <Compile Include="ADGroupData.cs" />
     <Compile Include="ADUserData.cs" />
     <Compile Include="OracleUserData.cs" />
