@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 
 namespace Persistence {
     [Serializable()]public class ADUserData {
@@ -25,6 +26,7 @@ namespace Persistence {
         private bool isAccountActive; //userAccountControl
         private bool changePasswordNextLogon; //change password at next logon
         private bool passwordNeverExpired; // the password cant expire
+        private ArrayList memberOf;
         #endregion
 
         #region Constructors
@@ -141,6 +143,11 @@ namespace Persistence {
         public bool PasswordNeverExpired {
             get { return passwordNeverExpired; }
             set { passwordNeverExpired = value; }
+        }
+
+        public ArrayList MemberOf {
+            get { return memberOf; }
+            set { memberOf = value; }
         }
         #endregion
     }

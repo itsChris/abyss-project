@@ -13,7 +13,7 @@ namespace Persistence {
         private ArrayList memberof;
         #endregion
 
-        #region Enum
+        #region Enumeration
         public enum GroupeScope {
             Global,
             DomainLocal,
