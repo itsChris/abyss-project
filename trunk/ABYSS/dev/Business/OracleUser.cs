@@ -2,6 +2,8 @@ using System;
 using DAO;
 using Persistence;
 using System.Collections;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 
 namespace Business {
     public class OracleUser {
@@ -27,6 +29,33 @@ namespace Business {
             OracleUserDAO.SaveOracleUser(this.oracleUserData);
         }
 
+        public void delete() {
+            OracleUserDAO.DeleteOracleUser(this.oracleUserData);
+        }
+
+        public void editPassword() {
+            OracleUserDAO.EditPasswordOracleUser(this.oracleUserData);
+        }
+
+        public void LockUser() {
+            OracleUserDAO.LockOracleUser(this.oracleUserData);
+        }
+
+        public void UnlockUser() {
+            OracleUserDAO.UnlockOracleUser(this.oracleUserData);
+        }
+
+        public OracleDataReader GetDefaultTablespace() {
+            return OracleUserDAO.GetDefaultTablespace();
+        }
+
+        public OracleDataReader GetTemporaryTablespace() {
+            return OracleUserDAO.GetTemporatyTablespace();
+        }
+
+        public OracleDataReader GetUser() {
+            return OracleUserDAO.GetOracleUser();
+        }
         #endregion
 
         #region Properties

@@ -30,9 +30,8 @@
             this.userPassword_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.userLogin_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.tablespace_gbx = new Abyss_Client.CompBase.BaseGroupBox();
-            this.temporaryTablespace_txt = new Abyss_Client.CompBase.BaseTextBox();
+            this.defaultTablespace_cbx = new Abyss_Client.CompBase.BaseComboBox();
             this.temporaryTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
-            this.defaultTablespace_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.defaultTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.accountInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
             this.profile_txt = new Abyss_Client.CompBase.BaseTextBox();
@@ -40,6 +39,7 @@
             this.passwordExpire_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.profile_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.createUser_btn = new Abyss_Client.CompBase.BaseButton();
+            this.temporaryTablespace_cbx = new Abyss_Client.CompBase.BaseComboBox();
             this.userInformation_gbx.SuspendLayout();
             this.tablespace_gbx.SuspendLayout();
             this.accountInformation_gbx.SuspendLayout();
@@ -121,9 +121,9 @@
             // tablespace_gbx
             // 
             this.tablespace_gbx.BackColor = System.Drawing.Color.Transparent;
-            this.tablespace_gbx.Controls.Add(this.temporaryTablespace_txt);
+            this.tablespace_gbx.Controls.Add(this.temporaryTablespace_cbx);
+            this.tablespace_gbx.Controls.Add(this.defaultTablespace_cbx);
             this.tablespace_gbx.Controls.Add(this.temporaryTablespace_lbl);
-            this.tablespace_gbx.Controls.Add(this.defaultTablespace_txt);
             this.tablespace_gbx.Controls.Add(this.defaultTablespace_lbl);
             this.tablespace_gbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.tablespace_gbx.Location = new System.Drawing.Point(307, 13);
@@ -133,16 +133,13 @@
             this.tablespace_gbx.TabStop = false;
             this.tablespace_gbx.Text = "Tablespace Information";
             // 
-            // temporaryTablespace_txt
+            // defaultTablespace_cbx
             // 
-            this.temporaryTablespace_txt.BackColor = System.Drawing.Color.White;
-            this.temporaryTablespace_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.temporaryTablespace_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.temporaryTablespace_txt.Location = new System.Drawing.Point(192, 77);
-            this.temporaryTablespace_txt.Mandatory = false;
-            this.temporaryTablespace_txt.Name = "temporaryTablespace_txt";
-            this.temporaryTablespace_txt.Size = new System.Drawing.Size(145, 20);
-            this.temporaryTablespace_txt.TabIndex = 3;
+            this.defaultTablespace_cbx.FormattingEnabled = true;
+            this.defaultTablespace_cbx.Location = new System.Drawing.Point(192, 27);
+            this.defaultTablespace_cbx.Name = "defaultTablespace_cbx";
+            this.defaultTablespace_cbx.Size = new System.Drawing.Size(145, 21);
+            this.defaultTablespace_cbx.TabIndex = 4;
             // 
             // temporaryTablespace_lbl
             // 
@@ -154,17 +151,6 @@
             this.temporaryTablespace_lbl.Size = new System.Drawing.Size(144, 13);
             this.temporaryTablespace_lbl.TabIndex = 2;
             this.temporaryTablespace_lbl.Text = "Temporary Tablespace :";
-            // 
-            // defaultTablespace_txt
-            // 
-            this.defaultTablespace_txt.BackColor = System.Drawing.Color.White;
-            this.defaultTablespace_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.defaultTablespace_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.defaultTablespace_txt.Location = new System.Drawing.Point(192, 29);
-            this.defaultTablespace_txt.Mandatory = false;
-            this.defaultTablespace_txt.Name = "defaultTablespace_txt";
-            this.defaultTablespace_txt.Size = new System.Drawing.Size(145, 20);
-            this.defaultTablespace_txt.TabIndex = 1;
             // 
             // defaultTablespace_lbl
             // 
@@ -248,11 +234,19 @@
             this.createUser_btn.UseVisualStyleBackColor = true;
             this.createUser_btn.Click += new System.EventHandler(this.createUser_btn_Click);
             // 
+            // temporaryTablespace_cbx
+            // 
+            this.temporaryTablespace_cbx.FormattingEnabled = true;
+            this.temporaryTablespace_cbx.Location = new System.Drawing.Point(192, 77);
+            this.temporaryTablespace_cbx.Name = "temporaryTablespace_cbx";
+            this.temporaryTablespace_cbx.Size = new System.Drawing.Size(145, 21);
+            this.temporaryTablespace_cbx.TabIndex = 5;
+            // 
             // OracleUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 319);
+            this.ClientSize = new System.Drawing.Size(665, 263);
             this.Controls.Add(this.createUser_btn);
             this.Controls.Add(this.accountInformation_gbx);
             this.Controls.Add(this.tablespace_gbx);
@@ -280,14 +274,14 @@
         private Abyss_Client.CompBase.BaseCheckBox externalUser_chk;
         private Abyss_Client.CompBase.BaseGroupBox tablespace_gbx;
         private Abyss_Client.CompBase.BaseLabel defaultTablespace_lbl;
-        private Abyss_Client.CompBase.BaseTextBox temporaryTablespace_txt;
         private Abyss_Client.CompBase.BaseLabel temporaryTablespace_lbl;
-        private Abyss_Client.CompBase.BaseTextBox defaultTablespace_txt;
         private Abyss_Client.CompBase.BaseGroupBox accountInformation_gbx;
         private Abyss_Client.CompBase.BaseLabel profile_lbl;
         private Abyss_Client.CompBase.BaseCheckBox accountLock_chk;
         private Abyss_Client.CompBase.BaseCheckBox passwordExpire_chk;
         private Abyss_Client.CompBase.BaseTextBox profile_txt;
         private Abyss_Client.CompBase.BaseButton createUser_btn;
+        private Abyss_Client.CompBase.BaseComboBox defaultTablespace_cbx;
+        private Abyss_Client.CompBase.BaseComboBox temporaryTablespace_cbx;
     }
 }

@@ -38,6 +38,7 @@
     <Compile Include="ADComputerData.cs" />
     <Compile Include="ADGroupData.cs" />
     <Compile Include="ADUserData.cs" />
+    <Compile Include="OracleTableData.cs" />
     <Compile Include="OracleUserData.cs" />
   </ItemGroup>
   <ItemGroup>

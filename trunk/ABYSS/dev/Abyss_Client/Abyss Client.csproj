@@ -92,6 +92,12 @@
     <Compile Include="CompBase\BaseCheckBox.Designer.cs">
       <DependentUpon>BaseCheckBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompBase\BaseComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseComboBox.Designer.cs">
+      <DependentUpon>BaseComboBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompBase\BaseContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -169,6 +175,12 @@
     </Compile>
     <Compile Include="ADAdministration.Designer.cs">
       <DependentUpon>ADAdministration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBase\BaseListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompBase\BaseListBox.Designer.cs">
+      <DependentUpon>BaseListBox.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
