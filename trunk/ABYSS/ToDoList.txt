@@ -22,17 +22,12 @@ si vous modifiez une méthode méttez ce que vous modifiez en commentaire
 
 
 Gestion des User
-
 Rajouté un user dans un group
 Retiré unser 'un group
 
 
-Mofifié
-Activé user account
-disable user account
 
-Supprimer un user
-Change mot de passe
+
 
 
 

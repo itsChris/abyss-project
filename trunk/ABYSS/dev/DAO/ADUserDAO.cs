@@ -102,7 +102,7 @@ namespace DAO {
             Utility.setProperty(directoryEntry, "Url", adUserData.Url);
             Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
             Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
-            Int32 userAccountControl;
+            int userAccountControl;
             if (adUserData.IsAccountActive) {
                 userAccountControl = Convert.ToInt32(Utility.UserStatus.Enable);
             }

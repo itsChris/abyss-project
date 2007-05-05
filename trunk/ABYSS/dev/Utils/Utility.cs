@@ -304,9 +304,9 @@ namespace Utils {
             }
         }
 
-        public static bool isSecurityEnable(Int64 groupType) {
-            Int64 securityType = Convert.ToInt64(ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_SECURITY_ENABLED);
-            Int64 flagExists = groupType & securityType;
+        public static bool isSecurityEnable(long groupType) {
+            long securityType = Convert.ToInt64(ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_SECURITY_ENABLED);
+            long flagExists = groupType & securityType;
             if (flagExists > 0) {
                 return true;
             }
@@ -323,11 +323,25 @@ namespace Utils {
         /// <param name="propertyValue"></param>propertyName
         public static void setProperty(DirectoryEntry directoryEntry, string propertyName, string propertyValue) {
             if (!string.IsNullOrEmpty(propertyValue)) {
-                if (directoryEntry.Properties[propertyName].Count != 0) {
+                if (directoryEntry.Properties[propertyName].Count != 0 && propertyName != "Member" & propertyName != "MemberOf") {
                     directoryEntry.Properties[propertyName][0] = propertyValue;
                 }
                 else {
                     directoryEntry.Properties[propertyName].Add(propertyValue);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Remove the property for the object in the node
+        /// </summary>
+        /// <param name="directoryEntry"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="propertyValue"></param>propertyName
+        public static void removeProperty(DirectoryEntry directoryEntry, string propertyName, string propertyValue) {
+            if (!string.IsNullOrEmpty(propertyValue)) {
+                if (directoryEntry.Properties[propertyName].Count != 0) {
+                    directoryEntry.Properties[propertyName].Remove(propertyValue);
                 }
             }
         }

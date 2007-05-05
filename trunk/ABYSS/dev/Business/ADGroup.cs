@@ -54,20 +54,15 @@ namespace Business {
             set { aDGroupData.Description = value; }
         }
 
-        //public ArrayList Members {
-        //    get {
-        //        if (members == null) {
-        //              members = ADGroupDAO.getMembersList(DistinguishedName);
-                      
+        public ArrayList Members {
+            get { return aDGroupData.Members; }
+            set { aDGroupData.Members = value; }
+        }
 
-        //        }
-        //        return members;  
-
-
-
-
-        //    }
-        //}
+        public ArrayList Memberof {
+            get { return aDGroupData.Memberof; }
+            set { aDGroupData.Memberof = value; }
+        }
         #endregion
 
         #region Static Methods
@@ -92,20 +87,6 @@ namespace Business {
         public void deleteGroup() {
             ADGroupDAO.deleteGroup(Name);
         }
-        #endregion
-
-        #region Private Methods
-        //private ArrayList getMembersList() {
-        //    DirectoryEntry de = Utility.getDirectoryObjectByDistinguishedName(DistinguishedName);
-        //    int index;
-        //    ArrayList list = new ArrayList();
-        //    for (index = 0; index <= de.Properties["member"].Count - 1; index++) {
-        //       DictionaryEntry temp = Utility.getDirectoryObjectByDistinguishedName(
-
-        //        list.Add(Load(Utility.GetDirectoryObjectByDistinguishedName(Utility.ADPath + "/" + _de.Properties["member"][index].ToString())));
-        //    }
-        //    return list;
-        //}
         #endregion
     }
 }

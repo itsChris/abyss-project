@@ -14,7 +14,9 @@ namespace DAO {
             adGroupData.Name = Utility.getProperty(directoryEntry, "sAMAccountName");
             adGroupData.Description = Utility.getProperty(directoryEntry, "description");
             adGroupData.DistinguishedName = Utility.getProperty(directoryEntry, "distinguishedName");
-            Int32 groupeScope = Convert.ToInt32(Utility.getProperty(directoryEntry, "groupType"));
+            adGroupData.Members = getMembersList(adGroupData.DistinguishedName);
+            adGroupData.Memberof = getMemberOfList(adGroupData.DistinguishedName);
+            int groupeScope = Convert.ToInt32(Utility.getProperty(directoryEntry, "groupType"));
             if (Utility.isGlobalScope(groupeScope)) {
                 adGroupData.Scope = ADGroupData.GroupeScope.Global;
             }
@@ -24,11 +26,9 @@ namespace DAO {
             else {
                 adGroupData.Scope = ADGroupData.GroupeScope.Universel;
             }
+            adGroupData.SecurityGroupe = false;
             if (Utility.isSecurityEnable(Convert.ToInt64(Utility.getProperty(directoryEntry, "groupType")))) {
                 adGroupData.SecurityGroupe = true;
-            }
-            else {
-                adGroupData.SecurityGroupe = false;
             }
             return adGroupData;
         }
@@ -51,6 +51,7 @@ namespace DAO {
             }
             Utility.setProperty(directoryEntry, "sAMAccountName", aDGroupData.Name);
             Utility.setProperty(directoryEntry, "description", aDGroupData.Description);
+            updateMembersAndMemberOfList(aDGroupData, directoryEntry);
             long group;
             if(aDGroupData.Scope == ADGroupData.GroupeScope.Global){
                 group = Convert.ToInt64(Utility.ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_GLOBAL_GROUP);
@@ -65,23 +66,56 @@ namespace DAO {
                 group+= Convert.ToInt64(Utility.ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_SECURITY_ENABLED);
             }
             Utility.setProperty(directoryEntry, "groupType", group+"");
-            directoryEntry.CommitChanges();
-
-
-        
-            
+            directoryEntry.CommitChanges();          
         }
 
+        private static void updateMembersAndMemberOfList(ADGroupData adGroupData, DirectoryEntry directoryEntry) {
+            ArrayList list = getMembersList(adGroupData.DistinguishedName);
+            foreach (String distinguishedName in list) {
+                Utility.removeProperty(directoryEntry, "Member", distinguishedName);
+            }
+            foreach (String distinguishedName in adGroupData.Members) {
+                Utility.setProperty(directoryEntry, "Member", distinguishedName);
+            }
+            list = getMemberOfList(adGroupData.DistinguishedName);
+            foreach (String distinguishedName in list) {
+                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                Utility.removeProperty(memberOf, "Member", adGroupData.DistinguishedName);
+                memberOf.CommitChanges();
+                memberOf.Close();
+            }
+            foreach (String distinguishedName in adGroupData.Memberof) {
+                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                Utility.setProperty(memberOf, "Member", adGroupData.DistinguishedName);
+                memberOf.CommitChanges();
+                memberOf.Close();
+            }
+        }
 
+        private static ArrayList getMembersList(string DistinguishedName) {
+            int index;
+            DirectoryEntry de = Utility.getDirectoryObjectByDistinguishedName(DistinguishedName);
+            ArrayList list = new ArrayList();
+            for (index = 0; index <= de.Properties["member"].Count - 1; index++) {
+                DirectoryEntry temp = Utility.getDirectoryObjectByDistinguishedName(getInstance().Path + "/" + de.Properties["member"][index].ToString());
+                list.Add(Utility.getProperty(temp, "distinguishedName"));
+            }
+            return list;
+        }
 
-
-
-
+        private static ArrayList getMemberOfList(string DistinguishedName) {
+            int index;
+            DirectoryEntry de = Utility.getDirectoryObjectByDistinguishedName(DistinguishedName);
+            ArrayList list = new ArrayList();
+            for (index = 0; index <= de.Properties["memberOf"].Count - 1; index++) {
+                DirectoryEntry temp = Utility.getDirectoryObjectByDistinguishedName(getInstance().Path + "/" + de.Properties["memberOf"][index].ToString());
+                list.Add(Utility.getProperty(temp, "distinguishedName"));
+            }
+            return list;
+        }
         #endregion
-        #endregion
 
-
-
+        #region Public
         public static ADGroupData getGroup(string groupName) {
             DirectoryEntry directoryEntry = Utility.getGroup(groupName);
             if (directoryEntry != null) {
@@ -91,38 +125,20 @@ namespace DAO {
         }
 
         public static ArrayList getGroupsList() {
-            throw new Exception("The method or operation is not implemented.");
+            return getGroupsList(Utility.getGroups());
         }
 
-        public static void saveGroup(Persistence.ADGroupData aDGroupData) {
+        public static void saveGroup(ADGroupData aDGroupData) {
             save(aDGroupData);
         }
 
-        public static void deleteGroup(string Name) {
-            throw new Exception("The method or operation is not implemented.");
+        public static void deleteGroup(string name) {
+            DirectoryEntry directoryEntry = Utility.getGroup(name);
+            directoryEntry.DeleteTree();
+            directoryEntry.CommitChanges();
         }
-
-        public static ArrayList getMembersList(string DistinguishedName) {
-            int index;
-            DirectoryEntry de = Utility.getDirectoryObjectByDistinguishedName(DistinguishedName);
-            ArrayList list = new ArrayList();
-            for (index = 0; index <= de.Properties["member"].Count - 1; index++) {
-                DirectoryEntry temp = Utility.getDirectoryObjectByDistinguishedName(getInstance().Path + "/" + de.Properties["member"][index].ToString());
-                list.Add(temp);
-            }
-            return list;
-        }
-
-        public static ArrayList getMemberOfList(string DistinguishedName) {
-            int index;
-            DirectoryEntry de = Utility.getDirectoryObjectByDistinguishedName(DistinguishedName);
-            ArrayList list = new ArrayList();
-            for (index = 0; index <= de.Properties["memberOf"].Count - 1; index++) {
-                DirectoryEntry temp = Utility.getDirectoryObjectByDistinguishedName(getInstance().Path + "/" + de.Properties["member"][index].ToString());
-                list.Add(temp);
-            }
-            return list;
-        }
+        #endregion
+        #endregion
     }
 }
 
