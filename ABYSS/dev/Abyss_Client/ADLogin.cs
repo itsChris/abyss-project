@@ -7,6 +7,11 @@ using System.Collections;
 
 namespace Abyss_Client {
     public partial class ADLogin : CompBase.BaseForm {
+        #region Attributes
+        DirectoryEntry connexion = null;
+        ADUser user = null;
+        #endregion
+
         #region Constructors
         public ADLogin() {
             InitializeComponent();
@@ -15,8 +20,6 @@ namespace Abyss_Client {
 
         #region Component events
         private void connect_btn_Click(object sender, EventArgs e) {
-            DirectoryEntry connexion = null;
-            ADUser user = null;
             Cursor.Current = Cursors.WaitCursor;
             try {
                 if (!checkMandatoryFields()) {
@@ -39,7 +42,7 @@ namespace Abyss_Client {
                 return;
             }
             if (user != null) {
-                MessageBox.Show("Login success. Welcome " + user.UserName,
+                MessageBox.Show("Login success. Welcome " + user.DisplayName,
                 this.Text, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
                 openForm(new ADAdministration(connexion));
@@ -50,7 +53,6 @@ namespace Abyss_Client {
                 MessageBox.Show("Login failed", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ADConnection.setInitToFalse();
             }
-           
             Cursor.Current = Cursors.Default;
         }
 
@@ -86,6 +88,10 @@ namespace Abyss_Client {
                 e.Cancel = true;
             }
         }
-        #endregion
+
+        private void quit_btn_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+        #endregion    
     }
 }

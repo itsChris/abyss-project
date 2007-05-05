@@ -4,6 +4,7 @@ using System.Text;
 using Persistence;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
+using System.Data;
 
 namespace DAO {
     public class OracleTableDAO : OracleDAO {

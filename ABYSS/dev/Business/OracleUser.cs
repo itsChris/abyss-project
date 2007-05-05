@@ -33,8 +33,8 @@ namespace Business {
             OracleUserDAO.DeleteOracleUser(this.oracleUserData);
         }
 
-        public void editPassword() {
-            OracleUserDAO.EditPasswordOracleUser(this.oracleUserData);
+        public void editPassword(String newPassword) {
+            OracleUserDAO.EditPasswordOracleUser(this.oracleUserData, newPassword);
         }
 
         public void LockUser() {
