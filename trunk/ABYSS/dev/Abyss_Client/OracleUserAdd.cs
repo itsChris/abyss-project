@@ -32,6 +32,13 @@ namespace Abyss_Client {
             }
             reader.Close();
 
+            reader = user.GetProfile();
+
+            while (reader.Read()) {
+                profile_cbx.Items.Add(reader.GetValue(0));
+            }
+            reader.Close();
+
         }
 
         private void createUser_btn_Click(object sender, EventArgs e) {
@@ -40,7 +47,7 @@ namespace Abyss_Client {
             
             OracleUser user = new OracleUser();
 
-            user.Profile = profile_txt.Text;
+            user.Profile = profile_cbx.SelectedItem.ToString();
             user.DefaultTablespace = defaultTablespace_cbx.SelectedItem.ToString();
             user.TemporatyTablespace = temporaryTablespace_cbx.SelectedItem.ToString();
             user.CreatedDate = DateTime.Now.ToString();
@@ -77,5 +84,6 @@ namespace Abyss_Client {
             }
 
         }
+
     }
 }

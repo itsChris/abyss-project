@@ -90,6 +90,12 @@ namespace DAO {
             return ExecuteReader(query);
         }
 
+        public static OracleDataReader GetUserProfile() {
+            string query = "SELECT PROFILE FROM DBA_PROFILES ORDER BY PROFILE";
+
+            return ExecuteReader(query);
+        }
+
         public static void ExecuteNonQuery(string query) {
             OracleCommand cmd = getInstance().CreateCommand();
             cmd.CommandType = CommandType.Text;
