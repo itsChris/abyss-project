@@ -73,11 +73,23 @@
     <Compile Include="ADComputerUpdate.Designer.cs">
       <DependentUpon>ADComputerUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="ADGroupUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADGroupUpdate.Designer.cs">
+      <DependentUpon>ADGroupUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="ADMemberOf.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ADMemberOf.Designer.cs">
       <DependentUpon>ADMemberOf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ADMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADMembers.Designer.cs">
+      <DependentUpon>ADMembers.cs</DependentUpon>
     </Compile>
     <Compile Include="ADUserPasswordUpdate.cs">
       <SubType>Form</SubType>
@@ -233,9 +245,17 @@
       <SubType>Designer</SubType>
       <DependentUpon>ADComputerUpdate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ADGroupUpdate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ADGroupUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ADMemberOf.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ADMemberOf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADMembers.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ADMembers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ADUserPasswordUpdate.resx">
       <SubType>Designer</SubType>

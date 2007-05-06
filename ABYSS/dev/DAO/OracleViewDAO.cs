@@ -18,7 +18,7 @@ namespace DAO {
         }
 
         public static OracleDataReader GetView() {
-
+            return null;
         }
 
         public static void ExecuteNonQuery(string query) {

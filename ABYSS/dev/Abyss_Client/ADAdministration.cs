@@ -197,6 +197,13 @@ namespace Abyss_Client {
                                     refreshCurrentNode();
                                 }
                             }
+
+                            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADGroup)) {
+                                ADGroup adGroup = (ADGroup)this.list_lst.SelectedItems[0].Tag;
+                                if (DialogResult.OK == openForm(new ADGroupUpdate(adGroup))) {
+                                    refreshCurrentNode();
+                                }
+                            }
                         }
                         break;
                 }
@@ -280,6 +287,12 @@ namespace Abyss_Client {
 
         private void computer_tmi_Click(object sender, EventArgs e) {
             if (DialogResult.OK == openForm(new ADComputerUpdate())) {
+                refreshCurrentNode();
+            }
+        }
+
+        private void group_tmi_Click(object sender, EventArgs e) {
+            if (DialogResult.OK == openForm(new ADGroupUpdate())) {
                 refreshCurrentNode();
             }
         }
