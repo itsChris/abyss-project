@@ -1,7 +1,6 @@
 Formulaire ADAdministration.
-- Faire une méthode refresh, pour raffraichir, le node sélectionnée.
 - Optionel : Dans les process lié au user AD faire en sorte que l'orsque le compte est supprimé, suprim aussi ds oracle. Idem pour Add, modify...
-- Faire le formulaire About, qui pourra permettre par exemple via un F1, l'ouverture du fichier d'aide.
+- Faire le formulaire About, qui pourra permettre par exemple via un F1, l'ouverture du fichier d'aide(documentation).
 
 
 
