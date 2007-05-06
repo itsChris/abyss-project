@@ -28,6 +28,10 @@ namespace DAO {
             string query = "DROP TABLE " + table.TableOwner + "." + table.TableName + " CASCADE CONSTRAINTS";
         }
 
+        public static void EditTableName(OracleTableData table, string newName) {
+            string query = "ALTER TABLE " + table.TableName + " RENAME TO " + newName;
+        }
+
         public static OracleDataReader GetTable() {
             string query = "SELECT TABLE_NAME FROM  DBA_TABLES ORDER BY TABLE_NAME";
             return ExecuteReader(query);

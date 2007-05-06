@@ -32,6 +32,10 @@ namespace Business {
         public void delete() {
             OracleTableDAO.DeleteTable(this.oracleTableData);
         }
+
+        public void EditName(string newName) {
+            OracleTableDAO.EditTableName(this.oracleTableData, newName);
+        }
         #endregion
 
         #region Properties
