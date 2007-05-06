@@ -20,6 +20,7 @@ namespace DAO {
         public static OracleConnection getInstance() {
             if (instance == null) {
                 instance = new OracleConnection(ConfigurationManager.ConnectionStrings["OraConnect"].ConnectionString);
+                instance.Open();
             }
             return instance;
         }
