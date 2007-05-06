@@ -22,9 +22,9 @@ namespace DAO {
             adComputerData.OperatingSystem = Utility.getProperty(directoryEntry, "operatingSystem");
             adComputerData.OperatingSystemServicePack = Utility.getProperty(directoryEntry, "operatingSystemServicePack");
             adComputerData.OperatingSystemVersion = Utility.getProperty(directoryEntry, "operatingSystemVersion");
-            adComputerData.Enabled = false;
             int userAccountControl = Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl"));
-            if (Utility.isComputerEnabled(userAccountControl)) {
+            adComputerData.Enabled = false;
+            if (Utility.isAccountActive(userAccountControl)) {
                 adComputerData.Enabled = true;
             }
             if (Utility.isComputerWorkStationAccount(userAccountControl)) {
