@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DAO;
 using Persistence;
 using Oracle.DataAccess.Client;
@@ -8,7 +6,6 @@ using Oracle.DataAccess.Types;
 
 namespace Business {
     public class OracleTable {
-
         #region Attributes
         private OracleTableData oracleTableData;
         #endregion

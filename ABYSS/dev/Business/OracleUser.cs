@@ -7,7 +7,6 @@ using Oracle.DataAccess.Types;
 
 namespace Business {
     public class OracleUser {
-
         #region Attributes
         private OracleUserData oracleUserData;
         #endregion
@@ -96,9 +95,6 @@ namespace Business {
             set { oracleUserData.CreatedDate = value; }
         }
         #endregion
-
-
-
 
         //    public OracleDataReader executeQuery(string query, OracleConnection con) {
 
