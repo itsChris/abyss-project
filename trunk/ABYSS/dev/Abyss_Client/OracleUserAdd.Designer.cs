@@ -251,7 +251,6 @@
             this.Name = "OracleUserAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add an Oracle User";
-            this.Load += new System.EventHandler(this.OracleUserAdd_Load);
             this.userInformation_gbx.ResumeLayout(false);
             this.userInformation_gbx.PerformLayout();
             this.tablespace_gbx.ResumeLayout(false);

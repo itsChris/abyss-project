@@ -142,6 +142,7 @@
             this.group_tmi.Name = "group_tmi";
             this.group_tmi.Size = new System.Drawing.Size(152, 22);
             this.group_tmi.Text = "Group";
+            this.group_tmi.Click += new System.EventHandler(this.group_tmi_Click);
             // 
             // toolStripSeparator4
             // 
