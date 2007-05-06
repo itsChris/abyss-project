@@ -2,6 +2,7 @@ using System;
 using Business;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Utils;
 
 namespace Abyss_Client {
     public partial class ADUserUpdate : Abyss_Client.CompBase.BaseForm {
