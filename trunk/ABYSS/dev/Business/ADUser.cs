@@ -131,6 +131,11 @@ namespace Business {
             get { return adUserData.PasswordNeverExpired; }
             set { adUserData.PasswordNeverExpired = value; }
         }
+
+        public ArrayList MemberOf {
+            get { return adUserData.MemberOf; }
+            set { adUserData.MemberOf = value; }
+        }
         #endregion
 
         #region Static Methods

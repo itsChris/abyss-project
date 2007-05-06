@@ -67,6 +67,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ADMemberOf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADMemberOf.Designer.cs">
+      <DependentUpon>ADMemberOf.cs</DependentUpon>
+    </Compile>
     <Compile Include="ADUserPasswordUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,10 @@
     <EmbeddedResource Include="AboutForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ADMemberOf.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ADMemberOf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ADUserPasswordUpdate.resx">
       <SubType>Designer</SubType>

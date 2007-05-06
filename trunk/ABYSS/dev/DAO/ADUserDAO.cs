@@ -34,6 +34,7 @@ namespace DAO {
             adUserData.Url = Utility.getProperty(directoryEntry, "Url");
             adUserData.UserName = Utility.getProperty(directoryEntry, "sAMAccountName");
             adUserData.DistinguishedName = "LDAP://" + Utility.CrtDomain + "/" + Utility.getProperty(directoryEntry, "DistinguishedName");
+            adUserData.MemberOf = getMemberOfList(adUserData.DistinguishedName);
             long fileTime = longFromLargeInteger(directoryEntry.Properties["pwdLastSet"].Value);
             DateTime pwdSet = DateTime.FromFileTime(fileTime);
             if (pwdSet.ToString() == "01/01/1601 01:00:00") {
@@ -45,6 +46,18 @@ namespace DAO {
             adUserData.IsAccountActive = Utility.isAccountActive(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
             adUserData.PasswordNeverExpired = Utility.isDontExpiredPassword(Convert.ToInt32(Utility.getProperty(directoryEntry, "userAccountControl")));
             return adUserData;
+        }
+
+        private static ArrayList getMemberOfList(string DistinguishedName) {
+            int index;
+            DirectoryEntry de = Utility.getDirectoryObjectByDistinguishedName(DistinguishedName);
+            ArrayList list = new ArrayList();
+            for (index = 0; index <= de.Properties["memberOf"].Count - 1; index++) {
+                DirectoryEntry temp = Utility.getDirectoryObjectByDistinguishedName(getInstance().Path + "/" + de.Properties["memberOf"][index].ToString());
+                list.Add(Utility.getProperty(temp, "distinguishedName"));
+            }
+            de.Close();
+            return list;
         }
 
         private static long longFromLargeInteger(object largeInteger) {
