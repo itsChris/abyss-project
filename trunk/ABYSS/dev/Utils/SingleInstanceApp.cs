@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Abyss_Client {
+namespace Utils {
     public class SingleInstanceApp : IDisposable {
         #region Attributes
         Mutex siMutex;

@@ -55,7 +55,7 @@
             this.prgBar_pgb.Minimum = 0;
             this.prgBar_pgb.Name = "prgBar_pgb";
             this.prgBar_pgb.Orientation = ExtendedDotNET.Controls.Progress.ProgressBarDirection.Horizontal;
-            this.prgBar_pgb.ProgressBackColor = System.Drawing.Color.Transparent;
+            this.prgBar_pgb.ProgressBackColor = System.Drawing.Color.White;
             this.prgBar_pgb.ProgressBarStyle = ExtendedDotNET.Controls.Progress.ProgressStyle.Dashed;
             this.prgBar_pgb.SecondColor = System.Drawing.Color.White;
             this.prgBar_pgb.Shadow = true;

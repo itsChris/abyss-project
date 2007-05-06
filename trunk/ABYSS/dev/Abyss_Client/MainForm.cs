@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using Utils;
 
 namespace Abyss_Client {
     public partial class MainForm : CompBase.BaseForm {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Abyss_Client {
+namespace Utils {
     public class StrongPasswordChecker {
         #region Enumeration
         public enum StrongPassword {
