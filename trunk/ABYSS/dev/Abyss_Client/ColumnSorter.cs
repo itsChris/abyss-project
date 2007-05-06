@@ -8,7 +8,8 @@ namespace Abyss_Client {
 	/// This class is an implementation of the 'IComparer' interface.
 	/// </summary>
 	public class ListViewColumnSorter : IComparer {
-		/// <summary>
+        #region Attributes
+        /// <summary>
 		/// Specifies the column to be sorted
 		/// </summary>
 		private int ColumnToSort;
@@ -22,8 +23,10 @@ namespace Abyss_Client {
 		//private CaseInsensitiveComparer ObjectCompare;
 		private NumberCaseInsensitiveComparer ObjectCompare;
 		private ImageTextComparer FirstObjectCompare;
+        #endregion
 
-		/// <summary>
+        #region Constructor
+        /// <summary>
 		/// Class constructor.  Initializes various elements
 		/// </summary>
 		public ListViewColumnSorter() {
@@ -37,9 +40,11 @@ namespace Abyss_Client {
 			// Initialize the CaseInsensitiveComparer object
 			ObjectCompare = new NumberCaseInsensitiveComparer();//CaseInsensitiveComparer();
 			FirstObjectCompare = new ImageTextComparer();
-		}
+        }
+        #endregion
 
-		/// <summary>
+        #region Public Methods
+        /// <summary>
 		/// This method is inherited from the IComparer interface.  It compares the two objects passed using a case insensitive comparison.
 		/// </summary>
 		/// <param name="x">First object to be compared</param>
@@ -103,22 +108,26 @@ namespace Abyss_Client {
 			{
 				return OrderOfSort;
 			}
-		}
-    
-	}
+        }
+        #endregion
+    }
 
-	public class ImageTextComparer : IComparer
-	{
-		//private CaseInsensitiveComparer ObjectCompare;
+	public class ImageTextComparer : IComparer {
+        #region Attributes
+        //private CaseInsensitiveComparer ObjectCompare;
 		private NumberCaseInsensitiveComparer ObjectCompare;
-        
-		public ImageTextComparer()
+        #endregion
+
+        #region Construcor
+        public ImageTextComparer()
 		{
 			// Initialize the CaseInsensitiveComparer object
 			ObjectCompare = new NumberCaseInsensitiveComparer();//CaseInsensitiveComparer();
-		}
+        }
+        #endregion
 
-		public int Compare(object x, object y)
+        #region Public Methods
+        public int Compare(object x, object y)
 		{
 			//int compareResult;
 			int image1, image2;
@@ -142,17 +151,20 @@ namespace Abyss_Client {
 			{
 				return 1;
 			}
-		}
-	}
+        }
+        #endregion
+    }
 
-	public class NumberCaseInsensitiveComparer : CaseInsensitiveComparer
-	{
-		public NumberCaseInsensitiveComparer ()
+	public class NumberCaseInsensitiveComparer : CaseInsensitiveComparer {
+        #region Constructor
+        public NumberCaseInsensitiveComparer ()
 		{
-			
-		}
 
-		public new int Compare(object x, object y)
+        }
+        #endregion
+
+        #region Public Methods
+        public new int Compare(object x, object y)
 		{
             if ((x is System.String) && IsWholeNumber((string)x) && (!string.IsNullOrEmpty((string)x)) && (y is System.String) && IsWholeNumber((string)y) && (!string.IsNullOrEmpty((string)y)))
 			{
@@ -168,6 +180,7 @@ namespace Abyss_Client {
 		{
 			Regex objNotWholePattern=new Regex("[^0-9]");
 			return !objNotWholePattern.IsMatch(strNumber);
-		}  
-	}
+        }
+        #endregion
+    }
 }
