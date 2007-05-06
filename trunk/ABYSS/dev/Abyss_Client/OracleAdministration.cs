@@ -80,8 +80,7 @@ namespace Abyss_Client {
         }
 
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e) {
-            OracleUserAdd f = new OracleUserAdd();
-            f.Show();
+            openForm(new OracleUserAdd());
         }
 
         #endregion
