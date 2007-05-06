@@ -1,8 +1,9 @@
 using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms; 
 using System.DirectoryServices;
 using Business;
-using System.Runtime.InteropServices;
+using Persistence;
 
 namespace Abyss_Client {
     public partial class ADAdministration : CompBase.BaseForm {
@@ -11,7 +12,7 @@ namespace Abyss_Client {
         private ListViewColumnSorter lvwColumnSorter;
         #endregion
 
-        #region Enum
+        #region Enumeration
         private enum AdImages {
             AdRoot,
             Ou,
@@ -93,11 +94,13 @@ namespace Abyss_Client {
 																	}, (int)AdImages.Ou);
                             break;
                         case "computer":
+                            ADComputer computer = ADComputer.getComputerByName((string)child.Properties["name"].Value);
                             tmpItem = new ListViewItem(new string[] {
-																		(string)child.Properties["name"].Value,
+																		computer.ComputerName,
 																		child.SchemaClassName,
-																		(string)child.Properties["description"].Value
-																	}, (int)AdImages.Computer);
+																		computer.Description
+																	}, computer.Enabled?(int)AdImages.Computer:(int)AdImages.DisableCompunter);
+                            tmpItem.Tag = computer;
                             break;
                         case "user":
                             ADUser user = ADUser.getUserByName((string)child.Properties["name"].Value);
@@ -109,9 +112,22 @@ namespace Abyss_Client {
                             tmpItem.Tag = user;
                             break;
                         case "group":
+                            ADGroup group = ADGroup.getGroupByName((string)child.Properties["name"].Value);
+                            String type = null;
+                            if(group.SecurityGroupe){
+                                type = "Seccurity Group";
+                            }else{
+                                type = "Distribution Group";
+                            }
+                            if(group.Scope == ADGroupData.GroupeScope.DomainLocal){
+                                type = type + "dsfds";
+                            }
+
+
+
                             tmpItem = new ListViewItem(new string[] {
-																		(string)child.Properties["name"].Value,
-																		child.SchemaClassName,
+																		group.Name,
+																		group.SecurityGroupe? child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 																	}, (int)AdImages.Group);
                             break;
@@ -358,7 +374,11 @@ namespace Abyss_Client {
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+            openForm(new AboutForm());
+        }
 
+        private void Refresh_tmi_Click(object sender, EventArgs e) {
+            refreshCurrentNode();
         }
 
         /// <summary>
