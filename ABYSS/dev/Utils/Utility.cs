@@ -328,17 +328,6 @@ namespace Utils {
             }
         }
 
-        public static bool isComputerEnabled(int userAccountControl) {
-            int computerEnabled = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_PASSWD_NOTREQD) + Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_WORKSTATION_TRUST_ACCOUNT);
-            int flagExists = userAccountControl & computerEnabled;
-            if (flagExists > 0) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-
         public static bool isComputerWorkStationAccount(int userAccountControl) {
             int computerWorkstation = Convert.ToInt32(ADS_USER_FLAG_ENUM.ADS_UF_WORKSTATION_TRUST_ACCOUNT);
             int flagExists = userAccountControl & computerWorkstation;

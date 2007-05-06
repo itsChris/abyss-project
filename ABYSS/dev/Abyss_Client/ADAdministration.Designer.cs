@@ -108,7 +108,7 @@
             this.treeView_ctm.Name = "baseContextMenu1";
             this.treeView_ctm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.treeView_ctm.ShowImageMargin = false;
-            this.treeView_ctm.Size = new System.Drawing.Size(93, 54);
+            this.treeView_ctm.Size = new System.Drawing.Size(128, 76);
             // 
             // new_tmi
             // 
@@ -119,52 +119,53 @@
             this.toolStripSeparator4,
             this.user_tmi});
             this.new_tmi.Name = "new_tmi";
-            this.new_tmi.Size = new System.Drawing.Size(92, 22);
+            this.new_tmi.Size = new System.Drawing.Size(127, 22);
             this.new_tmi.Text = "New";
             // 
             // computer_tmi
             // 
             this.computer_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.computer_tmi.Name = "computer_tmi";
-            this.computer_tmi.Size = new System.Drawing.Size(130, 22);
+            this.computer_tmi.Size = new System.Drawing.Size(152, 22);
             this.computer_tmi.Text = "Computer";
+            this.computer_tmi.Click += new System.EventHandler(this.computer_tmi_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.BackColor = System.Drawing.Color.AliceBlue;
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(127, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // group_tmi
             // 
             this.group_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.group_tmi.Name = "group_tmi";
-            this.group_tmi.Size = new System.Drawing.Size(130, 22);
+            this.group_tmi.Size = new System.Drawing.Size(152, 22);
             this.group_tmi.Text = "Group";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.BackColor = System.Drawing.Color.AliceBlue;
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(127, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // user_tmi
             // 
             this.user_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.user_tmi.Name = "user_tmi";
-            this.user_tmi.Size = new System.Drawing.Size(130, 22);
+            this.user_tmi.Size = new System.Drawing.Size(152, 22);
             this.user_tmi.Text = "User";
             this.user_tmi.Click += new System.EventHandler(this.user_tmi_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(89, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(124, 6);
             // 
             // Refresh_tmi
             // 
             this.Refresh_tmi.Name = "Refresh_tmi";
-            this.Refresh_tmi.Size = new System.Drawing.Size(92, 22);
+            this.Refresh_tmi.Size = new System.Drawing.Size(127, 22);
             this.Refresh_tmi.Text = "Refresh";
             this.Refresh_tmi.Click += new System.EventHandler(this.Refresh_tmi_Click);
             // 
