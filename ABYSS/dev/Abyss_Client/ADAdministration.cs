@@ -95,6 +95,9 @@ namespace Abyss_Client {
                             break;
                         case "computer":
                             ADComputer computer = ADComputer.getComputerByName((string)child.Properties["name"].Value);
+                            if (computer.Role == ADComputerData.Computer.SERVER_TRUST_ACCOUNT) {
+                                computer.Enabled = true;
+                            }
                             tmpItem = new ListViewItem(new string[] {
 																		computer.ComputerName,
 																		child.SchemaClassName,
@@ -113,23 +116,13 @@ namespace Abyss_Client {
                             break;
                         case "group":
                             ADGroup group = ADGroup.getGroupByName((string)child.Properties["name"].Value);
-                            String type = null;
-                            if(group.SecurityGroupe){
-                                type = "Seccurity Group";
-                            }else{
-                                type = "Distribution Group";
-                            }
-                            if(group.Scope == ADGroupData.GroupeScope.DomainLocal){
-                                type = type + "dsfds";
-                            }
-
-
-
+                            String groupType = getGroupTypeFromGroup(group);
                             tmpItem = new ListViewItem(new string[] {
 																		group.Name,
-																		group.SecurityGroupe? child.SchemaClassName,
-																		(string)child.Properties["description"].Value
+																		groupType,
+																		group.Description
 																	}, (int)AdImages.Group);
+                            tmpItem.Tag = group;
                             break;
                         default:
                             tmpItem = new ListViewItem(new string[] {
@@ -151,6 +144,7 @@ namespace Abyss_Client {
                 }
             }
             catch (COMException) {
+                MessageBox.Show("This object doesnt exist anymore", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             e.Node.Expand();
             treeView.EndUpdate();
@@ -415,6 +409,26 @@ namespace Abyss_Client {
             TreeNode node = this.tree_trv.SelectedNode;
             TreeViewEventArgs tvea = new TreeViewEventArgs(node);
             this.tree_trv_AfterSelect(this.tree_trv, tvea);
+        }
+
+        private string getGroupTypeFromGroup(ADGroup group) {
+            String groupType = null;
+            if (group.SecurityGroupe) {
+                groupType = "seccurity group - ";
+            }
+            else {
+                groupType = "distribution group - ";
+            }
+            if (group.Scope == ADGroupData.GroupeScope.DomainLocal) {
+                groupType = groupType + "domain local";
+            }
+            else if (group.Scope == ADGroupData.GroupeScope.Global) {
+                groupType = groupType + "global";
+            }
+            else {
+                groupType = groupType + "universal";
+            }
+            return groupType;
         }
         #endregion 
     }

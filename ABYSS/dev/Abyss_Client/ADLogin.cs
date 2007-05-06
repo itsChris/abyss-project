@@ -85,7 +85,7 @@ namespace Abyss_Client {
         }
 
         private void ADLogin_FormClosing(object sender, FormClosingEventArgs e) {
-            if (MessageBox.Show("Do you want to quit ?", this.Text,
+            if (MessageBox.Show("Do you want to quit the application?", this.Text,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.No) {
                 e.Cancel = true;
@@ -93,7 +93,7 @@ namespace Abyss_Client {
         }
 
         private void quit_btn_Click(object sender, EventArgs e) {
-            Application.ExitThread();
+            this.Close();
         }
         #endregion    
     }

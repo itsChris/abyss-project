@@ -36,6 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StrongPasswordChecker.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>

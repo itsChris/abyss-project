@@ -27,17 +27,21 @@ namespace Abyss_Client {
                     return;
                 }
                 try {
+                    Cursor.Current = Cursors.WaitCursor;
                     user.setUserPassword(password_txt.Text);
                     user.ChangePasswordNextLogon = changePassword_chk.Checked;
                     user.save();
+                    Cursor.Current = Cursors.Default;
                     dialogResult = DialogResult.OK;
                     this.Close();
                 }
                 catch (COMException comex) {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(comex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 catch (TargetInvocationException tiex) {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(tiex.InnerException.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }

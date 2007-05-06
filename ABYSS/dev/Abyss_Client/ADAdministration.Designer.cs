@@ -91,10 +91,10 @@
             this.tree_trv.ContextMenuStrip = this.treeView_ctm;
             this.tree_trv.ImageIndex = 0;
             this.tree_trv.ImageList = this.imageList_adObjects;
-            this.tree_trv.Location = new System.Drawing.Point(10, 27);
+            this.tree_trv.Location = new System.Drawing.Point(12, 27);
             this.tree_trv.Name = "tree_trv";
             this.tree_trv.SelectedImageIndex = 0;
-            this.tree_trv.Size = new System.Drawing.Size(255, 527);
+            this.tree_trv.Size = new System.Drawing.Size(253, 527);
             this.tree_trv.TabIndex = 1;
             this.tree_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_trv_AfterSelect);
             // 
@@ -108,7 +108,7 @@
             this.treeView_ctm.Name = "baseContextMenu1";
             this.treeView_ctm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.treeView_ctm.ShowImageMargin = false;
-            this.treeView_ctm.Size = new System.Drawing.Size(128, 76);
+            this.treeView_ctm.Size = new System.Drawing.Size(93, 54);
             // 
             // new_tmi
             // 
@@ -119,7 +119,7 @@
             this.toolStripSeparator4,
             this.user_tmi});
             this.new_tmi.Name = "new_tmi";
-            this.new_tmi.Size = new System.Drawing.Size(127, 22);
+            this.new_tmi.Size = new System.Drawing.Size(92, 22);
             this.new_tmi.Text = "New";
             // 
             // computer_tmi
@@ -159,12 +159,12 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(124, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(89, 6);
             // 
             // Refresh_tmi
             // 
             this.Refresh_tmi.Name = "Refresh_tmi";
-            this.Refresh_tmi.Size = new System.Drawing.Size(127, 22);
+            this.Refresh_tmi.Size = new System.Drawing.Size(92, 22);
             this.Refresh_tmi.Text = "Refresh";
             this.Refresh_tmi.Click += new System.EventHandler(this.Refresh_tmi_Click);
             // 
@@ -196,7 +196,7 @@
             this.list_lst.Location = new System.Drawing.Point(271, 27);
             this.list_lst.MultiSelect = false;
             this.list_lst.Name = "list_lst";
-            this.list_lst.Size = new System.Drawing.Size(874, 526);
+            this.list_lst.Size = new System.Drawing.Size(947, 527);
             this.list_lst.SmallImageList = this.imageList_adObjects;
             this.list_lst.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.list_lst.TabIndex = 2;
@@ -214,7 +214,7 @@
             // type_cln
             // 
             this.type_cln.Text = "Type";
-            this.type_cln.Width = 150;
+            this.type_cln.Width = 213;
             // 
             // desc_cln
             // 
@@ -304,7 +304,7 @@
             this.menu_stp.Location = new System.Drawing.Point(0, 0);
             this.menu_stp.Name = "menu_stp";
             this.menu_stp.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_stp.Size = new System.Drawing.Size(1157, 24);
+            this.menu_stp.Size = new System.Drawing.Size(1230, 24);
             this.menu_stp.TabIndex = 0;
             this.menu_stp.Text = "menu_menu";
             // 
@@ -362,7 +362,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1157, 566);
+            this.ClientSize = new System.Drawing.Size(1230, 566);
             this.Controls.Add(this.tree_trv);
             this.Controls.Add(this.list_lst);
             this.Controls.Add(this.menu_stp);

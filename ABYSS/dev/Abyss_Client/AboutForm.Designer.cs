@@ -85,9 +85,8 @@
             this.baseLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.baseLabel5.Location = new System.Drawing.Point(81, 146);
             this.baseLabel5.Name = "baseLabel5";
-            this.baseLabel5.Size = new System.Drawing.Size(72, 13);
+            this.baseLabel5.Size = new System.Drawing.Size(0, 13);
             this.baseLabel5.TabIndex = 4;
-            this.baseLabel5.Text = "baseLabel5";
             this.baseLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // baseLabel7
@@ -97,9 +96,8 @@
             this.baseLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.baseLabel7.Location = new System.Drawing.Point(198, 111);
             this.baseLabel7.Name = "baseLabel7";
-            this.baseLabel7.Size = new System.Drawing.Size(72, 13);
+            this.baseLabel7.Size = new System.Drawing.Size(0, 13);
             this.baseLabel7.TabIndex = 8;
-            this.baseLabel7.Text = "baseLabel7";
             // 
             // baseLabel8
             // 
@@ -108,9 +106,8 @@
             this.baseLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.baseLabel8.Location = new System.Drawing.Point(198, 81);
             this.baseLabel8.Name = "baseLabel8";
-            this.baseLabel8.Size = new System.Drawing.Size(72, 13);
+            this.baseLabel8.Size = new System.Drawing.Size(0, 13);
             this.baseLabel8.TabIndex = 7;
-            this.baseLabel8.Text = "baseLabel8";
             // 
             // baseLabel9
             // 
@@ -119,9 +116,8 @@
             this.baseLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.baseLabel9.Location = new System.Drawing.Point(198, 51);
             this.baseLabel9.Name = "baseLabel9";
-            this.baseLabel9.Size = new System.Drawing.Size(72, 13);
+            this.baseLabel9.Size = new System.Drawing.Size(0, 13);
             this.baseLabel9.TabIndex = 6;
-            this.baseLabel9.Text = "baseLabel9";
             // 
             // baseLabel10
             // 
@@ -130,9 +126,8 @@
             this.baseLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.baseLabel10.Location = new System.Drawing.Point(198, 22);
             this.baseLabel10.Name = "baseLabel10";
-            this.baseLabel10.Size = new System.Drawing.Size(79, 13);
+            this.baseLabel10.Size = new System.Drawing.Size(0, 13);
             this.baseLabel10.TabIndex = 5;
-            this.baseLabel10.Text = "baseLabel10";
             // 
             // AboutForm
             // 

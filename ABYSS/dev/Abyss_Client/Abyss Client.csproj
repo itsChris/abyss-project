@@ -321,16 +321,23 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="StrongPasswordChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj">
       <Project>{9D18920E-FE4A-4C49-A451-5D957524AD34}</Project>
       <Name>Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{287588AB-AE94-43CC-BC4A-D8C67C35775C}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Persistence\Persistence.csproj">
       <Project>{D42C17B2-E6C2-44C3-9592-69E7BBABCA8E}</Project>
       <Name>Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{5CEFAFFF-69FB-434E-80D4-2E8298D01579}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
