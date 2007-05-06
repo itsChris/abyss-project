@@ -30,16 +30,16 @@
             this.userPassword_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.userLogin_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.tablespace_gbx = new Abyss_Client.CompBase.BaseGroupBox();
+            this.temporaryTablespace_cbx = new Abyss_Client.CompBase.BaseComboBox();
             this.defaultTablespace_cbx = new Abyss_Client.CompBase.BaseComboBox();
             this.temporaryTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.defaultTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.accountInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
-            this.profile_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.accountLock_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.passwordExpire_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.profile_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.createUser_btn = new Abyss_Client.CompBase.BaseButton();
-            this.temporaryTablespace_cbx = new Abyss_Client.CompBase.BaseComboBox();
+            this.profile_cbx = new Abyss_Client.CompBase.BaseComboBox();
             this.userInformation_gbx.SuspendLayout();
             this.tablespace_gbx.SuspendLayout();
             this.accountInformation_gbx.SuspendLayout();
@@ -133,6 +133,14 @@
             this.tablespace_gbx.TabStop = false;
             this.tablespace_gbx.Text = "Tablespace Information";
             // 
+            // temporaryTablespace_cbx
+            // 
+            this.temporaryTablespace_cbx.FormattingEnabled = true;
+            this.temporaryTablespace_cbx.Location = new System.Drawing.Point(192, 77);
+            this.temporaryTablespace_cbx.Name = "temporaryTablespace_cbx";
+            this.temporaryTablespace_cbx.Size = new System.Drawing.Size(145, 21);
+            this.temporaryTablespace_cbx.TabIndex = 5;
+            // 
             // defaultTablespace_cbx
             // 
             this.defaultTablespace_cbx.FormattingEnabled = true;
@@ -166,7 +174,7 @@
             // accountInformation_gbx
             // 
             this.accountInformation_gbx.BackColor = System.Drawing.Color.Transparent;
-            this.accountInformation_gbx.Controls.Add(this.profile_txt);
+            this.accountInformation_gbx.Controls.Add(this.profile_cbx);
             this.accountInformation_gbx.Controls.Add(this.accountLock_chk);
             this.accountInformation_gbx.Controls.Add(this.passwordExpire_chk);
             this.accountInformation_gbx.Controls.Add(this.profile_lbl);
@@ -177,17 +185,6 @@
             this.accountInformation_gbx.TabIndex = 2;
             this.accountInformation_gbx.TabStop = false;
             this.accountInformation_gbx.Text = "Account Information :";
-            // 
-            // profile_txt
-            // 
-            this.profile_txt.BackColor = System.Drawing.Color.White;
-            this.profile_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.profile_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.profile_txt.Location = new System.Drawing.Point(114, 30);
-            this.profile_txt.Mandatory = false;
-            this.profile_txt.Name = "profile_txt";
-            this.profile_txt.Size = new System.Drawing.Size(258, 20);
-            this.profile_txt.TabIndex = 3;
             // 
             // accountLock_chk
             // 
@@ -234,19 +231,19 @@
             this.createUser_btn.UseVisualStyleBackColor = true;
             this.createUser_btn.Click += new System.EventHandler(this.createUser_btn_Click);
             // 
-            // temporaryTablespace_cbx
+            // profile_cbx
             // 
-            this.temporaryTablespace_cbx.FormattingEnabled = true;
-            this.temporaryTablespace_cbx.Location = new System.Drawing.Point(192, 77);
-            this.temporaryTablespace_cbx.Name = "temporaryTablespace_cbx";
-            this.temporaryTablespace_cbx.Size = new System.Drawing.Size(145, 21);
-            this.temporaryTablespace_cbx.TabIndex = 5;
+            this.profile_cbx.FormattingEnabled = true;
+            this.profile_cbx.Location = new System.Drawing.Point(114, 30);
+            this.profile_cbx.Name = "profile_cbx";
+            this.profile_cbx.Size = new System.Drawing.Size(258, 21);
+            this.profile_cbx.TabIndex = 3;
             // 
             // OracleUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 263);
+            this.ClientSize = new System.Drawing.Size(661, 328);
             this.Controls.Add(this.createUser_btn);
             this.Controls.Add(this.accountInformation_gbx);
             this.Controls.Add(this.tablespace_gbx);
@@ -254,6 +251,7 @@
             this.Name = "OracleUserAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add an Oracle User";
+            this.Load += new System.EventHandler(this.OracleUserAdd_Load);
             this.userInformation_gbx.ResumeLayout(false);
             this.userInformation_gbx.PerformLayout();
             this.tablespace_gbx.ResumeLayout(false);
@@ -279,9 +277,9 @@
         private Abyss_Client.CompBase.BaseLabel profile_lbl;
         private Abyss_Client.CompBase.BaseCheckBox accountLock_chk;
         private Abyss_Client.CompBase.BaseCheckBox passwordExpire_chk;
-        private Abyss_Client.CompBase.BaseTextBox profile_txt;
         private Abyss_Client.CompBase.BaseButton createUser_btn;
         private Abyss_Client.CompBase.BaseComboBox defaultTablespace_cbx;
         private Abyss_Client.CompBase.BaseComboBox temporaryTablespace_cbx;
+        private Abyss_Client.CompBase.BaseComboBox profile_cbx;
     }
 }

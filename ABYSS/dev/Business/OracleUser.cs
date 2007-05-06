@@ -55,6 +55,10 @@ namespace Business {
         public OracleDataReader GetUser() {
             return OracleUserDAO.GetOracleUser();
         }
+
+        public OracleDataReader GetProfile() {
+            return OracleUserDAO.GetUserProfile();
+        }
         #endregion
 
         #region Properties

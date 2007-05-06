@@ -40,6 +40,7 @@
     <Compile Include="ADUserData.cs" />
     <Compile Include="OracleTableData.cs" />
     <Compile Include="OracleUserData.cs" />
+    <Compile Include="OracleViewData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
