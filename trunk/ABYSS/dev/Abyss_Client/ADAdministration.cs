@@ -95,34 +95,40 @@ namespace Abyss_Client {
                             break;
                         case "computer":
                             ADComputer computer = ADComputer.getComputerByName((string)child.Properties["name"].Value);
-                            if (computer.Role == ADComputerData.Computer.SERVER_TRUST_ACCOUNT) {
-                                computer.Enabled = true;
-                            }
-                            tmpItem = new ListViewItem(new string[] {
+                            if (computer != null) {
+                                if (computer.Role == ADComputerData.Computer.SERVER_TRUST_ACCOUNT) {
+                                    computer.Enabled = true;
+                                }
+                                tmpItem = new ListViewItem(new string[] {
 																		computer.ComputerName,
 																		child.SchemaClassName,
 																		computer.Description
-																	}, computer.Enabled?(int)AdImages.Computer:(int)AdImages.DisableCompunter);
-                            tmpItem.Tag = computer;
+																	}, computer.Enabled ? (int)AdImages.Computer : (int)AdImages.DisableCompunter);
+                                tmpItem.Tag = computer;
+                            }
                             break;
                         case "user":
                             ADUser user = ADUser.getUserByName((string)child.Properties["name"].Value);
-                            tmpItem = new ListViewItem(new string[] {
+                            if (user != null) {
+                                tmpItem = new ListViewItem(new string[] {
 																		string.IsNullOrEmpty(user.DisplayName)?user.UserName : user.DisplayName,
 																		child.SchemaClassName,
 																		user.Description
-																	}, user.IsAccountActive?(int)AdImages.User:(int)AdImages.Disable);
-                            tmpItem.Tag = user;
+																	}, user.IsAccountActive ? (int)AdImages.User : (int)AdImages.Disable);
+                                tmpItem.Tag = user;
+                            }
                             break;
                         case "group":
                             ADGroup group = ADGroup.getGroupByName((string)child.Properties["name"].Value);
-                            String groupType = getGroupTypeFromGroup(group);
-                            tmpItem = new ListViewItem(new string[] {
+                            if (group != null) {
+                                String groupType = getGroupTypeFromGroup(group);
+                                tmpItem = new ListViewItem(new string[] {
 																		group.Name,
 																		groupType,
 																		group.Description
 																	}, (int)AdImages.Group);
-                            tmpItem.Tag = group;
+                                tmpItem.Tag = group;
+                            }
                             break;
                         default:
                             tmpItem = new ListViewItem(new string[] {

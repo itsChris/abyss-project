@@ -568,9 +568,9 @@ namespace Abyss_Client {
             this.strong_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.strong_lbl.Location = new System.Drawing.Point(174, 112);
             this.strong_lbl.Name = "strong_lbl";
-            this.strong_lbl.Size = new System.Drawing.Size(110, 13);
+            this.strong_lbl.Size = new System.Drawing.Size(147, 13);
             this.strong_lbl.TabIndex = 10;
-            this.strong_lbl.Text = "Password Strong :";
+            this.strong_lbl.Text = "Password Strong : Weak";
             // 
             // neverExpires_chk
             // 

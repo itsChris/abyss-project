@@ -5,20 +5,21 @@ using System.Text.RegularExpressions;
 
 namespace Abyss_Client {
     public class StrongPasswordChecker {
+        #region Enumeration
         public enum StrongPassword {
             Weak,
             Ok,
             Good,
             Perfect
         }
+        #endregion
+
+        #region Static Methods
         public static StrongPassword CheckEffectiveBitSize(string Password) {
-            int charSet = 0;
             StrongPassword passStrength = new StrongPassword();
-
+            int charSet = 0;
             charSet = GetCharSetUsed(Password);
-
             double result = Math.Log(Math.Pow(charSet, Password.Length)) / Math.Log(2);
-
             if (result <= 32) {
                 passStrength = StrongPassword.Weak;
             }
@@ -31,51 +32,48 @@ namespace Abyss_Client {
             else if (result > 128) {
                 passStrength = StrongPassword.Perfect;
             }
-
             return passStrength;
-
         }
 
         private static int GetCharSetUsed(string pass) {
             int ret = 0;
-
-            if (ContainsNumbers(pass)) {
-                ret += 10;
-            }
-
             if (ContainsLowerCaseChars(pass)) {
-                ret += 26;
+                ret += 15;
             }
 
             if (ContainsUpperCaseChars(pass)) {
-                ret += 26;
+                ret += 25;
             }
 
-            if (ContainsPunctuation(pass)) {
-                ret += 31;
+            if (ContainsNumbers(pass)) {
+                ret += 35;
             }
 
+            if (ContainsSpecialCharacters(pass)) {
+                ret += 45;
+            }
             return ret;
         }
 
         private static bool ContainsNumbers(string str) {
-            Regex pattern = new Regex(@"[\d]");
+            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
             return pattern.IsMatch(str);
         }
 
         private static bool ContainsLowerCaseChars(string str) {
-            Regex pattern = new Regex("[a-z]");
+            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
             return pattern.IsMatch(str);
         }
 
         private static bool ContainsUpperCaseChars(string str) {
-            Regex pattern = new Regex("[A-Z]");
+            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
             return pattern.IsMatch(str);
         }
 
-        private static bool ContainsPunctuation(string str) {
-            Regex pattern = new Regex(@"[\W|_]");
+        private static bool ContainsSpecialCharacters(string str) {
+            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
             return pattern.IsMatch(str);
         }
+        #endregion
     }
 }

@@ -9,6 +9,7 @@ namespace Abyss_Client {
         #region Attributes
         private ADUser user;
         private bool update = false;
+        private StrongPassword strongPassword;
         #endregion Attributes
 
         #region enum
@@ -30,6 +31,7 @@ namespace Abyss_Client {
             InitializeComponent();
             this.user = user;
             this.update = true;
+            this.strongPassword = StrongPassword.Perfect;
         }
         #endregion
 
@@ -62,6 +64,11 @@ namespace Abyss_Client {
                     MessageBox.Show("The passwords do not match", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     password_txt.Text = string.Empty;
                     confirmPassword_txt.Text = string.Empty;
+                    return;
+                }
+                if (strongPassword == StrongPassword.Weak) {
+                    MessageBox.Show(@"The password does not meet the password policy requirements. Your password must have at less 8 characters : [a-z][A-Z][\d][@#$%^&+=]",
+                        this.Text,MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                     return;
                 }
                 try {
@@ -135,7 +142,9 @@ namespace Abyss_Client {
         }
 
         private void password_txt_TextChanged(object sender, EventArgs e) {
-            strong_lbl.Text = StrongPasswordChecker.CheckEffectiveBitSize(password_txt.Text).ToString();
+            StrongPasswordChecker.StrongPassword Strong = StrongPasswordChecker.CheckEffectiveBitSize(password_txt.Text);
+            strong_lbl.Text = "Password Strong : " + Strong.ToString();
+            strongPassword = (StrongPassword)Strong;
         }
         #endregion 
   
