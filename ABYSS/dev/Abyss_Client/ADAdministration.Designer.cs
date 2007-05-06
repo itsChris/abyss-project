@@ -37,9 +37,12 @@
             this.treeView_ctm = new Abyss_Client.CompBase.BaseContextMenu();
             this.new_tmi = new System.Windows.Forms.ToolStripMenuItem();
             this.computer_tmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.group_tmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.user_tmi = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.Refresh_tmi = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList_adObjects = new System.Windows.Forms.ImageList(this.components);
             this.list_lst = new Abyss_Client.CompBase.BaseListView();
             this.name_clh = new System.Windows.Forms.ColumnHeader();
@@ -62,7 +65,6 @@
             this.oracleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Refresh_tmi = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView_ctm.SuspendLayout();
             this.listView_ctm.SuspendLayout();
             this.menu_stp.SuspendLayout();
@@ -106,44 +108,65 @@
             this.treeView_ctm.Name = "baseContextMenu1";
             this.treeView_ctm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.treeView_ctm.ShowImageMargin = false;
-            this.treeView_ctm.Size = new System.Drawing.Size(93, 54);
+            this.treeView_ctm.Size = new System.Drawing.Size(128, 76);
             // 
             // new_tmi
             // 
             this.new_tmi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.computer_tmi,
+            this.toolStripSeparator3,
             this.group_tmi,
+            this.toolStripSeparator4,
             this.user_tmi});
             this.new_tmi.Name = "new_tmi";
-            this.new_tmi.Size = new System.Drawing.Size(92, 22);
+            this.new_tmi.Size = new System.Drawing.Size(127, 22);
             this.new_tmi.Text = "New";
             // 
             // computer_tmi
             // 
-            this.computer_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
+            this.computer_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.computer_tmi.Name = "computer_tmi";
-            this.computer_tmi.Size = new System.Drawing.Size(152, 22);
+            this.computer_tmi.Size = new System.Drawing.Size(130, 22);
             this.computer_tmi.Text = "Computer";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.BackColor = System.Drawing.Color.AliceBlue;
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(127, 6);
             // 
             // group_tmi
             // 
-            this.group_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
+            this.group_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.group_tmi.Name = "group_tmi";
-            this.group_tmi.Size = new System.Drawing.Size(152, 22);
+            this.group_tmi.Size = new System.Drawing.Size(130, 22);
             this.group_tmi.Text = "Group";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.BackColor = System.Drawing.Color.AliceBlue;
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(127, 6);
             // 
             // user_tmi
             // 
-            this.user_tmi.Image = global::Abyss_Client.Properties.Resources.splash;
+            this.user_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.user_tmi.Name = "user_tmi";
-            this.user_tmi.Size = new System.Drawing.Size(152, 22);
+            this.user_tmi.Size = new System.Drawing.Size(130, 22);
             this.user_tmi.Text = "User";
             this.user_tmi.Click += new System.EventHandler(this.user_tmi_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(89, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(124, 6);
+            // 
+            // Refresh_tmi
+            // 
+            this.Refresh_tmi.Name = "Refresh_tmi";
+            this.Refresh_tmi.Size = new System.Drawing.Size(127, 22);
+            this.Refresh_tmi.Text = "Refresh";
+            this.Refresh_tmi.Click += new System.EventHandler(this.Refresh_tmi_Click);
             // 
             // imageList_adObjects
             // 
@@ -335,12 +358,6 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // Refresh_tmi
-            // 
-            this.Refresh_tmi.Name = "Refresh_tmi";
-            this.Refresh_tmi.Size = new System.Drawing.Size(92, 22);
-            this.Refresh_tmi.Text = "Refresh";
-            // 
             // ADAdministration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,5 +415,7 @@
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oracleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Refresh_tmi;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }
