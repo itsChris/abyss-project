@@ -70,6 +70,7 @@ namespace Abyss_Client {
             this.isAccountActive_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.addUser_btn = new Abyss_Client.CompBase.BaseButton();
             this.cancel_btn = new Abyss_Client.CompBase.BaseButton();
+            this.memberof_btn = new Abyss_Client.CompBase.BaseButton();
             this.userInformation_gbx.SuspendLayout();
             this.contactInformation_gbx.SuspendLayout();
             this.contact_gbx.SuspendLayout();
@@ -630,9 +631,22 @@ namespace Abyss_Client {
             this.cancel_btn.UseVisualStyleBackColor = true;
             this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
             // 
+            // memberof_btn
+            // 
+            this.memberof_btn.BackColor = System.Drawing.Color.LightGray;
+            this.memberof_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.memberof_btn.Location = new System.Drawing.Point(462, 468);
+            this.memberof_btn.Name = "memberof_btn";
+            this.memberof_btn.Size = new System.Drawing.Size(88, 23);
+            this.memberof_btn.TabIndex = 5;
+            this.memberof_btn.Text = "MemberOf";
+            this.memberof_btn.UseVisualStyleBackColor = true;
+            this.memberof_btn.Click += new System.EventHandler(this.memberof_btn_Click);
+            // 
             // ADUserUpdate
             // 
             this.ClientSize = new System.Drawing.Size(988, 498);
+            this.Controls.Add(this.memberof_btn);
             this.Controls.Add(this.cancel_btn);
             this.Controls.Add(this.addUser_btn);
             this.Controls.Add(this.accountInformation_gbx);
@@ -705,5 +719,6 @@ namespace Abyss_Client {
         private Abyss_Client.CompBase.BaseCheckBox changePassword_chk;
         private Abyss_Client.CompBase.BaseCheckBox neverExpires_chk;
         private Abyss_Client.CompBase.BaseLabel strong_lbl;
+        private Abyss_Client.CompBase.BaseButton memberof_btn;
     }
 }
