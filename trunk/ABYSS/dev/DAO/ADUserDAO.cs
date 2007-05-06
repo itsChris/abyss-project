@@ -33,7 +33,7 @@ namespace DAO {
             adUserData.Email = Utility.getProperty(directoryEntry, "mail");
             adUserData.Url = Utility.getProperty(directoryEntry, "Url");
             adUserData.UserName = Utility.getProperty(directoryEntry, "sAMAccountName");
-            adUserData.DistinguishedName = "LDAP://" + Utility.CrtDomain + "/" + Utility.getProperty(directoryEntry, "DistinguishedName");
+            adUserData.DistinguishedName = "LDAP://" + Utility.CrtDomain + "/" + Utility.getProperty(directoryEntry, "distinguishedName");
             adUserData.MemberOf = getMemberOfList(adUserData.DistinguishedName);
             long fileTime = longFromLargeInteger(directoryEntry.Properties["pwdLastSet"].Value);
             DateTime pwdSet = DateTime.FromFileTime(fileTime);
@@ -81,17 +81,40 @@ namespace DAO {
             return list;
         }
 
+        private static void updateMemberOfList(ADUserData adUserData, DirectoryEntry directoryEntry) {
+            try {
+                ArrayList list = getMemberOfList(adUserData.DistinguishedName);
+                foreach (String distinguishedName in list) {
+                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                    Utility.removeProperty(memberOf, "Member", adUserData.DistinguishedName);
+                    memberOf.CommitChanges();
+                    memberOf.Close();
+                }
+                foreach (String distinguishedName in adUserData.MemberOf) {
+                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                    Utility.setProperty(memberOf, "Member", adUserData.DistinguishedName);
+                    memberOf.CommitChanges();
+                    memberOf.Close();
+                }
+            }
+            catch (Exception) {
+            }
+        }
+
         /// <summary>
         /// Save a adUserData.
         /// </summary>
         /// <param name="adUserData"></param>
         private static void save(ADUserData adUserData) {
+            bool update = true;
             DirectoryEntry entry = getInstance();
             DirectoryEntry directoryEntry = Utility.getUser(adUserData.UserName);
             if (directoryEntry == null) {
                 DirectoryEntries directoryEntries = entry.Children;
                 directoryEntry = directoryEntries.Add("cn=" + adUserData.UserName + ",cn=users", "user");
+                update = false;
             }
+            adUserData.DistinguishedName = Utility.getProperty(directoryEntry, "distinguisedName");
             Utility.setProperty(directoryEntry, "givenName", adUserData.FirstName);
             Utility.setProperty(directoryEntry, "initials", adUserData.MiddleInitial);
             Utility.setProperty(directoryEntry, "sn", adUserData.LastName);
@@ -115,6 +138,10 @@ namespace DAO {
             Utility.setProperty(directoryEntry, "Url", adUserData.Url);
             Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
             Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
+            if (update) {
+                adUserData.DistinguishedName = Utility.getProperty(directoryEntry, "distinguishedName");
+                updateMemberOfList(adUserData, directoryEntry);
+            }
             int userAccountControl;
             if (adUserData.IsAccountActive) {
                 userAccountControl = Convert.ToInt32(Utility.UserStatus.Enable);

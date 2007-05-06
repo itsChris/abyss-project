@@ -70,25 +70,29 @@ namespace DAO {
         }
 
         private static void updateMembersAndMemberOfList(ADGroupData adGroupData, DirectoryEntry directoryEntry) {
-            ArrayList list = getMembersList(adGroupData.DistinguishedName);
-            foreach (String distinguishedName in list) {
-                Utility.removeProperty(directoryEntry, "Member", distinguishedName);
+            try {
+                ArrayList list = getMembersList(adGroupData.DistinguishedName);
+                foreach (String distinguishedName in list) {
+                    Utility.removeProperty(directoryEntry, "Member", distinguishedName);
+                }
+                foreach (String distinguishedName in adGroupData.Members) {
+                    Utility.setProperty(directoryEntry, "Member", distinguishedName);
+                }
+                list = getMemberOfList(adGroupData.DistinguishedName);
+                foreach (String distinguishedName in list) {
+                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                    Utility.removeProperty(memberOf, "Member", adGroupData.DistinguishedName);
+                    memberOf.CommitChanges();
+                    memberOf.Close();
+                }
+                foreach (String distinguishedName in adGroupData.Memberof) {
+                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                    Utility.setProperty(memberOf, "Member", adGroupData.DistinguishedName);
+                    memberOf.CommitChanges();
+                    memberOf.Close();
+                }
             }
-            foreach (String distinguishedName in adGroupData.Members) {
-                Utility.setProperty(directoryEntry, "Member", distinguishedName);
-            }
-            list = getMemberOfList(adGroupData.DistinguishedName);
-            foreach (String distinguishedName in list) {
-                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
-                Utility.removeProperty(memberOf, "Member", adGroupData.DistinguishedName);
-                memberOf.CommitChanges();
-                memberOf.Close();
-            }
-            foreach (String distinguishedName in adGroupData.Memberof) {
-                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
-                Utility.setProperty(memberOf, "Member", adGroupData.DistinguishedName);
-                memberOf.CommitChanges();
-                memberOf.Close();
+            catch (Exception) {
             }
         }
 

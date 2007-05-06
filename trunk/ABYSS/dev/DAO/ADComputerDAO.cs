@@ -84,18 +84,22 @@ namespace DAO {
         }
 
         private static void updateMemberOfList(ADComputerData adComputerData, DirectoryEntry directoryEntry) {
-            ArrayList list = getMemberOfList(adComputerData.DistinguishedName);
-            foreach (String distinguishedName in list) {
-                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
-                Utility.removeProperty(memberOf, "Member", adComputerData.DistinguishedName);
-                memberOf.CommitChanges();
-                memberOf.Close();
+            try {
+                ArrayList list = getMemberOfList(adComputerData.DistinguishedName);
+                foreach (String distinguishedName in list) {
+                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                    Utility.removeProperty(memberOf, "Member", adComputerData.DistinguishedName);
+                    memberOf.CommitChanges();
+                    memberOf.Close();
+                }
+                foreach (String distinguishedName in adComputerData.Memberof) {
+                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                    Utility.setProperty(memberOf, "Member", adComputerData.DistinguishedName);
+                    memberOf.CommitChanges();
+                    memberOf.Close();
+                }
             }
-            foreach (String distinguishedName in adComputerData.Memberof) {
-                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
-                Utility.setProperty(memberOf, "Member", adComputerData.DistinguishedName);
-                memberOf.CommitChanges();
-                memberOf.Close();
+            catch (Exception) {
             }
         }
 

@@ -102,6 +102,7 @@ namespace Abyss_Client {
                     user.IsAccountActive = !isAccountActive_chk.Checked;
                     user.ChangePasswordNextLogon = changePassword_chk.Checked;
                     user.PasswordNeverExpired = neverExpires_chk.Checked;
+                    user.MemberOf = this.user.MemberOf;
                     // Save the user
                     user.save();
                     dialogResult = DialogResult.OK;
@@ -141,6 +142,13 @@ namespace Abyss_Client {
             }
         }
 
+        private void memberof_btn_Click(object sender, EventArgs e) {
+            ADMemberOf memberOf = new ADMemberOf(user);
+            if (openForm(memberOf) == DialogResult.OK) {
+                this.user.MemberOf = memberOf.List;
+            }
+        }
+
         private void password_txt_TextChanged(object sender, EventArgs e) {
             StrongPasswordChecker.StrongPassword Strong = StrongPasswordChecker.CheckEffectiveBitSize(password_txt.Text);
             strong_lbl.Text = "Password Strong : " + Strong.ToString();
@@ -168,10 +176,12 @@ namespace Abyss_Client {
             residentialAddress_txt.Text = user.ResidentialAddress;
             postalAddress_txt.Text = user.PostalAddress;
             maillingAddress_txt.Text = user.MailingAddress;
+            memberof_btn.Enabled = false;
             if (update) {
                 username_txt.Enabled = false;
                 password_txt.Enabled = false;
                 confirmPassword_txt.Enabled = false;
+                memberof_btn.Enabled = true;
             }
             username_txt.Text = user.UserName;
             password_txt.Text = user.Password;
