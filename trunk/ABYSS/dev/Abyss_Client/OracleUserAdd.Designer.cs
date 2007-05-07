@@ -36,9 +36,13 @@
             this.profile_cbx = new Abyss_Client.CompBase.BaseComboBox();
             this.profile_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.createUser_btn = new Abyss_Client.CompBase.BaseButton();
+            this.baseGroupBox1 = new Abyss_Client.CompBase.BaseGroupBox();
+            this.baseLabel1 = new Abyss_Client.CompBase.BaseLabel();
+            this.baseListBox1 = new Abyss_Client.CompBase.BaseListBox();
             this.userInformation_gbx.SuspendLayout();
             this.tablespace_gbx.SuspendLayout();
             this.accountInformation_gbx.SuspendLayout();
+            this.baseGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // userInformation_gbx
@@ -50,7 +54,7 @@
             this.userInformation_gbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.userInformation_gbx.Location = new System.Drawing.Point(13, 13);
             this.userInformation_gbx.Name = "userInformation_gbx";
-            this.userInformation_gbx.Size = new System.Drawing.Size(341, 92);
+            this.userInformation_gbx.Size = new System.Drawing.Size(213, 92);
             this.userInformation_gbx.TabIndex = 0;
             this.userInformation_gbx.TabStop = false;
             this.userInformation_gbx.Text = "User Information";
@@ -58,9 +62,10 @@
             // userLogin_txt
             // 
             this.userLogin_txt.BackColor = System.Drawing.Color.White;
+            this.userLogin_txt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.userLogin_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.userLogin_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.userLogin_txt.Location = new System.Drawing.Point(85, 29);
+            this.userLogin_txt.Location = new System.Drawing.Point(58, 29);
             this.userLogin_txt.Mandatory = false;
             this.userLogin_txt.Name = "userLogin_txt";
             this.userLogin_txt.Size = new System.Drawing.Size(141, 20);
@@ -70,7 +75,7 @@
             // 
             this.accountLock_chk.AutoSize = true;
             this.accountLock_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountLock_chk.Location = new System.Drawing.Point(85, 64);
+            this.accountLock_chk.Location = new System.Drawing.Point(58, 64);
             this.accountLock_chk.Name = "accountLock_chk";
             this.accountLock_chk.Size = new System.Drawing.Size(106, 17);
             this.accountLock_chk.TabIndex = 2;
@@ -82,7 +87,7 @@
             this.userLogin_lbl.AutoSize = true;
             this.userLogin_lbl.BackColor = System.Drawing.Color.LightGray;
             this.userLogin_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.userLogin_lbl.Location = new System.Drawing.Point(33, 32);
+            this.userLogin_lbl.Location = new System.Drawing.Point(6, 32);
             this.userLogin_lbl.Name = "userLogin_lbl";
             this.userLogin_lbl.Size = new System.Drawing.Size(46, 13);
             this.userLogin_lbl.TabIndex = 0;
@@ -96,7 +101,7 @@
             this.tablespace_gbx.Controls.Add(this.temporaryTablespace_lbl);
             this.tablespace_gbx.Controls.Add(this.defaultTablespace_lbl);
             this.tablespace_gbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.tablespace_gbx.Location = new System.Drawing.Point(376, 13);
+            this.tablespace_gbx.Location = new System.Drawing.Point(232, 13);
             this.tablespace_gbx.Name = "tablespace_gbx";
             this.tablespace_gbx.Size = new System.Drawing.Size(342, 92);
             this.tablespace_gbx.TabIndex = 1;
@@ -107,9 +112,9 @@
             // 
             this.temporaryTablespace_cbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.temporaryTablespace_cbx.FormattingEnabled = true;
-            this.temporaryTablespace_cbx.Location = new System.Drawing.Point(192, 60);
+            this.temporaryTablespace_cbx.Location = new System.Drawing.Point(156, 62);
             this.temporaryTablespace_cbx.Name = "temporaryTablespace_cbx";
-            this.temporaryTablespace_cbx.Size = new System.Drawing.Size(145, 21);
+            this.temporaryTablespace_cbx.Size = new System.Drawing.Size(180, 21);
             this.temporaryTablespace_cbx.TabIndex = 5;
             // 
             // defaultTablespace_cbx
@@ -117,9 +122,9 @@
             this.defaultTablespace_cbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.defaultTablespace_cbx.FormattingEnabled = true;
             this.defaultTablespace_cbx.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.defaultTablespace_cbx.Location = new System.Drawing.Point(192, 27);
+            this.defaultTablespace_cbx.Location = new System.Drawing.Point(156, 28);
             this.defaultTablespace_cbx.Name = "defaultTablespace_cbx";
-            this.defaultTablespace_cbx.Size = new System.Drawing.Size(145, 21);
+            this.defaultTablespace_cbx.Size = new System.Drawing.Size(180, 21);
             this.defaultTablespace_cbx.TabIndex = 4;
             this.defaultTablespace_cbx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.defaultTablespace_cbx_KeyPress);
             // 
@@ -128,7 +133,7 @@
             this.temporaryTablespace_lbl.AutoSize = true;
             this.temporaryTablespace_lbl.BackColor = System.Drawing.Color.LightGray;
             this.temporaryTablespace_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.temporaryTablespace_lbl.Location = new System.Drawing.Point(34, 63);
+            this.temporaryTablespace_lbl.Location = new System.Drawing.Point(6, 67);
             this.temporaryTablespace_lbl.Name = "temporaryTablespace_lbl";
             this.temporaryTablespace_lbl.Size = new System.Drawing.Size(144, 13);
             this.temporaryTablespace_lbl.TabIndex = 2;
@@ -139,7 +144,7 @@
             this.defaultTablespace_lbl.AutoSize = true;
             this.defaultTablespace_lbl.BackColor = System.Drawing.Color.LightGray;
             this.defaultTablespace_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.defaultTablespace_lbl.Location = new System.Drawing.Point(34, 32);
+            this.defaultTablespace_lbl.Location = new System.Drawing.Point(6, 32);
             this.defaultTablespace_lbl.Name = "defaultTablespace_lbl";
             this.defaultTablespace_lbl.Size = new System.Drawing.Size(126, 13);
             this.defaultTablespace_lbl.TabIndex = 0;
@@ -151,9 +156,9 @@
             this.accountInformation_gbx.Controls.Add(this.profile_cbx);
             this.accountInformation_gbx.Controls.Add(this.profile_lbl);
             this.accountInformation_gbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.accountInformation_gbx.Location = new System.Drawing.Point(13, 128);
+            this.accountInformation_gbx.Location = new System.Drawing.Point(580, 13);
             this.accountInformation_gbx.Name = "accountInformation_gbx";
-            this.accountInformation_gbx.Size = new System.Drawing.Size(341, 105);
+            this.accountInformation_gbx.Size = new System.Drawing.Size(250, 92);
             this.accountInformation_gbx.TabIndex = 2;
             this.accountInformation_gbx.TabStop = false;
             this.accountInformation_gbx.Text = "Account Information :";
@@ -162,7 +167,7 @@
             // 
             this.profile_cbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.profile_cbx.FormattingEnabled = true;
-            this.profile_cbx.Location = new System.Drawing.Point(114, 30);
+            this.profile_cbx.Location = new System.Drawing.Point(78, 41);
             this.profile_cbx.Name = "profile_cbx";
             this.profile_cbx.Size = new System.Drawing.Size(166, 21);
             this.profile_cbx.TabIndex = 3;
@@ -172,7 +177,7 @@
             this.profile_lbl.AutoSize = true;
             this.profile_lbl.BackColor = System.Drawing.Color.LightGray;
             this.profile_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.profile_lbl.Location = new System.Drawing.Point(33, 33);
+            this.profile_lbl.Location = new System.Drawing.Point(12, 44);
             this.profile_lbl.Name = "profile_lbl";
             this.profile_lbl.Size = new System.Drawing.Size(51, 13);
             this.profile_lbl.TabIndex = 0;
@@ -182,7 +187,7 @@
             // 
             this.createUser_btn.BackColor = System.Drawing.Color.LightGray;
             this.createUser_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.createUser_btn.Location = new System.Drawing.Point(284, 340);
+            this.createUser_btn.Location = new System.Drawing.Point(360, 361);
             this.createUser_btn.Name = "createUser_btn";
             this.createUser_btn.Size = new System.Drawing.Size(127, 23);
             this.createUser_btn.TabIndex = 3;
@@ -190,11 +195,45 @@
             this.createUser_btn.UseVisualStyleBackColor = true;
             this.createUser_btn.Click += new System.EventHandler(this.createUser_btn_Click);
             // 
+            // baseGroupBox1
+            // 
+            this.baseGroupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.baseGroupBox1.Controls.Add(this.baseListBox1);
+            this.baseGroupBox1.Controls.Add(this.baseLabel1);
+            this.baseGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.baseGroupBox1.Location = new System.Drawing.Point(13, 123);
+            this.baseGroupBox1.Name = "baseGroupBox1";
+            this.baseGroupBox1.Size = new System.Drawing.Size(817, 232);
+            this.baseGroupBox1.TabIndex = 4;
+            this.baseGroupBox1.TabStop = false;
+            this.baseGroupBox1.Text = "baseGroupBox1";
+            // 
+            // baseLabel1
+            // 
+            this.baseLabel1.AutoSize = true;
+            this.baseLabel1.BackColor = System.Drawing.Color.LightGray;
+            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.baseLabel1.Location = new System.Drawing.Point(382, 125);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(46, 13);
+            this.baseLabel1.TabIndex = 2;
+            this.baseLabel1.Text = "-------->";
+            this.baseLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // baseListBox1
+            // 
+            this.baseListBox1.FormattingEnabled = true;
+            this.baseListBox1.Location = new System.Drawing.Point(18, 29);
+            this.baseListBox1.Name = "baseListBox1";
+            this.baseListBox1.Size = new System.Drawing.Size(228, 173);
+            this.baseListBox1.TabIndex = 3;
+            // 
             // OracleUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 439);
+            this.ClientSize = new System.Drawing.Size(849, 396);
+            this.Controls.Add(this.baseGroupBox1);
             this.Controls.Add(this.createUser_btn);
             this.Controls.Add(this.accountInformation_gbx);
             this.Controls.Add(this.tablespace_gbx);
@@ -209,6 +248,8 @@
             this.tablespace_gbx.PerformLayout();
             this.accountInformation_gbx.ResumeLayout(false);
             this.accountInformation_gbx.PerformLayout();
+            this.baseGroupBox1.ResumeLayout(false);
+            this.baseGroupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -228,5 +269,8 @@
         private Abyss_Client.CompBase.BaseComboBox defaultTablespace_cbx;
         private Abyss_Client.CompBase.BaseComboBox temporaryTablespace_cbx;
         private Abyss_Client.CompBase.BaseComboBox profile_cbx;
+        private Abyss_Client.CompBase.BaseGroupBox baseGroupBox1;
+        private Abyss_Client.CompBase.BaseLabel baseLabel1;
+        private Abyss_Client.CompBase.BaseListBox baseListBox1;
     }
 }

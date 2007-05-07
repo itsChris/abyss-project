@@ -2,6 +2,7 @@ using Business;
 using System;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
+using System.Collections;
 
 namespace Abyss_Client {
     public partial class OracleUserAdd : Abyss_Client.CompBase.BaseForm {
@@ -95,14 +96,19 @@ namespace Abyss_Client {
                 }
                 reader.Close();
                 profile_cbx.SelectedIndex = 0;
+
+                ArrayList list = user.GetRoles();
+                baseListBox1.DataSource = list;
+                }
+//userLogin_txt.Text = user.UserLogin;
             }
-            userLogin_txt.Text = user.UserLogin;
+            
 
 
 
 
             
-        }
+        
 
         private void defaultTablespace_cbx_KeyPress(object sender, KeyPressEventArgs e) {
             return;
