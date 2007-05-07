@@ -62,7 +62,7 @@ namespace Abyss_Client {
 
             if (externalUser_chk.Checked) {
                 user.ExternalUser = true;
-                user.UserLogin = "OPS$ABYSS\\" + userLogin_txt.Text;
+                user.UserLogin = userLogin_txt.Text;
             }
             else {
                 user.ExternalUser = false;

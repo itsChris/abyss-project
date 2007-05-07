@@ -91,7 +91,7 @@ namespace DAO {
         }
 
         public static OracleDataReader GetUserProfile() {
-            string query = "SELECT PROFILE FROM DBA_PROFILES ORDER BY PROFILE";
+            string query = "SELECT DISTINCT PROFILE FROM DBA_PROFILES ORDER BY PROFILE";
 
             return ExecuteReader(query);
         }
