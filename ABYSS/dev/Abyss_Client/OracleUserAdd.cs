@@ -72,6 +72,8 @@ namespace Abyss_Client {
 
             //Save user in Oracle
             user.save();
+            dialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void externalUser_chk_Click(object sender, EventArgs e) {

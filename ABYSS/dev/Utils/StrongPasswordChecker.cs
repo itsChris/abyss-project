@@ -56,22 +56,22 @@ namespace Utils {
         }
 
         private static bool ContainsNumbers(string str) {
-            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
+            Regex pattern = new Regex(@"^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
             return pattern.IsMatch(str);
         }
 
         private static bool ContainsLowerCaseChars(string str) {
-            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
+            Regex pattern = new Regex(@"^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
             return pattern.IsMatch(str);
         }
 
         private static bool ContainsUpperCaseChars(string str) {
-            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
+            Regex pattern = new Regex(@"^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
             return pattern.IsMatch(str);
         }
 
         private static bool ContainsSpecialCharacters(string str) {
-            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
+            Regex pattern = new Regex(@"^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
             return pattern.IsMatch(str);
         }
         #endregion

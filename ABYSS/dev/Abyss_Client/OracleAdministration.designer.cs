@@ -181,7 +181,6 @@ namespace Abyss_Client {
             this.listOracleItem_trv.Size = new System.Drawing.Size(309, 456);
             this.listOracleItem_trv.TabIndex = 3;
             this.listOracleItem_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.listOracleItem_trv_AfterSelect);
-            this.listOracleItem_trv.Click += new System.EventHandler(this.listOracleItem_trv_Click);
             // 
             // OracleAdministration
             // 

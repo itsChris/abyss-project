@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
+using System.IO;
 
 namespace Abyss_Client {
     public partial class OracleAdministration : Abyss_Client.CompBase.BaseForm {
@@ -22,7 +23,7 @@ namespace Abyss_Client {
         #region Component events
         private void create_btn_Click(object sender, EventArgs e) {
             try {
-                OracleCommand cmd = OracleDAO.getInstance();
+                OracleCommand cmd = OracleDAO.getInstance().CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = sql_txt.Text;
                 cmd.ExecuteNonQuery();
