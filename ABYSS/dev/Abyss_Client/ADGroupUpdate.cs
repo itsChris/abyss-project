@@ -17,6 +17,7 @@ namespace Abyss_Client {
         }
 
         public ADGroupUpdate(ADGroup adGroup) {
+            InitializeComponent();
             this.adGroup = adGroup;
             update = true;
         }
@@ -41,7 +42,7 @@ namespace Abyss_Client {
         private void ok_btn_Click(object sender, EventArgs e) {
             if (checkMandatoryFields()) {
                 ADGroup group = ADGroup.getGroupByName(name_txt.Text);
-                if (group != null) {
+                if (group != null && update!= true) {
                     MessageBox.Show("This group already exist", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -120,6 +121,7 @@ namespace Abyss_Client {
             members_btn.Enabled = false;
             memberof_btn.Enabled = false;
             if (update) {
+                name_txt.Enabled = false;
                 domainLocal_rdt.Enabled = false;
                 global_rdt.Enabled = false;
                 universal_rdt.Enabled = false;
@@ -127,6 +129,9 @@ namespace Abyss_Client {
                 distribution_rdt.Enabled = false;
                 memberof_btn.Enabled = true;
                 members_btn.Enabled = true;
+            }
+            if (adGroup.Scope == ADGroupData.GroupeScope.DomainLocal) {
+                memberof_btn.Enabled = false;
             }
         }
         #endregion

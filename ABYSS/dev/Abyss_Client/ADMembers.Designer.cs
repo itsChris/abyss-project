@@ -85,7 +85,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Name (RDN)";
-            this.columnHeader1.Width = 297;
+            this.columnHeader1.Width = 249;
             // 
             // columnHeader2
             // 
@@ -110,7 +110,7 @@
             // name_cln
             // 
             this.name_cln.Text = "Name (RDN)";
-            this.name_cln.Width = 297;
+            this.name_cln.Width = 253;
             // 
             // lastmembers_lst
             // 

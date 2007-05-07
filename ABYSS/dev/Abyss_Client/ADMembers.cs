@@ -51,12 +51,20 @@ namespace Abyss_Client {
         #region Component Events
         private void ADMembers_Load(object sender, EventArgs e) {
             try {
-                ArrayList list = ADGroup.getGroupsList();
-                foreach (ADGroupData groupData in list) {
-                    ADGroup group = new ADGroup(groupData);
-                    ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
-                    lvi.Tag = group;
-                    lastmembers_lst.Items.Add(lvi);
+                ArrayList list = new ArrayList();
+                if (businessOject.GetType() == typeof(ADGroup)) {
+                    ADGroup adGroup = (ADGroup)businessOject;
+                    if (adGroup.Scope != ADGroupData.GroupeScope.Global) {
+                        list = ADGroup.getGroupsList();
+                        foreach (ADGroupData groupData in list) {
+                            ADGroup group = new ADGroup(groupData);
+                            if (adGroup.Scope != ADGroupData.GroupeScope.DomainLocal) {
+                                ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
+                                lvi.Tag = group;
+                                lastmembers_lst.Items.Add(lvi);
+                            }
+                        }
+                    }
                 }
 
                 list = ADUser.getUsersList();
