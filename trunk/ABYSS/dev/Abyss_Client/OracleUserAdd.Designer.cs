@@ -35,11 +35,11 @@
             this.temporaryTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.defaultTablespace_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.accountInformation_gbx = new Abyss_Client.CompBase.BaseGroupBox();
+            this.profile_cbx = new Abyss_Client.CompBase.BaseComboBox();
             this.accountLock_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.passwordExpire_chk = new Abyss_Client.CompBase.BaseCheckBox();
             this.profile_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.createUser_btn = new Abyss_Client.CompBase.BaseButton();
-            this.profile_cbx = new Abyss_Client.CompBase.BaseComboBox();
             this.userInformation_gbx.SuspendLayout();
             this.tablespace_gbx.SuspendLayout();
             this.accountInformation_gbx.SuspendLayout();
@@ -67,7 +67,7 @@
             this.externalUser_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.externalUser_chk.Location = new System.Drawing.Point(103, 94);
             this.externalUser_chk.Name = "externalUser_chk";
-            this.externalUser_chk.Size = new System.Drawing.Size(102, 17);
+            this.externalUser_chk.Size = new System.Drawing.Size(103, 17);
             this.externalUser_chk.TabIndex = 7;
             this.externalUser_chk.Text = "External User";
             this.externalUser_chk.UseVisualStyleBackColor = true;
@@ -186,13 +186,21 @@
             this.accountInformation_gbx.TabStop = false;
             this.accountInformation_gbx.Text = "Account Information :";
             // 
+            // profile_cbx
+            // 
+            this.profile_cbx.FormattingEnabled = true;
+            this.profile_cbx.Location = new System.Drawing.Point(114, 30);
+            this.profile_cbx.Name = "profile_cbx";
+            this.profile_cbx.Size = new System.Drawing.Size(258, 21);
+            this.profile_cbx.TabIndex = 3;
+            // 
             // accountLock_chk
             // 
             this.accountLock_chk.AutoSize = true;
             this.accountLock_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accountLock_chk.Location = new System.Drawing.Point(267, 76);
             this.accountLock_chk.Name = "accountLock_chk";
-            this.accountLock_chk.Size = new System.Drawing.Size(105, 17);
+            this.accountLock_chk.Size = new System.Drawing.Size(106, 17);
             this.accountLock_chk.TabIndex = 2;
             this.accountLock_chk.Text = "Lock Account";
             this.accountLock_chk.UseVisualStyleBackColor = true;
@@ -203,7 +211,7 @@
             this.passwordExpire_chk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordExpire_chk.Location = new System.Drawing.Point(36, 76);
             this.passwordExpire_chk.Name = "passwordExpire_chk";
-            this.passwordExpire_chk.Size = new System.Drawing.Size(119, 17);
+            this.passwordExpire_chk.Size = new System.Drawing.Size(120, 17);
             this.passwordExpire_chk.TabIndex = 1;
             this.passwordExpire_chk.Text = "Password Expire";
             this.passwordExpire_chk.UseVisualStyleBackColor = true;
@@ -230,14 +238,6 @@
             this.createUser_btn.Text = "Create User";
             this.createUser_btn.UseVisualStyleBackColor = true;
             this.createUser_btn.Click += new System.EventHandler(this.createUser_btn_Click);
-            // 
-            // profile_cbx
-            // 
-            this.profile_cbx.FormattingEnabled = true;
-            this.profile_cbx.Location = new System.Drawing.Point(114, 30);
-            this.profile_cbx.Name = "profile_cbx";
-            this.profile_cbx.Size = new System.Drawing.Size(258, 21);
-            this.profile_cbx.TabIndex = 3;
             // 
             // OracleUserAdd
             // 

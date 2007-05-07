@@ -150,7 +150,6 @@ namespace Abyss_Client {
                 }
             }
             catch (COMException) {
-                //MessageBox.Show("This object doesnt exist anymore", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             e.Node.Expand();
             treeView.EndUpdate();
@@ -183,23 +182,22 @@ namespace Abyss_Client {
                     case (int)AdImages.Group:
                     case (int)AdImages.Computer:
                     case (int)AdImages.User:
-                        if (this.list_lst.SelectedItems[0].Tag != null) {
-                            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
-                                ADUser user = (ADUser)this.list_lst.SelectedItems[0].Tag;
+                        if (myListViewItem.Tag != null) {
+                            if (myListViewItem.Tag.GetType() == typeof(ADUser)) {
+                                ADUser user = (ADUser)myListViewItem.Tag;
                                 if (DialogResult.OK == openForm(new ADUserUpdate(user))) {
                                     refreshCurrentNode();
                                 }
                             }
-
-                            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADComputer)) {
-                                ADComputer adComputer = (ADComputer)this.list_lst.SelectedItems[0].Tag;
+                            if (myListViewItem.Tag.GetType() == typeof(ADComputer)) {
+                                ADComputer adComputer = (ADComputer)myListViewItem.Tag;
                                 if (DialogResult.OK == openForm(new ADComputerUpdate(adComputer))) {
                                     refreshCurrentNode();
                                 }
                             }
 
-                            if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADGroup)) {
-                                ADGroup adGroup = (ADGroup)this.list_lst.SelectedItems[0].Tag;
+                            if (myListViewItem.Tag.GetType() == typeof(ADGroup)) {
+                                ADGroup adGroup = (ADGroup)myListViewItem.Tag;
                                 if (DialogResult.OK == openForm(new ADGroupUpdate(adGroup))) {
                                     refreshCurrentNode();
                                 }
@@ -262,7 +260,11 @@ namespace Abyss_Client {
                                 this.separator1,computer.Enabled?this.disable_tmi:this.enable_tmi,this.separator2
                                 ,this.delete_tmi});  
                         }
-                        
+                    }
+                    else if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADGroup)) {
+                        ADGroup group = (ADGroup)this.list_lst.SelectedItems[0].Tag;
+                        this.listView_ctm.Items.AddRange(new ToolStripItem[] { this.modify_tmi,this.separator1,
+                            this.delete_tmi});
                     }
                     else {
                         e.Cancel = true;
@@ -312,6 +314,12 @@ namespace Abyss_Client {
             else if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADComputer)) {
                 ADComputer computer = (ADComputer)this.list_lst.SelectedItems[0].Tag;
                 if (DialogResult.OK == openForm(new ADComputerUpdate(computer))) {
+                    refreshCurrentNode();
+                }
+            }
+            else {
+                ADGroup group = (ADGroup)this.list_lst.SelectedItems[0].Tag;
+                if (DialogResult.OK == openForm(new ADGroupUpdate(group))) {
                     refreshCurrentNode();
                 }
             }
@@ -389,9 +397,14 @@ namespace Abyss_Client {
                     ADComputer computer = (ADComputer)this.list_lst.SelectedItems[0].Tag;
                     if (computer.Role == ADComputerData.Computer.SERVER_TRUST_ACCOUNT && MessageBox.Show("Are you seure, you want delete this domain controller whitout the use of DCPROMO", this.Text,
                     MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.No) {
-                        return; 
+                        return;
                     }
                     computer.deleteComputerAccount();
+                    refreshCurrentNode();
+                }
+                else {
+                    ADGroup group = (ADGroup)this.list_lst.SelectedItems[0].Tag;
+                    group.deleteGroup();
                     refreshCurrentNode();
                 }
             }
