@@ -11,24 +11,12 @@ namespace DAO {
 
         #region Public Static Methods
         public static void SaveOracleUser(OracleUserData oracleUserData) {
-            string query = "CREATE USER " + oracleUserData.UserLogin;
-
-            if (oracleUserData.ExternalUser) {
-                query += " IDENTIFIED EXTERNALLY ";
-            }
-            else
-            {
-                query += " IDENTIFIED BY " + oracleUserData.UserPassword;
-            }
-
-            query += " DEFAULT TABLESPACE " + oracleUserData.DefaultTablespace +
-              " TEMPORARY TABLESPACE " + oracleUserData.TemporatyTablespace +
-              " PROFILE " + oracleUserData.Profile;
-
-            if (oracleUserData.PasswordExpire) {
-                query += " PASSWORD EXPIRE";
-            }
-
+            string query = "CREATE USER " + oracleUserData.UserLogin +
+                  " IDENTIFIED EXTERNALLY " +
+                  " DEFAULT TABLESPACE " + oracleUserData.DefaultTablespace +
+                  " TEMPORARY TABLESPACE " + oracleUserData.TemporatyTablespace +
+                  " PROFILE " + oracleUserData.Profile;
+            
             if (oracleUserData.Account) {
                 query += " ACCOUNT UNLOCK";
             }
@@ -40,10 +28,6 @@ namespace DAO {
 
         }
 
-        public static void EditPasswordOracleUser(OracleUserData oracleUserData, string newPassword) {
-            string query = "ALTER USER " + oracleUserData.UserLogin + " IDENTIFIED BY " + newPassword + " REPLACE " + oracleUserData.UserPassword;
-        }
-
         public static void LockOracleUser(OracleUserData oracleUserData) {
             string query = "ALTER USER " + oracleUserData.UserLogin + " ACCOUNT LOCK";
             ExecuteNonQuery(query);
@@ -51,6 +35,16 @@ namespace DAO {
 
         public static void UnlockOracleUser(OracleUserData oracleUserData) {
             string query = "ALTER USER " + oracleUserData.UserLogin + " ACCOUNT UNLOCK";
+            ExecuteNonQuery(query);
+        }
+
+        public static void EditOracleUser(OracleUserData oracleUserData) {
+            string query = "ALTER USER " + oracleUserData.UserLogin +
+                  " IDENTIFIED EXTERNALLY " +
+                  " DEFAULT TABLESPACE " + oracleUserData.DefaultTablespace +
+                  " TEMPORARY TABLESPACE " + oracleUserData.TemporatyTablespace +
+                  " PROFILE " + oracleUserData.Profile;
+
             ExecuteNonQuery(query);
         }
 
@@ -67,15 +61,8 @@ namespace DAO {
 
         public static OracleDataReader GetOracleUser() {
             string query = "select USERNAME," +
-                   "USER_ID," +
-                   "DEFAULT_TABLESPACE," +
-                   "TEMPORARY_TABLESPACE," +
-                   "PASSWORD," +
-                   "ACCOUNT_STATUS," +
-                   "PROFILE," +
-                   "CREATED " +
-            "from DBA_USERS " +
-            "order by USERNAME";
+                "from DBA_USERS " +
+                "order by USERNAME";
 
             return ExecuteReader(query);
         }
@@ -92,6 +79,21 @@ namespace DAO {
 
         public static OracleDataReader GetUserProfile() {
             string query = "SELECT DISTINCT PROFILE FROM DBA_PROFILES ORDER BY PROFILE";
+
+            return ExecuteReader(query);
+        }
+
+        public static OracleDataReader GetUserData(string userName) {
+            string query = "select USERNAME," +
+                   "USER_ID," +
+                   "DEFAULT_TABLESPACE," +
+                   "TEMPORARY_TABLESPACE," +
+                   "PASSWORD," +
+                   "ACCOUNT_STATUS," +
+                   "PROFILE," +
+                   "CREATED " +
+            "from DBA_USERS " +
+            "WHERE USERNAME=" + userName;
 
             return ExecuteReader(query);
         }
