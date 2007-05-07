@@ -69,14 +69,7 @@ namespace Business {
             get { return oracleUserData.UserLogin; }
             set { oracleUserData.UserLogin = value; }
         }
-        public string UserPassword {
-            get { return oracleUserData.UserPassword; }
-            set { oracleUserData.UserPassword = value; }
-        }
-        public bool ExternalUser {
-            get { return oracleUserData.ExternalUser; }
-            set { oracleUserData.ExternalUser = value; }
-        }
+      
         public string DefaultTablespace {
             get { return oracleUserData.DefaultTablespace; }
             set { oracleUserData.DefaultTablespace = value; }
@@ -89,10 +82,7 @@ namespace Business {
             get { return oracleUserData.Profile; }
             set { oracleUserData.Profile = value; }
         }
-        public bool PasswordExpire {
-            get { return oracleUserData.PasswordExpire; }
-            set { oracleUserData.PasswordExpire = value; }
-        }
+        
         public bool Account {
             get { return oracleUserData.Account; }
             set { oracleUserData.Account = value; }
@@ -103,5 +93,9 @@ namespace Business {
         }
         #endregion
 
+
+        public ArrayList GetRoles() {
+            throw new Exception("The method or operation is not implemented.");
+        }
     }
 }
