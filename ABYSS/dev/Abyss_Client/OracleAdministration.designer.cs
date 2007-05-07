@@ -44,6 +44,7 @@ namespace Abyss_Client {
             this.sql_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.load_ofd = new System.Windows.Forms.OpenFileDialog();
             this.listOracleItem_trv = new Abyss_Client.CompBase.BaseTreeView();
+            this.baseContextMenu1 = new Abyss_Client.CompBase.BaseContextMenu();
             this.menu_menu.SuspendLayout();
             this.panel_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -91,25 +92,25 @@ namespace Abyss_Client {
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             // 
             // panel_pnl
@@ -182,6 +183,12 @@ namespace Abyss_Client {
             this.listOracleItem_trv.TabIndex = 3;
             this.listOracleItem_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.listOracleItem_trv_AfterSelect);
             // 
+            // baseContextMenu1
+            // 
+            this.baseContextMenu1.Name = "baseContextMenu1";
+            this.baseContextMenu1.ShowImageMargin = false;
+            this.baseContextMenu1.Size = new System.Drawing.Size(36, 4);
+            // 
             // OracleAdministration
             // 
             this.ClientSize = new System.Drawing.Size(976, 496);
@@ -216,6 +223,7 @@ namespace Abyss_Client {
         private Abyss_Client.CompBase.BaseButton load_btn;
         private System.Windows.Forms.ToolStripMenuItem addUserToolStripMenuItem;
         private Abyss_Client.CompBase.BaseTreeView listOracleItem_trv;
+        private Abyss_Client.CompBase.BaseContextMenu baseContextMenu1;
 
     }
 }
