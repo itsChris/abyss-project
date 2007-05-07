@@ -150,7 +150,7 @@ namespace Abyss_Client {
                 }
             }
             catch (COMException) {
-                MessageBox.Show("This object doesnt exist anymore", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("This object doesnt exist anymore", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             e.Node.Expand();
             treeView.EndUpdate();

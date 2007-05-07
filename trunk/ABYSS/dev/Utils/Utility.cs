@@ -170,7 +170,7 @@ namespace Utils {
             DirectoryEntry directoryEntry = getDirectoryObject();
             DirectorySearcher directorySearcher = new DirectorySearcher();
             directorySearcher.SearchRoot = directoryEntry;
-            directorySearcher.Filter = "(&(objectClass=group)(objectCategory=group)(description=*))";
+            directorySearcher.Filter = "(&(objectClass=group)(objectCategory=group))";
             directorySearcher.SearchScope = SearchScope.Subtree;
             return directorySearcher.FindAll();
         }
@@ -204,7 +204,7 @@ namespace Utils {
             DirectoryEntry directoryEntry = getDirectoryObject();
             DirectorySearcher directorySearcher = new DirectorySearcher();
             directorySearcher.SearchRoot = directoryEntry;
-            directorySearcher.Filter = "(&(objectClass=computer)(objectCategory=computer)(description=*))";
+            directorySearcher.Filter = "(&(objectClass=computer)(objectCategory=computer))";
             directorySearcher.SearchScope = SearchScope.Subtree;
             return directorySearcher.FindAll();
         }
