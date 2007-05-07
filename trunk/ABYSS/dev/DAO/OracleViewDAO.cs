@@ -10,7 +10,9 @@ namespace DAO {
     public class OracleViewDAO : OracleDAO {
         #region public static methods
         public static void SaveView(OracleViewData view) {
-        
+            string query = "CREATE OR REPLACE VIEW " + view.ViewSchema + "." + view.ViewName + " AS " + view.ViewQuery;
+
+            ExecuteNonQuery(query);
         }
 
         public static void DeleteView(OracleViewData view) {

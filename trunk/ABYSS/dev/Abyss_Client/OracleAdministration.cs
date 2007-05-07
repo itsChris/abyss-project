@@ -1,3 +1,5 @@
+using Business;
+using DAO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -5,6 +7,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 
 namespace Abyss_Client {
     public partial class OracleAdministration : Abyss_Client.CompBase.BaseForm {
@@ -15,56 +19,19 @@ namespace Abyss_Client {
         #endregion
 
         #region Component events
-        private void sql_rbt_Click(object sender, EventArgs e) {
-            interface_rbl.Checked = false;
-            sql_txt.Enabled = true;
-            interface_gbx.Enabled = false;
-        }
-
-        private void interface_rbl_Click(object sender, EventArgs e) {
-            sql_rbt.Checked = false;
-            sql_txt.Enabled = false;
-            interface_gbx.Enabled = true;
-            name_txt.Enabled = false;
-            name_lbl.Enabled = false;
-            number_txt.Enabled = false;
-            number_lbl.Enabled = false;
-            view_rbt.Checked = false;
-            table_rbt.Checked = false;
-        }
-
-        private void table_rbt_Click(object sender, EventArgs e) {
-            view_rbt.Checked = false;
-            name_txt.Enabled = true;
-            name_lbl.Enabled = true;
-            number_txt.Enabled = true;
-            number_lbl.Enabled = true;
-        }
-
-        private void view_rbt_Click(object sender, EventArgs e) {
-            table_rbt.Checked = false;
-            name_txt.Enabled = true;
-            name_lbl.Enabled = true;
-            number_txt.Enabled = false;
-            number_lbl.Enabled = false;
-        }
-
         private void create_btn_Click(object sender, EventArgs e) {
-            if (interface_rbl.Enabled && table_rbt.Enabled) {        
-            }
+            try {
+                OracleCommand cmd = OracleDAO.getInstance();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = sql_txt.Text;
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
 
-            if (interface_rbl.Enabled && view_rbt.Enabled) {
+                MessageBox.Show("Your query has been succesfully execute", "Succesfull", MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
-
-            if (sql_rbt.Enabled) {
-                if (!sql_txt.Text.Contains("SELECT")) {
-                    //execute non query
-                    
-                }
-                else {
-                    //error
-                }
-            }
+            catch (OracleException oex) {
+                MessageBox.Show("Error in query execution : " + oex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }            
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -85,14 +52,21 @@ namespace Abyss_Client {
 
         #endregion
 
-        private void OracleAdministration_Load(object sender, EventArgs e) {
+        private void load_btn_Click(object sender, EventArgs e) {
+            if (load_ofd.ShowDialog()==DialogResult.OK){
+                string sqlFile=load_ofd.FileName;
+                StreamReader sr = null;
+                string line;
 
+                sr = new StreamReader(sqlFile);
+                line = sr.ReadLine();
+                while (line != null) {
+                    sql_txt.Text += line;
+                    line = sr.ReadLine();
+                }
+            }
         }
-
-        
-
-        
-        
+              
     }
 }
 
