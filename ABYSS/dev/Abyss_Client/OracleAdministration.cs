@@ -15,6 +15,7 @@ namespace Abyss_Client {
         #region Constructors
         public OracleAdministration() {
             InitializeComponent();
+                        
         }
         #endregion
 
@@ -64,6 +65,44 @@ namespace Abyss_Client {
                     sql_txt.Text += line;
                     line = sr.ReadLine();
                 }
+            }
+        }
+
+        private void listOracleItem_trv_AfterSelect(object sender, TreeViewEventArgs e) {
+            TreeView tree = (TreeView)sender;           
+            TreeNode node = tree.SelectedNode;
+
+            //Get user list
+            if (node.Name == "Noeud3") {
+                OracleUser user = new OracleUser();
+                OracleDataReader reader = user.GetUser();
+
+                while (reader.Read()) {
+                    node.Nodes.Add(reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+
+            //Get Table list
+            if (node.Name == "Noeud1") {
+                OracleTable table = new OracleTable();
+                OracleDataReader reader = table.GetTable();
+
+                while (reader.Read()) {
+                    node.Nodes.Add(reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+
+            //Get View list
+            if (node.Name == "Noeud2") {
+                /*
+                OracleDataReader reader = table.GetTable();
+
+                while (reader.Read()) {
+                    node.Nodes.Add(reader.GetValue(0).ToString());
+                }
+                reader.Close();*/
             }
         }
               
