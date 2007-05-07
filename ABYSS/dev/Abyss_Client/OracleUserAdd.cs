@@ -1,21 +1,17 @@
 using Business;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 
 namespace Abyss_Client {
     public partial class OracleUserAdd : Abyss_Client.CompBase.BaseForm {
- 
+        #region Attributes
+        OracleUser user;
+        #endregion
+
         public OracleUserAdd() {
             InitializeComponent();
-
             passwordExpire_chk.Checked = true;
-                        
             OracleUser user = new OracleUser();
 
             OracleDataReader reader = user.GetDefaultTablespace();
@@ -84,6 +80,10 @@ namespace Abyss_Client {
             else {
                 userPassword_txt.Enabled = true;
             }
+
+        }
+
+        private void initFormData() {
 
         }
 
