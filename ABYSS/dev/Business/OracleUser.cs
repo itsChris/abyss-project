@@ -15,7 +15,6 @@ namespace Business {
         public OracleUser() {
             this.oracleUserData = new OracleUserData();
             this.oracleUserData.Account = true;
-            this.oracleUserData.PasswordExpire = true;
         }
 
         public OracleUser(OracleUserData oracleUserData) {
@@ -32,8 +31,8 @@ namespace Business {
             OracleUserDAO.DeleteOracleUser(this.oracleUserData);
         }
 
-        public void editPassword(String newPassword) {
-            OracleUserDAO.EditPasswordOracleUser(this.oracleUserData, newPassword);
+        public void edit(){
+            OracleUserDAO.EditOracleUser(this.oracleUserData);
         }
 
         public void LockUser() {
@@ -54,6 +53,10 @@ namespace Business {
 
         public OracleDataReader GetUser() {
             return OracleUserDAO.GetOracleUser();
+        }
+
+        public OracleDataReader GetUserData(string userName) {
+            return OracleUserDAO.GetUserData(userName);
         }
 
         public OracleDataReader GetProfile() {
