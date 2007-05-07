@@ -73,7 +73,7 @@
             // toolStripComboBox1
             // 
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 24);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 21);
             // 
             // toolStripSeparator1
             // 
@@ -108,7 +108,7 @@
             this.treeView_ctm.Name = "baseContextMenu1";
             this.treeView_ctm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.treeView_ctm.ShowImageMargin = false;
-            this.treeView_ctm.Size = new System.Drawing.Size(128, 76);
+            this.treeView_ctm.Size = new System.Drawing.Size(88, 54);
             // 
             // new_tmi
             // 
@@ -119,14 +119,14 @@
             this.toolStripSeparator4,
             this.user_tmi});
             this.new_tmi.Name = "new_tmi";
-            this.new_tmi.Size = new System.Drawing.Size(127, 22);
+            this.new_tmi.Size = new System.Drawing.Size(87, 22);
             this.new_tmi.Text = "New";
             // 
             // computer_tmi
             // 
             this.computer_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.computer_tmi.Name = "computer_tmi";
-            this.computer_tmi.Size = new System.Drawing.Size(152, 22);
+            this.computer_tmi.Size = new System.Drawing.Size(121, 22);
             this.computer_tmi.Text = "Computer";
             this.computer_tmi.Click += new System.EventHandler(this.computer_tmi_Click);
             // 
@@ -134,13 +134,13 @@
             // 
             this.toolStripSeparator3.BackColor = System.Drawing.Color.AliceBlue;
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(118, 6);
             // 
             // group_tmi
             // 
             this.group_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.group_tmi.Name = "group_tmi";
-            this.group_tmi.Size = new System.Drawing.Size(152, 22);
+            this.group_tmi.Size = new System.Drawing.Size(121, 22);
             this.group_tmi.Text = "Group";
             this.group_tmi.Click += new System.EventHandler(this.group_tmi_Click);
             // 
@@ -148,25 +148,25 @@
             // 
             this.toolStripSeparator4.BackColor = System.Drawing.Color.AliceBlue;
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(118, 6);
             // 
             // user_tmi
             // 
             this.user_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.user_tmi.Name = "user_tmi";
-            this.user_tmi.Size = new System.Drawing.Size(152, 22);
+            this.user_tmi.Size = new System.Drawing.Size(121, 22);
             this.user_tmi.Text = "User";
             this.user_tmi.Click += new System.EventHandler(this.user_tmi_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(124, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(84, 6);
             // 
             // Refresh_tmi
             // 
             this.Refresh_tmi.Name = "Refresh_tmi";
-            this.Refresh_tmi.Size = new System.Drawing.Size(127, 22);
+            this.Refresh_tmi.Size = new System.Drawing.Size(87, 22);
             this.Refresh_tmi.Text = "Refresh";
             this.Refresh_tmi.Click += new System.EventHandler(this.Refresh_tmi_Click);
             // 
@@ -226,7 +226,7 @@
             // listView_ctm
             // 
             this.listView_ctm.BackColor = System.Drawing.Color.AliceBlue;
-            this.listView_ctm.Font = new System.Drawing.Font("Lucida Grande", 8.25F);
+            this.listView_ctm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.listView_ctm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modify_tmi,
             this.separator1,
@@ -240,61 +240,61 @@
             this.listView_ctm.Name = "baseContextMenu1";
             this.listView_ctm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.listView_ctm.ShowImageMargin = false;
-            this.listView_ctm.Size = new System.Drawing.Size(147, 138);
+            this.listView_ctm.Size = new System.Drawing.Size(136, 138);
             this.listView_ctm.Opening += new System.ComponentModel.CancelEventHandler(this.listView_ctm_Opening);
             // 
             // modify_tmi
             // 
             this.modify_tmi.Name = "modify_tmi";
-            this.modify_tmi.Size = new System.Drawing.Size(146, 22);
+            this.modify_tmi.Size = new System.Drawing.Size(135, 22);
             this.modify_tmi.Text = "Modify";
             this.modify_tmi.Click += new System.EventHandler(this.modify_tmi_Click);
             // 
             // separator1
             // 
             this.separator1.Name = "separator1";
-            this.separator1.Size = new System.Drawing.Size(143, 6);
+            this.separator1.Size = new System.Drawing.Size(132, 6);
             // 
             // disable_tmi
             // 
             this.disable_tmi.Name = "disable_tmi";
-            this.disable_tmi.Size = new System.Drawing.Size(146, 22);
+            this.disable_tmi.Size = new System.Drawing.Size(135, 22);
             this.disable_tmi.Text = "Disable account";
             this.disable_tmi.Click += new System.EventHandler(this.disable_tmi_Click);
             // 
             // separator2
             // 
             this.separator2.Name = "separator2";
-            this.separator2.Size = new System.Drawing.Size(143, 6);
+            this.separator2.Size = new System.Drawing.Size(132, 6);
             // 
             // enable_tmi
             // 
             this.enable_tmi.Name = "enable_tmi";
-            this.enable_tmi.Size = new System.Drawing.Size(146, 22);
+            this.enable_tmi.Size = new System.Drawing.Size(135, 22);
             this.enable_tmi.Text = "Enable Account";
             this.enable_tmi.Click += new System.EventHandler(this.enable_tmi_Click);
             // 
             // separator3
             // 
             this.separator3.Name = "separator3";
-            this.separator3.Size = new System.Drawing.Size(143, 6);
+            this.separator3.Size = new System.Drawing.Size(132, 6);
             // 
             // delete_tmi
             // 
             this.delete_tmi.Name = "delete_tmi";
-            this.delete_tmi.Size = new System.Drawing.Size(146, 22);
+            this.delete_tmi.Size = new System.Drawing.Size(135, 22);
             this.delete_tmi.Text = "Delete Account";
             this.delete_tmi.Click += new System.EventHandler(this.delete_tmi_Click);
             // 
             // separator4
             // 
             this.separator4.Name = "separator4";
-            this.separator4.Size = new System.Drawing.Size(143, 6);
+            this.separator4.Size = new System.Drawing.Size(132, 6);
             // 
             // changePwd_tmi
             // 
             this.changePwd_tmi.Name = "changePwd_tmi";
-            this.changePwd_tmi.Size = new System.Drawing.Size(146, 22);
+            this.changePwd_tmi.Size = new System.Drawing.Size(135, 22);
             this.changePwd_tmi.Text = "Change Password";
             this.changePwd_tmi.Click += new System.EventHandler(this.changePwd_tmi_Click);
             // 
@@ -317,14 +317,14 @@
             this.quitToolStripMenuItem,
             this.oracleToolStripMenuItem});
             this.filesStripMenuItem.Name = "filesStripMenuItem";
-            this.filesStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.filesStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.filesStripMenuItem.Text = "Files";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.exitToolStripMenuItem.Text = "Exit AD Administration";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -332,7 +332,7 @@
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.quitToolStripMenuItem.Text = "Quit the application";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -340,7 +340,7 @@
             // 
             this.oracleToolStripMenuItem.Name = "oracleToolStripMenuItem";
             this.oracleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.oracleToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.oracleToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
             this.oracleToolStripMenuItem.Text = "Oracle Administration";
             this.oracleToolStripMenuItem.Click += new System.EventHandler(this.oracleToolStripMenuItem_Click);
             // 
@@ -349,14 +349,14 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
