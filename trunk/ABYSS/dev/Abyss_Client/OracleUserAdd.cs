@@ -87,7 +87,8 @@ namespace Abyss_Client {
                 }
             }
             catch (OracleException oex) {
-                MessageBox.Show("test");
+                MessageBox.Show(oex.Message,this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
             }
             dialogResult = DialogResult.OK;
             this.Close();
