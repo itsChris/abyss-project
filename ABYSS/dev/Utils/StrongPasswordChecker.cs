@@ -38,40 +38,40 @@ namespace Utils {
         private static int GetCharSetUsed(string pass) {
             int ret = 0;
             if (ContainsLowerCaseChars(pass)) {
-                ret += 15;
+                ret += 10;
             }
 
             if (ContainsUpperCaseChars(pass)) {
-                ret += 25;
+                ret += 10;
             }
 
             if (ContainsNumbers(pass)) {
-                ret += 35;
+                ret += 50;
             }
 
             if (ContainsSpecialCharacters(pass)) {
-                ret += 45;
+                ret += 50;
             }
             return ret;
         }
-
+        
         private static bool ContainsNumbers(string str) {
-            Regex pattern = new Regex(@"^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
+            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*\d)");
             return pattern.IsMatch(str);
         }
 
         private static bool ContainsLowerCaseChars(string str) {
-            Regex pattern = new Regex(@"^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
+            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*[a-z])");
             return pattern.IsMatch(str);
         }
 
         private static bool ContainsUpperCaseChars(string str) {
-            Regex pattern = new Regex(@"^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
+            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*[A-Z])");
             return pattern.IsMatch(str);
         }
 
         private static bool ContainsSpecialCharacters(string str) {
-            Regex pattern = new Regex(@"^.*(?=.{10,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
+            Regex pattern = new Regex(@"^.*(?=.{8,})(?=.*[@#$%^&+=])");
             return pattern.IsMatch(str);
         }
         #endregion

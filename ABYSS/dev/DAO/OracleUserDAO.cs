@@ -28,7 +28,7 @@ namespace DAO {
         }
 
         public static OracleDataReader GetPrivilegesListFromUser(string userName) {
-            string query = "SELECT * FROM DBA_ROLE_PRIVS WHERE GRANTEE ="+userName;
+            string query = "SELECT GRANTED_ROLE FROM DBA_ROLE_PRIVS WHERE GRANTEE ="+userName;
             return ExecuteReader(query);
         }
 
@@ -60,7 +60,7 @@ namespace DAO {
 
 
         public static OracleDataReader GetOracleUsers() {
-            string query = "SELECT USERNAME," +
+            string query = "SELECT USERNAME " +
                 "FROM DBA_USERS " +
                 "ORDER BY USERNAME";
             return ExecuteReader(query);
