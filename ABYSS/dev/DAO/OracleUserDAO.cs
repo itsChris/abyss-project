@@ -27,14 +27,37 @@ namespace DAO {
             return ExecuteReader(query);
         }
 
-        public static OracleDataReader GetOracleUsers() {
-            string query = "select USERNAME," +
-                "from DBA_USERS " +
-                "order by USERNAME";
+        public static OracleDataReader GetPrivilegesListFromUser(string userName) {
+            string query = "SELECT * FROM DBA_ROLE_PRIVS WHERE GRANTEE ="+userName;
             return ExecuteReader(query);
         }
 
 
+
+
+
+
+
+        public static OracleDataReader GetOracleUsers() {
+            string query = "SELECT USERNAME," +
+                "FROM DBA_USERS " +
+                "ORDER BY USERNAME";
+            return ExecuteReader(query);
+        }
+
+        public static OracleDataReader GetUserData(string userName) {
+            string query = "select USERNAME," +
+                   "USER_ID," +
+                   "DEFAULT_TABLESPACE," +
+                   "TEMPORARY_TABLESPACE," +
+                   "PASSWORD," +
+                   "ACCOUNT_STATUS," +
+                   "PROFILE," +
+                   "CREATED " +
+            "from DBA_USERS " +
+            "WHERE USERNAME=" + userName;
+            return ExecuteReader(query);
+        }
 
         public static void SaveOracleUser(OracleUserData oracleUserData) {
             string query = "CREATE USER " + oracleUserData.UserLogin +
@@ -99,20 +122,7 @@ namespace DAO {
 
        
 
-        public static OracleDataReader GetUserData(string userName) {
-            string query = "select USERNAME," +
-                   "USER_ID," +
-                   "DEFAULT_TABLESPACE," +
-                   "TEMPORARY_TABLESPACE," +
-                   "PASSWORD," +
-                   "ACCOUNT_STATUS," +
-                   "PROFILE," +
-                   "CREATED " +
-            "from DBA_USERS " +
-            "WHERE USERNAME=" + userName;
-
-            return ExecuteReader(query);
-        }
+        
 
         
         #endregion
