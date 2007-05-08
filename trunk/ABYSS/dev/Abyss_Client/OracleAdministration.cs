@@ -45,7 +45,7 @@ namespace Abyss_Client {
                     cmd.Dispose();
                     sql_txt.Text = string.Empty;
                     while (reader.Read()) {
-                        sql_txt.Text += reader.GetValue(0).ToString()+ "\n\r";
+                        sql_txt.Text = sql_txt.Text + reader.GetValue(0).ToString()+ "\r\n\r\n";
                     }
                 }
                 else {
