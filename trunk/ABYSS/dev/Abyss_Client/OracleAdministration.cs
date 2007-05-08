@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using System.IO;
+using System.Collections;
 
 namespace Abyss_Client {
     public partial class OracleAdministration : Abyss_Client.CompBase.BaseForm {
@@ -75,13 +76,10 @@ namespace Abyss_Client {
 
             //Get user list
             if (node.Name == "Noeud3") {
-                OracleUser user = new OracleUser();
-                OracleDataReader reader = user.GetUser();
-
-                while (reader.Read()) {
-                    node.Nodes.Add(reader.GetValue(0).ToString());
+                ArrayList list = OracleUser.GetUsers();
+                foreach (String var in list) {
+                    node.Nodes.Add(var);
                 }
-                reader.Close();
             }
 
             //Get Table list

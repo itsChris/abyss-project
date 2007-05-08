@@ -24,9 +24,11 @@ namespace Abyss_Client {
         }
         #endregion
 
+        #region Component Events
         private void OracleUserAdd_Load(object sender, EventArgs e) {
             initFormData();
         }
+        #endregion
 
         private void createUser_btn_Click(object sender, EventArgs e) {
             
@@ -76,45 +78,35 @@ namespace Abyss_Client {
 
         }
 
+        #region private Methods
         private void initFormData() {
             if (!update) {
-                OracleDataReader reader = user.GetDefaultTablespace();
-                while (reader.Read()) {
-                    defaultTablespace_cbx.Items.Add(reader.GetValue(0));
+                ArrayList list = OracleUser.GetDefaultTablespace();
+                foreach (String var in list) {
+                    defaultTablespace_cbx.Items.Add(var);
                 }
                 defaultTablespace_cbx.SelectedIndex = 0;
-                reader.Close();
-                reader = user.GetTemporaryTablespace();
-                while (reader.Read()) {
-                    temporaryTablespace_cbx.Items.Add(reader.GetValue(0));
+                list = OracleUser.GetTemporaryTablespace();
+                foreach (String var in list) {
+                    temporaryTablespace_cbx.Items.Add(var);
                 }
                 temporaryTablespace_cbx.SelectedIndex = 0;
-                reader.Close();
-                reader = user.GetProfile();
-                while (reader.Read()) {
-                    profile_cbx.Items.Add(reader.GetValue(0));
+                list = OracleUser.GetUsersProfile();
+                foreach (String var in list) {
+                    profile_cbx.Items.Add(var);
                 }
-                reader.Close();
                 profile_cbx.SelectedIndex = 0;
-
-                ArrayList list = user.GetRoles();
-                baseListBox1.DataSource = list;
-                }
-//userLogin_txt.Text = user.UserLogin;
             }
-            
-
-
-
-
-            
-        
-
-        private void defaultTablespace_cbx_KeyPress(object sender, KeyPressEventArgs e) {
-            return;
+            else {
+                defaultTablespace_cbx.SelectedItem = user.DefaultTablespace;
+                temporaryTablespace_cbx.SelectedItem = user.TemporatyTablespace;
+                profile_cbx.SelectedItem = user.Profile;
+            }
+            userLogin_txt.Text = user.UserLogin;
+            accountLock_chk.Checked = user.Account;
+            ArrayList rolesList = OracleUser.GetRoles();
+            roleList_lbx.DataSource = rolesList;
         }
-
-        
-
+        #endregion
     }
 }

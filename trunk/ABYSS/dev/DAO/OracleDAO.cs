@@ -25,5 +25,24 @@ namespace DAO {
             return instance;
         }
         #endregion
+
+        #region Protect Methods
+        protected static void ExecuteNonQuery(string query) {
+            OracleCommand cmd = getInstance().CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = query;
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+        }
+
+        protected static OracleDataReader ExecuteReader(string query) {
+            OracleCommand cmd = getInstance().CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = query;
+            OracleDataReader reader = cmd.ExecuteReader();
+            cmd.Dispose();
+            return reader;
+        }
+        #endregion
     }
 }
