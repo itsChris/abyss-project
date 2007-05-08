@@ -1,23 +1,5 @@
 Formulaire ADAdministration.
 - Optionel : Dans les process lié au user AD faire en sorte que l'orsque le compte est supprimé, suprim aussi ds oracle. Idem pour Add, modify...
-- Faire le formulaire About, qui pourra permettre par exemple via un F1, l'ouverture du fichier d'aide(documentation).
-
+Probleme au niveau des member of et members pour un groupe - > reste que ca a modifié
 
 Formulaire OracleAdministration
-Montrer ce que j'ai modifié a Kevin
-
-
-
-Gestion des User
-Rajouté un user dans un group
-Retiré unser 'un group
-
-
-
-
-
-
-
-Oracle USer Add
-
-retirer le nom de domaine en dur
