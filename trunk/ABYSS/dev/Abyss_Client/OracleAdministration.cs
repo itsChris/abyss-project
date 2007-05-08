@@ -40,9 +40,18 @@ namespace Abyss_Client {
                 OracleCommand cmd = OracleDAO.getInstance().CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = sql_txt.Text;
-                cmd.ExecuteNonQuery();
-                cmd.Dispose();
-
+                if (sql_txt.Text.ToUpper().Contains("SELECT")) {
+                    OracleDataReader reader = cmd.ExecuteReader();
+                    cmd.Dispose();
+                    sql_txt.Text = string.Empty;
+                    while (reader.Read()) {
+                        sql_txt.Text += reader.GetValue(0).ToString()+ "\n\r";
+                    }
+                }
+                else {
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                }
                 MessageBox.Show("Your query has been succesfully execute", "Succesfull", MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch (OracleException oex) {
