@@ -37,9 +37,10 @@
             this.profile_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.createUser_btn = new Abyss_Client.CompBase.BaseButton();
             this.baseGroupBox1 = new Abyss_Client.CompBase.BaseGroupBox();
+            this.baseLabel2 = new Abyss_Client.CompBase.BaseLabel();
+            this.userRoleList_lbx = new Abyss_Client.CompBase.BaseListBox();
             this.roleList_lbx = new Abyss_Client.CompBase.BaseListBox();
             this.baseLabel1 = new Abyss_Client.CompBase.BaseLabel();
-            this.userRoleList_lbx = new Abyss_Client.CompBase.BaseListBox();
             this.quit_btn = new Abyss_Client.CompBase.BaseButton();
             this.userInformation_gbx.SuspendLayout();
             this.tablespace_gbx.SuspendLayout();
@@ -68,7 +69,7 @@
             this.userLogin_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.userLogin_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.userLogin_txt.Location = new System.Drawing.Point(58, 29);
-            this.userLogin_txt.Mandatory = false;
+            this.userLogin_txt.Mandatory = true;
             this.userLogin_txt.Name = "userLogin_txt";
             this.userLogin_txt.Size = new System.Drawing.Size(141, 20);
             this.userLogin_txt.TabIndex = 4;
@@ -199,6 +200,7 @@
             // baseGroupBox1
             // 
             this.baseGroupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.baseGroupBox1.Controls.Add(this.baseLabel2);
             this.baseGroupBox1.Controls.Add(this.userRoleList_lbx);
             this.baseGroupBox1.Controls.Add(this.roleList_lbx);
             this.baseGroupBox1.Controls.Add(this.baseLabel1);
@@ -208,27 +210,19 @@
             this.baseGroupBox1.Size = new System.Drawing.Size(817, 214);
             this.baseGroupBox1.TabIndex = 4;
             this.baseGroupBox1.TabStop = false;
-            this.baseGroupBox1.Text = "baseGroupBox1";
+            this.baseGroupBox1.Text = "User Privileges Information";
             // 
-            // roleList_lbx
+            // baseLabel2
             // 
-            this.roleList_lbx.FormattingEnabled = true;
-            this.roleList_lbx.Location = new System.Drawing.Point(9, 29);
-            this.roleList_lbx.Name = "roleList_lbx";
-            this.roleList_lbx.Size = new System.Drawing.Size(342, 173);
-            this.roleList_lbx.TabIndex = 3;
-            // 
-            // baseLabel1
-            // 
-            this.baseLabel1.AutoSize = true;
-            this.baseLabel1.BackColor = System.Drawing.Color.LightGray;
-            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.baseLabel1.Location = new System.Drawing.Point(388, 123);
-            this.baseLabel1.Name = "baseLabel1";
-            this.baseLabel1.Size = new System.Drawing.Size(46, 13);
-            this.baseLabel1.TabIndex = 2;
-            this.baseLabel1.Text = "-------->";
-            this.baseLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.baseLabel2.AutoSize = true;
+            this.baseLabel2.BackColor = System.Drawing.Color.LightGray;
+            this.baseLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.baseLabel2.Location = new System.Drawing.Point(388, 61);
+            this.baseLabel2.Name = "baseLabel2";
+            this.baseLabel2.Size = new System.Drawing.Size(46, 13);
+            this.baseLabel2.TabIndex = 5;
+            this.baseLabel2.Text = "<--------";
+            this.baseLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // userRoleList_lbx
             // 
@@ -237,6 +231,28 @@
             this.userRoleList_lbx.Name = "userRoleList_lbx";
             this.userRoleList_lbx.Size = new System.Drawing.Size(342, 173);
             this.userRoleList_lbx.TabIndex = 4;
+            this.userRoleList_lbx.DoubleClick += new System.EventHandler(this.userRoleList_lbx_DoubleClick);
+            // 
+            // roleList_lbx
+            // 
+            this.roleList_lbx.FormattingEnabled = true;
+            this.roleList_lbx.Location = new System.Drawing.Point(9, 29);
+            this.roleList_lbx.Name = "roleList_lbx";
+            this.roleList_lbx.Size = new System.Drawing.Size(342, 173);
+            this.roleList_lbx.TabIndex = 3;
+            this.roleList_lbx.DoubleClick += new System.EventHandler(this.roleList_lbx_DoubleClick);
+            // 
+            // baseLabel1
+            // 
+            this.baseLabel1.AutoSize = true;
+            this.baseLabel1.BackColor = System.Drawing.Color.LightGray;
+            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.baseLabel1.Location = new System.Drawing.Point(388, 162);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(46, 13);
+            this.baseLabel1.TabIndex = 2;
+            this.baseLabel1.Text = "-------->";
+            this.baseLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // quit_btn
             // 
@@ -248,6 +264,7 @@
             this.quit_btn.TabIndex = 5;
             this.quit_btn.Text = "Quit";
             this.quit_btn.UseVisualStyleBackColor = true;
+            this.quit_btn.Click += new System.EventHandler(this.quit_btn_Click);
             // 
             // OracleUserAdd
             // 
@@ -263,6 +280,7 @@
             this.Name = "OracleUserAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Oracle User";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OracleUserAdd_FormClosing);
             this.Load += new System.EventHandler(this.OracleUserAdd_Load);
             this.userInformation_gbx.ResumeLayout(false);
             this.userInformation_gbx.PerformLayout();
@@ -296,5 +314,6 @@
         private Abyss_Client.CompBase.BaseListBox roleList_lbx;
         private Abyss_Client.CompBase.BaseListBox userRoleList_lbx;
         private Abyss_Client.CompBase.BaseButton quit_btn;
+        private Abyss_Client.CompBase.BaseLabel baseLabel2;
     }
 }
