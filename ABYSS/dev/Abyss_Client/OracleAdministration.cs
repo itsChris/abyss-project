@@ -1,28 +1,41 @@
 using Business;
 using DAO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using System.IO;
 using System.Collections;
+using System.Data;
 
 namespace Abyss_Client {
     public partial class OracleAdministration : Abyss_Client.CompBase.BaseForm {
         #region Constructors
         public OracleAdministration() {
-            InitializeComponent();
-                        
+            InitializeComponent();           
         }
         #endregion
 
         #region Component events
+        private void load_btn_Click(object sender, EventArgs e) {
+            if (load_ofd.ShowDialog() == DialogResult.OK) {
+                sql_txt.Text = String.Empty;
+                string sqlFile = load_ofd.FileName;
+                StreamReader sr = null;
+                string line;
+                sr = new StreamReader(sqlFile);
+                line = sr.ReadLine();
+                while (line != null) {
+                    sql_txt.Text += line;
+                    line = sr.ReadLine();
+                }
+            }
+        }
+
         private void create_btn_Click(object sender, EventArgs e) {
+            if (string.IsNullOrEmpty(sql_txt.Text)) {
+                return;
+            }
             try {
                 OracleCommand cmd = OracleDAO.getInstance().CreateCommand();
                 cmd.CommandType = CommandType.Text;
@@ -55,20 +68,7 @@ namespace Abyss_Client {
 
         #endregion
 
-        private void load_btn_Click(object sender, EventArgs e) {
-            if (load_ofd.ShowDialog()==DialogResult.OK){
-                string sqlFile=load_ofd.FileName;
-                StreamReader sr = null;
-                string line;
-
-                sr = new StreamReader(sqlFile);
-                line = sr.ReadLine();
-                while (line != null) {
-                    sql_txt.Text += line;
-                    line = sr.ReadLine();
-                }
-            }
-        }
+        
 
         private void listOracleItem_trv_AfterSelect(object sender, TreeViewEventArgs e) {
             TreeView tree = (TreeView)sender;           
