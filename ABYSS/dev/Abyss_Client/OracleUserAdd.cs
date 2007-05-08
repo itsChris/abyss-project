@@ -62,7 +62,7 @@ namespace Abyss_Client {
 
         private void createUser_btn_Click(object sender, EventArgs e) {
             if (checkMandatoryFields()) {
-                if(!userLogin_txt.Text.Contains("OPS$")){
+                if(!userLogin_txt.Text.Contains("OPS$") && update == false){
                     MessageBox.Show("You user login must start by 'OPS$'",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
                     return;
                 }
@@ -88,6 +88,7 @@ namespace Abyss_Client {
                         user.save();
                     }
                     else {
+                      //  "\"OPS$DQSDS\\DQSD\""
                         user.edit();
                     }
                 }
@@ -138,20 +139,7 @@ namespace Abyss_Client {
             defaultTablespace_cbx.SelectedIndex = 0;
             temporaryTablespace_cbx.SelectedIndex = 0;
             profile_cbx.SelectedIndex = 0;
-
             if (!update) {
-                //ArrayList list = OracleUser.GetDefaultTablespace();
-                //foreach (String var in list) {
-                //    defaultTablespace_cbx.Items.Add(var);
-                //}
-                //list = OracleUser.GetTemporaryTablespace();
-                //foreach (String var in list) {
-                //    temporaryTablespace_cbx.Items.Add(var);
-                //}
-                //list = OracleUser.GetUsersProfile();
-                //foreach (String var in list) {
-                //    profile_cbx.Items.Add(var);
-                //}
                 userRoleList_lbx.Items.Add("CONNECT");
                 ht.Add("CONNECT", "CONNECT");
             }
@@ -160,7 +148,6 @@ namespace Abyss_Client {
                 temporaryTablespace_cbx.SelectedItem = user.TemporatyTablespace;
                 profile_cbx.SelectedItem = user.Profile;
                 userLogin_txt.Enabled = false;
-
                 user.Roles = user.GetPrivilegesListFromUser(user.UserLogin);
                 userRoleList_lbx.DataSource = user.Roles;
                 foreach (String privilege in user.Roles) {
@@ -169,7 +156,6 @@ namespace Abyss_Client {
             }
             userLogin_txt.Text = user.UserLogin;
             accountLock_chk.Checked = !user.IsEnable;
-            
             roleList_lbx.DataSource = OracleUser.GetRoles();
         }
 
