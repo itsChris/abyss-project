@@ -23,13 +23,13 @@ namespace Abyss_Client {
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Tables");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Views");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Users");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Tables");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Views");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Users");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
+            treeNode13,
+            treeNode14,
+            treeNode15});
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.switcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +57,7 @@ namespace Abyss_Client {
             this.editToolStripMenuItem});
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
+            this.menu_menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menu_menu.Size = new System.Drawing.Size(969, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
@@ -184,16 +185,16 @@ namespace Abyss_Client {
             // 
             this.listOracleItem_trv.Location = new System.Drawing.Point(12, 28);
             this.listOracleItem_trv.Name = "listOracleItem_trv";
-            treeNode9.Name = "Noeud1";
-            treeNode9.Text = "Tables";
-            treeNode10.Name = "Noeud2";
-            treeNode10.Text = "Views";
-            treeNode11.Name = "Noeud3";
-            treeNode11.Text = "Users";
-            treeNode12.Name = "Noeud0";
-            treeNode12.Text = "Oracle";
+            treeNode13.Name = "Noeud1";
+            treeNode13.Text = "Tables";
+            treeNode14.Name = "Noeud2";
+            treeNode14.Text = "Views";
+            treeNode15.Name = "Noeud3";
+            treeNode15.Text = "Users";
+            treeNode16.Name = "Noeud0";
+            treeNode16.Text = "Oracle";
             this.listOracleItem_trv.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12});
+            treeNode16});
             this.listOracleItem_trv.Size = new System.Drawing.Size(309, 456);
             this.listOracleItem_trv.TabIndex = 3;
             this.listOracleItem_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.listOracleItem_trv_AfterSelect);
