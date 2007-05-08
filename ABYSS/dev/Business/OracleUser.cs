@@ -14,12 +14,121 @@ namespace Business {
         #region Constructors
         public OracleUser() {
             this.oracleUserData = new OracleUserData();
-            this.oracleUserData.Account = true;
+            this.oracleUserData.Account = false;
         }
 
         public OracleUser(OracleUserData oracleUserData) {
             this.oracleUserData = oracleUserData;
         }
+        #endregion
+
+        #region Properties
+        public string UserLogin {
+            get { return oracleUserData.UserLogin; }
+            set { oracleUserData.UserLogin = value; }
+        }
+
+        public string DefaultTablespace {
+            get { return oracleUserData.DefaultTablespace; }
+            set { oracleUserData.DefaultTablespace = value; }
+        }
+
+        public string TemporatyTablespace {
+            get { return oracleUserData.TemporatyTablespace; }
+            set { oracleUserData.TemporatyTablespace = value; }
+        }
+
+        public string Profile {
+            get { return oracleUserData.Profile; }
+            set { oracleUserData.Profile = value; }
+        }
+
+        public bool Account {
+            get { return oracleUserData.Account; }
+            set { oracleUserData.Account = value; }
+        }
+
+        public string CreatedDate {
+            get { return oracleUserData.CreatedDate; }
+            set { oracleUserData.CreatedDate = value; }
+        }
+
+        public ArrayList Roles {
+            get { return oracleUserData.Roles; }
+            set { oracleUserData.Roles = value; }
+        }
+        #endregion
+
+        #region Static Methods
+        public static ArrayList GetDefaultTablespace() {
+            ArrayList list = new ArrayList();
+            OracleDataReader reader = OracleUserDAO.GetDefaultTablespace();
+            if (reader != null) {
+                while (reader.Read()) {
+                    list.Add(reader.GetValue(0));
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
+        }
+
+        public static ArrayList GetTemporaryTablespace() {
+            ArrayList list = new ArrayList();
+            OracleDataReader reader = OracleUserDAO.GetTemporatyTablespace();
+            if (reader != null) {
+                while (reader.Read()) {
+                    list.Add(reader.GetValue(0));
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
+        }
+
+        public static ArrayList GetUsersProfile() {
+            ArrayList list = new ArrayList();
+            OracleDataReader reader = OracleUserDAO.GetUsersProfile();
+            if (reader != null) {
+                while (reader.Read()) {
+                    list.Add(reader.GetValue(0));
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
+        }
+
+        public static ArrayList GetRoles() {
+            ArrayList list = new ArrayList();
+            OracleDataReader reader = OracleUserDAO.GetRoleList();
+            if (reader != null) {
+                while (reader.Read()) {
+                    list.Add(reader.GetValue(0));
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
+        }
+
+        public static ArrayList GetUsers() {
+            ArrayList list = new ArrayList();
+            OracleDataReader reader = OracleUserDAO.GetOracleUsers();
+            if(reader != null){
+                while (reader.Read()) {
+                list.Add(reader.GetValue(0).ToString());
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
+        }
+
+        public static OracleDataReader GetUserData(string userName) {
+            return OracleUserDAO.GetUserData(userName);
+        }
+
         #endregion
 
         #region Public Methods
@@ -42,60 +151,6 @@ namespace Business {
         public void UnlockUser() {
             OracleUserDAO.UnlockOracleUser(this.oracleUserData);
         }
-
-        public OracleDataReader GetDefaultTablespace() {
-            return OracleUserDAO.GetDefaultTablespace();
-        }
-
-        public OracleDataReader GetTemporaryTablespace() {
-            return OracleUserDAO.GetTemporatyTablespace();
-        }
-
-        public OracleDataReader GetUser() {
-            return OracleUserDAO.GetOracleUser();
-        }
-
-        public OracleDataReader GetUserData(string userName) {
-            return OracleUserDAO.GetUserData(userName);
-        }
-
-        public OracleDataReader GetProfile() {
-            return OracleUserDAO.GetUserProfile();
-        }
-        #endregion
-
-        #region Properties
-        public string UserLogin {
-            get { return oracleUserData.UserLogin; }
-            set { oracleUserData.UserLogin = value; }
-        }
-      
-        public string DefaultTablespace {
-            get { return oracleUserData.DefaultTablespace; }
-            set { oracleUserData.DefaultTablespace = value; }
-        }
-        public string TemporatyTablespace {
-            get { return oracleUserData.TemporatyTablespace; }
-            set { oracleUserData.TemporatyTablespace = value; }
-        }
-        public string Profile {
-            get { return oracleUserData.Profile; }
-            set { oracleUserData.Profile = value; }
-        }
-        
-        public bool Account {
-            get { return oracleUserData.Account; }
-            set { oracleUserData.Account = value; }
-        }
-        public string CreatedDate {
-            get { return oracleUserData.CreatedDate; }
-            set { oracleUserData.CreatedDate = value; }
-        }
-        #endregion
-
-
-        public ArrayList GetRoles() {
-            throw new Exception("The method or operation is not implemented.");
-        }
+        #endregion      
     }
 }
