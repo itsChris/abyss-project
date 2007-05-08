@@ -141,7 +141,6 @@ namespace DAO {
             Utility.setProperty(directoryEntry, "mail", adUserData.Email);
             Utility.setProperty(directoryEntry, "Url", adUserData.Url);
             Utility.setProperty(directoryEntry, "sAMAccountName", adUserData.UserName);
-            Utility.setProperty(directoryEntry, "UserPassword", adUserData.Password);
             if (update) {
                 adUserData.DistinguishedName = Utility.getProperty(directoryEntry, "distinguishedName");
                 updateMemberOfList(adUserData, directoryEntry);
@@ -157,6 +156,10 @@ namespace DAO {
                 userAccountControl += Convert.ToInt32(Utility.ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD);
             }
             directoryEntry.Properties["userAccountControl"].Value = userAccountControl;
+            directoryEntry.CommitChanges();
+            if (update == false) {
+                setUserPassword(adUserData.Password, adUserData.UserName);
+            }
             Utility.setProperty(directoryEntry, "pwdLastSet", adUserData.ChangePasswordNextLogon ? "0" : "-1");
             directoryEntry.CommitChanges();
             directoryEntry.Close();
