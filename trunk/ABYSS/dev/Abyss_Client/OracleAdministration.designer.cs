@@ -23,13 +23,13 @@ namespace Abyss_Client {
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Tables");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Views");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Users");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Tables");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Views");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Users");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11});
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.switcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +39,7 @@ namespace Abyss_Client {
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_pnl = new System.Windows.Forms.Panel();
+            this.baseLabel1 = new Abyss_Client.CompBase.BaseLabel();
             this.load_btn = new Abyss_Client.CompBase.BaseButton();
             this.create_btn = new Abyss_Client.CompBase.BaseButton();
             this.sql_txt = new Abyss_Client.CompBase.BaseTextBox();
@@ -56,7 +57,7 @@ namespace Abyss_Client {
             this.editToolStripMenuItem});
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
-            this.menu_menu.Size = new System.Drawing.Size(989, 24);
+            this.menu_menu.Size = new System.Drawing.Size(969, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
@@ -116,22 +117,36 @@ namespace Abyss_Client {
             // panel_pnl
             // 
             this.panel_pnl.BackColor = System.Drawing.Color.Transparent;
+            this.panel_pnl.Controls.Add(this.baseLabel1);
             this.panel_pnl.Controls.Add(this.load_btn);
             this.panel_pnl.Controls.Add(this.create_btn);
             this.panel_pnl.Controls.Add(this.sql_txt);
             this.panel_pnl.Location = new System.Drawing.Point(328, 28);
             this.panel_pnl.Name = "panel_pnl";
-            this.panel_pnl.Size = new System.Drawing.Size(648, 456);
+            this.panel_pnl.Size = new System.Drawing.Size(634, 456);
             this.panel_pnl.TabIndex = 2;
+            // 
+            // baseLabel1
+            // 
+            this.baseLabel1.AutoSize = true;
+            this.baseLabel1.BackColor = System.Drawing.Color.LightGray;
+            this.baseLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.baseLabel1.Location = new System.Drawing.Point(13, 26);
+            this.baseLabel1.Name = "baseLabel1";
+            this.baseLabel1.Size = new System.Drawing.Size(479, 13);
+            this.baseLabel1.TabIndex = 7;
+            this.baseLabel1.Text = "You can tape your SQL statements or load an external sql files and then execute i" +
+                "t.";
+            this.baseLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // load_btn
             // 
             this.load_btn.BackColor = System.Drawing.Color.LightGray;
             this.load_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.load_btn.Location = new System.Drawing.Point(524, 39);
+            this.load_btn.Location = new System.Drawing.Point(511, 21);
             this.load_btn.Name = "load_btn";
-            this.load_btn.Size = new System.Drawing.Size(121, 23);
-            this.load_btn.TabIndex = 1;
+            this.load_btn.Size = new System.Drawing.Size(94, 23);
+            this.load_btn.TabIndex = 6;
             this.load_btn.Text = "Load SQL file";
             this.load_btn.UseVisualStyleBackColor = true;
             this.load_btn.Click += new System.EventHandler(this.load_btn_Click);
@@ -140,11 +155,11 @@ namespace Abyss_Client {
             // 
             this.create_btn.BackColor = System.Drawing.Color.LightGray;
             this.create_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.create_btn.Location = new System.Drawing.Point(50, 318);
+            this.create_btn.Location = new System.Drawing.Point(151, 415);
             this.create_btn.Name = "create_btn";
             this.create_btn.Size = new System.Drawing.Size(90, 23);
             this.create_btn.TabIndex = 5;
-            this.create_btn.Text = "Create";
+            this.create_btn.Text = "Execute";
             this.create_btn.UseVisualStyleBackColor = true;
             this.create_btn.Click += new System.EventHandler(this.create_btn_Click);
             // 
@@ -152,12 +167,12 @@ namespace Abyss_Client {
             // 
             this.sql_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.sql_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.sql_txt.Location = new System.Drawing.Point(50, 68);
+            this.sql_txt.Location = new System.Drawing.Point(3, 50);
             this.sql_txt.Mandatory = false;
             this.sql_txt.Multiline = true;
             this.sql_txt.Name = "sql_txt";
             this.sql_txt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.sql_txt.Size = new System.Drawing.Size(595, 244);
+            this.sql_txt.Size = new System.Drawing.Size(629, 359);
             this.sql_txt.TabIndex = 2;
             // 
             // load_ofd
@@ -169,16 +184,16 @@ namespace Abyss_Client {
             // 
             this.listOracleItem_trv.Location = new System.Drawing.Point(12, 28);
             this.listOracleItem_trv.Name = "listOracleItem_trv";
-            treeNode1.Name = "Noeud1";
-            treeNode1.Text = "Tables";
-            treeNode2.Name = "Noeud2";
-            treeNode2.Text = "Views";
-            treeNode3.Name = "Noeud3";
-            treeNode3.Text = "Users";
-            treeNode4.Name = "Noeud0";
-            treeNode4.Text = "Oracle";
+            treeNode9.Name = "Noeud1";
+            treeNode9.Text = "Tables";
+            treeNode10.Name = "Noeud2";
+            treeNode10.Text = "Views";
+            treeNode11.Name = "Noeud3";
+            treeNode11.Text = "Users";
+            treeNode12.Name = "Noeud0";
+            treeNode12.Text = "Oracle";
             this.listOracleItem_trv.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode12});
             this.listOracleItem_trv.Size = new System.Drawing.Size(309, 456);
             this.listOracleItem_trv.TabIndex = 3;
             this.listOracleItem_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.listOracleItem_trv_AfterSelect);
@@ -191,7 +206,7 @@ namespace Abyss_Client {
             // 
             // OracleAdministration
             // 
-            this.ClientSize = new System.Drawing.Size(989, 496);
+            this.ClientSize = new System.Drawing.Size(969, 496);
             this.Controls.Add(this.listOracleItem_trv);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.menu_menu);
@@ -220,10 +235,11 @@ namespace Abyss_Client {
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private CompBase.BaseButton create_btn;
-        private Abyss_Client.CompBase.BaseButton load_btn;
         private System.Windows.Forms.ToolStripMenuItem addUserToolStripMenuItem;
         private Abyss_Client.CompBase.BaseTreeView listOracleItem_trv;
         private Abyss_Client.CompBase.BaseContextMenu baseContextMenu1;
+        private Abyss_Client.CompBase.BaseLabel baseLabel1;
+        private Abyss_Client.CompBase.BaseButton load_btn;
 
     }
 }
