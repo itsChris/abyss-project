@@ -18,6 +18,8 @@ namespace Abyss_Client {
 
         #region Component events
         private void load_btn_Click(object sender, EventArgs e) {
+            sql_txt.Visible = true;
+            gridView_gdw.Visible = false;
             if (load_ofd.ShowDialog() == DialogResult.OK) {
                 sql_txt.Text = String.Empty;
                 string sqlFile = load_ofd.FileName;
@@ -43,10 +45,13 @@ namespace Abyss_Client {
                 if (sql_txt.Text.ToUpper().Contains("SELECT")) {
                     OracleDataReader reader = cmd.ExecuteReader();
                     cmd.Dispose();
-                    sql_txt.Text = string.Empty;
-                    while (reader.Read()) {
-                        sql_txt.Text += reader.GetValue(0).ToString()+ "\r\n";
-                    }
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("TABLE");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+                    gridView_gdw.DataSource = ds.Tables[0];
+                    gridView_gdw.Visible = true;
+                    sql_txt.Visible = false;
                 }
                 else {
                     cmd.ExecuteNonQuery();
@@ -58,6 +63,11 @@ namespace Abyss_Client {
                 MessageBox.Show("Error in query execution : " + oex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }            
+        }
+
+        private void back_btn_Click(object sender, EventArgs e) {
+            gridView_gdw.Visible = false;
+            sql_txt.Visible = true;
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -75,7 +85,6 @@ namespace Abyss_Client {
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e) {
             openForm(new OracleUserAdd());
         }
-
         #endregion
 
         
@@ -114,6 +123,8 @@ namespace Abyss_Client {
                 reader.Close();*/
             }
         }
+
+       
               
     }
 }
