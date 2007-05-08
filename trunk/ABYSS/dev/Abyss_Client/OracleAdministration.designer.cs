@@ -23,21 +23,17 @@ namespace Abyss_Client {
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Tables");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Views");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Users");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14,
-            treeNode15});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Tables");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Views");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Users");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
-            this.switcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addUserToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_pnl = new System.Windows.Forms.Panel();
             this.baseLabel1 = new Abyss_Client.CompBase.BaseLabel();
             this.load_btn = new Abyss_Client.CompBase.BaseButton();
@@ -53,8 +49,7 @@ namespace Abyss_Client {
             // menu_menu
             // 
             this.menu_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.switcToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
             this.menu_menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -62,58 +57,30 @@ namespace Abyss_Client {
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
-            // switcToolStripMenuItem
+            // fileToolStripMenuItem
             // 
-            this.switcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addUserToolStripMenuItem,
-            this.quitToolStripMenuItem});
-            this.switcToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.switcToolStripMenuItem.Name = "switcToolStripMenuItem";
-            this.switcToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
-            this.switcToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addUserToolStripMenu,
+            this.exitToolStripMenu});
+            this.fileToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Text = "File";
             // 
-            // addUserToolStripMenuItem
+            // addUserToolStripMenu
             // 
-            this.addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
-            this.addUserToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.addUserToolStripMenuItem.Text = "Add User";
-            this.addUserToolStripMenuItem.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
+            this.addUserToolStripMenu.Name = "addUserToolStripMenu";
+            this.addUserToolStripMenu.Size = new System.Drawing.Size(228, 22);
+            this.addUserToolStripMenu.Text = "Add User";
+            this.addUserToolStripMenu.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
             // 
-            // quitToolStripMenuItem
+            // exitToolStripMenu
             // 
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
-            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // cutToolStripMenuItem
-            // 
-            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.cutToolStripMenuItem.Text = "Cut";
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.copyToolStripMenuItem.Text = "Copy";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.pasteToolStripMenuItem.Text = "Paste";
+            this.exitToolStripMenu.Name = "exitToolStripMenu";
+            this.exitToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.exitToolStripMenu.Size = new System.Drawing.Size(228, 22);
+            this.exitToolStripMenu.Text = "Exit Oracle Administration";
+            this.exitToolStripMenu.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // panel_pnl
             // 
@@ -185,16 +152,16 @@ namespace Abyss_Client {
             // 
             this.listOracleItem_trv.Location = new System.Drawing.Point(12, 28);
             this.listOracleItem_trv.Name = "listOracleItem_trv";
-            treeNode13.Name = "Noeud1";
-            treeNode13.Text = "Tables";
-            treeNode14.Name = "Noeud2";
-            treeNode14.Text = "Views";
-            treeNode15.Name = "Noeud3";
-            treeNode15.Text = "Users";
-            treeNode16.Name = "Noeud0";
-            treeNode16.Text = "Oracle";
+            treeNode5.Name = "Noeud1";
+            treeNode5.Text = "Tables";
+            treeNode6.Name = "Noeud2";
+            treeNode6.Text = "Views";
+            treeNode7.Name = "Noeud3";
+            treeNode7.Text = "Users";
+            treeNode8.Name = "Noeud0";
+            treeNode8.Text = "Oracle";
             this.listOracleItem_trv.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode16});
+            treeNode8});
             this.listOracleItem_trv.Size = new System.Drawing.Size(309, 456);
             this.listOracleItem_trv.TabIndex = 3;
             this.listOracleItem_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.listOracleItem_trv_AfterSelect);
@@ -229,14 +196,10 @@ namespace Abyss_Client {
         private System.Windows.Forms.Panel panel_pnl;
         private CompBase.BaseTextBox sql_txt;
         private System.Windows.Forms.OpenFileDialog load_ofd;
-        private System.Windows.Forms.ToolStripMenuItem switcToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenu;
         private CompBase.BaseButton create_btn;
-        private System.Windows.Forms.ToolStripMenuItem addUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addUserToolStripMenu;
         private Abyss_Client.CompBase.BaseTreeView listOracleItem_trv;
         private Abyss_Client.CompBase.BaseContextMenu baseContextMenu1;
         private Abyss_Client.CompBase.BaseLabel baseLabel1;
