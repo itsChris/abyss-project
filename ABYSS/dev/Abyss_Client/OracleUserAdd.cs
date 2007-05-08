@@ -123,25 +123,35 @@ namespace Abyss_Client {
 
         #region private Methods
         private void initFormData() {
+            ArrayList list = OracleUser.GetDefaultTablespace();
+            foreach (String var in list) {
+                defaultTablespace_cbx.Items.Add(var);
+            }
+            list = OracleUser.GetTemporaryTablespace();
+            foreach (String var in list) {
+                temporaryTablespace_cbx.Items.Add(var);
+            }
+            list = OracleUser.GetUsersProfile();
+            foreach (String var in list) {
+                profile_cbx.Items.Add(var);
+            }
+            defaultTablespace_cbx.SelectedIndex = 0;
+            temporaryTablespace_cbx.SelectedIndex = 0;
+            profile_cbx.SelectedIndex = 0;
+
             if (!update) {
-                ArrayList list = OracleUser.GetDefaultTablespace();
-                foreach (String var in list) {
-                    defaultTablespace_cbx.Items.Add(var);
-                }
-                defaultTablespace_cbx.SelectedIndex = 0;
-
-                list = OracleUser.GetTemporaryTablespace();
-                foreach (String var in list) {
-                    temporaryTablespace_cbx.Items.Add(var);
-                }
-                temporaryTablespace_cbx.SelectedIndex = 0;
-
-                list = OracleUser.GetUsersProfile();
-                foreach (String var in list) {
-                    profile_cbx.Items.Add(var);
-                }
-                profile_cbx.SelectedIndex = 0;
-
+                //ArrayList list = OracleUser.GetDefaultTablespace();
+                //foreach (String var in list) {
+                //    defaultTablespace_cbx.Items.Add(var);
+                //}
+                //list = OracleUser.GetTemporaryTablespace();
+                //foreach (String var in list) {
+                //    temporaryTablespace_cbx.Items.Add(var);
+                //}
+                //list = OracleUser.GetUsersProfile();
+                //foreach (String var in list) {
+                //    profile_cbx.Items.Add(var);
+                //}
                 userRoleList_lbx.Items.Add("CONNECT");
                 ht.Add("CONNECT", "CONNECT");
             }
@@ -151,14 +161,15 @@ namespace Abyss_Client {
                 profile_cbx.SelectedItem = user.Profile;
                 userLogin_txt.Enabled = false;
 
+                user.Roles = user.GetPrivilegesListFromUser(user.UserLogin);
                 userRoleList_lbx.DataSource = user.Roles;
                 foreach (String privilege in user.Roles) {
                     ht.Add(privilege, privilege);
                 }
             }
             userLogin_txt.Text = user.UserLogin;
-            accountLock_chk.Checked = user.IsEnable;
-
+            accountLock_chk.Checked = !user.IsEnable;
+            
             roleList_lbx.DataSource = OracleUser.GetRoles();
         }
 
