@@ -23,13 +23,13 @@ namespace Abyss_Client {
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Tables");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Views");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Users");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Tables");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Views");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Users");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +43,7 @@ namespace Abyss_Client {
             this.gridView_gdw = new System.Windows.Forms.DataGridView();
             this.load_ofd = new System.Windows.Forms.OpenFileDialog();
             this.listOracleItem_trv = new Abyss_Client.CompBase.BaseTreeView();
-            this.baseContextMenu1 = new Abyss_Client.CompBase.BaseContextMenu();
+            this.menu_stp = new Abyss_Client.CompBase.BaseContextMenu();
             this.menu_menu.SuspendLayout();
             this.panel_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_gdw)).BeginInit();
@@ -73,6 +73,7 @@ namespace Abyss_Client {
             // addUserToolStripMenu
             // 
             this.addUserToolStripMenu.Name = "addUserToolStripMenu";
+            this.addUserToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
             this.addUserToolStripMenu.Size = new System.Drawing.Size(228, 22);
             this.addUserToolStripMenu.Text = "Add User";
             this.addUserToolStripMenu.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
@@ -182,25 +183,25 @@ namespace Abyss_Client {
             // 
             this.listOracleItem_trv.Location = new System.Drawing.Point(12, 28);
             this.listOracleItem_trv.Name = "listOracleItem_trv";
-            treeNode9.Name = "Noeud1";
-            treeNode9.Text = "Tables";
-            treeNode10.Name = "Noeud2";
-            treeNode10.Text = "Views";
-            treeNode11.Name = "Noeud3";
-            treeNode11.Text = "Users";
-            treeNode12.Name = "Noeud0";
-            treeNode12.Text = "Oracle";
+            treeNode5.Name = "Noeud1";
+            treeNode5.Text = "Tables";
+            treeNode6.Name = "Noeud2";
+            treeNode6.Text = "Views";
+            treeNode7.Name = "Noeud3";
+            treeNode7.Text = "Users";
+            treeNode8.Name = "Noeud0";
+            treeNode8.Text = "Oracle";
             this.listOracleItem_trv.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12});
+            treeNode8});
             this.listOracleItem_trv.Size = new System.Drawing.Size(309, 462);
             this.listOracleItem_trv.TabIndex = 3;
             this.listOracleItem_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.listOracleItem_trv_AfterSelect);
             // 
-            // baseContextMenu1
+            // menu_stp
             // 
-            this.baseContextMenu1.Name = "baseContextMenu1";
-            this.baseContextMenu1.ShowImageMargin = false;
-            this.baseContextMenu1.Size = new System.Drawing.Size(36, 4);
+            this.menu_stp.Name = "baseContextMenu1";
+            this.menu_stp.ShowImageMargin = false;
+            this.menu_stp.Size = new System.Drawing.Size(36, 4);
             // 
             // OracleAdministration
             // 
@@ -210,7 +211,7 @@ namespace Abyss_Client {
             this.Controls.Add(this.menu_menu);
             this.MainMenuStrip = this.menu_menu;
             this.Name = "OracleAdministration";
-            this.Text = "Oracle Administration view";
+            this.Text = "Oracle Administration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Oracle_FormClosing);
             this.menu_menu.ResumeLayout(false);
             this.menu_menu.PerformLayout();
@@ -232,7 +233,7 @@ namespace Abyss_Client {
         private CompBase.BaseButton create_btn;
         private System.Windows.Forms.ToolStripMenuItem addUserToolStripMenu;
         private Abyss_Client.CompBase.BaseTreeView listOracleItem_trv;
-        private Abyss_Client.CompBase.BaseContextMenu baseContextMenu1;
+        private Abyss_Client.CompBase.BaseContextMenu menu_stp;
         private Abyss_Client.CompBase.BaseLabel baseLabel1;
         private Abyss_Client.CompBase.BaseButton load_btn;
         private System.Windows.Forms.DataGridView gridView_gdw;

@@ -1,6 +1,7 @@
 using Business;
 using DAO;
 using System;
+using Persistence;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
@@ -87,33 +88,40 @@ namespace Abyss_Client {
         }
         #endregion
 
-        
-
         private void listOracleItem_trv_AfterSelect(object sender, TreeViewEventArgs e) {
-            TreeView tree = (TreeView)sender;           
-            TreeNode node = tree.SelectedNode;
+            TreeView treeView = (TreeView)sender;
+            TreeNode treeNode = treeView.SelectedNode;
+            treeView.BeginUpdate();
 
-            //Get user list
-            if (node.Name == "Noeud3") {
+            if (treeNode.Name == "Noeud3") {
+                treeNode.Nodes.Clear();
                 ArrayList list = OracleUser.GetUsers();
-                foreach (String var in list) {
-                    node.Nodes.Add(var);
+                foreach (OracleUserData userData in list) {
+                    OracleUser user = new OracleUser(userData);
+                    TreeNode tmpNode = new TreeNode(user.UserLogin);
+                    tmpNode.Tag = user;
+                    treeNode.Nodes.Add(tmpNode);
+                    
+
+                    
                 }
             }
 
             //Get Table list
-            if (node.Name == "Noeud1") {
+            if (treeNode.Name == "Noeud1") {
+                treeNode.Nodes.Clear();
                 OracleTable table = new OracleTable();
                 OracleDataReader reader = table.GetTable();
 
                 while (reader.Read()) {
-                    node.Nodes.Add(reader.GetValue(0).ToString());
+                    treeNode.Nodes.Add(reader.GetValue(0).ToString());
                 }
                 reader.Close();
             }
 
             //Get View list
-            if (node.Name == "Noeud2") {
+            if (treeNode.Name == "Noeud2") {
+                treeNode.Nodes.Clear();
                 /*
                 OracleDataReader reader = table.GetTable();
 
@@ -122,6 +130,8 @@ namespace Abyss_Client {
                 }
                 reader.Close();*/
             }
+            treeNode.Expand();
+            treeView.EndUpdate();
         }
 
        

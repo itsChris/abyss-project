@@ -3,6 +3,7 @@ using Persistence;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using System.Data;
+using System.Collections;
 
 namespace DAO {
     public class OracleUserDAO : OracleDAO {
@@ -28,7 +29,7 @@ namespace DAO {
         }
 
         public static OracleDataReader GetPrivilegesListFromUser(string userName) {
-            string query = "SELECT GRANTED_ROLE FROM DBA_ROLE_PRIVS WHERE GRANTEE ="+userName;
+            string query = "SELECT GRANTED_ROLE FROM DBA_ROLE_PRIVS WHERE GRANTEE = '" + userName + "'";
             return ExecuteReader(query);
         }
 
@@ -53,31 +54,55 @@ namespace DAO {
             }
         }
 
-
-
-
-
-
-
-        public static OracleDataReader GetOracleUsers() {
+        public static ArrayList GetOracleUsers() {
             string query = "SELECT USERNAME " +
                 "FROM DBA_USERS " +
                 "ORDER BY USERNAME";
-            return ExecuteReader(query);
+            ArrayList list = new ArrayList();
+            OracleDataReader reader = ExecuteReader(query);
+            if (reader != null) {
+                while (reader.Read()) {
+                    OracleUserData user = GetUserData(reader.GetValue(0).ToString());
+                    list.Add(user);
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
         }
 
-        public static OracleDataReader GetUserData(string userName) {
-            string query = "select USERNAME," +
-                   "USER_ID," +
-                   "DEFAULT_TABLESPACE," +
-                   "TEMPORARY_TABLESPACE," +
-                   "PASSWORD," +
-                   "ACCOUNT_STATUS," +
-                   "PROFILE," +
+        public static OracleUserData GetUserData(string userName) {
+            string query = "select USERNAME, " +
+                   "USER_ID, " +
+                   "DEFAULT_TABLESPACE, " +
+                   "TEMPORARY_TABLESPACE ," +
+                   "PASSWORD, " +
+                   "ACCOUNT_STATUS, " +
+                   "PROFILE, " +
                    "CREATED " +
             "from DBA_USERS " +
-            "WHERE USERNAME=" + userName;
-            return ExecuteReader(query);
+            "WHERE USERNAME = '" + userName + "'";
+            OracleDataReader reader = ExecuteReader(query);
+            if (reader != null) {
+                OracleUserData oracleUserData = new OracleUserData();
+                while (reader.Read()) {
+                    oracleUserData.UserLogin = (string)reader.GetValue(0);
+                    oracleUserData.CreatedDate = reader.GetValue(7).ToString();
+                    oracleUserData.DefaultTablespace = (string)reader.GetValue(2);
+                    oracleUserData.TemporatyTablespace = (string)reader.GetValue(3);
+                    string account = reader.GetValue(5).ToString();
+                    if(account.ToUpper().Contains("LOCKED")){
+                        oracleUserData.IsEnable = false;
+                    }
+                    else{
+                        oracleUserData.IsEnable = true;
+                    }
+                    oracleUserData.Profile = (string)reader.GetValue(6);
+                }
+                reader.Close();
+                return oracleUserData;
+            }
+            return null;
         }
 
         

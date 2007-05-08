@@ -112,7 +112,21 @@ namespace Business {
             return null;
         }
 
-        public static ArrayList GetPrivilegesListFromUser(String userName) {
+        public static ArrayList GetUsers() {
+           return  OracleUserDAO.GetOracleUsers();
+        }
+
+        public static OracleUser GetUserData(string userName) {
+            OracleUserData userData = OracleUserDAO.GetUserData(userName);
+            if(userData != null){
+                return new OracleUser((OracleUserData)userData);
+            }
+            return null;
+        }
+        #endregion
+
+        #region Public Methods
+        public ArrayList GetPrivilegesListFromUser(String userName) {
             ArrayList list = new ArrayList();
             OracleDataReader reader = OracleUserDAO.GetPrivilegesListFromUser(userName);
             if (reader != null) {
@@ -125,35 +139,6 @@ namespace Business {
             return null;
         }
 
-        public static ArrayList GetUsers() {
-            ArrayList list = new ArrayList();
-            OracleDataReader reader = OracleUserDAO.GetOracleUsers();
-            if(reader != null){
-                while (reader.Read()) {
-                list.Add(reader.GetValue(0).ToString());
-                }
-                reader.Close();
-                return list;
-            }
-            return null;
-        }
-
-
-
-
-
-
-        public static OracleDataReader GetUserData(string userName) {
-            return OracleUserDAO.GetUserData(userName);
-        }
-
-
-
-        
-
-        #endregion
-
-        #region Public Methods
         public void save() {
             OracleUserDAO.SaveOracleUser(this.oracleUserData);
         }
