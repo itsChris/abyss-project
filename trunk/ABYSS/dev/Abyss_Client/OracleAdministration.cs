@@ -88,6 +88,15 @@ namespace Abyss_Client {
         }
         #endregion
 
+        private void listOracleItem_trv_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
+            if (e.Node.Tag != null) {
+                if (e.Node.Tag.GetType() == typeof(OracleUser)) {
+                    OracleUser user = (OracleUser)e.Node.Tag;
+                    openForm(new OracleUserAdd(user));
+                }
+            }
+        }
+
         private void listOracleItem_trv_AfterSelect(object sender, TreeViewEventArgs e) {
             TreeView treeView = (TreeView)sender;
             TreeNode treeNode = treeView.SelectedNode;
@@ -132,10 +141,7 @@ namespace Abyss_Client {
             }
             treeNode.Expand();
             treeView.EndUpdate();
-        }
-
-       
-              
+        }           
     }
 }
 
