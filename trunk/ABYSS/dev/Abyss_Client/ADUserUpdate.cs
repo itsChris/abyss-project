@@ -104,15 +104,19 @@ namespace Abyss_Client {
                     user.PasswordNeverExpired = neverExpires_chk.Checked;
                     user.MemberOf = this.user.MemberOf;
                     // Save the user
+                    Cursor.Current = Cursors.WaitCursor;
                     user.save();
+                    Cursor.Current = Cursors.Default;
                     dialogResult = DialogResult.OK;
                     this.Close();
                 }
                 catch (UnauthorizedAccessException uaex) {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(uaex.Message);
                     return;
                 }
                 catch (COMException comex) {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show(comex.Message);
                     return;
                 }
