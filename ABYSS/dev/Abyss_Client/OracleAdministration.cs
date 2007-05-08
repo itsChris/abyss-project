@@ -45,7 +45,7 @@ namespace Abyss_Client {
                     cmd.Dispose();
                     sql_txt.Text = string.Empty;
                     while (reader.Read()) {
-                        sql_txt.Text = sql_txt.Text + reader.GetValue(0).ToString()+ "\r\n\r\n";
+                        sql_txt.Text += reader.GetValue(0).ToString()+ "\r\n";
                     }
                 }
                 else {
@@ -56,6 +56,7 @@ namespace Abyss_Client {
             }
             catch (OracleException oex) {
                 MessageBox.Show("Error in query execution : " + oex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
             }            
         }
 
