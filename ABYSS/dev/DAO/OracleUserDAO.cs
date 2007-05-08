@@ -32,6 +32,27 @@ namespace DAO {
             return ExecuteReader(query);
         }
 
+        public static void SaveOracleUser(OracleUserData oracleUserData) {
+            string query = "CREATE USER " + oracleUserData.UserLogin +
+                  " IDENTIFIED EXTERNALLY " +
+                  " DEFAULT TABLESPACE " + oracleUserData.DefaultTablespace +
+                  " TEMPORARY TABLESPACE " + oracleUserData.TemporatyTablespace +
+                  " PROFILE " + oracleUserData.Profile;
+
+            if (oracleUserData.IsEnable) {
+                query += " ACCOUNT UNLOCK";
+            }
+            else {
+                query += " ACCOUNT LOCK";
+            }
+            ExecuteNonQuery(query);
+
+            foreach (String role in oracleUserData.Roles) {
+                query = "GRANT " + role + "to" + oracleUserData.UserLogin;
+                ExecuteNonQuery(query);
+            }
+        }
+
 
 
 
@@ -59,26 +80,7 @@ namespace DAO {
             return ExecuteReader(query);
         }
 
-        public static void SaveOracleUser(OracleUserData oracleUserData) {
-            string query = "CREATE USER " + oracleUserData.UserLogin +
-                  " IDENTIFIED EXTERNALLY " +
-                  " DEFAULT TABLESPACE " + oracleUserData.DefaultTablespace +
-                  " TEMPORARY TABLESPACE " + oracleUserData.TemporatyTablespace +
-                  " PROFILE " + oracleUserData.Profile;
-            
-            if (oracleUserData.Account) {
-                query += " ACCOUNT UNLOCK";
-            }
-            else {
-                query += " ACCOUNT LOCK";
-            }
-            ExecuteNonQuery(query);
-
-            foreach (String role in oracleUserData.Roles) {
-                query = "GRANT " + role + "to" + oracleUserData.UserLogin;
-                ExecuteNonQuery(query);
-            }
-        }
+        
 
         public static void EditOracleUser(OracleUserData oracleUserData) {
             string query = "ALTER USER " + oracleUserData.UserLogin +
