@@ -73,6 +73,7 @@
             this.userLogin_txt.Name = "userLogin_txt";
             this.userLogin_txt.Size = new System.Drawing.Size(141, 20);
             this.userLogin_txt.TabIndex = 4;
+            this.userLogin_txt.Text = "\"OPS$";
             // 
             // accountLock_chk
             // 

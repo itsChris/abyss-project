@@ -62,6 +62,10 @@ namespace Abyss_Client {
 
         private void createUser_btn_Click(object sender, EventArgs e) {
             if (checkMandatoryFields()) {
+                if(!userLogin_txt.Text.Contains("OPS$")){
+                    MessageBox.Show("You user login must start by 'OPS$'",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    return;
+                }
                 user.Profile = profile_cbx.SelectedItem.ToString();
                 user.DefaultTablespace = defaultTablespace_cbx.SelectedItem.ToString();
                 user.TemporatyTablespace = temporaryTablespace_cbx.SelectedItem.ToString();
@@ -88,7 +92,12 @@ namespace Abyss_Client {
                     }
                 }
                 catch (OracleException oex) {
+                    if(oex.Message.Contains("ORA-00911")){
+                        MessageBox.Show("You must write your external user between  double quote",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    }
+                    else{
                     MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     return;
                 }
                 dialogResult = DialogResult.OK;
