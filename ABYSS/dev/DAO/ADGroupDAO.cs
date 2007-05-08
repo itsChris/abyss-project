@@ -42,15 +42,20 @@ namespace DAO {
         }
 
         private static void save(ADGroupData aDGroupData) {
+            bool update = true;
             DirectoryEntry entry = getInstance();
             DirectoryEntry directoryEntry = Utility.getGroup(aDGroupData.Name);
             if (directoryEntry == null) {
                 DirectoryEntries directoryEntries = entry.Children;
                 directoryEntry = directoryEntries.Add("cn=" + aDGroupData.Name + ",cn=users", "group");
+                update = false;
             }
             Utility.setProperty(directoryEntry, "sAMAccountName", aDGroupData.Name);
             Utility.setProperty(directoryEntry, "description", aDGroupData.Description);
-            updateMembersAndMemberOfList(aDGroupData, directoryEntry);
+            if (update) {
+                aDGroupData.DistinguishedName = Utility.getProperty(directoryEntry, "distinguishedName");
+                updateMembersAndMemberOfList(aDGroupData, directoryEntry);
+            }
             long group;
             if(aDGroupData.Scope == ADGroupData.GroupeScope.Global){
                 group = Convert.ToInt64(Utility.ADS_GROUP_TYPE_ENUM.ADS_GROUP_TYPE_GLOBAL_GROUP);
@@ -70,29 +75,41 @@ namespace DAO {
         }
 
         private static void updateMembersAndMemberOfList(ADGroupData adGroupData, DirectoryEntry directoryEntry) {
-            try {
-                ArrayList list = getMembersList(adGroupData.DistinguishedName);
-                foreach (String distinguishedName in list) {
+            ArrayList list = getMembersList(adGroupData.DistinguishedName);
+            foreach (String distinguishedName in list) {
+                try {
                     Utility.removeProperty(directoryEntry, "Member", distinguishedName);
                 }
-                foreach (String distinguishedName in adGroupData.Members) {
+                catch (Exception) {
+                }
+            }
+            foreach (String distinguishedName in adGroupData.Members) {
+                try {
                     Utility.setProperty(directoryEntry, "Member", distinguishedName);
                 }
-                list = getMemberOfList(adGroupData.DistinguishedName);
-                foreach (String distinguishedName in list) {
-                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                catch (Exception) {
+                }
+            }
+            list = getMemberOfList(adGroupData.DistinguishedName);
+            foreach (String distinguishedName in list) {
+                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                try {
                     Utility.removeProperty(memberOf, "Member", adGroupData.DistinguishedName);
                     memberOf.CommitChanges();
                     memberOf.Close();
                 }
-                foreach (String distinguishedName in adGroupData.Memberof) {
-                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                catch (Exception) {
+                }
+            }
+            foreach (String distinguishedName in adGroupData.Memberof) {
+                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                try {
                     Utility.setProperty(memberOf, "Member", adGroupData.DistinguishedName);
                     memberOf.CommitChanges();
                     memberOf.Close();
                 }
-            }
-            catch (Exception) {
+                catch (Exception) {
+                }
             }
         }
 
