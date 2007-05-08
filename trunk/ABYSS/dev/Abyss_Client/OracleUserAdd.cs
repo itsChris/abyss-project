@@ -83,18 +83,19 @@ namespace Abyss_Client {
                     privileges.Add(privilege);
                 }
                 user.Roles = privileges;
+                user.LastRoleList = user.Roles;
                 try {
                     if (!update) {
                         user.save();
                     }
                     else {
-                      //  "\"OPS$DQSDS\\DQSD\""
                         user.edit();
                     }
                 }
                 catch (OracleException oex) {
                     if(oex.Message.Contains("ORA-00911")){
                         MessageBox.Show("You must write your external user between  double quote",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        userLogin_txt.Enabled = true;
                     }
                     else{
                     MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -149,10 +150,11 @@ namespace Abyss_Client {
                 profile_cbx.SelectedItem = user.Profile;
                 userLogin_txt.Enabled = false;
                 user.Roles = user.GetPrivilegesListFromUser(user.UserLogin);
-                userRoleList_lbx.DataSource = user.Roles;
+                //userRoleList_lbx.DataSource = user.Roles;
                 foreach (String privilege in user.Roles) {
                     ht.Add(privilege, privilege);
                 }
+                updateView();
             }
             userLogin_txt.Text = user.UserLogin;
             accountLock_chk.Checked = !user.IsEnable;

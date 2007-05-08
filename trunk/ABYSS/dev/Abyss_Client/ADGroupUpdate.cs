@@ -2,6 +2,7 @@ using System;
 using Business;
 using Persistence;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Abyss_Client {
     public partial class ADGroupUpdate : CompBase.BaseForm {
@@ -29,43 +30,53 @@ namespace Abyss_Client {
         }
 
         private void security_rtn_CheckedChanged(object sender, EventArgs e) {
-            universal_rdt.Enabled = false;
-            if (universal_rdt.Checked) {
-                global_rdt.Checked = true;
+            if (!update) {
+                universal_rdt.Enabled = false;
+                if (universal_rdt.Checked) {
+                    global_rdt.Checked = true;
+                }
             }
         }
 
         private void distribution_rtn_CheckedChanged(object sender, EventArgs e) {
-            universal_rdt.Enabled = true;
+            if (!update) {
+                universal_rdt.Enabled = true;
+            }
         }
 
         private void ok_btn_Click(object sender, EventArgs e) {
             if (checkMandatoryFields()) {
-                ADGroup group = ADGroup.getGroupByName(name_txt.Text);
-                if (group != null && update!= true) {
-                    MessageBox.Show("This group already exist", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try {
+                    ADGroup group = ADGroup.getGroupByName(name_txt.Text);
+                    if (group != null && update != true) {
+                        MessageBox.Show("This group already exist", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    adGroup.Name = name_txt.Text;
+                    adGroup.Description = desc_txt.Text;
+                    if (global_rdt.Checked) {
+                        adGroup.Scope = ADGroupData.GroupeScope.Global;
+                    }
+                    else if (domainLocal_rdt.Checked) {
+                        adGroup.Scope = ADGroupData.GroupeScope.DomainLocal;
+                    }
+                    else {
+                        adGroup.Scope = ADGroupData.GroupeScope.Universel;
+                    }
+                    if (security_rdt.Checked) {
+                        adGroup.SecurityGroupe = true;
+                    }
+                    else {
+                        adGroup.SecurityGroupe = false;
+                    }
+                    adGroup.save();
+                    dialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                catch (COMException comex) {
+                    MessageBox.Show(comex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                adGroup.Name = name_txt.Text;
-                adGroup.Description = desc_txt.Text;
-                if (global_rdt.Checked) {
-                    adGroup.Scope = ADGroupData.GroupeScope.Global;
-                }
-                else if (domainLocal_rdt.Checked) {
-                    adGroup.Scope = ADGroupData.GroupeScope.DomainLocal;
-                }
-                else {
-                    adGroup.Scope = ADGroupData.GroupeScope.Universel;
-                }
-                if (security_rdt.Checked) {
-                    adGroup.SecurityGroupe = true;
-                }
-                else {
-                    adGroup.SecurityGroupe = false;
-                }
-                adGroup.save();
-                dialogResult = DialogResult.OK;
-                this.Close();
             }
         }
 
@@ -130,9 +141,9 @@ namespace Abyss_Client {
                 memberof_btn.Enabled = true;
                 members_btn.Enabled = true;
             }
-            if (adGroup.Scope == ADGroupData.GroupeScope.DomainLocal) {
-                memberof_btn.Enabled = false;
-            }
+            //if (adGroup.Scope == ADGroupData.GroupeScope.DomainLocal) {
+            //    memberof_btn.Enabled = false;
+            //}
         }
         #endregion
     }

@@ -9,6 +9,7 @@ namespace Persistence {
         private string temporatyTablespace;
         private string profile;
         private ArrayList roles;
+        private ArrayList lastRoleList;
         private bool isEnable; //Lock (true) or Unlock(false)
         private string createdDate; //Creation date of an Oracle user
         #endregion
@@ -47,6 +48,11 @@ namespace Persistence {
         public ArrayList Roles {
             get { return roles; }
             set { roles = value; }
+        }
+
+        public ArrayList LastRoleList {
+            get { return lastRoleList; }
+            set { lastRoleList = value; }
         }
 
         public string CreatedDate {

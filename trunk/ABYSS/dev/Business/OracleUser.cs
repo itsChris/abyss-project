@@ -57,6 +57,11 @@ namespace Business {
             get { return oracleUserData.Roles; }
             set { oracleUserData.Roles = value; }
         }
+
+        public ArrayList LastRoleList {
+            get {return oracleUserData.LastRoleList;}
+            set { oracleUserData.LastRoleList = value; }
+        }
         #endregion
 
         #region Static Methods

@@ -50,15 +50,20 @@ namespace DAO {
         }
 
         private static void save(ADComputerData aDComputerData) {
+            bool update = true;
             DirectoryEntry entry = getInstance();
             DirectoryEntry directoryEntry = Utility.getComputer(aDComputerData.ComputerName);
             if (directoryEntry == null) {
                 DirectoryEntries directoryEntries = entry.Children;
                 directoryEntry = directoryEntries.Add("cn=" + aDComputerData.ComputerName + ",cn=computers", "computer");
+                update = false;
             }
             Utility.setProperty(directoryEntry, "sAMAccountName", aDComputerData.ComputerName);
             Utility.setProperty(directoryEntry, "description", aDComputerData.Description);
-            updateMemberOfList(aDComputerData, directoryEntry);
+            if (update) {
+                aDComputerData.DistinguishedName = Utility.getProperty(directoryEntry, "distinguishedName");
+                updateMemberOfList(aDComputerData, directoryEntry);
+            }
             Utility.setProperty(directoryEntry, "operatingSystem", aDComputerData.OperatingSystem);
             Utility.setProperty(directoryEntry, "operatingSystemServicePack", aDComputerData.OperatingSystemServicePack);
             Utility.setProperty(directoryEntry, "operatingSystemVersion", aDComputerData.OperatingSystemVersion);
@@ -84,22 +89,26 @@ namespace DAO {
         }
 
         private static void updateMemberOfList(ADComputerData adComputerData, DirectoryEntry directoryEntry) {
-            try {
-                ArrayList list = getMemberOfList(adComputerData.DistinguishedName);
-                foreach (String distinguishedName in list) {
-                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
-                    Utility.removeProperty(memberOf, "Member", adComputerData.DistinguishedName);
-                    memberOf.CommitChanges();
-                    memberOf.Close();
+            ArrayList list = getMemberOfList(adComputerData.DistinguishedName);
+            foreach (String distinguishedName in list) {
+                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                try{
+                Utility.removeProperty(memberOf, "Member", adComputerData.DistinguishedName);
+                memberOf.CommitChanges();
+                memberOf.Close();
                 }
-                foreach (String distinguishedName in adComputerData.Memberof) {
-                    DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                catch(Exception){
+                }
+            }
+            foreach (String distinguishedName in adComputerData.Memberof) {
+                DirectoryEntry memberOf = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
+                try {
                     Utility.setProperty(memberOf, "Member", adComputerData.DistinguishedName);
                     memberOf.CommitChanges();
                     memberOf.Close();
                 }
-            }
-            catch (Exception) {
+                catch (Exception) {
+                }
             }
         }
 
