@@ -56,7 +56,7 @@ namespace Abyss_Client {
             this.editToolStripMenuItem});
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
-            this.menu_menu.Size = new System.Drawing.Size(976, 24);
+            this.menu_menu.Size = new System.Drawing.Size(989, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
@@ -191,7 +191,7 @@ namespace Abyss_Client {
             // 
             // OracleAdministration
             // 
-            this.ClientSize = new System.Drawing.Size(976, 496);
+            this.ClientSize = new System.Drawing.Size(989, 496);
             this.Controls.Add(this.listOracleItem_trv);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.menu_menu);
