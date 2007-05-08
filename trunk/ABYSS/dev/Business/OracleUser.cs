@@ -14,7 +14,7 @@ namespace Business {
         #region Constructors
         public OracleUser() {
             this.oracleUserData = new OracleUserData();
-            this.oracleUserData.Account = false;
+            this.oracleUserData.IsEnable = true;
         }
 
         public OracleUser(OracleUserData oracleUserData) {
@@ -43,9 +43,9 @@ namespace Business {
             set { oracleUserData.Profile = value; }
         }
 
-        public bool Account {
-            get { return oracleUserData.Account; }
-            set { oracleUserData.Account = value; }
+        public bool IsEnable {
+            get { return oracleUserData.IsEnable; }
+            set { oracleUserData.IsEnable = value; }
         }
 
         public string CreatedDate {

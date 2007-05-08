@@ -27,14 +27,17 @@ namespace Abyss_Client {
 
         #region Component Events
         private void OracleUserAdd_Load(object sender, EventArgs e) {
+            Cursor.Current = Cursors.WaitCursor;
             try {
                 initFormData();
             }
             catch (OracleException oex) {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dialogResult = DialogResult.OK;
                 this.Close();
             }
+            Cursor.Current = Cursors.Default;
         }
 
         private void roleList_lbx_DoubleClick(object sender, EventArgs e) {
@@ -63,7 +66,10 @@ namespace Abyss_Client {
             user.TemporatyTablespace = temporaryTablespace_cbx.SelectedItem.ToString();
             user.CreatedDate = DateTime.Now.ToString();
             if (accountLock_chk.Checked) {
-                user.Account = true;
+                user.IsEnable = false;
+            }
+            else {
+                user.IsEnable = true;
             }
             user.UserLogin = userLogin_txt.Text;
             ArrayList privileges = new ArrayList();
@@ -72,11 +78,16 @@ namespace Abyss_Client {
                 privileges.Add(privilege);
             }
             user.Roles = privileges;
-            if (!update) {
-                user.save();
+            try {
+                if (!update) {
+                    user.save();
+                }
+                else {
+                    user.edit();
+                }
             }
-            else {
-                user.edit();
+            catch (OracleException oex) {
+                MessageBox.Show("test");
             }
             dialogResult = DialogResult.OK;
             this.Close();
@@ -134,7 +145,7 @@ namespace Abyss_Client {
                 }
             }
             userLogin_txt.Text = user.UserLogin;
-            accountLock_chk.Checked = user.Account;
+            accountLock_chk.Checked = user.IsEnable;
 
             roleList_lbx.DataSource = OracleUser.GetRoles();
         }
