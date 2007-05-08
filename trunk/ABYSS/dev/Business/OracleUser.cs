@@ -125,9 +125,6 @@ namespace Business {
             return null;
         }
 
-
-
-
         public static ArrayList GetUsers() {
             ArrayList list = new ArrayList();
             OracleDataReader reader = OracleUserDAO.GetOracleUsers();
@@ -140,6 +137,11 @@ namespace Business {
             }
             return null;
         }
+
+
+
+
+
 
         public static OracleDataReader GetUserData(string userName) {
             return OracleUserDAO.GetUserData(userName);
