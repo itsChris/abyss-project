@@ -8,12 +8,12 @@ namespace DAO {
     public class OracleUserDAO : OracleDAO {
         #region Public Static Methods
         public static OracleDataReader GetDefaultTablespace() {
-            string query = "select TABLESPACE_NAME from DBA_DATA_FILES order by TABLESPACE_NAME";
+            string query = "select TABLESPACE_NAME FROM DBA_DATA_FILES order by TABLESPACE_NAME";
             return ExecuteReader(query);
         }
 
         public static OracleDataReader GetTemporatyTablespace() {
-            string query = "select TABLESPACE_NAME from DBA_TEMP_FILES order by TABLESPACE_NAME";
+            string query = "select TABLESPACE_NAME FROM DBA_TEMP_FILES order by TABLESPACE_NAME";
             return ExecuteReader(query);
         }
 
@@ -34,7 +34,7 @@ namespace DAO {
 
         public static void SaveOracleUser(OracleUserData oracleUserData) {
             string query = "CREATE USER " + oracleUserData.UserLogin +
-                  " IDENTIFIED EXTERNALLY " +
+                  " IDENTIFIED EXTERNALLY" +
                   " DEFAULT TABLESPACE " + oracleUserData.DefaultTablespace +
                   " TEMPORARY TABLESPACE " + oracleUserData.TemporatyTablespace +
                   " PROFILE " + oracleUserData.Profile;
@@ -48,7 +48,7 @@ namespace DAO {
             ExecuteNonQuery(query);
 
             foreach (String role in oracleUserData.Roles) {
-                query = "GRANT " + role + "to" + oracleUserData.UserLogin;
+                query = "GRANT " + role + " TO " + oracleUserData.UserLogin;
                 ExecuteNonQuery(query);
             }
         }
