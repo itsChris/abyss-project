@@ -121,7 +121,7 @@ namespace Abyss_Client {
             this.panel_pnl.Controls.Add(this.sql_txt);
             this.panel_pnl.Location = new System.Drawing.Point(328, 28);
             this.panel_pnl.Name = "panel_pnl";
-            this.panel_pnl.Size = new System.Drawing.Size(648, 473);
+            this.panel_pnl.Size = new System.Drawing.Size(648, 456);
             this.panel_pnl.TabIndex = 2;
             // 
             // load_btn
