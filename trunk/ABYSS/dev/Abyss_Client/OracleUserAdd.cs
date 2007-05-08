@@ -61,37 +61,39 @@ namespace Abyss_Client {
         }
 
         private void createUser_btn_Click(object sender, EventArgs e) {
-            user.Profile = profile_cbx.SelectedItem.ToString();
-            user.DefaultTablespace = defaultTablespace_cbx.SelectedItem.ToString();
-            user.TemporatyTablespace = temporaryTablespace_cbx.SelectedItem.ToString();
-            user.CreatedDate = DateTime.Now.ToString();
-            if (accountLock_chk.Checked) {
-                user.IsEnable = false;
-            }
-            else {
-                user.IsEnable = true;
-            }
-            user.UserLogin = userLogin_txt.Text;
-            ArrayList privileges = new ArrayList();
-            foreach (String var in ht.Keys) {
-                string privilege = (string)ht[var];
-                privileges.Add(privilege);
-            }
-            user.Roles = privileges;
-            try {
-                if (!update) {
-                    user.save();
+            if (checkMandatoryFields()) {
+                user.Profile = profile_cbx.SelectedItem.ToString();
+                user.DefaultTablespace = defaultTablespace_cbx.SelectedItem.ToString();
+                user.TemporatyTablespace = temporaryTablespace_cbx.SelectedItem.ToString();
+                user.CreatedDate = DateTime.Now.ToString();
+                if (accountLock_chk.Checked) {
+                    user.IsEnable = false;
                 }
                 else {
-                    user.edit();
+                    user.IsEnable = true;
                 }
+                user.UserLogin = userLogin_txt.Text;
+                ArrayList privileges = new ArrayList();
+                foreach (String var in ht.Keys) {
+                    string privilege = (string)ht[var];
+                    privileges.Add(privilege);
+                }
+                user.Roles = privileges;
+                try {
+                    if (!update) {
+                        user.save();
+                    }
+                    else {
+                        user.edit();
+                    }
+                }
+                catch (OracleException oex) {
+                    MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                dialogResult = DialogResult.OK;
+                this.Close();
             }
-            catch (OracleException oex) {
-                MessageBox.Show(oex.Message,this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
-            }
-            dialogResult = DialogResult.OK;
-            this.Close();
         }
 
         private void quit_btn_Click(object sender, EventArgs e) {
