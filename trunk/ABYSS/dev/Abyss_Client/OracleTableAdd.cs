@@ -14,7 +14,7 @@ namespace Abyss_Client {
             InitializeComponent();            
         }
 
-        private void rowsNumber_txt_Leave(object sender, EventArgs e) {
+        private void rowsNumber_txt_Leave(object sender, EventArgs e) {            
             int x = 13;
             int y = 86;
             
@@ -25,6 +25,8 @@ namespace Abyss_Client {
             rowsType.Add("FLOAT");
             rowsType.Sort();
 
+            tableRows_pnl.Controls.Clear();
+
             if (rowsNumber_txt.Text.Length > 0) {
                 this.SuspendLayout();
                 for (int i = 0; i < Convert.ToInt32(rowsNumber_txt.Text); i++) {
@@ -32,7 +34,7 @@ namespace Abyss_Client {
                     txt.Location = new Point(x, y);
                     txt.Size = new Size(150, 20);
                     txt.Name = "rowsName" + i + "_txt";
-                    this.Controls.Add(txt);
+                    tableRows_pnl.Controls.Add(txt);
 
                     x = x + txt.Size.Width + 5;
 
@@ -40,8 +42,8 @@ namespace Abyss_Client {
                     cbx.Location = new Point(x, y);
                     cbx.Size = new Size(150, 20);
                     cbx.Name = "rowsType" + i + "_cbx";
-                    cbx.DataSource = rowsType;                     
-                    this.Controls.Add(cbx);
+                    cbx.DataSource = rowsType;
+                    tableRows_pnl.Controls.Add(cbx);
                     cbx.SelectedIndex = 0;
 
                     x = x + cbx.Size.Width + 5;
@@ -50,7 +52,7 @@ namespace Abyss_Client {
                     type.Location = new Point(x, y);
                     type.Size = new Size(150, 20);
                     type.Name = "rowsTypeNumber" + i + "_txt";
-                    this.Controls.Add(type);
+                    tableRows_pnl.Controls.Add(type);
 
                     x = x + txt.Size.Width + 5;
 
@@ -62,7 +64,7 @@ namespace Abyss_Client {
                     rowNull.Items.Add("Null");
                     rowNull.Items.Add("Not Null");
                     rowNull.Sorted = true;
-                    this.Controls.Add(rowNull);
+                    tableRows_pnl.Controls.Add(rowNull);
                     rowNull.SelectedIndex = 0;
 
                     x = x + cbx.Size.Width + 5;
@@ -77,13 +79,13 @@ namespace Abyss_Client {
                     }
                     rbt.Name = "rowsPK" + i + "_rbt";
                     rbt.Text = "";
-                    this.Controls.Add(rbt);
+                    tableRows_pnl.Controls.Add(rbt);                    
 
                     x = 13;
                     y = y + txt.Size.Height + 5;
                 }
-                //this.ResumeLayout(false);
-                //this.PerformLayout();
+                this.ResumeLayout(false);
+                this.PerformLayout();
             }
         }
 
