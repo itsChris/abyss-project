@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Abyss_Client.CompBase;
+using System.Collections;
 
 namespace Abyss_Client {
     public partial class OracleTableAdd : CompBase.BaseForm {
@@ -16,6 +17,12 @@ namespace Abyss_Client {
         private void rowsNumber_txt_Leave(object sender, EventArgs e) {
             int x = 13;
             int y = 86;
+            
+            ArrayList rowsType = new ArrayList();
+            rowsType.Add("VARCHAR2");
+            rowsType.Add("DATE");
+            rowsType.Add("INTEGER");
+            rowsType.Add("FLOAT");
 
             if (rowsNumber_txt.Text.Length > 0) {
                 for (int i = 0; i < Convert.ToInt32(rowsNumber_txt.Text); i++) {
@@ -31,6 +38,9 @@ namespace Abyss_Client {
                     cbx.Location = new Point(x, y);
                     cbx.Size = new Size(150, 20);
                     cbx.Name = "rowsType" + i + "_cbx";
+                    cbx.DataSource = rowsType;
+                    cbx.Sorted = true;
+                    cbx.SelectedIndex = 0;
                     this.Controls.Add(cbx);
 
                     x = x + cbx.Size.Width + 5;
@@ -47,14 +57,15 @@ namespace Abyss_Client {
                     cbx.Location = new Point(x, y);
                     cbx.Size = new Size(150, 20);
                     cbx.Name = "rowsNull" + i + "_cbx";
-                    cbx.Items.Add("");
                     cbx.Items.Add("Null");
                     cbx.Items.Add("Not Null");
+                    cbx.Sorted = true;
+                    cbx.SelectedIndex = 0;
                     this.Controls.Add(cbx);
 
                     x = x + cbx.Size.Width + 5;
 
-                    RadioButton rbt = new RadioButton();
+                    BaseRadioButton rbt = new BaseRadioButton();
                     rbt.Location = new Point(x, y);
                     if (i == 0) {
                         rbt.Checked = true;
@@ -75,9 +86,15 @@ namespace Abyss_Client {
         }
 
         private void rowsNumber_txt_KeyPress(object sender, KeyPressEventArgs e) {
-            if(!Char.IsDigit(e.KeyChar)){
+            if (e.KeyChar == Keys.Enter && rowsNumber_txt.Text.Length > 0) {
+                rowsNumber_txt.Leave();
+            }
+            
+            if(!(Char.IsDigit(e.KeyChar) || e.KeyChar==Keys.Back || e.KeyChar==Keys.Delete || 
+                (Char.IsControl(e.KeyChar) && e.KeyChar==Keys.V))){
                 e.Handled = true;
             }
+            
         }
     }
 }
