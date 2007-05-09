@@ -14,6 +14,9 @@ namespace Business {
         #region Constructors
         public OracleTable() {
             this.oracleTableData = new OracleTableData();
+            this.oracleTableData.TableNameRows = new ArrayList();
+            this.oracleTableData.TableNull = new ArrayList();
+            this.oracleTableData.TableTypeRows = new ArrayList();
         }
 
         public OracleTable(OracleTableData oracleTableData) {
@@ -43,11 +46,6 @@ namespace Business {
         public String TableName {
             get { return oracleTableData.TableName; }
             set { oracleTableData.TableName = value; }
-        }
-
-        public String TableOwner {
-            get { return oracleTableData.TableOwner; }
-            set { oracleTableData.TableOwner = value; }
         }
 
         public ArrayList TableNameRows {

@@ -7,7 +7,6 @@ namespace Persistence {
     [Serializable()]public class OracleTableData {
         #region Attributs
         private String tableName;
-        private String tableOwner;
         private ArrayList tableNameRows;
         private ArrayList tableTypeRows;
         private ArrayList tableNull;
@@ -15,7 +14,7 @@ namespace Persistence {
         #endregion
 
         #region Constructors
-        public OracleTableData() {
+        public OracleTableData() {            
         }
         #endregion
 
@@ -23,11 +22,6 @@ namespace Persistence {
         public String TableName {
             get { return tableName; }
             set { tableName = value; }
-        }
-
-        public String TableOwner {
-            get { return tableOwner; }
-            set { tableOwner = value; }
         }
 
         public ArrayList TableNameRows {

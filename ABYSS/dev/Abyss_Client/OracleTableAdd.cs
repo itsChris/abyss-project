@@ -122,30 +122,36 @@ namespace Abyss_Client {
 
             table.TableName = tableName_txt.Text;
 
-            //foreach (Control ctrl in tableRows_pnl.Controls) {
-            //    if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
-            //        BaseTextBox txtN = (BaseTextBox)ctrl;
-            //        table.TableNameRows[i] = txtN.Text;
-            //    }
-            //    if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
-            //        BaseComboBox cbxT = (BaseComboBox)ctrl;
-            //        table.TableTypeRows = cbxT.SelectedText;
-            //    }
-            //    if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
-            //        BaseTextBox txtT = (BaseTextBox)ctrl;
-            //        table.TableTypeRows += txtT.Text;
-            //    }
-            //    if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
-            //        BaseComboBox cbxN = (BaseComboBox)ctrl;
-            //        table.TableNull = cbxN.SelectedText;
-            //    }
-            //    if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
-            //        BaseRadioButton rbt = (BaseRadioButton)ctrl;
-            //        if (rbt.Checked) {
-            //            table.TablePK = true;
-            //        }
-            //    }
-            //}
+            foreach (Control ctrl in tableRows_pnl.Controls) {
+                if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
+                    BaseTextBox txtN = (BaseTextBox)ctrl;
+                    table.TableNameRows.Add(txtN.Text); ;
+                }
+                if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
+                    BaseComboBox cbxT = (BaseComboBox)ctrl;
+                    table.TableTypeRows.Add(cbxT.SelectedItem);
+                }
+                if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
+                    BaseTextBox txtT = (BaseTextBox)ctrl;
+                    if (table.TableTypeRows[i] == "VARCHAR2") {
+                        table.TableTypeRows[i] += "(" + txtT.Text + ")";
+                    }
+                }
+                if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
+                    BaseComboBox cbxN = (BaseComboBox)ctrl;
+                    table.TableNull.Add(cbxN.SelectedText);
+                }
+                if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
+                    BaseRadioButton rbt = (BaseRadioButton)ctrl;
+                    if (rbt.Checked) {
+                        table.TablePK = table.TableNameRows[i].ToString();
+                    }
+                    i++;
+                }
+                
+            }
+
+            table.save(Convert.ToInt32(rowsNumber_txt.Text));
 
         }
 

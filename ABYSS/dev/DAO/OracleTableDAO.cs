@@ -19,17 +19,17 @@ namespace DAO {
                     query += ", " + table.TableNameRows[i] + " " + table.TableTypeRows[i];
                 }
                 if (table.TableNull[i].ToString() == "NOT NULL") {
-                    query += "CONSTRAINT "+table.TableName[i]+"_nn NOT NULL";
+                    query += " CONSTRAINT "+table.TableName[i]+"_nn NOT NULL";
                 }                
             }
-            query += "CONSTRAINT "+table.TablePK+"_pk PRIMARY KEY ("+table.TablePK+")";
+            query += ", CONSTRAINT " + table.TableName + "_" + table.TablePK + "_pk PRIMARY KEY (" + table.TablePK + ")";
             query += ")";
 
             ExecuteNonQuery(query);
         }
 
         public static void DeleteTable(OracleTableData table) {
-            string query = "DROP TABLE " + table.TableOwner + "." + table.TableName + " CASCADE CONSTRAINTS";
+            string query = "DROP TABLE " + table.TableName + " CASCADE CONSTRAINTS";
         }
 
         public static void EditTableName(OracleTableData table, string newName) {
