@@ -419,6 +419,13 @@ namespace Utils {
 
             return DCpropre;
         }
+
+        public static String PurgeDCForOracle(String dc) {
+
+            String DCpropre = dc.Replace("DC=", "");
+            DCpropre = DCpropre.Replace(",lan", "").ToUpper();
+            return DCpropre;
+        }
         #endregion
 
         #region Private

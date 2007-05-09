@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using System.Collections;
+using Utils;
 
 namespace Abyss_Client {
     public partial class OracleUserAdd : Abyss_Client.CompBase.BaseForm {
@@ -62,10 +63,11 @@ namespace Abyss_Client {
 
         private void createUser_btn_Click(object sender, EventArgs e) {
             if (checkMandatoryFields()) {
-                if(!userLogin_txt.Text.Contains("OPS$") && update == false){
-                    MessageBox.Show("You user login must start by 'OPS$'",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                if(userLogin_txt.Text.Contains("OPS$") && update == false){
+                    MessageBox.Show("Dont write your user name with 'OPS$DomaineName\\Username'",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
                     return;
                 }
+                string name = "\"OPS$" + Utility.PurgeDCForOracle(ADConnection.getInstance().Properties["distinguishedName"].Value.ToString()) + "\\" + userLogin_txt.Text;
                 user.Profile = profile_cbx.SelectedItem.ToString();
                 user.DefaultTablespace = defaultTablespace_cbx.SelectedItem.ToString();
                 user.TemporatyTablespace = temporaryTablespace_cbx.SelectedItem.ToString();
@@ -76,7 +78,7 @@ namespace Abyss_Client {
                 else {
                     user.IsEnable = true;
                 }
-                user.UserLogin = userLogin_txt.Text;
+                user.UserLogin = name;
                 ArrayList privileges = new ArrayList();
                 foreach (String var in ht.Keys) {
                     string privilege = (string)ht[var];
@@ -95,7 +97,6 @@ namespace Abyss_Client {
                 catch (OracleException oex) {
                     if(oex.Message.Contains("ORA-00911")){
                         MessageBox.Show("You must write your external user between  double quote",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
-                        userLogin_txt.Enabled = true;
                     }
                     else{
                     MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);

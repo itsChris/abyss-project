@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Abyss_Client.CompBase;
 
 namespace Abyss_Client {
     public partial class OracleTableAdd : CompBase.BaseForm {
@@ -18,7 +19,7 @@ namespace Abyss_Client {
 
             if (rowsNumber_txt.Text.Length > 0) {
                 for (int i = 0; i < Convert.ToInt32(rowsNumber_txt.Text); i++) {
-                    TextBox txt = new TextBox();
+                    BaseTextBox txt = new BaseTextBox();
                     txt.Location = new Point(x, y);
                     txt.Size = new Size(150, 20);
                     txt.Name = "rowsName" + i + "_txt";
@@ -26,7 +27,7 @@ namespace Abyss_Client {
 
                     x = x + txt.Size.Width + 5;
 
-                    ComboBox cbx = new ComboBox();
+                    BaseComboBox cbx = new BaseComboBox();
                     cbx.Location = new Point(x, y);
                     cbx.Size = new Size(150, 20);
                     cbx.Name = "rowsType" + i + "_cbx";
@@ -68,12 +69,14 @@ namespace Abyss_Client {
                     x = 13;
                     y = y + txt.Size.Height + 5;
                 }
+                this.ResumeLayout(false);
+                this.PerformLayout();
             }
         }
 
         private void rowsNumber_txt_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar < 0 && e.KeyChar > 9) {
-                e.Handled = false;
+            if(!Char.IsDigit(e.KeyChar)){
+                e.Handled = true;
             }
         }
     }
