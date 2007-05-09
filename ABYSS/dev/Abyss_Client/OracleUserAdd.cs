@@ -67,7 +67,7 @@ namespace Abyss_Client {
                     MessageBox.Show("Dont write your user name with 'OPS$DomaineName\\Username'",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
                     return;
                 }
-                string name = "\"OPS$" + Utility.PurgeDCForOracle(ADConnection.getInstance().Properties["distinguishedName"].Value.ToString()) + "\\" + userLogin_txt.Text;
+                string name = "\"OPS$" + Utility.PurgeDCForOracle(ADConnection.getInstance().Properties["distinguishedName"].Value.ToString()) + "\\" + userLogin_txt.Text + "\"";
                 user.Profile = profile_cbx.SelectedItem.ToString();
                 user.DefaultTablespace = defaultTablespace_cbx.SelectedItem.ToString();
                 user.TemporatyTablespace = temporaryTablespace_cbx.SelectedItem.ToString();
