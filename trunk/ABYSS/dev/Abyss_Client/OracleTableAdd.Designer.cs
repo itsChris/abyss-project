@@ -70,13 +70,14 @@
             this.rowsNumber_txt.Name = "rowsNumber_txt";
             this.rowsNumber_txt.Size = new System.Drawing.Size(43, 20);
             this.rowsNumber_txt.TabIndex = 3;
-            this.rowsNumber_txt.TextChanged += new System.EventHandler(this.rowsNumber_txt_TextChanged);
+            this.rowsNumber_txt.Leave += new System.EventHandler(this.rowsNumber_txt_Leave);
+            this.rowsNumber_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rowsNumber_txt_KeyPress);
             // 
             // OracleTableAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 528);
+            this.ClientSize = new System.Drawing.Size(976, 500);
             this.Controls.Add(this.rowsNumber_txt);
             this.Controls.Add(this.rowsNumber_lbl);
             this.Controls.Add(this.tableName_txt);
