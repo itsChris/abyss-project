@@ -82,8 +82,8 @@ namespace Abyss_Client {
                     x = 13;
                     y = y + txt.Size.Height + 5;
                 }
-                this.ResumeLayout(false);
-                this.PerformLayout();
+                //this.ResumeLayout(false);
+                //this.PerformLayout();
             }
         }
 

@@ -27,6 +27,8 @@
             this.tableName_txt = new Abyss_Client.CompBase.BaseTextBox();
             this.rowsNumber_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.rowsNumber_txt = new Abyss_Client.CompBase.BaseTextBox();
+            this.tableRows_pnl = new System.Windows.Forms.Panel();
+            this.createTable_btn = new Abyss_Client.CompBase.BaseButton();
             this.SuspendLayout();
             // 
             // tableName_lbl
@@ -73,11 +75,33 @@
             this.rowsNumber_txt.Leave += new System.EventHandler(this.rowsNumber_txt_Leave);
             this.rowsNumber_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rowsNumber_txt_KeyPress);
             // 
+            // tableRows_pnl
+            // 
+            this.tableRows_pnl.AutoScroll = true;
+            this.tableRows_pnl.BackColor = System.Drawing.Color.Transparent;
+            this.tableRows_pnl.Location = new System.Drawing.Point(2, 49);
+            this.tableRows_pnl.Name = "tableRows_pnl";
+            this.tableRows_pnl.Size = new System.Drawing.Size(966, 364);
+            this.tableRows_pnl.TabIndex = 4;
+            // 
+            // createTable_btn
+            // 
+            this.createTable_btn.BackColor = System.Drawing.Color.LightGray;
+            this.createTable_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.createTable_btn.Location = new System.Drawing.Point(449, 437);
+            this.createTable_btn.Name = "createTable_btn";
+            this.createTable_btn.Size = new System.Drawing.Size(126, 23);
+            this.createTable_btn.TabIndex = 5;
+            this.createTable_btn.Text = "Create table";
+            this.createTable_btn.UseVisualStyleBackColor = true;
+            // 
             // OracleTableAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 500);
+            this.ClientSize = new System.Drawing.Size(968, 472);
+            this.Controls.Add(this.createTable_btn);
+            this.Controls.Add(this.tableRows_pnl);
             this.Controls.Add(this.rowsNumber_txt);
             this.Controls.Add(this.rowsNumber_lbl);
             this.Controls.Add(this.tableName_txt);
@@ -95,5 +119,7 @@
         private Abyss_Client.CompBase.BaseTextBox tableName_txt;
         private Abyss_Client.CompBase.BaseLabel rowsNumber_lbl;
         private Abyss_Client.CompBase.BaseTextBox rowsNumber_txt;
+        private System.Windows.Forms.Panel tableRows_pnl;
+        private Abyss_Client.CompBase.BaseButton createTable_btn;
     }
 }
