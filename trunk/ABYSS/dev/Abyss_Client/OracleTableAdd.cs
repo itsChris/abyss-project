@@ -86,12 +86,12 @@ namespace Abyss_Client {
         }
 
         private void rowsNumber_txt_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar == Keys.Enter && rowsNumber_txt.Text.Length > 0) {
-                rowsNumber_txt.Leave();
+            if (e.KeyChar == (char)Keys.Enter && rowsNumber_txt.Text.Length > 0) {
+                //rowsNumber_txt. = false;
             }
-            
-            if(!(Char.IsDigit(e.KeyChar) || e.KeyChar==Keys.Back || e.KeyChar==Keys.Delete || 
-                (Char.IsControl(e.KeyChar) && e.KeyChar==Keys.V))){
+
+            if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete ||
+                (Char.IsControl(e.KeyChar) && (e.KeyChar == (char)Keys.V || e.KeyChar == (char)Keys.A)))) {
                 e.Handled = true;
             }
             
