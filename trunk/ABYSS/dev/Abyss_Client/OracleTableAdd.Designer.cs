@@ -144,12 +144,13 @@
             this.createTable_btn.TabIndex = 5;
             this.createTable_btn.Text = "Create table";
             this.createTable_btn.UseVisualStyleBackColor = true;
+            this.createTable_btn.Click += new System.EventHandler(this.createTable_btn_Click);
             // 
             // OracleTableAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 429);
+            this.ClientSize = new System.Drawing.Size(637, 460);
             this.Controls.Add(this.primaryKey_lbl);
             this.Controls.Add(this.createTable_btn);
             this.Controls.Add(this.null_lbl);

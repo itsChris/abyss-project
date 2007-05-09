@@ -9,16 +9,20 @@ using System.Data;
 namespace DAO {
     public class OracleTableDAO : OracleDAO {
         #region Public Static Methods
-        public static void SaveTable(OracleTableData table) {
+        public static void SaveTable(OracleTableData table, int numberRows) {
             string query = "CREATE TABLE " + table.TableName + " (";
-            for (int i = 0; i < table.TableNameRows.Length; i++) {
+            for (int i = 0; i < numberRows; i++) {
                 if (i == 0) {
-                    query += table.TableNameRows.GetValue(i) + " " + table.TableTypeRows.GetValue(i);
+                    query += table.TableNameRows[i] + " " + table.TableTypeRows[i];
                 }
                 else {
-                    query += ", " + table.TableNameRows.GetValue(i) + " " + table.TableTypeRows.GetValue(i);
+                    query += ", " + table.TableNameRows[i] + " " + table.TableTypeRows[i];
                 }
+                if (table.TableNull[i].ToString() == "NOT NULL") {
+                    query += "CONSTRAINT "+table.TableName[i]+"_nn NOT NULL";
+                }                
             }
+            query += "CONSTRAINT "+table.TablePK+"_pk PRIMARY KEY ("+table.TablePK+")";
             query += ")";
 
             ExecuteNonQuery(query);

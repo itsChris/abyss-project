@@ -3,6 +3,7 @@ using DAO;
 using Persistence;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
+using System.Collections;
 
 namespace Business {
     public class OracleTable {
@@ -21,8 +22,8 @@ namespace Business {
         #endregion
 
         #region Public Methods
-        public void save(){
-            OracleTableDAO.SaveTable(this.oracleTableData);
+        public void save(int numberRows){
+            OracleTableDAO.SaveTable(this.oracleTableData, numberRows);
         }
 
         public OracleDataReader GetTable() {
@@ -49,14 +50,24 @@ namespace Business {
             set { oracleTableData.TableOwner = value; }
         }
 
-        public Array TableNameRows {
+        public ArrayList TableNameRows {
             get { return oracleTableData.TableNameRows; }
             set { oracleTableData.TableNameRows = value; }
         }
 
-        public Array TableTypeRows {
+        public ArrayList TableTypeRows {
             get { return oracleTableData.TableTypeRows; }
             set { oracleTableData.TableTypeRows = value; }
+        }
+
+        public ArrayList TableNull {
+            get { return oracleTableData.TableNull; }
+            set { oracleTableData.TableNull = value; }
+        }
+
+        public String TablePK {
+            get { return oracleTableData.TablePK; }
+            set { oracleTableData.TablePK = value; }
         }
         #endregion
     }
