@@ -21,25 +21,7 @@ namespace DAO {
 
         public static OracleDataReader GetView() {
             return null;
-        }
-
-        public static void ExecuteNonQuery(string query) {
-            OracleCommand cmd = getInstance().CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = query;
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-        }
-
-        public static OracleDataReader ExecuteReader(string query) {
-            OracleCommand cmd = getInstance().CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = query;
-            OracleDataReader reader = cmd.ExecuteReader();
-            cmd.Dispose();
-
-            return reader;
-        }
+        }     
         #endregion
     }
 }
