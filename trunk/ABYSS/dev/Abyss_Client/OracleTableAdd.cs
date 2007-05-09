@@ -16,15 +16,8 @@ namespace Abyss_Client {
 
         private void rowsNumber_txt_Leave(object sender, EventArgs e) {            
             int x = 13;
-            int y = 86;
+            int y = 10;
             
-            ArrayList rowsType = new ArrayList();
-            rowsType.Add("VARCHAR2");
-            rowsType.Add("DATE");
-            rowsType.Add("INTEGER");
-            rowsType.Add("FLOAT");
-            rowsType.Sort();
-
             tableRows_pnl.Controls.Clear();
 
             if (rowsNumber_txt.Text.Length > 0) {
@@ -42,7 +35,11 @@ namespace Abyss_Client {
                     cbx.Location = new Point(x, y);
                     cbx.Size = new Size(150, 20);
                     cbx.Name = "rowsType" + i + "_cbx";
-                    cbx.DataSource = rowsType;
+                    cbx.Items.Add("VARCHAR2");
+                    cbx.Items.Add("DATE");
+                    cbx.Items.Add("INTEGER");
+                    cbx.Items.Add("FLOAT");
+                    cbx.Sorted = true;
                     tableRows_pnl.Controls.Add(cbx);
                     cbx.SelectedIndex = 0;
 
@@ -50,11 +47,12 @@ namespace Abyss_Client {
 
                     BaseTextBox type = new BaseTextBox();
                     type.Location = new Point(x, y);
-                    type.Size = new Size(150, 20);
+                    type.Size = new Size(50, 20);
                     type.Name = "rowsTypeNumber" + i + "_txt";
                     tableRows_pnl.Controls.Add(type);
+                    type.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rowsNumber_txt_KeyPress);
 
-                    x = x + txt.Size.Width + 5;
+                    x = x + type.Size.Width + 5;
 
                     BaseComboBox rowNull = new BaseComboBox();
                     rowNull.DataSource = null;
@@ -67,7 +65,7 @@ namespace Abyss_Client {
                     tableRows_pnl.Controls.Add(rowNull);
                     rowNull.SelectedIndex = 0;
 
-                    x = x + cbx.Size.Width + 5;
+                    x = x + rowNull.Size.Width + 15;
 
                     BaseRadioButton rbt = new BaseRadioButton();
                     rbt.Location = new Point(x, y);
@@ -79,7 +77,7 @@ namespace Abyss_Client {
                     }
                     rbt.Name = "rowsPK" + i + "_rbt";
                     rbt.Text = "";
-                    tableRows_pnl.Controls.Add(rbt);                    
+                    tableRows_pnl.Controls.Add(rbt);
 
                     x = 13;
                     y = y + txt.Size.Height + 5;
@@ -100,5 +98,10 @@ namespace Abyss_Client {
             }
             
         }
+
+        private void tableName_txt_KeyPress(object sender, KeyPressEventArgs e) {
+
+        }
+
     }
 }
