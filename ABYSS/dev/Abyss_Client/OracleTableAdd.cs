@@ -1,3 +1,4 @@
+using Business;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,9 +11,22 @@ using System.Collections;
 
 namespace Abyss_Client {
     public partial class OracleTableAdd : CompBase.BaseForm {
+        #region Attributes
+        private OracleTable table;
+        private bool update = false;        
+        #endregion
+
+        #region Constructors
         public OracleTableAdd() {
-            InitializeComponent();            
+            InitializeComponent();
+            this.table = new OracleTable();
         }
+
+        public OracleTableAdd(OracleTable table) {
+            InitializeComponent();
+            this.table = table;
+        }
+        #endregion
 
         private void rowsNumber_txt_Leave(object sender, EventArgs e) {            
             int x = 13;
@@ -100,6 +114,15 @@ namespace Abyss_Client {
         }
 
         private void tableName_txt_KeyPress(object sender, KeyPressEventArgs e) {
+
+        }
+
+        private void createTable_btn_Click(object sender, EventArgs e) {
+            table.TableName = tableName_txt.Text;
+
+            for (int i = 0; i < (int)rowsNumber_txt.Text; i++) {
+                table.TableNameRows[i];
+            }
 
         }
 

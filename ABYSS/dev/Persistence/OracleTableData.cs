@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Collections;
 
 namespace Persistence {
     [Serializable()]public class OracleTableData {
         #region Attributs
         private String tableName;
         private String tableOwner;
-        private Array tableNameRows;
-        private Array tableTypeRows;
+        private ArrayList tableNameRows;
+        private ArrayList tableTypeRows;
+        private ArrayList tableNull;
+        private String tablePK;
         #endregion
 
         #region Constructors
@@ -27,14 +30,24 @@ namespace Persistence {
             set { tableOwner = value; }
         }
 
-        public Array TableNameRows {
+        public ArrayList TableNameRows {
             get { return tableNameRows; }
             set { tableNameRows = value; }
         }
-        
-        public Array TableTypeRows {
+
+        public ArrayList TableTypeRows {
             get { return tableTypeRows; }
             set { tableTypeRows = value; }
+        }
+
+        public ArrayList TableNull {
+            get { return tableNull; }
+            set { tableNull = value; }
+        }
+
+        public String TablePK {
+            get { return tablePK; }
+            set { tablePK = value; }
         }
 	    #endregion
     }
