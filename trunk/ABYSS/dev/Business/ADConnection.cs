@@ -35,6 +35,13 @@ namespace Business {
             return instance;
         }
 
+        public static DirectoryEntry getInstance() {
+            if (instance == null) {
+                return null;
+            }
+            return instance;
+        }
+
         public static void setInitToFalse() {
             LdapDAO.setInitToFalse();
             instance = null;
