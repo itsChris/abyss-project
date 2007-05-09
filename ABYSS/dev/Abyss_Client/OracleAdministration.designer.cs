@@ -44,6 +44,7 @@ namespace Abyss_Client {
             this.load_ofd = new System.Windows.Forms.OpenFileDialog();
             this.listOracleItem_trv = new Abyss_Client.CompBase.BaseTreeView();
             this.menu_stp = new Abyss_Client.CompBase.BaseContextMenu();
+            this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_menu.SuspendLayout();
             this.panel_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_gdw)).BeginInit();
@@ -56,7 +57,7 @@ namespace Abyss_Client {
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
             this.menu_menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_menu.Size = new System.Drawing.Size(1038, 24);
+            this.menu_menu.Size = new System.Drawing.Size(1034, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
@@ -64,7 +65,8 @@ namespace Abyss_Client {
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addUserToolStripMenu,
-            this.exitToolStripMenu});
+            this.exitToolStripMenu,
+            this.addTableToolStripMenuItem});
             this.fileToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
@@ -204,9 +206,16 @@ namespace Abyss_Client {
             this.menu_stp.ShowImageMargin = false;
             this.menu_stp.Size = new System.Drawing.Size(36, 4);
             // 
+            // addTableToolStripMenuItem
+            // 
+            this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.addTableToolStripMenuItem.Text = "Add Table";
+            this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
+            // 
             // OracleAdministration
             // 
-            this.ClientSize = new System.Drawing.Size(1038, 502);
+            this.ClientSize = new System.Drawing.Size(1034, 488);
             this.Controls.Add(this.listOracleItem_trv);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.menu_menu);
@@ -239,6 +248,7 @@ namespace Abyss_Client {
         private Abyss_Client.CompBase.BaseButton load_btn;
         private System.Windows.Forms.DataGridView gridView_gdw;
         private Abyss_Client.CompBase.BaseButton back_btn;
+        private System.Windows.Forms.ToolStripMenuItem addTableToolStripMenuItem;
 
     }
 }
