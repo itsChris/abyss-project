@@ -118,10 +118,23 @@ namespace Abyss_Client {
         }
 
         private void createTable_btn_Click(object sender, EventArgs e) {
+            int i=0;
+
             table.TableName = tableName_txt.Text;
 
-            for (int i = 0; i < (int)rowsNumber_txt.Text; i++) {
-                table.TableNameRows[i];
+            foreach (Control ctrl in tableRows_pnl.Controls) {
+                if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
+                    table.TableNameRows[i] = ctrl.Text;
+                }
+                if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
+                    table.TableTypeRows = ctrl.Text;
+                }
+                if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
+                    table.TableTypeRows += ctrl.Text;
+                }
+                if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
+                    table.TableNull = ctrl.Text;
+                }
             }
 
         }
