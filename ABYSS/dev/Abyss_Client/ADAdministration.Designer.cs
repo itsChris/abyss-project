@@ -306,16 +306,16 @@
             this.menu_stp.Location = new System.Drawing.Point(0, 0);
             this.menu_stp.Name = "menu_stp";
             this.menu_stp.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_stp.Size = new System.Drawing.Size(1222, 24);
+            this.menu_stp.Size = new System.Drawing.Size(1218, 24);
             this.menu_stp.TabIndex = 0;
             this.menu_stp.Text = "menu_menu";
             // 
             // filesStripMenuItem
             // 
             this.filesStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.oracleToolStripMenuItem,
             this.exitToolStripMenuItem,
-            this.quitToolStripMenuItem,
-            this.oracleToolStripMenuItem});
+            this.quitToolStripMenuItem});
             this.filesStripMenuItem.Name = "filesStripMenuItem";
             this.filesStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.filesStripMenuItem.Text = "File";
@@ -364,7 +364,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1222, 538);
+            this.ClientSize = new System.Drawing.Size(1218, 524);
             this.Controls.Add(this.tree_trv);
             this.Controls.Add(this.list_lst);
             this.Controls.Add(this.menu_stp);

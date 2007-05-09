@@ -23,17 +23,17 @@ namespace Abyss_Client {
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Tables");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Views");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Users");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Tables");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Views");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Users");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_pnl = new System.Windows.Forms.Panel();
             this.back_btn = new Abyss_Client.CompBase.BaseButton();
             this.baseLabel1 = new Abyss_Client.CompBase.BaseLabel();
@@ -44,7 +44,7 @@ namespace Abyss_Client {
             this.load_ofd = new System.Windows.Forms.OpenFileDialog();
             this.listOracleItem_trv = new Abyss_Client.CompBase.BaseTreeView();
             this.menu_stp = new Abyss_Client.CompBase.BaseContextMenu();
-            this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_menu.SuspendLayout();
             this.panel_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_gdw)).BeginInit();
@@ -57,16 +57,16 @@ namespace Abyss_Client {
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
             this.menu_menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_menu.Size = new System.Drawing.Size(1034, 24);
+            this.menu_menu.Size = new System.Drawing.Size(1030, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTableToolStripMenuItem,
             this.addUserToolStripMenu,
-            this.exitToolStripMenu,
-            this.addTableToolStripMenuItem});
+            this.exitToolStripMenu});
             this.fileToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
@@ -80,13 +80,13 @@ namespace Abyss_Client {
             this.addUserToolStripMenu.Text = "Add User";
             this.addUserToolStripMenu.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
             // 
-            // exitToolStripMenu
+            // addTableToolStripMenuItem
             // 
-            this.exitToolStripMenu.Name = "exitToolStripMenu";
-            this.exitToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exitToolStripMenu.Size = new System.Drawing.Size(228, 22);
-            this.exitToolStripMenu.Text = "Exit Oracle Administration";
-            this.exitToolStripMenu.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
+            this.addTableToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.addTableToolStripMenuItem.Text = "Add Table";
+            this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // panel_pnl
             // 
@@ -185,16 +185,16 @@ namespace Abyss_Client {
             // 
             this.listOracleItem_trv.Location = new System.Drawing.Point(12, 28);
             this.listOracleItem_trv.Name = "listOracleItem_trv";
-            treeNode1.Name = "Noeud1";
-            treeNode1.Text = "Tables";
-            treeNode2.Name = "Noeud2";
-            treeNode2.Text = "Views";
-            treeNode3.Name = "Noeud3";
-            treeNode3.Text = "Users";
-            treeNode4.Name = "Noeud0";
-            treeNode4.Text = "Oracle";
+            treeNode5.Name = "Noeud1";
+            treeNode5.Text = "Tables";
+            treeNode6.Name = "Noeud2";
+            treeNode6.Text = "Views";
+            treeNode7.Name = "Noeud3";
+            treeNode7.Text = "Users";
+            treeNode8.Name = "Noeud0";
+            treeNode8.Text = "Oracle";
             this.listOracleItem_trv.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode8});
             this.listOracleItem_trv.Size = new System.Drawing.Size(309, 462);
             this.listOracleItem_trv.TabIndex = 3;
             this.listOracleItem_trv.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listOracleItem_trv_NodeMouseDoubleClick);
@@ -206,16 +206,17 @@ namespace Abyss_Client {
             this.menu_stp.ShowImageMargin = false;
             this.menu_stp.Size = new System.Drawing.Size(36, 4);
             // 
-            // addTableToolStripMenuItem
+            // exitToolStripMenu
             // 
-            this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.addTableToolStripMenuItem.Text = "Add Table";
-            this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
+            this.exitToolStripMenu.Name = "exitToolStripMenu";
+            this.exitToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.exitToolStripMenu.Size = new System.Drawing.Size(229, 22);
+            this.exitToolStripMenu.Text = "Exit Oracle Administration";
+            this.exitToolStripMenu.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // OracleAdministration
             // 
-            this.ClientSize = new System.Drawing.Size(1034, 488);
+            this.ClientSize = new System.Drawing.Size(1030, 474);
             this.Controls.Add(this.listOracleItem_trv);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.menu_menu);
@@ -239,7 +240,6 @@ namespace Abyss_Client {
         private CompBase.BaseTextBox sql_txt;
         private System.Windows.Forms.OpenFileDialog load_ofd;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenu;
         private CompBase.BaseButton create_btn;
         private System.Windows.Forms.ToolStripMenuItem addUserToolStripMenu;
         private Abyss_Client.CompBase.BaseTreeView listOracleItem_trv;
@@ -249,6 +249,7 @@ namespace Abyss_Client {
         private System.Windows.Forms.DataGridView gridView_gdw;
         private Abyss_Client.CompBase.BaseButton back_btn;
         private System.Windows.Forms.ToolStripMenuItem addTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenu;
 
     }
 }
