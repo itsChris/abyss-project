@@ -26,6 +26,7 @@ namespace Abyss_Client {
             rowsType.Sort();
 
             if (rowsNumber_txt.Text.Length > 0) {
+                this.SuspendLayout();
                 for (int i = 0; i < Convert.ToInt32(rowsNumber_txt.Text); i++) {
                     BaseTextBox txt = new BaseTextBox();
                     txt.Location = new Point(x, y);
@@ -45,24 +46,24 @@ namespace Abyss_Client {
 
                     x = x + cbx.Size.Width + 5;
 
-                    txt.Dispose();
-                    txt.Location = new Point(x, y);
-                    txt.Size = new Size(150, 20);
-                    txt.Name = "rowsTypeNumber" + i + "_txt";
-                    this.Controls.Add(txt);
+                    BaseTextBox type = new BaseTextBox();
+                    type.Location = new Point(x, y);
+                    type.Size = new Size(150, 20);
+                    type.Name = "rowsTypeNumber" + i + "_txt";
+                    this.Controls.Add(type);
 
                     x = x + txt.Size.Width + 5;
 
-                    cbx.Dispose();
-                    cbx.DataSource = null;
-                    cbx.Location = new Point(x, y);
-                    cbx.Size = new Size(150, 20);
-                    cbx.Name = "rowsNull" + i + "_cbx";
-                    cbx.Items.Add("Null");
-                    cbx.Items.Add("Not Null");
-                    cbx.Sorted = true;                    
-                    this.Controls.Add(cbx);
-                    cbx.SelectedIndex = 0;
+                    BaseComboBox rowNull = new BaseComboBox();
+                    rowNull.DataSource = null;
+                    rowNull.Location = new Point(x, y);
+                    rowNull.Size = new Size(150, 20);
+                    rowNull.Name = "rowsNull" + i + "_cbx";
+                    rowNull.Items.Add("Null");
+                    rowNull.Items.Add("Not Null");
+                    rowNull.Sorted = true;
+                    this.Controls.Add(rowNull);
+                    rowNull.SelectedIndex = 0;
 
                     x = x + cbx.Size.Width + 5;
 
