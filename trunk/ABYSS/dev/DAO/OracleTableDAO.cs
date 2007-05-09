@@ -40,24 +40,6 @@ namespace DAO {
             string query = "SELECT TABLE_NAME FROM  DBA_TABLES ORDER BY TABLE_NAME";
             return ExecuteReader(query);
         }
-
-        public static void ExecuteNonQuery(string query) {
-            OracleCommand cmd = getInstance().CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = query;
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-        }
-
-        public static OracleDataReader ExecuteReader(string query) {
-            OracleCommand cmd = getInstance().CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = query;
-            OracleDataReader reader = cmd.ExecuteReader();
-            cmd.Dispose();
-
-            return reader;
-        }
         #endregion
     }
 }

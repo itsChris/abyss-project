@@ -64,7 +64,7 @@
             // 
             // userLogin_txt
             // 
-            this.userLogin_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.userLogin_txt.BackColor = System.Drawing.Color.White;
             this.userLogin_txt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.userLogin_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.userLogin_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);

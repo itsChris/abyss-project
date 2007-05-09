@@ -67,7 +67,13 @@ namespace Abyss_Client {
                     MessageBox.Show("Dont write your user name with 'OPS$DomaineName\\Username'",this.Text,MessageBoxButtons.OK,MessageBoxIcon.Information);
                     return;
                 }
-                string name = "\"OPS$" + Utility.PurgeDCForOracle(ADConnection.getInstance().Properties["distinguishedName"].Value.ToString()) + "\\" + userLogin_txt.Text + "\"";
+                string name;
+                if (!update) {
+                    name = "\"OPS$" + Utility.PurgeDCForOracle(ADConnection.getInstance().Properties["distinguishedName"].Value.ToString()) + "\\" + userLogin_txt.Text + "\"";
+                }
+                else {
+                    name = "\"" + userLogin_txt.Text + "\"";
+                }
                 user.Profile = profile_cbx.SelectedItem.ToString();
                 user.DefaultTablespace = defaultTablespace_cbx.SelectedItem.ToString();
                 user.TemporatyTablespace = temporaryTablespace_cbx.SelectedItem.ToString();
@@ -85,7 +91,6 @@ namespace Abyss_Client {
                     privileges.Add(privilege);
                 }
                 user.Roles = privileges;
-                user.LastRoleList = user.Roles;
                 try {
                     if (!update) {
                         user.save();
@@ -151,6 +156,7 @@ namespace Abyss_Client {
                 profile_cbx.SelectedItem = user.Profile;
                 userLogin_txt.Enabled = false;
                 user.Roles = user.GetPrivilegesListFromUser(user.UserLogin);
+                user.LastRoleList = user.Roles;
                 //userRoleList_lbx.DataSource = user.Roles;
                 foreach (String privilege in user.Roles) {
                     ht.Add(privilege, privilege);
