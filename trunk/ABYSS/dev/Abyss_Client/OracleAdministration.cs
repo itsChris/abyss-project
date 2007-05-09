@@ -35,6 +35,10 @@ namespace Abyss_Client {
             }
         }
 
+        private void addTableToolStripMenuItem_Click(object sender, EventArgs e) {
+            openForm(new OracleTableAdd());
+        }   
+
         private void create_btn_Click(object sender, EventArgs e) {
             if (string.IsNullOrEmpty(sql_txt.Text)) {
                 return;
@@ -141,7 +145,9 @@ namespace Abyss_Client {
             }
             treeNode.Expand();
             treeView.EndUpdate();
-        }           
+        }
+
+                
     }
 }
 
