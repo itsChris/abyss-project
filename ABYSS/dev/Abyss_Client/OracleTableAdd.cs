@@ -23,6 +23,7 @@ namespace Abyss_Client {
             rowsType.Add("DATE");
             rowsType.Add("INTEGER");
             rowsType.Add("FLOAT");
+            rowsType.Sort();
 
             if (rowsNumber_txt.Text.Length > 0) {
                 for (int i = 0; i < Convert.ToInt32(rowsNumber_txt.Text); i++) {
@@ -38,10 +39,9 @@ namespace Abyss_Client {
                     cbx.Location = new Point(x, y);
                     cbx.Size = new Size(150, 20);
                     cbx.Name = "rowsType" + i + "_cbx";
-                    cbx.DataSource = rowsType;
-                    cbx.Sorted = true;
-                    cbx.SelectedIndex = 0;
+                    cbx.DataSource = rowsType;                     
                     this.Controls.Add(cbx);
+                    cbx.SelectedIndex = 0;
 
                     x = x + cbx.Size.Width + 5;
 
@@ -54,14 +54,15 @@ namespace Abyss_Client {
                     x = x + txt.Size.Width + 5;
 
                     cbx.Dispose();
+                    cbx.DataSource = null;
                     cbx.Location = new Point(x, y);
                     cbx.Size = new Size(150, 20);
                     cbx.Name = "rowsNull" + i + "_cbx";
                     cbx.Items.Add("Null");
                     cbx.Items.Add("Not Null");
-                    cbx.Sorted = true;
-                    cbx.SelectedIndex = 0;
+                    cbx.Sorted = true;                    
                     this.Controls.Add(cbx);
+                    cbx.SelectedIndex = 0;
 
                     x = x + cbx.Size.Width + 5;
 
@@ -87,7 +88,7 @@ namespace Abyss_Client {
 
         private void rowsNumber_txt_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Enter && rowsNumber_txt.Text.Length > 0) {
-                //rowsNumber_txt. = false;
+                rowsNumber_txt_Leave(new object(), new EventArgs());
             }
 
             if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete ||
