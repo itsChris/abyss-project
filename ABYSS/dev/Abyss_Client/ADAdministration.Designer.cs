@@ -73,7 +73,7 @@
             // toolStripComboBox1
             // 
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 24);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 21);
             // 
             // toolStripSeparator1
             // 
@@ -108,7 +108,7 @@
             this.treeView_ctm.Name = "baseContextMenu1";
             this.treeView_ctm.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.treeView_ctm.ShowImageMargin = false;
-            this.treeView_ctm.Size = new System.Drawing.Size(93, 54);
+            this.treeView_ctm.Size = new System.Drawing.Size(85, 54);
             // 
             // new_tmi
             // 
@@ -119,14 +119,14 @@
             this.toolStripSeparator4,
             this.user_tmi});
             this.new_tmi.Name = "new_tmi";
-            this.new_tmi.Size = new System.Drawing.Size(92, 22);
+            this.new_tmi.Size = new System.Drawing.Size(84, 22);
             this.new_tmi.Text = "New";
             // 
             // computer_tmi
             // 
             this.computer_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.computer_tmi.Name = "computer_tmi";
-            this.computer_tmi.Size = new System.Drawing.Size(130, 22);
+            this.computer_tmi.Size = new System.Drawing.Size(120, 22);
             this.computer_tmi.Text = "Computer";
             this.computer_tmi.Click += new System.EventHandler(this.computer_tmi_Click);
             // 
@@ -134,13 +134,13 @@
             // 
             this.toolStripSeparator3.BackColor = System.Drawing.Color.AliceBlue;
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(127, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(117, 6);
             // 
             // group_tmi
             // 
             this.group_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.group_tmi.Name = "group_tmi";
-            this.group_tmi.Size = new System.Drawing.Size(130, 22);
+            this.group_tmi.Size = new System.Drawing.Size(120, 22);
             this.group_tmi.Text = "Group";
             this.group_tmi.Click += new System.EventHandler(this.group_tmi_Click);
             // 
@@ -148,25 +148,25 @@
             // 
             this.toolStripSeparator4.BackColor = System.Drawing.Color.AliceBlue;
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(127, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(117, 6);
             // 
             // user_tmi
             // 
             this.user_tmi.BackColor = System.Drawing.Color.AliceBlue;
             this.user_tmi.Name = "user_tmi";
-            this.user_tmi.Size = new System.Drawing.Size(130, 22);
+            this.user_tmi.Size = new System.Drawing.Size(120, 22);
             this.user_tmi.Text = "User";
             this.user_tmi.Click += new System.EventHandler(this.user_tmi_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(89, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(81, 6);
             // 
             // Refresh_tmi
             // 
             this.Refresh_tmi.Name = "Refresh_tmi";
-            this.Refresh_tmi.Size = new System.Drawing.Size(92, 22);
+            this.Refresh_tmi.Size = new System.Drawing.Size(84, 22);
             this.Refresh_tmi.Text = "Refresh";
             this.Refresh_tmi.Click += new System.EventHandler(this.Refresh_tmi_Click);
             // 
@@ -306,7 +306,7 @@
             this.menu_stp.Location = new System.Drawing.Point(0, 0);
             this.menu_stp.Name = "menu_stp";
             this.menu_stp.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_stp.Size = new System.Drawing.Size(1226, 24);
+            this.menu_stp.Size = new System.Drawing.Size(1222, 24);
             this.menu_stp.TabIndex = 0;
             this.menu_stp.Text = "menu_menu";
             // 
@@ -317,14 +317,14 @@
             this.quitToolStripMenuItem,
             this.oracleToolStripMenuItem});
             this.filesStripMenuItem.Name = "filesStripMenuItem";
-            this.filesStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.filesStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.filesStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.exitToolStripMenuItem.Text = "Exit AD Administration";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -332,7 +332,7 @@
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.quitToolStripMenuItem.Text = "Quit the application";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -340,7 +340,7 @@
             // 
             this.oracleToolStripMenuItem.Name = "oracleToolStripMenuItem";
             this.oracleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.oracleToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.oracleToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.oracleToolStripMenuItem.Text = "Oracle Administration";
             this.oracleToolStripMenuItem.Click += new System.EventHandler(this.oracleToolStripMenuItem_Click);
             // 
@@ -349,14 +349,14 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -364,7 +364,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1226, 552);
+            this.ClientSize = new System.Drawing.Size(1222, 538);
             this.Controls.Add(this.tree_trv);
             this.Controls.Add(this.list_lst);
             this.Controls.Add(this.menu_stp);

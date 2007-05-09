@@ -34,6 +34,15 @@ namespace Abyss_Client {
 
                     x = x + cbx.Size.Width + 5;
 
+                    txt.Dispose();
+                    TextBox txt = new TextBox();
+                    txt.Location = new Point(x, y);
+                    txt.Size = new Size(150, 20);
+                    txt.Name = "rowsTypeNumber" + i + "_txt";
+                    this.Controls.Add(txt);
+
+                    x = x + txt.Size.Width + 5;
+
                     cbx.Dispose();
                     cbx.Location = new Point(x, y);
                     cbx.Size = new Size(150, 20);
