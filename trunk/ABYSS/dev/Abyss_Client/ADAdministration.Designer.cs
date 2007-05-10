@@ -60,9 +60,9 @@
             this.changePwd_tmi = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_stp = new Abyss_Client.CompBase.BaseMenuStrip();
             this.filesStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oracleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oracleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView_ctm.SuspendLayout();
@@ -306,7 +306,7 @@
             this.menu_stp.Location = new System.Drawing.Point(0, 0);
             this.menu_stp.Name = "menu_stp";
             this.menu_stp.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_stp.Size = new System.Drawing.Size(1218, 24);
+            this.menu_stp.Size = new System.Drawing.Size(1214, 24);
             this.menu_stp.TabIndex = 0;
             this.menu_stp.Text = "menu_menu";
             // 
@@ -319,6 +319,14 @@
             this.filesStripMenuItem.Name = "filesStripMenuItem";
             this.filesStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.filesStripMenuItem.Text = "File";
+            // 
+            // oracleToolStripMenuItem
+            // 
+            this.oracleToolStripMenuItem.Name = "oracleToolStripMenuItem";
+            this.oracleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.oracleToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.oracleToolStripMenuItem.Text = "Oracle Administration";
+            this.oracleToolStripMenuItem.Click += new System.EventHandler(this.oracleToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -335,14 +343,6 @@
             this.quitToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.quitToolStripMenuItem.Text = "Quit the application";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
-            // 
-            // oracleToolStripMenuItem
-            // 
-            this.oracleToolStripMenuItem.Name = "oracleToolStripMenuItem";
-            this.oracleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.oracleToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.oracleToolStripMenuItem.Text = "Oracle Administration";
-            this.oracleToolStripMenuItem.Click += new System.EventHandler(this.oracleToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -364,7 +364,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1218, 524);
+            this.ClientSize = new System.Drawing.Size(1214, 583);
             this.Controls.Add(this.tree_trv);
             this.Controls.Add(this.list_lst);
             this.Controls.Add(this.menu_stp);

@@ -3,3 +3,4 @@ Formulaire ADAdministration.
 Probleme au niveau des member of et members pour un groupe - > reste que ca a modifié
 
 Formulaire OracleAdministration
+- pour executer plusieur requetes de type create contenu dans un fichier texte, regarde le commentaires (split en plusieurs requete)

@@ -43,6 +43,10 @@ namespace Abyss_Client {
             if (string.IsNullOrEmpty(sql_txt.Text)) {
                 return;
             }
+
+            //char[] separator = { ';' };
+            
+
             try {
                 OracleCommand cmd = OracleDAO.getInstance().CreateCommand();
                 cmd.CommandType = CommandType.Text;
@@ -59,6 +63,11 @@ namespace Abyss_Client {
                     sql_txt.Visible = false;
                 }
                 else {
+                    //for (int i = 0; i < sql_txt.Text.Split(separator).Length; i++) {
+                    //    cmd.CommandText = sql_txt.Text.Split(separator).GetValue(i);
+                    //    cmd.ExecuteNonQuery();
+                    //    cmd.Dispose();
+                    //}
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
                 }
