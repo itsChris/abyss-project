@@ -38,19 +38,19 @@ namespace Utils {
         private static int GetCharSetUsed(string pass) {
             int ret = 0;
             if (ContainsLowerCaseChars(pass)) {
-                ret += 10;
+                ret += 50;
             }
 
             if (ContainsUpperCaseChars(pass)) {
-                ret += 10;
+                ret += 50;
             }
 
             if (ContainsNumbers(pass)) {
-                ret += 50;
+                ret += 200;
             }
 
             if (ContainsSpecialCharacters(pass)) {
-                ret += 50;
+                ret += 200;
             }
             return ret;
         }

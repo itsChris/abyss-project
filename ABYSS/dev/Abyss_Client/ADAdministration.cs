@@ -258,7 +258,7 @@ namespace Abyss_Client {
                         else {
                             this.listView_ctm.Items.AddRange(new ToolStripItem[] {this.modify_tmi,
                                 this.separator1,computer.Enabled?this.disable_tmi:this.enable_tmi,this.separator2
-                                ,this.delete_tmi});  
+                                ,this.delete_tmi});
                         }
                     }
                     else if (this.list_lst.SelectedItems[0].Tag.GetType() == typeof(ADGroup)) {
@@ -273,6 +273,9 @@ namespace Abyss_Client {
                 else {
                     e.Cancel = true;
                 }
+            }
+            else {
+                e.Cancel = true;
             }
         }
           
