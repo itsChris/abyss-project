@@ -18,9 +18,23 @@ namespace Abyss_Client {
         #endregion
 
         #region Component events
+        private void addUserToolStripMenuItem_Click(object sender, EventArgs e) {
+            openForm(new OracleUserAdd());
+        }
+
+        private void addTableToolStripMenuItem_Click(object sender, EventArgs e) {
+            openForm(new OracleTableAdd());
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
         private void load_btn_Click(object sender, EventArgs e) {
             sql_txt.Visible = true;
+            create_btn.Visible = true;
             gridView_gdw.Visible = false;
+            back_btn.Visible = false;
             if (load_ofd.ShowDialog() == DialogResult.OK) {
                 sql_txt.Text = String.Empty;
                 string sqlFile = load_ofd.FileName;
@@ -35,10 +49,6 @@ namespace Abyss_Client {
             }
         }
 
-        private void addTableToolStripMenuItem_Click(object sender, EventArgs e) {
-            openForm(new OracleTableAdd());
-        }   
-
         private void create_btn_Click(object sender, EventArgs e) {
             if (string.IsNullOrEmpty(sql_txt.Text)) {
                 return;
@@ -50,7 +60,7 @@ namespace Abyss_Client {
             try {
                 OracleCommand cmd = OracleDAO.getInstance().CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = sql_txt.Text;
+                cmd.CommandText = sql_txt.Text.Replace(";","");
                 if (sql_txt.Text.ToUpper().Contains("SELECT")) {
                     OracleDataReader reader = cmd.ExecuteReader();
                     cmd.Dispose();
@@ -61,6 +71,8 @@ namespace Abyss_Client {
                     gridView_gdw.DataSource = ds.Tables[0];
                     gridView_gdw.Visible = true;
                     sql_txt.Visible = false;
+                    create_btn.Visible = false;
+                    back_btn.Visible = true;
                 }
                 else {
                     //for (int i = 0; i < sql_txt.Text.Split(separator).Length; i++) {
@@ -82,10 +94,8 @@ namespace Abyss_Client {
         private void back_btn_Click(object sender, EventArgs e) {
             gridView_gdw.Visible = false;
             sql_txt.Visible = true;
-        }
-
-        private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
-            this.Close();
+            back_btn.Visible = false;
+            create_btn.Visible = true;
         }
 
         private void Oracle_FormClosing(object sender, FormClosingEventArgs e) {
@@ -96,11 +106,6 @@ namespace Abyss_Client {
             }
         }
 
-        private void addUserToolStripMenuItem_Click(object sender, EventArgs e) {
-            openForm(new OracleUserAdd());
-        }
-        #endregion
-
         private void listOracleItem_trv_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
             if (e.Node.Tag != null) {
                 if (e.Node.Tag.GetType() == typeof(OracleUser)) {
@@ -109,6 +114,9 @@ namespace Abyss_Client {
                 }
             }
         }
+        #endregion
+
+        
 
         private void listOracleItem_trv_AfterSelect(object sender, TreeViewEventArgs e) {
             TreeView treeView = (TreeView)sender;
@@ -154,6 +162,12 @@ namespace Abyss_Client {
             }
             treeNode.Expand();
             treeView.EndUpdate();
+        }
+
+        private void refreshCurrentNode() {
+            TreeNode node = this.listOracleItem_trv.SelectedNode;
+            TreeViewEventArgs tvea = new TreeViewEventArgs(node);
+            this.listOracleItem_trv_AfterSelect(this.listOracleItem_trv, tvea);
         }
 
                 

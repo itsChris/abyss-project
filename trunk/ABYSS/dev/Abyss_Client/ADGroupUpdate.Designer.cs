@@ -206,7 +206,7 @@
             this.ok_btn.Name = "ok_btn";
             this.ok_btn.Size = new System.Drawing.Size(75, 23);
             this.ok_btn.TabIndex = 1;
-            this.ok_btn.Text = "OK";
+            this.ok_btn.Text = "Save";
             this.ok_btn.UseVisualStyleBackColor = true;
             this.ok_btn.Click += new System.EventHandler(this.ok_btn_Click);
             // 
