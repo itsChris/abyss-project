@@ -33,6 +33,7 @@
             this.type_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.rowsName_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.createTable_btn = new Abyss_Client.CompBase.BaseButton();
+            this.rowsAdd_btn = new Abyss_Client.CompBase.BaseButton();
             this.SuspendLayout();
             // 
             // tableName_lbl
@@ -146,11 +147,24 @@
             this.createTable_btn.UseVisualStyleBackColor = true;
             this.createTable_btn.Click += new System.EventHandler(this.createTable_btn_Click);
             // 
+            // rowsAdd_btn
+            // 
+            this.rowsAdd_btn.BackColor = System.Drawing.Color.LightGray;
+            this.rowsAdd_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.rowsAdd_btn.Location = new System.Drawing.Point(13, 421);
+            this.rowsAdd_btn.Name = "rowsAdd_btn";
+            this.rowsAdd_btn.Size = new System.Drawing.Size(75, 23);
+            this.rowsAdd_btn.TabIndex = 6;
+            this.rowsAdd_btn.Text = "Add rows";
+            this.rowsAdd_btn.UseVisualStyleBackColor = true;
+            this.rowsAdd_btn.Click += new System.EventHandler(this.rowsAdd_btn_Click);
+            // 
             // OracleTableAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 460);
+            this.ClientSize = new System.Drawing.Size(625, 458);
+            this.Controls.Add(this.rowsAdd_btn);
             this.Controls.Add(this.primaryKey_lbl);
             this.Controls.Add(this.createTable_btn);
             this.Controls.Add(this.null_lbl);
@@ -180,5 +194,6 @@
         private Abyss_Client.CompBase.BaseLabel type_lbl;
         private Abyss_Client.CompBase.BaseLabel null_lbl;
         private Abyss_Client.CompBase.BaseLabel primaryKey_lbl;
+        private Abyss_Client.CompBase.BaseButton rowsAdd_btn;
     }
 }
