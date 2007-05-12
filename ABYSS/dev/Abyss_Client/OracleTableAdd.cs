@@ -36,6 +36,15 @@ namespace Abyss_Client {
 
             this.SuspendLayout();
             for (int i = 0; i < table.TableNameRows.Count; i++) {
+                BaseCheckBox chk = new BaseCheckBox();
+                chk.Location = new Point(x, y);
+                chk.Size = new Size(15, 14);
+                chk.Name = "rowsSel" + i + "_chk";
+                chk.Text = "";
+                tableRows_pnl.Controls.Add(chk);
+
+                x = x + chk.Size.Width + 5;
+
                 BaseTextBox txt = new BaseTextBox();
                 txt.Location = new Point(x, y);
                 txt.Size = new Size(150, 20);
@@ -125,6 +134,15 @@ namespace Abyss_Client {
             if (rowsNumber_txt.Text.Length > 0) {
                 this.SuspendLayout();
                 for (int i = 0; i < Convert.ToInt32(rowsNumber_txt.Text); i++) {
+                    BaseCheckBox chk = new BaseCheckBox();
+                    chk.Location = new Point(x, y);
+                    chk.Size = new Size(15, 14);
+                    chk.Name = "rowsSel" + i + "_chk";
+                    chk.Text = "";
+                    tableRows_pnl.Controls.Add(chk);
+
+                    x = x + chk.Size.Width + 5;
+
                     BaseTextBox txt = new BaseTextBox();
                     txt.Location = new Point(x, y);
                     txt.Size = new Size(150, 20);
@@ -251,6 +269,15 @@ namespace Abyss_Client {
             int y = lastY;
             int i = lastI + 1;
             
+            BaseCheckBox chk = new BaseCheckBox();
+            chk.Location = new Point(x, y);
+            chk.Size = new Size(15, 14);
+            chk.Name = "rowsSel" + i + "_chk";
+            chk.Text = "";
+            tableRows_pnl.Controls.Add(chk);
+
+            x = x + chk.Size.Width + 5;
+
             BaseTextBox txt = new BaseTextBox();
             txt.Location = new Point(x, y);
             txt.Size = new Size(150, 20);
@@ -313,6 +340,39 @@ namespace Abyss_Client {
 
             lastY = y;
             lastI = i;
+        }
+
+        private void delRows_btn_Click(object sender, EventArgs e) {
+            int i = 0;
+
+            this.SuspendLayout();
+            foreach (Control ctrl in tableRows_pnl.Controls) {
+                if (ctrl is BaseCheckBox && ctrl.Name.Contains("rowsSel")) {
+                    BaseCheckBox chk = (BaseCheckBox)ctrl;
+
+                    if (chk.Checked) {
+                        foreach (Control ctrlDel in tableRows_pnl.Controls) {
+                            if (ctrlDel is BaseTextBox && ctrlDel.Name.Contains(i.ToString())) {
+                                BaseTextBox txt = (BaseTextBox)ctrlDel;
+                                tableRows_pnl.Controls.Remove(txt);
+                            }
+                            if (ctrlDel is BaseComboBox && ctrlDel.Name.Contains(i.ToString())) {
+                                BaseComboBox cbx = (BaseComboBox)ctrlDel;
+                                tableRows_pnl.Controls.Remove(cbx);
+                            }
+                            if (ctrlDel is BaseRadioButton && ctrlDel.Name.Contains(i.ToString())) {
+                                BaseRadioButton rbt = (BaseRadioButton)ctrlDel;
+                                tableRows_pnl.Controls.Remove(rbt);
+                            }
+                        }
+                        tableRows_pnl.Controls.Remove(chk);
+                    }
+                    i++;
+                }
+            }
+            this.ResumeLayout(false);
+            this.PerformLayout();
+            rowsNumber_txt.Text = tableRows_pnl.Controls.Count.ToString();
         }
 
     }

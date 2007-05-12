@@ -34,6 +34,7 @@
             this.rowsName_lbl = new Abyss_Client.CompBase.BaseLabel();
             this.createTable_btn = new Abyss_Client.CompBase.BaseButton();
             this.rowsAdd_btn = new Abyss_Client.CompBase.BaseButton();
+            this.delRows_btn = new Abyss_Client.CompBase.BaseButton();
             this.SuspendLayout();
             // 
             // tableName_lbl
@@ -96,7 +97,7 @@
             this.primaryKey_lbl.AutoSize = true;
             this.primaryKey_lbl.BackColor = System.Drawing.Color.LightGray;
             this.primaryKey_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.primaryKey_lbl.Location = new System.Drawing.Point(541, 60);
+            this.primaryKey_lbl.Location = new System.Drawing.Point(564, 60);
             this.primaryKey_lbl.Name = "primaryKey_lbl";
             this.primaryKey_lbl.Size = new System.Drawing.Size(23, 13);
             this.primaryKey_lbl.TabIndex = 3;
@@ -107,7 +108,7 @@
             this.null_lbl.AutoSize = true;
             this.null_lbl.BackColor = System.Drawing.Color.LightGray;
             this.null_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.null_lbl.Location = new System.Drawing.Point(431, 60);
+            this.null_lbl.Location = new System.Drawing.Point(451, 60);
             this.null_lbl.Name = "null_lbl";
             this.null_lbl.Size = new System.Drawing.Size(29, 13);
             this.null_lbl.TabIndex = 2;
@@ -118,7 +119,7 @@
             this.type_lbl.AutoSize = true;
             this.type_lbl.BackColor = System.Drawing.Color.LightGray;
             this.type_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.type_lbl.Location = new System.Drawing.Point(259, 60);
+            this.type_lbl.Location = new System.Drawing.Point(272, 60);
             this.type_lbl.Name = "type_lbl";
             this.type_lbl.Size = new System.Drawing.Size(35, 13);
             this.type_lbl.TabIndex = 1;
@@ -129,7 +130,7 @@
             this.rowsName_lbl.AutoSize = true;
             this.rowsName_lbl.BackColor = System.Drawing.Color.LightGray;
             this.rowsName_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.rowsName_lbl.Location = new System.Drawing.Point(70, 60);
+            this.rowsName_lbl.Location = new System.Drawing.Point(79, 60);
             this.rowsName_lbl.Name = "rowsName_lbl";
             this.rowsName_lbl.Size = new System.Drawing.Size(39, 13);
             this.rowsName_lbl.TabIndex = 0;
@@ -151,7 +152,7 @@
             // 
             this.rowsAdd_btn.BackColor = System.Drawing.Color.LightGray;
             this.rowsAdd_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.rowsAdd_btn.Location = new System.Drawing.Point(13, 421);
+            this.rowsAdd_btn.Location = new System.Drawing.Point(160, 422);
             this.rowsAdd_btn.Name = "rowsAdd_btn";
             this.rowsAdd_btn.Size = new System.Drawing.Size(75, 23);
             this.rowsAdd_btn.TabIndex = 6;
@@ -159,11 +160,24 @@
             this.rowsAdd_btn.UseVisualStyleBackColor = true;
             this.rowsAdd_btn.Click += new System.EventHandler(this.rowsAdd_btn_Click);
             // 
+            // delRows_btn
+            // 
+            this.delRows_btn.BackColor = System.Drawing.Color.LightGray;
+            this.delRows_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.delRows_btn.Location = new System.Drawing.Point(12, 422);
+            this.delRows_btn.Name = "delRows_btn";
+            this.delRows_btn.Size = new System.Drawing.Size(142, 23);
+            this.delRows_btn.TabIndex = 7;
+            this.delRows_btn.Text = "Delete selected rows";
+            this.delRows_btn.UseVisualStyleBackColor = true;
+            this.delRows_btn.Click += new System.EventHandler(this.delRows_btn_Click);
+            // 
             // OracleTableAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 458);
+            this.ClientSize = new System.Drawing.Size(613, 456);
+            this.Controls.Add(this.delRows_btn);
             this.Controls.Add(this.rowsAdd_btn);
             this.Controls.Add(this.primaryKey_lbl);
             this.Controls.Add(this.createTable_btn);
@@ -195,5 +209,6 @@
         private Abyss_Client.CompBase.BaseLabel null_lbl;
         private Abyss_Client.CompBase.BaseLabel primaryKey_lbl;
         private Abyss_Client.CompBase.BaseButton rowsAdd_btn;
+        private Abyss_Client.CompBase.BaseButton delRows_btn;
     }
 }

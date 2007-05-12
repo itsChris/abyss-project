@@ -39,12 +39,12 @@ namespace DAO {
         }
 
         public static OracleDataReader GetTable(string tableName) {
-            string query = "SELECT column_name, data_type, data_length, null FROM user_tab_columns WHERE table_name='" + tableName+"'";
+            string query = "SELECT column_name, data_type, data_length, null FROM all_tab_columns WHERE table_name='" + tableName+"'";
             return ExecuteReader(query);
         }
 
         public static OracleDataReader GetTable() {
-            string query = "SELECT TABLE_NAME FROM  DBA_TABLES ORDER BY TABLE_NAME";
+            string query = "SELECT TABLE_NAME FROM  ALL_TABLES ORDER BY TABLE_NAME";
             return ExecuteReader(query);
         }
 
