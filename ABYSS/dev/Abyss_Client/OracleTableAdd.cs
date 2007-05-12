@@ -206,7 +206,7 @@ namespace Abyss_Client {
                 }
                 if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
                     BaseTextBox txtT = (BaseTextBox)ctrl;
-                    if (table.TableTypeRows[i] == "VARCHAR2") {
+                    if ((string)table.TableTypeRows[i] == "VARCHAR2") {
                         table.TableTypeRows[i] += "(" + txtT.Text + ")";
                     }
                 }
