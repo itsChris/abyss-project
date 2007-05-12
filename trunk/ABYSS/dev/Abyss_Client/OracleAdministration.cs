@@ -170,6 +170,13 @@ namespace Abyss_Client {
             this.listOracleItem_trv_AfterSelect(this.listOracleItem_trv, tvea);
         }
 
+        private void button1_Click(object sender, EventArgs e) {
+            OracleTable table = new OracleTable();
+            
+            OracleTableAdd f = new OracleTableAdd(table.GetTableData(listOracleItem_trv.SelectedNode.Text));
+            f.Show();
+        }
+
                 
     }
 }
