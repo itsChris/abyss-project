@@ -81,6 +81,10 @@ namespace Business {
             return OracleUserDAO.GetRoleList();
         }
 
+        public static ArrayList GetPrivilegesListFromUser(String userName) {
+            return OracleUserDAO.GetPrivilegesListFromUser(userName);
+        }
+
         public static ArrayList GetUsers() {
            return  OracleUserDAO.GetOracleUsers();
         }
@@ -95,18 +99,7 @@ namespace Business {
         #endregion
 
         #region Public Methods
-        public ArrayList GetPrivilegesListFromUser(String userName) {
-            ArrayList list = new ArrayList();
-            OracleDataReader reader = OracleUserDAO.GetPrivilegesListFromUser(userName);
-            if (reader != null) {
-                while (reader.Read()) {
-                    list.Add(reader.GetValue(0));
-                }
-                reader.Close();
-                return list;
-            }
-            return null;
-        }
+        
 
         public void save() {
             OracleUserDAO.SaveOracleUser(this.oracleUserData);
