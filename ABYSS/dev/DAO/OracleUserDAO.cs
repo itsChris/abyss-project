@@ -8,24 +8,60 @@ using System.Collections;
 namespace DAO {
     public class OracleUserDAO : OracleDAO {
         #region Public Static Methods
-        public static OracleDataReader GetDefaultTablespace() {
+        public static ArrayList GetDefaultTablespace() {
             string query = "select TABLESPACE_NAME FROM DBA_DATA_FILES order by TABLESPACE_NAME";
-            return ExecuteReader(query);
+            OracleDataReader reader = ExecuteReader(query);
+            ArrayList list = new ArrayList();
+            if (reader != null) {
+                while (reader.Read()) {
+                    list.Add(reader.GetValue(0));
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
         }
 
-        public static OracleDataReader GetTemporatyTablespace() {
+        public static ArrayList GetTemporatyTablespace() {
             string query = "select TABLESPACE_NAME FROM DBA_TEMP_FILES order by TABLESPACE_NAME";
-            return ExecuteReader(query);
+            OracleDataReader reader = ExecuteReader(query);
+            ArrayList list = new ArrayList();
+            if (reader != null) {
+                while (reader.Read()) {
+                    list.Add(reader.GetValue(0));
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
         }
 
-        public static OracleDataReader GetUsersProfile() {
+        public static ArrayList GetUsersProfile() {
             string query = "SELECT DISTINCT PROFILE FROM DBA_PROFILES ORDER BY PROFILE";
-            return ExecuteReader(query);
+            OracleDataReader reader = ExecuteReader(query);
+            ArrayList list = new ArrayList();
+            if (reader != null) {
+                while (reader.Read()) {
+                    list.Add(reader.GetValue(0));
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
         }
 
-        public static OracleDataReader GetRoleList() {
+        public static ArrayList GetRoleList() {
             string query = "SELECT ROLE FROM DBA_ROLES ORDER BY ROLE";
-            return ExecuteReader(query);
+            OracleDataReader reader = ExecuteReader(query);
+            ArrayList list = new ArrayList();
+            if (reader != null) {
+                while (reader.Read()) {
+                    list.Add(reader.GetValue(0));
+                }
+                reader.Close();
+                return list;
+            }
+            return null;
         }
 
         public static OracleDataReader GetPrivilegesListFromUser(string userName) {

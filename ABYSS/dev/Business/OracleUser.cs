@@ -66,55 +66,19 @@ namespace Business {
 
         #region Static Methods
         public static ArrayList GetDefaultTablespace() {
-            ArrayList list = new ArrayList();
-            OracleDataReader reader = OracleUserDAO.GetDefaultTablespace();
-            if (reader != null) {
-                while (reader.Read()) {
-                    list.Add(reader.GetValue(0));
-                }
-                reader.Close();
-                return list;
-            }
-            return null;
+            return OracleUserDAO.GetDefaultTablespace();
         }
 
         public static ArrayList GetTemporaryTablespace() {
-            ArrayList list = new ArrayList();
-            OracleDataReader reader = OracleUserDAO.GetTemporatyTablespace();
-            if (reader != null) {
-                while (reader.Read()) {
-                    list.Add(reader.GetValue(0));
-                }
-                reader.Close();
-                return list;
-            }
-            return null;
+            return OracleUserDAO.GetTemporatyTablespace();
         }
 
         public static ArrayList GetUsersProfile() {
-            ArrayList list = new ArrayList();
-            OracleDataReader reader = OracleUserDAO.GetUsersProfile();
-            if (reader != null) {
-                while (reader.Read()) {
-                    list.Add(reader.GetValue(0));
-                }
-                reader.Close();
-                return list;
-            }
-            return null;
+            return OracleUserDAO.GetUsersProfile();
         }
 
         public static ArrayList GetRoles() {
-            ArrayList list = new ArrayList();
-            OracleDataReader reader = OracleUserDAO.GetRoleList();
-            if (reader != null) {
-                while (reader.Read()) {
-                    list.Add(reader.GetValue(0));
-                }
-                reader.Close();
-                return list;
-            }
-            return null;
+            return OracleUserDAO.GetRoleList();
         }
 
         public static ArrayList GetUsers() {
