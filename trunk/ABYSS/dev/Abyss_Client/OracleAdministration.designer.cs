@@ -24,13 +24,13 @@ namespace Abyss_Client {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Tables");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Views");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Users");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Oracle", 0, 0, new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Tables");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Views");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Users");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Oracle", 0, 0, new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OracleAdministration));
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +65,7 @@ namespace Abyss_Client {
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
             this.menu_menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_menu.Size = new System.Drawing.Size(1029, 24);
+            this.menu_menu.Size = new System.Drawing.Size(1036, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
@@ -240,18 +240,18 @@ namespace Abyss_Client {
             this.listOracleItem_trv.ImageList = this.imageList_adObjects;
             this.listOracleItem_trv.Location = new System.Drawing.Point(12, 28);
             this.listOracleItem_trv.Name = "listOracleItem_trv";
-            treeNode1.Name = "Tables";
-            treeNode1.Text = "Tables";
-            treeNode2.Name = "Views";
-            treeNode2.Text = "Views";
-            treeNode3.Name = "Users";
-            treeNode3.Text = "Users";
-            treeNode4.ImageIndex = 0;
-            treeNode4.Name = "Oracle";
-            treeNode4.SelectedImageIndex = 0;
-            treeNode4.Text = "Oracle";
+            treeNode5.Name = "Tables";
+            treeNode5.Text = "Tables";
+            treeNode6.Name = "Views";
+            treeNode6.Text = "Views";
+            treeNode7.Name = "Users";
+            treeNode7.Text = "Users";
+            treeNode8.ImageIndex = 0;
+            treeNode8.Name = "Oracle";
+            treeNode8.SelectedImageIndex = 0;
+            treeNode8.Text = "Oracle";
             this.listOracleItem_trv.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode8});
             this.listOracleItem_trv.SelectedImageIndex = 3;
             this.listOracleItem_trv.Size = new System.Drawing.Size(309, 462);
             this.listOracleItem_trv.StateImageList = this.imageList_adObjects;
@@ -282,7 +282,7 @@ namespace Abyss_Client {
             // 
             // OracleAdministration
             // 
-            this.ClientSize = new System.Drawing.Size(1029, 504);
+            this.ClientSize = new System.Drawing.Size(1036, 504);
             this.Controls.Add(this.listOracleItem_trv);
             this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.menu_menu);
