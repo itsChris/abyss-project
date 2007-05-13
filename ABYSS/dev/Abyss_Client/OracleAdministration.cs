@@ -11,6 +11,21 @@ using System.Data;
 
 namespace Abyss_Client {
     public partial class OracleAdministration : Abyss_Client.CompBase.BaseForm {
+        #region Enumeration
+        private enum AdImages {
+            AdRoot,
+            Ou,
+            Container,
+            OpenContainer,
+            Computer,
+            User,
+            Disable,
+            Group,
+            Unknown,
+            DisableCompunter
+        }
+        #endregion
+
         #region Constructors
         public OracleAdministration() {
             InitializeComponent();           
@@ -125,7 +140,6 @@ namespace Abyss_Client {
             TreeView treeView = (TreeView)sender;
             TreeNode treeNode = treeView.SelectedNode;
             treeView.BeginUpdate();
-
             if (treeNode.Name == "Users") {
                 treeNode.Nodes.Clear();
                 ArrayList list = OracleUser.GetUsers();
