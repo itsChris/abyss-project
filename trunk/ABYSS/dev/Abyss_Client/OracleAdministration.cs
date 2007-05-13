@@ -148,9 +148,6 @@ namespace Abyss_Client {
                     TreeNode tmpNode = new TreeNode(user.UserLogin);
                     tmpNode.Tag = user;
                     treeNode.Nodes.Add(tmpNode);
-
-
-
                 }
             }
 
