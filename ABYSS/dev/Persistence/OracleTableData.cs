@@ -14,11 +14,15 @@ namespace Persistence {
         #endregion
 
         #region Constructors
-        public OracleTableData() {            
+        public OracleTableData() {
+            this.TableNameRows = new ArrayList();
+            this.TableNull = new ArrayList();
+            this.TableTypeRows = new ArrayList();
+            this.TablePK = String.Empty;
         }
         #endregion
 
-        #region Properties        
+        #region Properties
         public String TableName {
             get { return tableName; }
             set { tableName = value; }

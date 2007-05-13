@@ -22,7 +22,9 @@ namespace Abyss_Client {
             Disable,
             Group,
             Unknown,
-            DisableCompunter
+            DisableCompunter,
+            Table,
+            Tables
         }
         #endregion
 
@@ -296,15 +298,21 @@ namespace Abyss_Client {
             }
             if (treeNode.Name == "Tables") {
                 treeNode.Nodes.Clear();
-                //ArrayList list = O
-
-                OracleTable table = new OracleTable();
-                OracleDataReader reader = table.GetTable();
-
-                while (reader.Read()) {
-                    treeNode.Nodes.Add(reader.GetValue(0).ToString());
+                ArrayList list = OracleTable.GetTables();
+                foreach (OracleTableData tableData in list) {
+                    OracleTable table = new OracleTable(tableData);
+                    TreeNode tmpNode = new TreeNode(table.TableName, (int)AdImages.Table, (int)AdImages.Tables);
+                    tmpNode.Tag = table;
+                    treeNode.Nodes.Add(tmpNode);
                 }
-                reader.Close();
+
+                //OracleTable table = new OracleTable();
+                //OracleDataReader reader = table.GetTable();
+
+                //while (reader.Read()) {
+                //    treeNode.Nodes.Add(reader.GetValue(0).ToString());
+                //}
+                //reader.Close();
             }
 
             //Get View list
