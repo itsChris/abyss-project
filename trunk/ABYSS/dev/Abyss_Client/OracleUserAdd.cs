@@ -155,7 +155,7 @@ namespace Abyss_Client {
                 temporaryTablespace_cbx.SelectedItem = user.TemporatyTablespace;
                 profile_cbx.SelectedItem = user.Profile;
                 userLogin_txt.Enabled = false;
-                user.Roles = user.GetPrivilegesListFromUser(user.UserLogin);
+                user.Roles = OracleUser.GetPrivilegesListFromUser(user.UserLogin);
                 user.LastRoleList = user.Roles;
                 //userRoleList_lbx.DataSource = user.Roles;
                 foreach (String privilege in user.Roles) {
