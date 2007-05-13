@@ -23,6 +23,7 @@ namespace Abyss_Client {
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Tables");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Views");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Users");
@@ -30,6 +31,7 @@ namespace Abyss_Client {
             treeNode1,
             treeNode2,
             treeNode3});
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OracleAdministration));
             this.menu_menu = new Abyss_Client.CompBase.BaseMenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +51,7 @@ namespace Abyss_Client {
             this.load_ofd = new System.Windows.Forms.OpenFileDialog();
             this.listOracleItem_trv = new Abyss_Client.CompBase.BaseTreeView();
             this.menu_stp = new Abyss_Client.CompBase.BaseContextMenu();
+            this.imageList_adObjects = new System.Windows.Forms.ImageList(this.components);
             this.menu_menu.SuspendLayout();
             this.panel_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_gdw)).BeginInit();
@@ -146,7 +149,7 @@ namespace Abyss_Client {
             this.button1.Location = new System.Drawing.Point(362, 424);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 5;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -158,7 +161,7 @@ namespace Abyss_Client {
             this.back_btn.Location = new System.Drawing.Point(16, 424);
             this.back_btn.Name = "back_btn";
             this.back_btn.Size = new System.Drawing.Size(133, 23);
-            this.back_btn.TabIndex = 9;
+            this.back_btn.TabIndex = 4;
             this.back_btn.Text = "Back to text mode";
             this.back_btn.UseVisualStyleBackColor = true;
             this.back_btn.Click += new System.EventHandler(this.back_btn_Click);
@@ -171,7 +174,7 @@ namespace Abyss_Client {
             this.baseLabel1.Location = new System.Drawing.Point(37, 21);
             this.baseLabel1.Name = "baseLabel1";
             this.baseLabel1.Size = new System.Drawing.Size(479, 13);
-            this.baseLabel1.TabIndex = 7;
+            this.baseLabel1.TabIndex = 1;
             this.baseLabel1.Text = "You can tape your SQL statements or load an external sql files and then execute i" +
                 "t.";
             this.baseLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -183,7 +186,7 @@ namespace Abyss_Client {
             this.load_btn.Location = new System.Drawing.Point(562, 16);
             this.load_btn.Name = "load_btn";
             this.load_btn.Size = new System.Drawing.Size(94, 23);
-            this.load_btn.TabIndex = 6;
+            this.load_btn.TabIndex = 0;
             this.load_btn.Text = "Load SQL file";
             this.load_btn.UseVisualStyleBackColor = true;
             this.load_btn.Click += new System.EventHandler(this.load_btn_Click);
@@ -195,7 +198,7 @@ namespace Abyss_Client {
             this.create_btn.Location = new System.Drawing.Point(190, 424);
             this.create_btn.Name = "create_btn";
             this.create_btn.Size = new System.Drawing.Size(90, 23);
-            this.create_btn.TabIndex = 5;
+            this.create_btn.TabIndex = 3;
             this.create_btn.Text = "Execute";
             this.create_btn.UseVisualStyleBackColor = true;
             this.create_btn.Click += new System.EventHandler(this.create_btn_Click);
@@ -232,6 +235,9 @@ namespace Abyss_Client {
             // 
             // listOracleItem_trv
             // 
+            this.listOracleItem_trv.ContextMenuStrip = this.menu_stp;
+            this.listOracleItem_trv.ImageIndex = 2;
+            this.listOracleItem_trv.ImageList = this.imageList_adObjects;
             this.listOracleItem_trv.Location = new System.Drawing.Point(12, 28);
             this.listOracleItem_trv.Name = "listOracleItem_trv";
             treeNode1.Name = "Tables";
@@ -244,8 +250,10 @@ namespace Abyss_Client {
             treeNode4.Text = "Oracle";
             this.listOracleItem_trv.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4});
+            this.listOracleItem_trv.SelectedImageIndex = 3;
             this.listOracleItem_trv.Size = new System.Drawing.Size(309, 462);
-            this.listOracleItem_trv.TabIndex = 3;
+            this.listOracleItem_trv.StateImageList = this.imageList_adObjects;
+            this.listOracleItem_trv.TabIndex = 1;
             this.listOracleItem_trv.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listOracleItem_trv_NodeMouseDoubleClick);
             this.listOracleItem_trv.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.listOracleItem_trv_AfterSelect);
             // 
@@ -254,6 +262,21 @@ namespace Abyss_Client {
             this.menu_stp.Name = "baseContextMenu1";
             this.menu_stp.ShowImageMargin = false;
             this.menu_stp.Size = new System.Drawing.Size(36, 4);
+            // 
+            // imageList_adObjects
+            // 
+            this.imageList_adObjects.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_adObjects.ImageStream")));
+            this.imageList_adObjects.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList_adObjects.Images.SetKeyName(0, "");
+            this.imageList_adObjects.Images.SetKeyName(1, "ou.png");
+            this.imageList_adObjects.Images.SetKeyName(2, "5485-cameleonhelp-Dossiervistaferme.png");
+            this.imageList_adObjects.Images.SetKeyName(3, "5493-cameleonhelp-dossiervistaouvert.png");
+            this.imageList_adObjects.Images.SetKeyName(4, "");
+            this.imageList_adObjects.Images.SetKeyName(5, "");
+            this.imageList_adObjects.Images.SetKeyName(6, "");
+            this.imageList_adObjects.Images.SetKeyName(7, "");
+            this.imageList_adObjects.Images.SetKeyName(8, "");
+            this.imageList_adObjects.Images.SetKeyName(9, "computerblocked.png");
             // 
             // OracleAdministration
             // 
@@ -295,6 +318,7 @@ namespace Abyss_Client {
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addViewToDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ImageList imageList_adObjects;
 
     }
 }
