@@ -185,16 +185,15 @@ namespace Abyss_Client {
             if (e.Node.Tag != null) {
                 if (e.Node.Tag.GetType() == typeof(OracleUser)) {
                     OracleUser user = (OracleUser)e.Node.Tag;
-                    openForm(new OracleUserAdd(user));
+                    if (openForm(new OracleUserAdd(user)) == DialogResult.OK) {
+                        refreshCurrentNode();
+                    }
                 }
             }
         }
         #endregion
 
-        
-
-        
-
+        #region Private Methods
         private void refreshCurrentNode() {
             TreeNode node = this.listOracleItem_trv.SelectedNode;
             TreeViewEventArgs tvea = new TreeViewEventArgs(node);
@@ -207,10 +206,7 @@ namespace Abyss_Client {
             OracleTableAdd f = new OracleTableAdd(table.GetTableData(listOracleItem_trv.SelectedNode.Text));
             f.Show();
         }
-
-        
-
-                   
+        #endregion
     }
 }
 
