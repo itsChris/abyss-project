@@ -27,6 +27,7 @@ namespace Abyss_Client {
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
+            dialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -99,11 +100,14 @@ namespace Abyss_Client {
         }
 
         private void Oracle_FormClosing(object sender, FormClosingEventArgs e) {
-            if (MessageBox.Show("Do you want to quit ?", this.Text,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.No) {
-                e.Cancel = true;
+            if (dialogResult != DialogResult.OK) {
+                if (MessageBox.Show("Do you want to quit ?", this.Text,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.No) {
+                    e.Cancel = true;
+                }
             }
+            
         }
 
         private void listOracleItem_trv_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {

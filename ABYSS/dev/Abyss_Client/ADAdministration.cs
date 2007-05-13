@@ -467,10 +467,12 @@ namespace Abyss_Client {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ADManagement_FormClosing(object sender, FormClosingEventArgs e) {
-            if (MessageBox.Show("Do you want to quit ?", this.Text,
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.No) {
-                e.Cancel = true;
+            if (dialogResult != DialogResult.OK) {
+                if (MessageBox.Show("Do you want to quit ?", this.Text,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.No) {
+                    e.Cancel = true;
+                }
             }
         } 
         #endregion
