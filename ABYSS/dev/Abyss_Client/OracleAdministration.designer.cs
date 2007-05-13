@@ -98,7 +98,7 @@ namespace Abyss_Client {
             this.exitToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.exitToolStripMenu.Size = new System.Drawing.Size(228, 22);
             this.exitToolStripMenu.Text = "Exit Oracle Administration";
-            this.exitToolStripMenu.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            this.exitToolStripMenu.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
