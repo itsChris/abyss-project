@@ -145,15 +145,18 @@ namespace Abyss_Client {
                 ArrayList list = OracleUser.GetUsers();
                 foreach (OracleUserData userData in list) {
                     OracleUser user = new OracleUser(userData);
-                    TreeNode tmpNode = new TreeNode(user.UserLogin);
+                    TreeNode tmpNode = new TreeNode(user.UserLogin, (int)AdImages.Disable, (int)AdImages.Disable);
+                    if (user.IsEnable) {
+                        tmpNode = new TreeNode(user.UserLogin, (int)AdImages.User, (int)AdImages.User);
+                    }
                     tmpNode.Tag = user;
                     treeNode.Nodes.Add(tmpNode);
                 }
             }
-
-            //Get Table list
             if (treeNode.Name == "Tables") {
                 treeNode.Nodes.Clear();
+                //ArrayList list = O
+
                 OracleTable table = new OracleTable();
                 OracleDataReader reader = table.GetTable();
 
