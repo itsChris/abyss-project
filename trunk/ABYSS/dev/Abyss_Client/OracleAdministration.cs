@@ -19,17 +19,28 @@ namespace Abyss_Client {
 
         #region Component events
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e) {
-            openForm(new OracleUserAdd());
+            if (openForm(new OracleUserAdd()) == DialogResult.OK) {
+                refreshCurrentNode();
+            }
         }
 
         private void addTableToolStripMenuItem_Click(object sender, EventArgs e) {
-            openForm(new OracleTableAdd());
+            if (openForm(new OracleTableAdd()) == DialogResult.OK) {
+                refreshCurrentNode();
+            }
         }
 
-        private void quitToolStripMenuItem_Click(object sender, EventArgs e) {
+
+
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
             dialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+            openForm(new AboutForm());
+        }  
 
         private void load_btn_Click(object sender, EventArgs e) {
             sql_txt.Visible = true;
@@ -181,9 +192,7 @@ namespace Abyss_Client {
             f.Show();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
-            openForm(new AboutForm());
-        }             
+                   
     }
 }
 
