@@ -100,6 +100,7 @@ namespace Utils {
             if (!initFinish) {
                 DirectoryEntry directoryEntryDSE = new DirectoryEntry(protocolName + defaultDomainPath);
                 crtDomain = (string)directoryEntryDSE.Properties["defaultNamingContext"].Value;
+                crtDomain = PurgeDC(crtDomain);
                 crtUserName = userName;
                 crtPassword = password;
                 initFinish = true;
