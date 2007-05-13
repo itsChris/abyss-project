@@ -97,7 +97,7 @@ namespace Abyss_Client {
             // addViewToDatabaseToolStripMenuItem
             // 
             this.addViewToDatabaseToolStripMenuItem.Name = "addViewToDatabaseToolStripMenuItem";
-            this.addViewToDatabaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.addViewToDatabaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
             this.addViewToDatabaseToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.addViewToDatabaseToolStripMenuItem.Text = "Add View to database";
             this.addViewToDatabaseToolStripMenuItem.Click += new System.EventHandler(this.addViewToDatabaseToolStripMenuItem_Click);
@@ -234,11 +234,11 @@ namespace Abyss_Client {
             // 
             this.listOracleItem_trv.Location = new System.Drawing.Point(12, 28);
             this.listOracleItem_trv.Name = "listOracleItem_trv";
-            treeNode1.Name = "Noeud1";
+            treeNode1.Name = "Tables";
             treeNode1.Text = "Tables";
-            treeNode2.Name = "Noeud2";
+            treeNode2.Name = "Views";
             treeNode2.Text = "Views";
-            treeNode3.Name = "Noeud3";
+            treeNode3.Name = "Users";
             treeNode3.Text = "Users";
             treeNode4.Name = "Noeud0";
             treeNode4.Text = "Oracle";
