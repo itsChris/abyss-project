@@ -181,7 +181,9 @@ namespace Abyss_Client {
             f.Show();
         }
 
-                
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+            openForm(new AboutForm());
+        }             
     }
 }
 
