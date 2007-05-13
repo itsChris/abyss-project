@@ -236,6 +236,12 @@
     <Compile Include="OracleUserAdd.Designer.cs">
       <DependentUpon>OracleUserAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="OracleViewAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OracleViewAdd.Designer.cs">
+      <DependentUpon>OracleViewAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <SubType>Designer</SubType>
