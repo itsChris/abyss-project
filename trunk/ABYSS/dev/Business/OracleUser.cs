@@ -2,8 +2,6 @@ using System;
 using DAO;
 using Persistence;
 using System.Collections;
-using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
 
 namespace Business {
     public class OracleUser {

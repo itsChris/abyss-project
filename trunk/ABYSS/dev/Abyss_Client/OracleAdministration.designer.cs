@@ -24,9 +24,9 @@ namespace Abyss_Client {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Tables");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Views");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Users");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Tables", 2, 3);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Views", 2, 3);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Users", 2, 3);
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Oracle", 0, 0, new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
@@ -239,11 +239,17 @@ namespace Abyss_Client {
             this.listOracleItem_trv.ImageList = this.imageList_adObjects;
             this.listOracleItem_trv.Location = new System.Drawing.Point(12, 28);
             this.listOracleItem_trv.Name = "listOracleItem_trv";
+            treeNode1.ImageIndex = 2;
             treeNode1.Name = "Tables";
+            treeNode1.SelectedImageIndex = 3;
             treeNode1.Text = "Tables";
+            treeNode2.ImageIndex = 2;
             treeNode2.Name = "Views";
+            treeNode2.SelectedImageIndex = 3;
             treeNode2.Text = "Views";
+            treeNode3.ImageIndex = 2;
             treeNode3.Name = "Users";
+            treeNode3.SelectedImageIndex = 3;
             treeNode3.Text = "Users";
             treeNode4.ImageIndex = 0;
             treeNode4.Name = "Oracle";
@@ -347,6 +353,8 @@ namespace Abyss_Client {
             this.imageList_adObjects.Images.SetKeyName(7, "");
             this.imageList_adObjects.Images.SetKeyName(8, "");
             this.imageList_adObjects.Images.SetKeyName(9, "computerblocked.png");
+            this.imageList_adObjects.Images.SetKeyName(10, "tables.png");
+            this.imageList_adObjects.Images.SetKeyName(11, "table.png");
             // 
             // OracleAdministration
             // 

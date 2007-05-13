@@ -17,56 +17,11 @@ namespace Business {
             this.oracleTableData.TableNameRows = new ArrayList();
             this.oracleTableData.TableNull = new ArrayList();
             this.oracleTableData.TableTypeRows = new ArrayList();
+            this.oracleTableData.TablePK = String.Empty;
         }
 
         public OracleTable(OracleTableData oracleTableData) {
             this.oracleTableData = oracleTableData;
-        }
-        #endregion
-
-        #region Public Methods
-        public void save(int numberRows){
-            OracleTableDAO.SaveTable(this.oracleTableData, numberRows);
-        }
-
-        public OracleDataReader GetTable() {
-            return OracleTableDAO.GetTable();
-        }
-
-        public void delete() {
-            OracleTableDAO.DeleteTable(this.oracleTableData);
-        }
-
-        public void EditName(string newName) {
-            OracleTableDAO.EditTableName(this.oracleTableData, newName);
-        }
-
-        public OracleTable GetTableData(string tableName) {
-            OracleDataReader reader = OracleTableDAO.GetTable(tableName);
-
-            OracleTable table = new OracleTable();
-
-            table.TableName = tableName;
-                        
-            while (reader.Read()) {
-                table.TableNameRows.Add(reader.GetValue(0));
-
-                table.TableTypeRows.Add(reader.GetValue(1) + "(" + reader.GetValue(2) + ")");
-                if (reader.GetValue(3).ToString() == "Y") {
-                    table.TableNull.Add("NULL");
-                }
-                else {
-                    table.TableNull.Add("NOT NULL");
-                }
-            }
-            reader.Dispose();
-
-            reader = OracleTableDAO.GetPK(tableName);
-            reader.Read();
-            table.TablePK = reader.GetValue(0).ToString();
-            reader.Dispose();
-
-            return table;
         }
         #endregion
 
@@ -96,5 +51,68 @@ namespace Business {
             set { oracleTableData.TablePK = value; }
         }
         #endregion
+
+        #region Static Methods
+        public static ArrayList GetTables() {
+            return OracleTableDAO.GetTables();
+        }
+
+        public static OracleTable GetTableByName(String name) {
+            OracleTableData tableData = OracleTableDAO.GetTableDataStructure(name);
+            if (tableData != null) {
+                return new OracleTable(tableData);
+            }
+            return null;
+        }
+
+        //public static OracleTable GetTableData(string tableName) {
+        //    OracleDataReader reader = OracleTableDAO.GetTableDataStructure(tableName);
+
+        //    OracleTable table = new OracleTable();
+
+        //    table.TableName = tableName;
+
+        //    while (reader.Read()) {
+        //        table.TableNameRows.Add(reader.GetValue(0));
+
+        //        table.TableTypeRows.Add(reader.GetValue(1) + "(" + reader.GetValue(2) + ")");
+        //        if (reader.GetValue(3).ToString() == "Y") {
+        //            table.TableNull.Add("NULL");
+        //        }
+        //        else {
+        //            table.TableNull.Add("NOT NULL");
+        //        }
+        //    }
+        //    reader.Dispose();
+
+        //    reader = OracleTableDAO.GetPK(tableName);
+        //    reader.Read();
+        //    table.TablePK = reader.GetValue(0).ToString();
+        //    reader.Dispose();
+
+        //    return table;
+        //}
+
+        #endregion
+
+        #region Public Methods
+        public void save(int numberRows){
+            OracleTableDAO.SaveTable(this.oracleTableData, numberRows);
+        }
+
+        
+
+        public void delete() {
+            OracleTableDAO.DeleteTable(this.oracleTableData);
+        }
+
+        public void EditName(string newName) {
+            OracleTableDAO.EditTableName(this.oracleTableData, newName);
+        }
+
+        
+        #endregion
+
+        
     }
 }
