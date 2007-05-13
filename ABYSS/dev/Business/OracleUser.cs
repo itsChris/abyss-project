@@ -99,20 +99,16 @@ namespace Business {
         #endregion
 
         #region Public Methods
-        
-
         public void save() {
             OracleUserDAO.SaveOracleUser(this.oracleUserData);
         }
 
+        public void edit() {
+            OracleUserDAO.EditOracleUser(this.oracleUserData);
+        }
         
-
         public void delete() {
             OracleUserDAO.DeleteOracleUser(this.oracleUserData);
-        }
-
-        public void edit(){
-            OracleUserDAO.EditOracleUser(this.oracleUserData);
         }
 
         public void LockUser() {

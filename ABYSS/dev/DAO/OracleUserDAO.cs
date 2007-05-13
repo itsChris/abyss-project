@@ -129,8 +129,6 @@ namespace DAO {
             return null;
         }
 
-
-
         public static void SaveOracleUser(OracleUserData oracleUserData) {
             string query = "CREATE USER " + oracleUserData.UserLogin +
                   " IDENTIFIED EXTERNALLY" +
@@ -185,13 +183,10 @@ namespace DAO {
             }
         }
 
-        
-
-        
-
-        
-
-        
+        public static void DeleteOracleUser(OracleUserData oracleUserData) {
+            string query = "DROP USER " + oracleUserData.UserLogin + " CASCADE";
+            ExecuteNonQuery(query);
+        }  
 
         public static void LockOracleUser(OracleUserData oracleUserData) {
             string query = "ALTER USER " + oracleUserData.UserLogin + " ACCOUNT LOCK";
@@ -202,27 +197,6 @@ namespace DAO {
             string query = "ALTER USER " + oracleUserData.UserLogin + " ACCOUNT UNLOCK";
             ExecuteNonQuery(query);
         }
-
-        
-
-        public static void EditTablespaces(OracleUserData oracleUserData) {
-            string query = "ALTER USER " + oracleUserData.UserLogin + " DEFAULT TABLESPACE " + oracleUserData.DefaultTablespace +
-                " TEMPORARY TABLESPACE " + oracleUserData.TemporatyTablespace;
-            ExecuteNonQuery(query);
-        }
-
-        public static void DeleteOracleUser(OracleUserData oracleUserData) {
-            string query = "DROP USER " + oracleUserData.UserLogin + " CASCADE";
-            ExecuteNonQuery(query);
-        }
-
-        
-
-       
-
-        
-
-        
         #endregion
     }
 }
