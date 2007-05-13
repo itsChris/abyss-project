@@ -35,6 +35,8 @@ namespace Abyss_Client {
             this.addTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_pnl = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.back_btn = new Abyss_Client.CompBase.BaseButton();
@@ -46,8 +48,6 @@ namespace Abyss_Client {
             this.load_ofd = new System.Windows.Forms.OpenFileDialog();
             this.listOracleItem_trv = new Abyss_Client.CompBase.BaseTreeView();
             this.menu_stp = new Abyss_Client.CompBase.BaseContextMenu();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_menu.SuspendLayout();
             this.panel_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_gdw)).BeginInit();
@@ -80,25 +80,41 @@ namespace Abyss_Client {
             // 
             this.addTableToolStripMenuItem.Name = "addTableToolStripMenuItem";
             this.addTableToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.addTableToolStripMenuItem.Text = "Add Table";
+            this.addTableToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.addTableToolStripMenuItem.Text = "Add Table to database ";
             this.addTableToolStripMenuItem.Click += new System.EventHandler(this.addTableToolStripMenuItem_Click);
             // 
             // addUserToolStripMenu
             // 
             this.addUserToolStripMenu.Name = "addUserToolStripMenu";
             this.addUserToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.addUserToolStripMenu.Size = new System.Drawing.Size(229, 22);
-            this.addUserToolStripMenu.Text = "Add User";
+            this.addUserToolStripMenu.Size = new System.Drawing.Size(228, 22);
+            this.addUserToolStripMenu.Text = "Add User to database";
             this.addUserToolStripMenu.Click += new System.EventHandler(this.addUserToolStripMenuItem_Click);
             // 
             // exitToolStripMenu
             // 
             this.exitToolStripMenu.Name = "exitToolStripMenu";
-            this.exitToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.exitToolStripMenu.Size = new System.Drawing.Size(229, 22);
+            this.exitToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.exitToolStripMenu.Size = new System.Drawing.Size(228, 22);
             this.exitToolStripMenu.Text = "Exit Oracle Administration";
             this.exitToolStripMenu.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // panel_pnl
             // 
@@ -228,21 +244,6 @@ namespace Abyss_Client {
             this.menu_stp.Name = "baseContextMenu1";
             this.menu_stp.ShowImageMargin = false;
             this.menu_stp.Size = new System.Drawing.Size(36, 4);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.aboutToolStripMenuItem.Text = "About";
             // 
             // OracleAdministration
             // 
