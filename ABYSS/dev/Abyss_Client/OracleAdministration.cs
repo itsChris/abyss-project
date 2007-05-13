@@ -30,17 +30,20 @@ namespace Abyss_Client {
             }
         }
 
-
-
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
-            dialogResult = DialogResult.OK;
-            this.Close();
+        private void addViewToDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (openForm(new OracleViewAdd()) == DialogResult.OK) {
+                refreshCurrentNode();
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
             openForm(new AboutForm());
         }  
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
+            dialogResult = DialogResult.OK;
+            this.Close();
+        }
 
         private void load_btn_Click(object sender, EventArgs e) {
             sql_txt.Visible = true;
@@ -191,6 +194,8 @@ namespace Abyss_Client {
             OracleTableAdd f = new OracleTableAdd(table.GetTableData(listOracleItem_trv.SelectedNode.Text));
             f.Show();
         }
+
+        
 
                    
     }
