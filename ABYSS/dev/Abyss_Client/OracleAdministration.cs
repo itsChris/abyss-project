@@ -38,19 +38,19 @@ namespace Abyss_Client {
                 if (e.Node.Tag.GetType() == typeof(OracleUser)) {
                     OracleUser user = (OracleUser)e.Node.Tag;
                     if (openForm(new OracleUserAdd(user)) == DialogResult.OK) {
-                        refreshCurrentNode();
+                        refreshCurrentParrentNode();
                     }
                 }
                 else if (e.Node.Tag.GetType() == typeof(OracleTable)) {
                     OracleTable table = (OracleTable)e.Node.Tag;
                     if (openForm(new OracleTableAdd(table)) == DialogResult.OK) {
-                        refreshCurrentNode();
+                        refreshCurrentParrentNode();
                     }
                 }
                 else if (e.Node.Tag.GetType() == typeof(OracleView)) {
                     OracleView view = (OracleView)e.Node.Tag;
                     if (openForm(new OracleViewAdd(view)) == DialogResult.OK) {
-                        refreshCurrentNode();
+                        refreshCurrentParrentNode();
                     }
                 }
             }
@@ -58,19 +58,19 @@ namespace Abyss_Client {
 
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e) {
             if (openForm(new OracleUserAdd()) == DialogResult.OK) {
-                refreshCurrentNode();
+                refreshCurrentParrentNode();
             }
         }
 
         private void addTableToolStripMenuItem_Click(object sender, EventArgs e) {
             if (openForm(new OracleTableAdd()) == DialogResult.OK) {
-                refreshCurrentNode();
+                refreshCurrentParrentNode();
             }
         }
 
         private void addViewToDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
             if (openForm(new OracleViewAdd()) == DialogResult.OK) {
-                refreshCurrentNode();
+                refreshCurrentParrentNode();
             }
         }
 
@@ -79,19 +79,19 @@ namespace Abyss_Client {
             if (node.Tag.GetType() == typeof(OracleUser)) {
                 OracleUser user = (OracleUser)node.Tag;
                 if (openForm(new OracleUserAdd(user)) == DialogResult.OK) {
-                    refreshCurrentNode();
+                    refreshCurrentParrentNode();
                 }
             }
             else if (node.Tag.GetType() == typeof(OracleTable)) {
                 OracleTable table = (OracleTable)node.Tag;
                 if (openForm(new OracleTableAdd(table)) == DialogResult.OK) {
-                    refreshCurrentNode();
+                    refreshCurrentParrentNode();
                 }
             }
             else {
                 OracleView view = (OracleView)node.Tag;
                 if (openForm(new OracleViewAdd(view)) == DialogResult.OK) {
-                    refreshCurrentNode();
+                    refreshCurrentParrentNode();
                 }
             }
         }
@@ -102,7 +102,7 @@ namespace Abyss_Client {
                 if (node.Tag.GetType() == typeof(OracleUser)) {
                     OracleUser user = (OracleUser)node.Tag;
                     user.LockUser();
-                    refreshCurrentNode();
+                    refreshCurrentParrentNode();
                 }
             }
             catch (OracleException oex) {
@@ -117,7 +117,7 @@ namespace Abyss_Client {
                 if (node.Tag.GetType() == typeof(OracleUser)) {
                     OracleUser user = (OracleUser)node.Tag;
                     user.UnlockUser();
-                    refreshCurrentNode();
+                    refreshCurrentParrentNode();
                 }
             }
             catch (OracleException oex) {
@@ -131,16 +131,25 @@ namespace Abyss_Client {
                 TreeNode node = this.listOracleItem_trv.SelectedNode;
                 if (node.Tag.GetType() == typeof(OracleUser)) {
                     OracleUser user = (OracleUser)node.Tag;
+                    MessageBox.Show("The delete of this object take a little times, so don't worry", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Cursor.Current = Cursors.WaitCursor;
                     user.delete();
-                    refreshCurrentNode();
+                    refreshCurrentParrentNode();
+                    Cursor.Current = Cursors.Default;
                 }
                 else if (node.Tag.GetType() == typeof(OracleTable)) {
                     OracleTable table = (OracleTable)node.Tag;
                     table.delete();
-                    refreshCurrentNode();
+                    refreshCurrentParrentNode();
+                }
+                else if (node.Tag.GetType() == typeof(OracleView)) {
+                    //OracleView view = (OracleView)node.Tag;
+                    //view.delete();
+                    //refreshCurrentNode();
                 }
             }
             catch (OracleException oex) {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -205,7 +214,7 @@ namespace Abyss_Client {
                         }
                     }
                 }
-                refreshCurrentNode();
+                refreshCurrentParrentNode();
                 MessageBox.Show("Your query has been succesfully execute", "Succesfull", MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch (OracleException oex) {
@@ -252,16 +261,27 @@ namespace Abyss_Client {
                     e.Cancel = true;
                 }    
             }
+            else if (node.Name.Equals("Tables") || node.Name.Equals("Users") || node.Name.Equals("Views") || node.Name.Equals("Oracle")) {
+                menu_stp.Items.Clear();
+                this.menu_stp.Items.AddRange(new ToolStripItem[] { this.refreshToolStripMenuItem });
+            }    
             else {
                 e.Cancel = true;
             }
         }
 
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
+            refreshCurrentNode();
+        }
+
         private void listOracleItem_trv_AfterSelect(object sender, TreeViewEventArgs e) {
             TreeView treeView = (TreeView)sender;
-            TreeNode treeNode = treeView.SelectedNode;
+            TreeNode treeNode = e.Node;
+            if (treeNode == null) {
+                return;
+            }
             treeView.BeginUpdate();
-            if (treeNode.Name == "Users") {
+            if (treeNode.Name.Equals("Users")) {
                 treeNode.Nodes.Clear();
                 ArrayList list = OracleUser.GetUsers();
                 foreach (OracleUserData userData in list) {
@@ -298,14 +318,20 @@ namespace Abyss_Client {
                 }
                 reader.Close();*/
             }
-            treeNode.Expand();
+            //treeNode.Expand();
             treeView.EndUpdate();
         }
         #endregion
 
         #region Private Methods
-        private void refreshCurrentNode() {
+        private void refreshCurrentParrentNode() {
             TreeNode node = this.listOracleItem_trv.SelectedNode.Parent;
+            TreeViewEventArgs tvea = new TreeViewEventArgs(node);
+            this.listOracleItem_trv_AfterSelect(this.listOracleItem_trv, tvea);
+        }
+
+        private void refreshCurrentNode() {
+            TreeNode node = this.listOracleItem_trv.SelectedNode;
             TreeViewEventArgs tvea = new TreeViewEventArgs(node);
             this.listOracleItem_trv_AfterSelect(this.listOracleItem_trv, tvea);
         }

@@ -58,6 +58,7 @@ namespace Abyss_Client {
             this.separator3 = new System.Windows.Forms.ToolStripSeparator();
             this.delete_tmi = new System.Windows.Forms.ToolStripMenuItem();
             this.separator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList_adObjects = new System.Windows.Forms.ImageList(this.components);
             this.menu_menu.SuspendLayout();
             this.panel_pnl.SuspendLayout();
@@ -73,7 +74,7 @@ namespace Abyss_Client {
             this.menu_menu.Location = new System.Drawing.Point(0, 0);
             this.menu_menu.Name = "menu_menu";
             this.menu_menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menu_menu.Size = new System.Drawing.Size(1036, 24);
+            this.menu_menu.Size = new System.Drawing.Size(1065, 24);
             this.menu_menu.TabIndex = 0;
             this.menu_menu.Text = "baseMenuStrip1";
             // 
@@ -146,7 +147,7 @@ namespace Abyss_Client {
             this.panel_pnl.Controls.Add(this.create_btn);
             this.panel_pnl.Controls.Add(this.sql_txt);
             this.panel_pnl.Controls.Add(this.gridView_gdw);
-            this.panel_pnl.Location = new System.Drawing.Point(328, 28);
+            this.panel_pnl.Location = new System.Drawing.Point(355, 28);
             this.panel_pnl.Name = "panel_pnl";
             this.panel_pnl.Size = new System.Drawing.Size(698, 462);
             this.panel_pnl.TabIndex = 2;
@@ -161,6 +162,7 @@ namespace Abyss_Client {
             this.back_btn.TabIndex = 4;
             this.back_btn.Text = "Back to text mode";
             this.back_btn.UseVisualStyleBackColor = true;
+            this.back_btn.Visible = false;
             this.back_btn.Click += new System.EventHandler(this.back_btn_Click);
             // 
             // baseLabel1
@@ -250,7 +252,7 @@ namespace Abyss_Client {
             this.listOracleItem_trv.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4});
             this.listOracleItem_trv.SelectedImageIndex = 3;
-            this.listOracleItem_trv.Size = new System.Drawing.Size(309, 462);
+            this.listOracleItem_trv.Size = new System.Drawing.Size(337, 462);
             this.listOracleItem_trv.StateImageList = this.imageList_adObjects;
             this.listOracleItem_trv.TabIndex = 1;
             this.listOracleItem_trv.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.listOracleItem_trv_NodeMouseDoubleClick);
@@ -268,11 +270,12 @@ namespace Abyss_Client {
             this.enable_tmi,
             this.separator3,
             this.delete_tmi,
-            this.separator4});
+            this.separator4,
+            this.refreshToolStripMenuItem});
             this.menu_stp.Name = "baseContextMenu1";
             this.menu_stp.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menu_stp.ShowImageMargin = false;
-            this.menu_stp.Size = new System.Drawing.Size(110, 116);
+            this.menu_stp.Size = new System.Drawing.Size(110, 138);
             this.menu_stp.Opening += new System.ComponentModel.CancelEventHandler(this.menu_stp_Opening);
             // 
             // modify_tmi
@@ -323,6 +326,13 @@ namespace Abyss_Client {
             this.separator4.Name = "separator4";
             this.separator4.Size = new System.Drawing.Size(106, 6);
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // imageList_adObjects
             // 
             this.imageList_adObjects.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_adObjects.ImageStream")));
@@ -340,10 +350,10 @@ namespace Abyss_Client {
             // 
             // OracleAdministration
             // 
-            this.ClientSize = new System.Drawing.Size(1036, 504);
+            this.ClientSize = new System.Drawing.Size(1065, 504);
             this.Controls.Add(this.listOracleItem_trv);
-            this.Controls.Add(this.panel_pnl);
             this.Controls.Add(this.menu_menu);
+            this.Controls.Add(this.panel_pnl);
             this.MainMenuStrip = this.menu_menu;
             this.Name = "OracleAdministration";
             this.Text = "Oracle Administration";
@@ -387,6 +397,7 @@ namespace Abyss_Client {
         private System.Windows.Forms.ToolStripSeparator separator3;
         private System.Windows.Forms.ToolStripMenuItem delete_tmi;
         private System.Windows.Forms.ToolStripSeparator separator4;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
 
     }
 }
