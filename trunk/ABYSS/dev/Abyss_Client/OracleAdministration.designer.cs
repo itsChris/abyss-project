@@ -353,8 +353,8 @@ namespace Abyss_Client {
             this.imageList_adObjects.Images.SetKeyName(7, "");
             this.imageList_adObjects.Images.SetKeyName(8, "");
             this.imageList_adObjects.Images.SetKeyName(9, "computerblocked.png");
-            this.imageList_adObjects.Images.SetKeyName(10, "tables.png");
-            this.imageList_adObjects.Images.SetKeyName(11, "table.png");
+            this.imageList_adObjects.Images.SetKeyName(10, "table.png");
+            this.imageList_adObjects.Images.SetKeyName(11, "views.png");
             // 
             // OracleAdministration
             // 

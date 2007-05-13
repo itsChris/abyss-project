@@ -24,7 +24,7 @@ namespace Abyss_Client {
             Unknown,
             DisableCompunter,
             Table,
-            Tables
+            View
         }
         #endregion
 
@@ -141,8 +141,11 @@ namespace Abyss_Client {
                 }
                 else if (node.Tag.GetType() == typeof(OracleTable)) {
                     OracleTable table = (OracleTable)node.Tag;
+                    MessageBox.Show("The delete of this object take a little times, so don't worry", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Cursor.Current = Cursors.WaitCursor;
                     table.delete();
                     refreshCurrentParrentNode();
+                    Cursor.Current = Cursors.Default;
                 }
                 else if (node.Tag.GetType() == typeof(OracleView)) {
                     //OracleView view = (OracleView)node.Tag;
@@ -282,52 +285,48 @@ namespace Abyss_Client {
             if (treeNode == null) {
                 return;
             }
-            treeView.BeginUpdate();
-            if (treeNode.Name.Equals("Users")) {
-                treeNode.Nodes.Clear();
-                ArrayList list = OracleUser.GetUsers();
-                foreach (OracleUserData userData in list) {
-                    OracleUser user = new OracleUser(userData);
-                    TreeNode tmpNode = new TreeNode(user.UserLogin, (int)AdImages.Disable, (int)AdImages.Disable);
-                    if (user.IsEnable) {
-                        tmpNode = new TreeNode(user.UserLogin, (int)AdImages.User, (int)AdImages.User);
+            try {
+                treeView.BeginUpdate();
+                Cursor.Current = Cursors.WaitCursor;
+                if (treeNode.Name.Equals("Users")) {
+                    treeNode.Nodes.Clear();
+                    ArrayList list = OracleUser.GetUsers();
+                    foreach (OracleUserData userData in list) {
+                        OracleUser user = new OracleUser(userData);
+                        TreeNode tmpNode = new TreeNode(user.UserLogin, (int)AdImages.Disable, (int)AdImages.Disable);
+                        if (user.IsEnable) {
+                            tmpNode = new TreeNode(user.UserLogin, (int)AdImages.User, (int)AdImages.User);
+                        }
+                        tmpNode.Tag = user;
+                        treeNode.Nodes.Add(tmpNode);
                     }
-                    tmpNode.Tag = user;
-                    treeNode.Nodes.Add(tmpNode);
                 }
-            }
-            if (treeNode.Name == "Tables") {
-                treeNode.Nodes.Clear();
-                ArrayList list = OracleTable.GetTables();
-                foreach (OracleTableData tableData in list) {
-                    OracleTable table = new OracleTable(tableData);
-                    TreeNode tmpNode = new TreeNode(table.TableName, (int)AdImages.Table, (int)AdImages.Tables);
-                    tmpNode.Tag = table;
-                    treeNode.Nodes.Add(tmpNode);
+                if (treeNode.Name == "Tables") {
+                    treeNode.Nodes.Clear();
+                    ArrayList list = OracleTable.GetTables();
+                    foreach (OracleTableData tableData in list) {
+                        OracleTable table = new OracleTable(tableData);
+                        TreeNode tmpNode = new TreeNode(table.TableName, (int)AdImages.Table, (int)AdImages.Table);
+                        tmpNode.Tag = table;
+                        treeNode.Nodes.Add(tmpNode);
+                    }
                 }
+                if (treeNode.Name == "Views") {
+                    treeNode.Nodes.Clear();
+                    /*
+                    OracleDataReader reader = table.GetTable();
 
-                //OracleTable table = new OracleTable();
-                //OracleDataReader reader = table.GetTable();
-
-                //while (reader.Read()) {
-                //    treeNode.Nodes.Add(reader.GetValue(0).ToString());
-                //}
-                //reader.Close();
-            }
-
-            //Get View list
-            if (treeNode.Name == "Views") {
-                treeNode.Nodes.Clear();
-                /*
-                OracleDataReader reader = table.GetTable();
-
-                while (reader.Read()) {
-                    node.Nodes.Add(reader.GetValue(0).ToString());
+                    while (reader.Read()) {
+                        node.Nodes.Add(reader.GetValue(0).ToString());
+                    }
+                    reader.Close();*/
                 }
-                reader.Close();*/
+                Cursor.Current = Cursors.Default;
+                treeView.EndUpdate();
             }
-            //treeNode.Expand();
-            treeView.EndUpdate();
+            catch(Exception){
+                Cursor.Current = Cursors.Default;
+            }
         }
         #endregion
 
