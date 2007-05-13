@@ -43,6 +43,7 @@
     <Compile Include="ADUser.cs" />
     <Compile Include="OracleTable.cs" />
     <Compile Include="OracleUser.cs" />
+    <Compile Include="OracleView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">
