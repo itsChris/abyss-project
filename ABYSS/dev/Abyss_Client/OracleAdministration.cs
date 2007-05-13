@@ -33,6 +33,29 @@ namespace Abyss_Client {
         #endregion
 
         #region Component events
+        private void listOracleItem_trv_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
+            if (e.Node.Tag != null) {
+                if (e.Node.Tag.GetType() == typeof(OracleUser)) {
+                    OracleUser user = (OracleUser)e.Node.Tag;
+                    if (openForm(new OracleUserAdd(user)) == DialogResult.OK) {
+                        refreshCurrentNode();
+                    }
+                }
+                else if (e.Node.Tag.GetType() == typeof(OracleTable)) {
+                    OracleTable table = (OracleTable)e.Node.Tag;
+                    if (openForm(new OracleTableAdd(table)) == DialogResult.OK) {
+                        refreshCurrentNode();
+                    }
+                }
+                else if (e.Node.Tag.GetType() == typeof(OracleView)) {
+                    OracleView view = (OracleView)e.Node.Tag;
+                    if (openForm(new OracleViewAdd(view)) == DialogResult.OK) {
+                        refreshCurrentNode();
+                    }
+                }
+            }
+        }
+
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e) {
             if (openForm(new OracleUserAdd()) == DialogResult.OK) {
                 refreshCurrentNode();
@@ -48,6 +71,78 @@ namespace Abyss_Client {
         private void addViewToDatabaseToolStripMenuItem_Click(object sender, EventArgs e) {
             if (openForm(new OracleViewAdd()) == DialogResult.OK) {
                 refreshCurrentNode();
+            }
+        }
+
+        private void modify_tmi_Click(object sender, EventArgs e) {
+            TreeNode node = this.listOracleItem_trv.SelectedNode;
+            if (node.Tag.GetType() == typeof(OracleUser)) {
+                OracleUser user = (OracleUser)node.Tag;
+                if (openForm(new OracleUserAdd(user)) == DialogResult.OK) {
+                    refreshCurrentNode();
+                }
+            }
+            else if (node.Tag.GetType() == typeof(OracleTable)) {
+                OracleTable table = (OracleTable)node.Tag;
+                if (openForm(new OracleTableAdd(table)) == DialogResult.OK) {
+                    refreshCurrentNode();
+                }
+            }
+            else {
+                OracleView view = (OracleView)node.Tag;
+                if (openForm(new OracleViewAdd(view)) == DialogResult.OK) {
+                    refreshCurrentNode();
+                }
+            }
+        }
+
+        private void disable_tmi_Click(object sender, EventArgs e) {
+            try {
+                TreeNode node = this.listOracleItem_trv.SelectedNode;
+                if (node.Tag.GetType() == typeof(OracleUser)) {
+                    OracleUser user = (OracleUser)node.Tag;
+                    user.LockUser();
+                    refreshCurrentNode();
+                }
+            }
+            catch (OracleException oex) {
+                MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void enable_tmi_Click(object sender, EventArgs e) {
+            try {
+                TreeNode node = this.listOracleItem_trv.SelectedNode;
+                if (node.Tag.GetType() == typeof(OracleUser)) {
+                    OracleUser user = (OracleUser)node.Tag;
+                    user.UnlockUser();
+                    refreshCurrentNode();
+                }
+            }
+            catch (OracleException oex) {
+                MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void delete_tmi_Click(object sender, EventArgs e) {
+            try {
+                TreeNode node = this.listOracleItem_trv.SelectedNode;
+                if (node.Tag.GetType() == typeof(OracleUser)) {
+                    OracleUser user = (OracleUser)node.Tag;
+                    user.delete();
+                    refreshCurrentNode();
+                }
+                else if (node.Tag.GetType() == typeof(OracleTable)) {
+                    OracleTable table = (OracleTable)node.Tag;
+                    table.delete();
+                    refreshCurrentNode();
+                }
+            }
+            catch (OracleException oex) {
+                MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -136,6 +231,32 @@ namespace Abyss_Client {
             }
         }
 
+        private void menu_stp_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+            TreeNode node = this.listOracleItem_trv.SelectedNode;
+            if (node.Tag!=null) {
+                menu_stp.Items.Clear();
+                if (node.Tag.GetType() == typeof(OracleUser)) {
+                    OracleUser user = (OracleUser)node.Tag;
+                    this.menu_stp.Items.AddRange(new ToolStripItem[] {this.modify_tmi,this.separator1,
+                        user.IsEnable?this.disable_tmi:this.enable_tmi,this.separator2,this.delete_tmi});
+                }
+                else if (node.Tag.GetType() == typeof(OracleTable)) {
+                    this.menu_stp.Items.AddRange(new ToolStripItem[] {this.modify_tmi,this.separator1,
+                        this.delete_tmi});
+                }
+                else if (node.Tag.GetType() == typeof(OracleView)) {
+                    this.menu_stp.Items.AddRange(new ToolStripItem[] {this.modify_tmi,this.separator1,
+                        this.delete_tmi});
+                }
+                else {
+                    e.Cancel = true;
+                }    
+            }
+            else {
+                e.Cancel = true;
+            }
+        }
+
         private void listOracleItem_trv_AfterSelect(object sender, TreeViewEventArgs e) {
             TreeView treeView = (TreeView)sender;
             TreeNode treeNode = treeView.SelectedNode;
@@ -180,33 +301,15 @@ namespace Abyss_Client {
             treeNode.Expand();
             treeView.EndUpdate();
         }
-
-        private void listOracleItem_trv_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
-            if (e.Node.Tag != null) {
-                if (e.Node.Tag.GetType() == typeof(OracleUser)) {
-                    OracleUser user = (OracleUser)e.Node.Tag;
-                    if (openForm(new OracleUserAdd(user)) == DialogResult.OK) {
-                        refreshCurrentNode();
-                    }
-                }
-            }
-        }
         #endregion
 
         #region Private Methods
         private void refreshCurrentNode() {
-            TreeNode node = this.listOracleItem_trv.SelectedNode;
+            TreeNode node = this.listOracleItem_trv.SelectedNode.Parent;
             TreeViewEventArgs tvea = new TreeViewEventArgs(node);
             this.listOracleItem_trv_AfterSelect(this.listOracleItem_trv, tvea);
         }
-
-        private void button1_Click(object sender, EventArgs e) {
-            OracleTable table = new OracleTable();
-            
-            OracleTableAdd f = new OracleTableAdd(table.GetTableData(listOracleItem_trv.SelectedNode.Text));
-            f.Show();
-        }
-        #endregion
+        #endregion      
     }
 }
 
