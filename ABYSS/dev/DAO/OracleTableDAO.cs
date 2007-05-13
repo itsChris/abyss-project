@@ -59,12 +59,6 @@ namespace DAO {
             return ExecuteReader(query);
         }
 
-        //public static OracleDataReader GetTableDataStructure(string tableName) {
-        //    string query = "SELECT column_name, data_type, data_length, null FROM all_tab_columns WHERE table_name='" + tableName + "'";
-        //    return ExecuteReader(query);
-        //}
-
-
         public static void SaveTable(OracleTableData table, int numberRows) {
             string query = "CREATE TABLE " + table.TableName + " (";
             for (int i = 0; i < numberRows; i++) {

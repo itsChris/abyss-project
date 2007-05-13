@@ -1,8 +1,6 @@
 using System;
 using DAO;
 using Persistence;
-using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
 using System.Collections;
 
 namespace Business {
@@ -64,43 +62,12 @@ namespace Business {
             }
             return null;
         }
-
-        //public static OracleTable GetTableData(string tableName) {
-        //    OracleDataReader reader = OracleTableDAO.GetTableDataStructure(tableName);
-
-        //    OracleTable table = new OracleTable();
-
-        //    table.TableName = tableName;
-
-        //    while (reader.Read()) {
-        //        table.TableNameRows.Add(reader.GetValue(0));
-
-        //        table.TableTypeRows.Add(reader.GetValue(1) + "(" + reader.GetValue(2) + ")");
-        //        if (reader.GetValue(3).ToString() == "Y") {
-        //            table.TableNull.Add("NULL");
-        //        }
-        //        else {
-        //            table.TableNull.Add("NOT NULL");
-        //        }
-        //    }
-        //    reader.Dispose();
-
-        //    reader = OracleTableDAO.GetPK(tableName);
-        //    reader.Read();
-        //    table.TablePK = reader.GetValue(0).ToString();
-        //    reader.Dispose();
-
-        //    return table;
-        //}
-
         #endregion
 
         #region Public Methods
         public void save(int numberRows){
             OracleTableDAO.SaveTable(this.oracleTableData, numberRows);
         }
-
-        
 
         public void delete() {
             OracleTableDAO.DeleteTable(this.oracleTableData);
@@ -109,10 +76,6 @@ namespace Business {
         public void EditName(string newName) {
             OracleTableDAO.EditTableName(this.oracleTableData, newName);
         }
-
-        
         #endregion
-
-        
     }
 }
