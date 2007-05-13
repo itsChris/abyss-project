@@ -27,7 +27,7 @@ namespace Abyss_Client {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Tables");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Views");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Users");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Oracle", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Oracle", 0, 0, new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3});
@@ -246,7 +246,9 @@ namespace Abyss_Client {
             treeNode2.Text = "Views";
             treeNode3.Name = "Users";
             treeNode3.Text = "Users";
-            treeNode4.Name = "Noeud0";
+            treeNode4.ImageIndex = 0;
+            treeNode4.Name = "Oracle";
+            treeNode4.SelectedImageIndex = 0;
             treeNode4.Text = "Oracle";
             this.listOracleItem_trv.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4});
