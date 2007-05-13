@@ -184,17 +184,17 @@ namespace DAO {
         }
 
         public static void DeleteOracleUser(OracleUserData oracleUserData) {
-            string query = "DROP USER " + oracleUserData.UserLogin + " CASCADE";
+            string query = "DROP USER " +"\""+ oracleUserData.UserLogin + "\"" + " CASCADE";
             ExecuteNonQuery(query);
         }  
 
         public static void LockOracleUser(OracleUserData oracleUserData) {
-            string query = "ALTER USER " + oracleUserData.UserLogin + " ACCOUNT LOCK";
+            string query = "ALTER USER " + "\"" + oracleUserData.UserLogin + "\"" + " ACCOUNT LOCK";
             ExecuteNonQuery(query);
         }
 
         public static void UnlockOracleUser(OracleUserData oracleUserData) {
-            string query = "ALTER USER " + oracleUserData.UserLogin + " ACCOUNT UNLOCK";
+            string query = "ALTER USER " + "\"" + oracleUserData.UserLogin + "\"" + " ACCOUNT UNLOCK";
             ExecuteNonQuery(query);
         }
         #endregion

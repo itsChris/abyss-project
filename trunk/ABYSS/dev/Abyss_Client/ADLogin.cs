@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using Business;
+using DAO;
 using System.DirectoryServices;
 using System.Runtime.InteropServices;
 using System.Collections;
@@ -46,6 +47,7 @@ namespace Abyss_Client {
                 MessageBox.Show("Login success. Welcome " + user.DisplayName,
                 this.Text, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
+                OracleDAO.getInstance();
                 if (openForm(new ADAdministration(connexion)) == DialogResult.OK) {
                     Application.ExitThread();
                 }
