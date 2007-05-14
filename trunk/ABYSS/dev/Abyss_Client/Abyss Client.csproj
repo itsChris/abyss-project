@@ -396,9 +396,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
+    <Content Include="app.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="Resources\splash.png" />
   </ItemGroup>
   <ItemGroup>
