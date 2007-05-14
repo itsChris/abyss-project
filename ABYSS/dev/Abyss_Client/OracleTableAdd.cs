@@ -114,7 +114,7 @@ namespace Abyss_Client {
                 y = y + txt.Size.Height + 5;
                 lastI = i;
             }
-            this.ResumeLayout(false);
+            this.ResumeLayout();
             this.PerformLayout();
 
             lastY = y;            
@@ -199,11 +199,12 @@ namespace Abyss_Client {
                     rbt.Text = "";
                     tableRows_pnl.Controls.Add(rbt);
 
+
                     x = 13;
                     y = y + txt.Size.Height + 5;
                     lastI = i;
                 }
-                this.ResumeLayout(false);
+                this.ResumeLayout();
                 this.PerformLayout();
 
                 lastY = y;
@@ -268,7 +269,8 @@ namespace Abyss_Client {
             int x = 13;
             int y = lastY;
             int i = lastI + 1;
-            
+
+            this.SuspendLayout();
             BaseCheckBox chk = new BaseCheckBox();
             chk.Location = new Point(x, y);
             chk.Size = new Size(15, 14);
@@ -340,6 +342,8 @@ namespace Abyss_Client {
 
             lastY = y;
             lastI = i;
+            this.ResumeLayout();
+            this.PerformLayout();
         }
 
         private void delRows_btn_Click(object sender, EventArgs e) {
@@ -351,26 +355,35 @@ namespace Abyss_Client {
                     BaseCheckBox chk = (BaseCheckBox)ctrl;
 
                     if (chk.Checked) {
-                        foreach (Control ctrlDel in tableRows_pnl.Controls) {
-                            if (ctrlDel is BaseTextBox && ctrlDel.Name.Contains(i.ToString())) {
-                                BaseTextBox txt = (BaseTextBox)ctrlDel;
-                                tableRows_pnl.Controls.Remove(txt);
-                            }
-                            if (ctrlDel is BaseComboBox && ctrlDel.Name.Contains(i.ToString())) {
-                                BaseComboBox cbx = (BaseComboBox)ctrlDel;
-                                tableRows_pnl.Controls.Remove(cbx);
-                            }
-                            if (ctrlDel is BaseRadioButton && ctrlDel.Name.Contains(i.ToString())) {
-                                BaseRadioButton rbt = (BaseRadioButton)ctrlDel;
-                                tableRows_pnl.Controls.Remove(rbt);
-                            }
-                        }
-                        tableRows_pnl.Controls.Remove(chk);
-                    }
+                        //MessageBox.Show(tableRows_pnl.Controls.Count+"");
+                        //foreach (Control ctrlDel in tableRows_pnl.Controls) {
+                        //    if (ctrlDel is BaseTextBox && ctrlDel.Name.Contains(i.ToString())) {
+                        //        BaseTextBox txt = (BaseTextBox)ctrlDel;
+                        //        tableRows_pnl.Controls.Remove(txt);
+                        //    }
+                        //    if (ctrlDel is BaseComboBox && ctrlDel.Name.Contains(i.ToString())) {
+                        //        BaseComboBox cbx = (BaseComboBox)ctrlDel;
+                        //        tableRows_pnl.Controls.Remove(cbx);
+                        //    }
+                        //    if (ctrlDel is BaseRadioButton && ctrlDel.Name.Contains(i.ToString())) {
+                        //        BaseRadioButton rbt = (BaseRadioButton)ctrlDel;
+                        //        tableRows_pnl.Controls.Remove(rbt);
+                        //    }
+                        //}
+                        //tableRows_pnl.Controls.Remove(chk);
+
+                        tableRows_pnl.Controls.RemoveByKey("rowsName" + i + "_txt");
+                        tableRows_pnl.Controls.RemoveByKey("rowsType" + i + "_cbx");
+                        tableRows_pnl.Controls.RemoveByKey("rowsTypeNumber" + i + "_txt");
+                        tableRows_pnl.Controls.RemoveByKey("rowsNull" + i + "_cbx");
+                        tableRows_pnl.Controls.RemoveByKey("rowsPK" + i + "_rbt");
+                        tableRows_pnl.Controls.RemoveByKey("rowsSel" + i + "_chk");
+                    }                    
+
                     i++;
                 }
             }
-            this.ResumeLayout(false);
+            this.ResumeLayout();
             this.PerformLayout();
             rowsNumber_txt.Text = tableRows_pnl.Controls.Count.ToString();
         }
