@@ -26,6 +26,8 @@ namespace Abyss_Client {
 
         public OracleTableAdd(OracleTable table) {
             InitializeComponent();
+
+            update = true;
             
             int x = 13;
             int y = 10;
@@ -124,7 +126,7 @@ namespace Abyss_Client {
         }
         #endregion
 
-        private void rowsNumber_txt_Leave(object sender, EventArgs e) {
+        private void generateRows() {
 
             int x = 13;
             int y = 10;
@@ -148,9 +150,6 @@ namespace Abyss_Client {
                     txt.Size = new Size(150, 20);
                     txt.Name = "rowsName" + i + "_txt";
                     tableRows_pnl.Controls.Add(txt);
-                    if (i == 0) {
-                        txt.Focus();
-                    }
 
                     x = x + txt.Size.Width + 5;
 
@@ -216,7 +215,7 @@ namespace Abyss_Client {
 
         private void rowsNumber_txt_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Enter && rowsNumber_txt.Text.Length > 0) {
-                rowsNumber_txt_Leave(new object(), new EventArgs());
+                generateRows();                
             }
 
             if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete ||
@@ -231,40 +230,95 @@ namespace Abyss_Client {
         }
 
         private void createTable_btn_Click(object sender, EventArgs e) {
-            int i=0;
+            int i=-1;
+            int rowsIndex = 0;
 
-            table.TableName = tableName_txt.Text;
 
-            foreach (Control ctrl in tableRows_pnl.Controls) {
-                if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
-                    BaseTextBox txtN = (BaseTextBox)ctrl;
-                    table.TableNameRows.Add(txtN.Text); ;
-                }
-                if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
-                    BaseComboBox cbxT = (BaseComboBox)ctrl;
-                    table.TableTypeRows.Add(cbxT.SelectedItem);
-                }
-                if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
-                    BaseTextBox txtT = (BaseTextBox)ctrl;
-                    if ((string)table.TableTypeRows[i] == "VARCHAR2") {
-                        table.TableTypeRows[i] += "(" + txtT.Text + ")";
+            if (update) {
+                foreach (Control ctrl in tableRows_pnl.Controls) {
+                    if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
+                        BaseTextBox txtN = (BaseTextBox)ctrl;
+                        rowsIndex=Convert.ToInt32(txtN.Name.Substring(txtN.Name.IndexOf("_") - 1, 1));
+
+                        if (!(table.TableNameRows.Count > rowsIndex)) {
+                            table.TableNameRows.Add(txtN.Text);
+                            table.TableNewRows.Add(table.TableNameRows.IndexOf(txtN.Text));
+                            i = Convert.ToInt32(txtN.Name.Substring(txtN.Name.IndexOf("_") - 1, 1));
+                        }
+                    }
+                    if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
+                        BaseComboBox cbxT = (BaseComboBox)ctrl;
+                                                
+                        if (ctrl.Name == "rowsType" + i + "_cbx") {
+                            table.TableTypeRows.Add(cbxT.SelectedItem);
+                        }
+                    }
+                    if (ctrl is BaseTextBox && ctrl.Name=="rowsTypeNumber"+i+"_txt") {
+                        BaseTextBox txtT = (BaseTextBox)ctrl;
+
+                        if (ctrl.Name == "rowsType" + i + "_cbx") {
+                            if ((string)table.TableTypeRows[i] == "VARCHAR2") {
+                                table.TableTypeRows[i] += "(" + txtT.Text + ")";
+                            }                           
+                        }                        
+                    }
+                    if (ctrl is BaseComboBox && ctrl.Name=="rowsNull"+i+"_cbx") {
+                        BaseComboBox cbxN = (BaseComboBox)ctrl;
+
+                        if (table.TableTypeRows.Count > rowsIndex && table.TableTypeRows[rowsIndex] != cbxN.SelectedItem.ToString()) {
+                            table.TableNull[rowsIndex] = cbxN.SelectedItem;
+                            if (!table.TableEditRows.Contains(table.TableNameRows.LastIndexOf(cbxN.SelectedItem))) {
+                                table.TableEditRows.Add(table.TableNameRows.LastIndexOf(cbxN.SelectedItem));
+                            }
+                        }
+
+                        if (ctrl.Name == "rowsNull" + i + "_cbx") {
+                            table.TableNull.Add(cbxN.SelectedText);                            
+                        }
+                    }
+                    if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
+                        BaseRadioButton rbt = (BaseRadioButton)ctrl;
+                        //if (rbt.Checked) {
+                        //    table.TablePK = table.TableNameRows[i].ToString();
+                        //}
                     }
                 }
-                if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
-                    BaseComboBox cbxN = (BaseComboBox)ctrl;
-                    table.TableNull.Add(cbxN.SelectedText);
-                }
-                if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
-                    BaseRadioButton rbt = (BaseRadioButton)ctrl;
-                    if (rbt.Checked) {
-                        table.TablePK = table.TableNameRows[i].ToString();
-                    }
-                    i++;
-                }
-                
+                Update();
             }
+            else {
+                table.TableName = tableName_txt.Text;
 
-            table.save(Convert.ToInt32(rowsNumber_txt.Text));
+                i = 0;
+
+                foreach (Control ctrl in tableRows_pnl.Controls) {
+                    if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
+                        BaseTextBox txtN = (BaseTextBox)ctrl;
+                        table.TableNameRows.Add(txtN.Text);
+                    }
+                    if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
+                        BaseComboBox cbxT = (BaseComboBox)ctrl;
+                        table.TableTypeRows.Add(cbxT.SelectedItem);
+                    }
+                    if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
+                        BaseTextBox txtT = (BaseTextBox)ctrl;
+                        if ((string)table.TableTypeRows[i] == "VARCHAR2") {
+                            table.TableTypeRows[i] += "(" + txtT.Text + ")";
+                        }
+                    }
+                    if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
+                        BaseComboBox cbxN = (BaseComboBox)ctrl;
+                        table.TableNull.Add(cbxN.SelectedText);
+                    }
+                    if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
+                        BaseRadioButton rbt = (BaseRadioButton)ctrl;
+                        if (rbt.Checked) {
+                            table.TablePK = table.TableNameRows[i].ToString();
+                        }
+                        i++;
+                    }
+                }
+                table.save(Convert.ToInt32(rowsNumber_txt.Text));
+            }
 
         }
 
@@ -351,25 +405,40 @@ namespace Abyss_Client {
         }
 
         private void delRows_btn_Click(object sender, EventArgs e) {
-            int i = 0;
+            ArrayList listDel = new ArrayList();
+            int i;
 
             this.SuspendLayout();
             foreach (Control ctrl in tableRows_pnl.Controls) {
                 if (ctrl is BaseCheckBox && ctrl.Name.Contains("rowsSel")) {
                     BaseCheckBox chk = (BaseCheckBox)ctrl;
 
-                    if (chk.Checked) {
-
-                        tableRows_pnl.Controls.RemoveByKey("rowsName" + i + "_txt");
-                        tableRows_pnl.Controls.RemoveByKey("rowsType" + i + "_cbx");
-                        tableRows_pnl.Controls.RemoveByKey("rowsTypeNumber" + i + "_txt");
-                        tableRows_pnl.Controls.RemoveByKey("rowsNull" + i + "_cbx");
-                        tableRows_pnl.Controls.RemoveByKey("rowsPK" + i + "_rbt");
-                        tableRows_pnl.Controls.RemoveByKey("rowsSel" + i + "_chk");
+                    if (chk.Checked) {             
+                                                
+                        listDel.Add(chk.Name.Substring(chk.Name.IndexOf("_") - 1, 1));
+                                              
                     }                    
-                    i++;
                 }
             }
+
+            for (i = 0; i < listDel.Count; i++) {
+                int index;
+
+                Control ctrl = tableRows_pnl.Controls["rowsName" + listDel[i].ToString() + "_txt"];
+                index = table.TableNameRows.LastIndexOf(ctrl.Text);                
+                tableRows_pnl.Controls.Remove(ctrl);
+
+                tableRows_pnl.Controls.RemoveByKey("rowsType" + listDel[i].ToString() + "_cbx");
+                tableRows_pnl.Controls.RemoveByKey("rowsTypeNumber" + listDel[i].ToString() + "_txt");
+                tableRows_pnl.Controls.RemoveByKey("rowsNull" + listDel[i].ToString() + "_cbx");
+                tableRows_pnl.Controls.RemoveByKey("rowsPK" + listDel[i].ToString() + "_rbt");
+                tableRows_pnl.Controls.RemoveByKey("rowsSel" + listDel[i].ToString() + "_chk");
+
+                table.TableNameRows.RemoveAt(index);
+                table.TableTypeRows.RemoveAt(index);
+                table.TableNull.RemoveAt(index);
+            }
+
             i=0;
             foreach (Control ctrl in tableRows_pnl.Controls) {
                 if (ctrl is BaseCheckBox && ctrl.Name.Contains("rowsSel")) {
@@ -395,12 +464,16 @@ namespace Abyss_Client {
                 if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
                     BaseRadioButton rbt = (BaseRadioButton)ctrl;
                     rbt.Name = "rowsPK" + i + "_rbt";
-                }
-                i++;
+                    i++;
+                }                
             }
             this.ResumeLayout();
             this.PerformLayout();
             rowsNumber_txt.Text = tableRows_pnl.Controls.Count.ToString();
+        }
+
+        private void tableRows_pnl_Scroll(object sender, ScrollEventArgs e) {
+            this.Refresh();
         }
 
     }
