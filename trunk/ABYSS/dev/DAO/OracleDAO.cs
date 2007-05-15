@@ -24,6 +24,11 @@ namespace DAO {
             }
             return instance;
         }
+
+        public static void close() {
+            instance.Close();
+            instance = null;
+        }
         #endregion
 
         #region Protect Methods
