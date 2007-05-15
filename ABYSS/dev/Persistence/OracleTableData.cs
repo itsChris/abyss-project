@@ -10,6 +10,8 @@ namespace Persistence {
         private ArrayList tableNameRows;
         private ArrayList tableTypeRows;
         private ArrayList tableNull;
+        private ArrayList tableNewRows;
+        private ArrayList tableEditRows;
         private String tablePK;
         #endregion
 
@@ -18,6 +20,8 @@ namespace Persistence {
             this.TableNameRows = new ArrayList();
             this.TableNull = new ArrayList();
             this.TableTypeRows = new ArrayList();
+            this.TableNewRows = new ArrayList();
+            this.TableEditRows = new ArrayList();
             this.TablePK = String.Empty;
         }
         #endregion
@@ -41,6 +45,16 @@ namespace Persistence {
         public ArrayList TableNull {
             get { return tableNull; }
             set { tableNull = value; }
+        }
+
+        public ArrayList TableNewRows {
+            get { return tableNewRows; }
+            set { tableNewRows = value; }
+        }
+
+        public ArrayList TableEditRows {
+            get { return tableEditRows; }
+            set { tableEditRows = value; }
         }
 
         public String TablePK {

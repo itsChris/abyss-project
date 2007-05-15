@@ -44,6 +44,16 @@ namespace Business {
             set { oracleTableData.TableNull = value; }
         }
 
+        public ArrayList TableNewRows {
+            get { return oracleTableData.TableNewRows; }
+            set { oracleTableData.TableNewRows = value; }
+        }
+
+        public ArrayList TableEditRows {
+            get { return oracleTableData.TableEditRows; }
+            set { oracleTableData.TableEditRows = value; }
+        }
+
         public String TablePK {
             get { return oracleTableData.TablePK; }
             set { oracleTableData.TablePK = value; }
@@ -75,6 +85,10 @@ namespace Business {
 
         public void EditName(string newName) {
             OracleTableDAO.EditTableName(this.oracleTableData, newName);
+        }
+
+        public void update() {
+            OracleTableDAO.UpdateTable(this.oracleTableData);
         }
         #endregion
     }

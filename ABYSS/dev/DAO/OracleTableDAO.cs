@@ -69,7 +69,7 @@ namespace DAO {
                     query += ", " + table.TableNameRows[i] + " " + table.TableTypeRows[i];
                 }
                 if (table.TableNull[i].ToString() == "NOT NULL") {
-                    query += " CONSTRAINT "+table.TableName[i]+"_nn NOT NULL";
+                    query += " CONSTRAINT " + table.TableNameRows[i] + "_nn NOT NULL";
                 }                
             }
             query += ", CONSTRAINT " + table.TableName + "_" + table.TablePK + "_pk PRIMARY KEY (" + table.TablePK + ")";
@@ -83,10 +83,61 @@ namespace DAO {
             ExecuteNonQuery(query);
         }
 
+        public static void UpdateTable(OracleTableData table) {
+            EditTableRows(table);
+            AddTableRows(table);
+        }
+
         public static void EditTableName(OracleTableData table, string newName) {
             string query = "ALTER TABLE " + table.TableName + " RENAME TO " + newName;
             ExecuteNonQuery(query);
-        }  
+        }
+
+        public static void AddTableRows(OracleTableData table) {
+            int index = 0;
+            string query = "ALTER TABLE " + table.TableName + "ADD (";
+
+            for (int i = 0; i < table.TableNewRows.Count; i++) {
+                index=Convert.ToInt32(table.TableNewRows[i].ToString());
+                if (i == 0) {
+                    query += table.TableNameRows[index] + " " + table.TableTypeRows[index];
+                }
+                else {
+                    query += ", " + table.TableNameRows[index] + " " + table.TableTypeRows[index];
+                }
+
+                if(table.TableNull[index].ToString()=="NOT NULL"){
+                    query += " CONSTRAINT " + table.TableNameRows[index] + "_nn NOT NULL";
+                }
+            }
+
+            query += ")";
+
+            ExecuteNonQuery(query);
+        }
+
+        public static void EditTableRows(OracleTableData table) {
+            int index = 0;
+            string query = "ALTER TABLE " + table.TableName + "MODIFY (";
+
+            for (int i = 0; i < table.TableEditRows.Count; i++) {
+                index = Convert.ToInt32(table.TableEditRows[i].ToString());
+                if (i == 0) {
+                    query += table.TableNameRows[index] + " " + table.TableTypeRows[index];
+                }
+                else {
+                    query += ", " + table.TableNameRows[index] + " " + table.TableTypeRows[index];
+                }
+
+                if (table.TableNull[index].ToString() == "NOT NULL") {
+                    query += " CONSTRAINT " + table.TableNameRows[index] + "_nn NOT NULL";
+                }
+            }
+
+            query += ")";
+
+            ExecuteNonQuery(query);
+        }
         #endregion
     }
 }

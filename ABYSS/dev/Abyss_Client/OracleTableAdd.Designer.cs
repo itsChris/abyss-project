@@ -80,7 +80,6 @@
             this.rowsNumber_txt.Name = "rowsNumber_txt";
             this.rowsNumber_txt.Size = new System.Drawing.Size(43, 20);
             this.rowsNumber_txt.TabIndex = 3;
-            this.rowsNumber_txt.Leave += new System.EventHandler(this.rowsNumber_txt_Leave);
             this.rowsNumber_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rowsNumber_txt_KeyPress);
             // 
             // tableRows_pnl
@@ -91,6 +90,7 @@
             this.tableRows_pnl.Name = "tableRows_pnl";
             this.tableRows_pnl.Size = new System.Drawing.Size(634, 337);
             this.tableRows_pnl.TabIndex = 4;
+            this.tableRows_pnl.Scroll += new System.Windows.Forms.ScrollEventHandler(this.tableRows_pnl_Scroll);
             // 
             // primaryKey_lbl
             // 
@@ -176,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 456);
+            this.ClientSize = new System.Drawing.Size(651, 442);
             this.Controls.Add(this.delRows_btn);
             this.Controls.Add(this.rowsAdd_btn);
             this.Controls.Add(this.primaryKey_lbl);
