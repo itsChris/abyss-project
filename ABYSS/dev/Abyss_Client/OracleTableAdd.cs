@@ -148,6 +148,9 @@ namespace Abyss_Client {
                     txt.Size = new Size(150, 20);
                     txt.Name = "rowsName" + i + "_txt";
                     tableRows_pnl.Controls.Add(txt);
+                    if (i == 0) {
+                        txt.Focus();
+                    }
 
                     x = x + txt.Size.Width + 5;
 
@@ -285,6 +288,7 @@ namespace Abyss_Client {
             txt.Size = new Size(150, 20);
             txt.Name = "rowsName" + i + "_txt";
             tableRows_pnl.Controls.Add(txt);
+            txt.Focus();
 
             x = x + txt.Size.Width + 5;
 
@@ -355,22 +359,6 @@ namespace Abyss_Client {
                     BaseCheckBox chk = (BaseCheckBox)ctrl;
 
                     if (chk.Checked) {
-                        //MessageBox.Show(tableRows_pnl.Controls.Count+"");
-                        //foreach (Control ctrlDel in tableRows_pnl.Controls) {
-                        //    if (ctrlDel is BaseTextBox && ctrlDel.Name.Contains(i.ToString())) {
-                        //        BaseTextBox txt = (BaseTextBox)ctrlDel;
-                        //        tableRows_pnl.Controls.Remove(txt);
-                        //    }
-                        //    if (ctrlDel is BaseComboBox && ctrlDel.Name.Contains(i.ToString())) {
-                        //        BaseComboBox cbx = (BaseComboBox)ctrlDel;
-                        //        tableRows_pnl.Controls.Remove(cbx);
-                        //    }
-                        //    if (ctrlDel is BaseRadioButton && ctrlDel.Name.Contains(i.ToString())) {
-                        //        BaseRadioButton rbt = (BaseRadioButton)ctrlDel;
-                        //        tableRows_pnl.Controls.Remove(rbt);
-                        //    }
-                        //}
-                        //tableRows_pnl.Controls.Remove(chk);
 
                         tableRows_pnl.Controls.RemoveByKey("rowsName" + i + "_txt");
                         tableRows_pnl.Controls.RemoveByKey("rowsType" + i + "_cbx");
@@ -379,9 +367,36 @@ namespace Abyss_Client {
                         tableRows_pnl.Controls.RemoveByKey("rowsPK" + i + "_rbt");
                         tableRows_pnl.Controls.RemoveByKey("rowsSel" + i + "_chk");
                     }                    
-
                     i++;
                 }
+            }
+            i=0;
+            foreach (Control ctrl in tableRows_pnl.Controls) {
+                if (ctrl is BaseCheckBox && ctrl.Name.Contains("rowsSel")) {
+                    BaseCheckBox chkS = (BaseCheckBox)ctrl;
+                    chkS.Name = "rowsSel" + i + "_chk";
+                }
+                if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
+                    BaseTextBox txtN = (BaseTextBox)ctrl;
+                    txtN.Name = "rowsName" + i + "_txt";
+                }
+                if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
+                    BaseComboBox cbxT = (BaseComboBox)ctrl;
+                    cbxT.Name = "rowsType" + i + "_cbx";
+                }
+                if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
+                    BaseTextBox txtT = (BaseTextBox)ctrl;
+                    txtT.Name = "rowsTypeNumber" + i + "_txt";
+                }
+                if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
+                    BaseComboBox cbxN = (BaseComboBox)ctrl;
+                    cbxN.Name = "rowsNull" + i + "_cbx";
+                }
+                if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
+                    BaseRadioButton rbt = (BaseRadioButton)ctrl;
+                    rbt.Name = "rowsPK" + i + "_rbt";
+                }
+                i++;
             }
             this.ResumeLayout();
             this.PerformLayout();
