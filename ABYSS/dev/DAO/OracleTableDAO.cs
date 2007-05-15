@@ -84,8 +84,12 @@ namespace DAO {
         }
 
         public static void UpdateTable(OracleTableData table) {
-            EditTableRows(table);
-            AddTableRows(table);
+            if (table.TableEditRows.Count > 0) {
+                EditTableRows(table);
+            }
+            if (table.TableNewRows.Count > 0) {
+                AddTableRows(table);
+            }
         }
 
         public static void EditTableName(OracleTableData table, string newName) {
@@ -95,7 +99,7 @@ namespace DAO {
 
         public static void AddTableRows(OracleTableData table) {
             int index = 0;
-            string query = "ALTER TABLE " + table.TableName + "ADD (";
+            string query = "ALTER TABLE " + table.TableName + " ADD (";
 
             for (int i = 0; i < table.TableNewRows.Count; i++) {
                 index=Convert.ToInt32(table.TableNewRows[i].ToString());
@@ -118,7 +122,7 @@ namespace DAO {
 
         public static void EditTableRows(OracleTableData table) {
             int index = 0;
-            string query = "ALTER TABLE " + table.TableName + "MODIFY (";
+            string query = "ALTER TABLE " + table.TableName + " MODIFY (";
 
             for (int i = 0; i < table.TableEditRows.Count; i++) {
                 index = Convert.ToInt32(table.TableEditRows[i].ToString());
