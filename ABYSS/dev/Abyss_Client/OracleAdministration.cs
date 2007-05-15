@@ -324,7 +324,7 @@ namespace Abyss_Client {
                 Cursor.Current = Cursors.Default;
                 treeView.EndUpdate();
             }
-            catch(Exception){
+            catch (OracleException) {
                 Cursor.Current = Cursors.Default;
             }
         }
