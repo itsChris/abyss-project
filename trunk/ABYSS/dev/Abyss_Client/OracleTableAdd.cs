@@ -43,6 +43,7 @@ namespace Abyss_Client {
                 chk.Size = new Size(15, 14);
                 chk.Name = "rowsSel" + i + "_chk";
                 chk.Text = "";
+                chk.Enabled = false;
                 tableRows_pnl.Controls.Add(chk);
 
                 x = x + chk.Size.Width + 5;
@@ -52,6 +53,7 @@ namespace Abyss_Client {
                 txt.Size = new Size(150, 20);
                 txt.Name = "rowsName" + i + "_txt";
                 txt.Text = table.TableNameRows[i].ToString();
+                txt.Enabled = false;
                 tableRows_pnl.Controls.Add(txt);
 
                 x = x + txt.Size.Width + 5;
@@ -65,14 +67,26 @@ namespace Abyss_Client {
                 cbx.Items.Add("INTEGER");
                 cbx.Items.Add("FLOAT");
                 cbx.Sorted = true;
+                cbx.Enabled = false;
                 tableRows_pnl.Controls.Add(cbx);
-                if (cbx.Items.Contains(table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("(")))) {
-                    cbx.SelectedItem = table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("("));
+                if (table.TableTypeRows[i].ToString().Contains("(")) {
+                    if (cbx.Items.Contains(table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("(")))) {
+                        cbx.SelectedItem = table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("("));
+                    }
+                    else {
+                        cbx.Items.Add(table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("(")));
+                        cbx.SelectedItem = table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("("));
+                    }
                 }
                 else {
-                    cbx.Items.Add(table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("(")));
-                    cbx.SelectedItem = table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("("));
-                }               
+                    if (cbx.Items.Contains(table.TableTypeRows[i].ToString())) {
+                        cbx.SelectedItem = table.TableTypeRows[i].ToString();
+                    }
+                    else {
+                        cbx.Items.Add(table.TableTypeRows[i].ToString());
+                        cbx.SelectedItem = table.TableTypeRows[i].ToString();
+                    }
+                }
 
                 x = x + cbx.Size.Width + 5;
 
@@ -80,7 +94,9 @@ namespace Abyss_Client {
                 type.Location = new Point(x, y);
                 type.Size = new Size(50, 20);
                 type.Name = "rowsTypeNumber" + i + "_txt";
-                type.Text = table.TableTypeRows[i].ToString().Substring(table.TableTypeRows[i].ToString().IndexOf("(")).Replace("(", "").Replace(")","");
+                if (table.TableTypeRows[i].ToString().Contains("(")) {
+                    type.Text = table.TableTypeRows[i].ToString().Substring(table.TableTypeRows[i].ToString().IndexOf("(")).Replace("(", "").Replace(")", "");
+                }
                 tableRows_pnl.Controls.Add(type);
                 type.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rowsNumber_txt_KeyPress);
 
@@ -265,7 +281,7 @@ namespace Abyss_Client {
                     if (ctrl is BaseComboBox && ctrl.Name=="rowsNull"+i+"_cbx") {
                         BaseComboBox cbxN = (BaseComboBox)ctrl;
 
-                        if (table.TableTypeRows.Count > rowsIndex && table.TableTypeRows[rowsIndex] != cbxN.SelectedItem.ToString()) {
+                        if (table.TableNull.Count > rowsIndex && table.TableTypeRows[rowsIndex] != cbxN.SelectedItem.ToString()) {
                             table.TableNull[rowsIndex] = cbxN.SelectedItem;
                             if (!table.TableEditRows.Contains(table.TableNameRows.LastIndexOf(cbxN.SelectedItem))) {
                                 table.TableEditRows.Add(table.TableNameRows.LastIndexOf(cbxN.SelectedItem));
@@ -278,12 +294,12 @@ namespace Abyss_Client {
                     }
                     if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
                         BaseRadioButton rbt = (BaseRadioButton)ctrl;
-                        //if (rbt.Checked) {
-                        //    table.TablePK = table.TableNameRows[i].ToString();
-                        //}
+                        if (rbt.Checked) {
+                            table.TablePK = table.TableNameRows[rowsIndex].ToString();
+                        }
                     }
                 }
-                Update();
+                table.update();
             }
             else {
                 table.TableName = tableName_txt.Text;
@@ -319,7 +335,7 @@ namespace Abyss_Client {
                 }
                 table.save(Convert.ToInt32(rowsNumber_txt.Text));
             }
-
+            this.Close();            
         }
 
         private void rowsAdd_btn_Click(object sender, EventArgs e) {
@@ -434,9 +450,11 @@ namespace Abyss_Client {
                 tableRows_pnl.Controls.RemoveByKey("rowsPK" + listDel[i].ToString() + "_rbt");
                 tableRows_pnl.Controls.RemoveByKey("rowsSel" + listDel[i].ToString() + "_chk");
 
-                table.TableNameRows.RemoveAt(index);
-                table.TableTypeRows.RemoveAt(index);
-                table.TableNull.RemoveAt(index);
+                //if (index > 0) {
+                //    table.TableNameRows.RemoveAt(index);
+                //    table.TableTypeRows.RemoveAt(index);
+                //    table.TableNull.RemoveAt(index);
+                //}
             }
 
             i=0;

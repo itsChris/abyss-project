@@ -347,6 +347,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>OracleUserAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OracleViewAdd.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OracleViewAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
