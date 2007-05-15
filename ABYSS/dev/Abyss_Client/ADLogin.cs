@@ -5,6 +5,7 @@ using DAO;
 using System.DirectoryServices;
 using System.Runtime.InteropServices;
 using System.Collections;
+using Oracle.DataAccess.Client;
 
 namespace Abyss_Client {
     public partial class ADLogin : CompBase.BaseForm {
@@ -44,10 +45,17 @@ namespace Abyss_Client {
                 return;
             }
             if (user != null) {
+                try {
+                    OracleDAO.getInstance();
+                }
+                catch (OracleException oex) {
+                    MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    OracleDAO.close();
+                    return;
+                }
                 MessageBox.Show("Login success. Welcome " + user.DisplayName,
                 this.Text, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-                OracleDAO.getInstance();
                 if (openForm(new ADAdministration(connexion)) == DialogResult.OK) {
                     Application.ExitThread();
                 }
