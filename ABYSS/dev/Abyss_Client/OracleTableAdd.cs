@@ -23,220 +23,20 @@ namespace Abyss_Client {
             InitializeComponent();
             this.table = new OracleTable();
         }
-
+        
         public OracleTableAdd(OracleTable table) {
             InitializeComponent();
 
             update = true;
-            
-            int x = 13;
-            int y = 10;
-            this.table = table;
 
-            tableName_txt.Text = table.TableName;
-            tableName_txt.Enabled = false;
-            rowsNumber_txt.Text = table.TableNameRows.Count.ToString();
-
-            this.SuspendLayout();
-            for (int i = 0; i < table.TableNameRows.Count; i++) {
-                BaseCheckBox chk = new BaseCheckBox();
-                chk.Location = new Point(x, y);
-                chk.Size = new Size(15, 14);
-                chk.Name = "rowsSel" + i + "_chk";
-                chk.Text = "";
-                chk.Enabled = false;
-                tableRows_pnl.Controls.Add(chk);
-
-                x = x + chk.Size.Width + 5;
-
-                BaseTextBox txt = new BaseTextBox();
-                txt.Location = new Point(x, y);
-                txt.Size = new Size(150, 20);
-                txt.Name = "rowsName" + i + "_txt";
-                txt.Text = table.TableNameRows[i].ToString();
-                txt.Enabled = false;
-                tableRows_pnl.Controls.Add(txt);
-
-                x = x + txt.Size.Width + 5;
-
-                BaseComboBox cbx = new BaseComboBox();
-                cbx.Location = new Point(x, y);
-                cbx.Size = new Size(150, 20);
-                cbx.Name = "rowsType" + i + "_cbx";
-                cbx.Items.Add("VARCHAR2");
-                cbx.Items.Add("DATE");
-                cbx.Items.Add("INTEGER");
-                cbx.Items.Add("FLOAT");
-                cbx.DropDownStyle = ComboBoxStyle.DropDownList;
-                cbx.Sorted = true;
-                cbx.Enabled = false;
-                tableRows_pnl.Controls.Add(cbx);
-                if (table.TableTypeRows[i].ToString().Contains("(")) {
-                    if (cbx.Items.Contains(table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("(")))) {
-                        cbx.SelectedItem = table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("("));
-                    }
-                    else {
-                        cbx.Items.Add(table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("(")));
-                        cbx.SelectedItem = table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("("));
-                    }
-                }
-                else {
-                    if (cbx.Items.Contains(table.TableTypeRows[i].ToString())) {
-                        cbx.SelectedItem = table.TableTypeRows[i].ToString();
-                    }
-                    else {
-                        cbx.Items.Add(table.TableTypeRows[i].ToString());
-                        cbx.SelectedItem = table.TableTypeRows[i].ToString();
-                    }
-                }
-
-                x = x + cbx.Size.Width + 5;
-
-                BaseTextBox type = new BaseTextBox();
-                type.Location = new Point(x, y);
-                type.Size = new Size(50, 20);
-                type.Name = "rowsTypeNumber" + i + "_txt";
-                if (table.TableTypeRows[i].ToString().Contains("(")) {
-                    type.Text = table.TableTypeRows[i].ToString().Substring(table.TableTypeRows[i].ToString().IndexOf("(")).Replace("(", "").Replace(")", "");
-                }
-                if (!table.TableTypeRows[i].ToString().Contains("VARCHAR2")) {
-                    type.Enabled = false;
-                }
-                tableRows_pnl.Controls.Add(type);
-                type.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.typeNumber_txt_KeyPress);
-
-                x = x + type.Size.Width + 5;
-
-                BaseComboBox rowNull = new BaseComboBox();
-                rowNull.DataSource = null;
-                rowNull.Location = new Point(x, y);
-                rowNull.Size = new Size(150, 20);
-                rowNull.Name = "rowsNull" + i + "_cbx";
-                rowNull.Items.Add("NULL");
-                rowNull.Items.Add("NOT NULL");
-                rowNull.DropDownStyle = ComboBoxStyle.DropDownList;
-                rowNull.Sorted = true;
-                rowNull.SelectedItem = table.TableNull[i].ToString();
-                tableRows_pnl.Controls.Add(rowNull);
-
-                x = x + rowNull.Size.Width + 15;
-
-                BaseRadioButton rbt = new BaseRadioButton();
-                rbt.Location = new Point(x, y);
-                if (table.TablePK.Contains(table.TableNameRows[i].ToString())) {
-                    rbt.Checked = true;
-                }
-                else {
-                    rbt.Checked = false;
-                }
-                rbt.Name = "rowsPK" + i + "_rbt";
-                rbt.Text = "";
-                rbt.Enabled = false;
-                tableRows_pnl.Controls.Add(rbt);
-
-                x = 13;
-                y = y + txt.Size.Height + 5;
-                lastI = i;
-            }
-            this.ResumeLayout();
-            this.PerformLayout();
-
-            lastY = y;            
+            LoadControlAndData(table);                      
 
             createTable_btn.Text = "Update Table";
             rowsNumber_txt.Enabled = false;
         }
-        #endregion
+        #endregion              
 
-        private void generateRows() {
-
-            int x = 13;
-            int y = 10;
-
-            tableRows_pnl.Controls.Clear();
-
-            if (rowsNumber_txt.Text.Length > 0) {
-                this.SuspendLayout();
-                for (int i = 0; i < Convert.ToInt32(rowsNumber_txt.Text); i++) {
-                    BaseCheckBox chk = new BaseCheckBox();
-                    chk.Location = new Point(x, y);
-                    chk.Size = new Size(15, 14);
-                    chk.Name = "rowsSel" + i + "_chk";
-                    chk.Text = "";
-                    tableRows_pnl.Controls.Add(chk);
-
-                    x = x + chk.Size.Width + 5;
-
-                    BaseTextBox txt = new BaseTextBox();
-                    txt.Location = new Point(x, y);
-                    txt.Size = new Size(150, 20);
-                    txt.Name = "rowsName" + i + "_txt";
-                    tableRows_pnl.Controls.Add(txt);
-
-                    x = x + txt.Size.Width + 5;
-
-                    BaseComboBox cbx = new BaseComboBox();
-                    cbx.Location = new Point(x, y);
-                    cbx.Size = new Size(150, 20);
-                    cbx.Name = "rowsType" + i + "_cbx";
-                    cbx.Items.Add("VARCHAR2");
-                    cbx.Items.Add("DATE");
-                    cbx.Items.Add("INTEGER");
-                    cbx.Items.Add("FLOAT");
-                    cbx.DropDownStyle = ComboBoxStyle.DropDownList;
-                    cbx.Sorted = true;
-                    tableRows_pnl.Controls.Add(cbx);
-                    cbx.SelectedIndex = 0;
-
-                    x = x + cbx.Size.Width + 5;
-
-                    BaseTextBox type = new BaseTextBox();
-                    type.Location = new Point(x, y);
-                    type.Size = new Size(50, 20);
-                    type.Name = "rowsTypeNumber" + i + "_txt";
-                    tableRows_pnl.Controls.Add(type);
-                    type.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.typeNumber_txt_KeyPress);
-
-                    x = x + type.Size.Width + 5;
-
-                    BaseComboBox rowNull = new BaseComboBox();
-                    rowNull.DataSource = null;
-                    rowNull.Location = new Point(x, y);
-                    rowNull.Size = new Size(150, 20);
-                    rowNull.Name = "rowsNull" + i + "_cbx";
-                    rowNull.Items.Add("NULL");
-                    rowNull.Items.Add("NOT NULL");
-                    rowNull.Sorted = true;
-                    rowNull.DropDownStyle = ComboBoxStyle.DropDownList;
-                    tableRows_pnl.Controls.Add(rowNull);
-                    rowNull.SelectedIndex = 0;
-
-                    x = x + rowNull.Size.Width + 15;
-
-                    BaseRadioButton rbt = new BaseRadioButton();
-                    rbt.Location = new Point(x, y);
-                    if (i == 0) {
-                        rbt.Checked = true;
-                    }
-                    else {
-                        rbt.Checked = false;
-                    }
-                    rbt.Name = "rowsPK" + i + "_rbt";
-                    rbt.Text = "";
-                    tableRows_pnl.Controls.Add(rbt);
-
-
-                    x = 13;
-                    y = y + txt.Size.Height + 5;
-                    lastI = i;
-                }
-                this.ResumeLayout();
-                this.PerformLayout();
-
-                lastY = y;
-            }
-        }
-
+        #region Events Methods
         private void rowsNumber_txt_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Enter && rowsNumber_txt.Text.Length > 0) {
                 generateRows();                
@@ -254,10 +54,6 @@ namespace Abyss_Client {
                 (Char.IsControl(e.KeyChar) && (e.KeyChar == (char)Keys.V || e.KeyChar == (char)Keys.A)))) {
                 e.Handled = true;
             }
-
-        }
-
-        private void tableName_txt_KeyPress(object sender, KeyPressEventArgs e) {
 
         }
 
@@ -517,6 +313,214 @@ namespace Abyss_Client {
         private void tableRows_pnl_Scroll(object sender, ScrollEventArgs e) {
             this.Refresh();
         }
+        #endregion
 
+        #region Private Methods
+        private void LoadControlAndData(OracleTable table) {
+            int x = 13;
+            int y = 10;
+            this.table = table;
+
+            tableName_txt.Text = table.TableName;
+            tableName_txt.Enabled = false;
+            rowsNumber_txt.Text = table.TableNameRows.Count.ToString();
+
+            this.SuspendLayout();
+            for (int i = 0; i < table.TableNameRows.Count; i++) {
+                BaseCheckBox chk = new BaseCheckBox();
+                chk.Location = new Point(x, y);
+                chk.Size = new Size(15, 14);
+                chk.Name = "rowsSel" + i + "_chk";
+                chk.Text = "";
+                chk.Enabled = false;
+                tableRows_pnl.Controls.Add(chk);
+
+                x = x + chk.Size.Width + 5;
+
+                BaseTextBox txt = new BaseTextBox();
+                txt.Location = new Point(x, y);
+                txt.Size = new Size(150, 20);
+                txt.Name = "rowsName" + i + "_txt";
+                txt.Text = table.TableNameRows[i].ToString();
+                txt.Enabled = false;
+                tableRows_pnl.Controls.Add(txt);
+
+                x = x + txt.Size.Width + 5;
+
+                BaseComboBox cbx = new BaseComboBox();
+                cbx.Location = new Point(x, y);
+                cbx.Size = new Size(150, 20);
+                cbx.Name = "rowsType" + i + "_cbx";
+                cbx.Items.Add("VARCHAR2");
+                cbx.Items.Add("DATE");
+                cbx.Items.Add("INTEGER");
+                cbx.Items.Add("FLOAT");
+                cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+                cbx.Sorted = true;
+                cbx.Enabled = false;
+                tableRows_pnl.Controls.Add(cbx);
+                if (table.TableTypeRows[i].ToString().Contains("(")) {
+                    if (cbx.Items.Contains(table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("(")))) {
+                        cbx.SelectedItem = table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("("));
+                    }
+                    else {
+                        cbx.Items.Add(table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("(")));
+                        cbx.SelectedItem = table.TableTypeRows[i].ToString().Substring(0, table.TableTypeRows[i].ToString().IndexOf("("));
+                    }
+                }
+                else {
+                    if (cbx.Items.Contains(table.TableTypeRows[i].ToString())) {
+                        cbx.SelectedItem = table.TableTypeRows[i].ToString();
+                    }
+                    else {
+                        cbx.Items.Add(table.TableTypeRows[i].ToString());
+                        cbx.SelectedItem = table.TableTypeRows[i].ToString();
+                    }
+                }
+
+                x = x + cbx.Size.Width + 5;
+
+                BaseTextBox type = new BaseTextBox();
+                type.Location = new Point(x, y);
+                type.Size = new Size(50, 20);
+                type.Name = "rowsTypeNumber" + i + "_txt";
+                if (table.TableTypeRows[i].ToString().Contains("(")) {
+                    type.Text = table.TableTypeRows[i].ToString().Substring(table.TableTypeRows[i].ToString().IndexOf("(")).Replace("(", "").Replace(")", "");
+                }
+                if (!table.TableTypeRows[i].ToString().Contains("VARCHAR2")) {
+                    type.Enabled = false;
+                }
+                tableRows_pnl.Controls.Add(type);
+                type.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.typeNumber_txt_KeyPress);
+
+                x = x + type.Size.Width + 5;
+
+                BaseComboBox rowNull = new BaseComboBox();
+                rowNull.DataSource = null;
+                rowNull.Location = new Point(x, y);
+                rowNull.Size = new Size(150, 20);
+                rowNull.Name = "rowsNull" + i + "_cbx";
+                rowNull.Items.Add("NULL");
+                rowNull.Items.Add("NOT NULL");
+                rowNull.DropDownStyle = ComboBoxStyle.DropDownList;
+                rowNull.Sorted = true;
+                rowNull.SelectedItem = table.TableNull[i].ToString();
+                tableRows_pnl.Controls.Add(rowNull);
+
+                x = x + rowNull.Size.Width + 15;
+
+                BaseRadioButton rbt = new BaseRadioButton();
+                rbt.Location = new Point(x, y);
+                if (table.TablePK.Contains(table.TableNameRows[i].ToString())) {
+                    rbt.Checked = true;
+                }
+                else {
+                    rbt.Checked = false;
+                }
+                rbt.Name = "rowsPK" + i + "_rbt";
+                rbt.Text = "";
+                rbt.Enabled = false;
+                tableRows_pnl.Controls.Add(rbt);
+
+                x = 13;
+                y = y + txt.Size.Height + 5;
+                lastI = i;
+            }
+            this.ResumeLayout();
+            this.PerformLayout();
+
+            lastY = y;
+        }
+
+        private void generateRows() {
+
+            int x = 13;
+            int y = 10;
+
+            tableRows_pnl.Controls.Clear();
+
+            if (rowsNumber_txt.Text.Length > 0) {
+                this.SuspendLayout();
+                for (int i = 0; i < Convert.ToInt32(rowsNumber_txt.Text); i++) {
+                    BaseCheckBox chk = new BaseCheckBox();
+                    chk.Location = new Point(x, y);
+                    chk.Size = new Size(15, 14);
+                    chk.Name = "rowsSel" + i + "_chk";
+                    chk.Text = "";
+                    tableRows_pnl.Controls.Add(chk);
+
+                    x = x + chk.Size.Width + 5;
+
+                    BaseTextBox txt = new BaseTextBox();
+                    txt.Location = new Point(x, y);
+                    txt.Size = new Size(150, 20);
+                    txt.Name = "rowsName" + i + "_txt";
+                    tableRows_pnl.Controls.Add(txt);
+
+                    x = x + txt.Size.Width + 5;
+
+                    BaseComboBox cbx = new BaseComboBox();
+                    cbx.Location = new Point(x, y);
+                    cbx.Size = new Size(150, 20);
+                    cbx.Name = "rowsType" + i + "_cbx";
+                    cbx.Items.Add("VARCHAR2");
+                    cbx.Items.Add("DATE");
+                    cbx.Items.Add("INTEGER");
+                    cbx.Items.Add("FLOAT");
+                    cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+                    cbx.Sorted = true;
+                    tableRows_pnl.Controls.Add(cbx);
+                    cbx.SelectedIndex = 0;
+
+                    x = x + cbx.Size.Width + 5;
+
+                    BaseTextBox type = new BaseTextBox();
+                    type.Location = new Point(x, y);
+                    type.Size = new Size(50, 20);
+                    type.Name = "rowsTypeNumber" + i + "_txt";
+                    tableRows_pnl.Controls.Add(type);
+                    type.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.typeNumber_txt_KeyPress);
+
+                    x = x + type.Size.Width + 5;
+
+                    BaseComboBox rowNull = new BaseComboBox();
+                    rowNull.DataSource = null;
+                    rowNull.Location = new Point(x, y);
+                    rowNull.Size = new Size(150, 20);
+                    rowNull.Name = "rowsNull" + i + "_cbx";
+                    rowNull.Items.Add("NULL");
+                    rowNull.Items.Add("NOT NULL");
+                    rowNull.Sorted = true;
+                    rowNull.DropDownStyle = ComboBoxStyle.DropDownList;
+                    tableRows_pnl.Controls.Add(rowNull);
+                    rowNull.SelectedIndex = 0;
+
+                    x = x + rowNull.Size.Width + 15;
+
+                    BaseRadioButton rbt = new BaseRadioButton();
+                    rbt.Location = new Point(x, y);
+                    if (i == 0) {
+                        rbt.Checked = true;
+                    }
+                    else {
+                        rbt.Checked = false;
+                    }
+                    rbt.Name = "rowsPK" + i + "_rbt";
+                    rbt.Text = "";
+                    tableRows_pnl.Controls.Add(rbt);
+
+
+                    x = 13;
+                    y = y + txt.Size.Height + 5;
+                    lastI = i;
+                }
+                this.ResumeLayout();
+                this.PerformLayout();
+
+                lastY = y;
+            }
+        }
+
+        #endregion
     }
 }
