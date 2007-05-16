@@ -12,7 +12,6 @@ namespace Business {
         #region Constructors
         public OracleView() {
             this.oracleViewData = new OracleViewData();
-            this.oracleViewData.ViewSchema = String.Empty;
             this.oracleViewData.ViewName = String.Empty;
             this.oracleViewData.ViewQuery = String.Empty;
         }
@@ -27,10 +26,6 @@ namespace Business {
             get { return oracleViewData.ViewName; }
             set { oracleViewData.ViewName = value; }
         }
-        public string ViewSchema {
-            get { return oracleViewData.ViewSchema; }
-            set { oracleViewData.ViewSchema = value; }
-        }
         public string ViewQuery {
             get { return oracleViewData.ViewQuery; }
             set { oracleViewData.ViewQuery = value; }
@@ -40,6 +35,28 @@ namespace Business {
         #region Public Methods
         public void save() {
             OracleViewDAO.SaveView(this.oracleViewData);
+        }
+
+        public void delete() {
+            OracleViewDAO.DeleteView(this.oracleViewData);
+        }
+
+        public void update() {
+            OracleViewDAO.EditView(this.oracleViewData);
+        }
+        #endregion
+
+        #region Static Methods
+        public static ArrayList GetViews() {
+            return OracleViewDAO.GetViews();
+        }
+
+        public static OracleView GetView(string viewName) {
+            OracleViewData viewData = OracleViewDAO.GetView(viewName);
+            if (viewData != null) {
+                return new OracleView(viewData);
+            }
+            return null;
         }
         #endregion
     }

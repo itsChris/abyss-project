@@ -46,7 +46,7 @@
             this.viewName_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.viewName_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.viewName_txt.Location = new System.Drawing.Point(98, 22);
-            this.viewName_txt.Mandatory = false;
+            this.viewName_txt.Mandatory = true;
             this.viewName_txt.Name = "viewName_txt";
             this.viewName_txt.Size = new System.Drawing.Size(189, 20);
             this.viewName_txt.TabIndex = 1;
@@ -67,7 +67,7 @@
             this.viewQuery_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.viewQuery_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.viewQuery_txt.Location = new System.Drawing.Point(98, 66);
-            this.viewQuery_txt.Mandatory = false;
+            this.viewQuery_txt.Mandatory = true;
             this.viewQuery_txt.Multiline = true;
             this.viewQuery_txt.Name = "viewQuery_txt";
             this.viewQuery_txt.Size = new System.Drawing.Size(388, 248);
@@ -83,12 +83,13 @@
             this.viewValidation_btn.TabIndex = 4;
             this.viewValidation_btn.Text = "Create View";
             this.viewValidation_btn.UseVisualStyleBackColor = true;
+            this.viewValidation_btn.Click += new System.EventHandler(this.viewValidation_btn_Click);
             // 
             // OracleViewAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 395);
+            this.ClientSize = new System.Drawing.Size(515, 381);
             this.Controls.Add(this.viewValidation_btn);
             this.Controls.Add(this.viewQuery_txt);
             this.Controls.Add(this.viewQuery_lbl);

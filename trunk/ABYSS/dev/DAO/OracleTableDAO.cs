@@ -26,14 +26,19 @@ namespace DAO {
         }
 
         public static OracleTableData GetTableDataStructure(string tableName) {
-            string query = "SELECT column_name, data_type, data_length, null FROM all_tab_columns WHERE table_name='" + tableName + "'";
+            string query = "SELECT column_name, data_type, data_length, nullable FROM user_tab_columns WHERE table_name='" + tableName + "'";
             OracleDataReader reader = ExecuteReader(query);
             if (reader != null) {
                 OracleTableData tableData = new OracleTableData();
                 tableData.TableName = tableName;
                 while (reader.Read()) {
                     tableData.TableNameRows.Add(reader.GetValue(0));
-                    tableData.TableTypeRows.Add(reader.GetValue(1) + "(" + reader.GetValue(2) + ")");
+                    if (reader.GetValue(1).Equals("VARCHAR2")) {
+                        tableData.TableTypeRows.Add(reader.GetValue(1) + "(" + reader.GetValue(2) + ")");
+                    }
+                    else {
+                        tableData.TableTypeRows.Add(reader.GetValue(1));
+                    }
                     if (reader.GetValue(3).ToString() == "Y") {
                         tableData.TableNull.Add("NULL");
                     }
@@ -55,7 +60,7 @@ namespace DAO {
         }
 
         public static OracleDataReader GetPK(string tableName) {
-            string query = "SELECT CONSTRAINT_NAME FROM ALL_CONSTRAINTS WHERE CONSTRAINT_TYPE='P' AND TABLE_NAME='" + tableName + "'";
+            string query = "SELECT CONSTRAINT_NAME FROM USER_CONSTRAINTS WHERE CONSTRAINT_TYPE='P' AND TABLE_NAME='" + tableName + "'";
             return ExecuteReader(query);
         }
 
@@ -81,6 +86,15 @@ namespace DAO {
         public static void DeleteTable(OracleTableData table) {
             string query = "DROP TABLE " + table.TableName + " CASCADE CONSTRAINTS";
             ExecuteNonQuery(query);
+        }
+
+        public static void DeleteConstraint(OracleTableData table, int index) {
+            try {
+                string query = "ALTER TABLE " + table.TableName + " drop CONSTRAINT " + table.TableNameRows[index] + "_nn";
+                ExecuteNonQuery(query);
+            }
+            catch (OracleException) {
+            }
         }
 
         public static void UpdateTable(OracleTableData table) {
@@ -133,8 +147,15 @@ namespace DAO {
                     query += ", " + table.TableNameRows[index] + " " + table.TableTypeRows[index];
                 }
 
-                if (table.TableNull[index].ToString() == "NOT NULL") {
-                    query += " CONSTRAINT " + table.TableNameRows[index] + "_nn NOT NULL";
+                OracleTableData tableData = GetTableDataStructure(table.TableName);
+
+                if (table.TableNull[index] != tableData.TableNull[index]) {
+                    if (table.TableNull[index].ToString() == "NOT NULL") {
+                        query += " CONSTRAINT " + table.TableNameRows[index] + "_nn NOT NULL";
+                    }
+                    else {
+                        DeleteConstraint(table, index);
+                    }
                 }
             }
 

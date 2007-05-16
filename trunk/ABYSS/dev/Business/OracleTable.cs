@@ -15,6 +15,8 @@ namespace Business {
             this.oracleTableData.TableNameRows = new ArrayList();
             this.oracleTableData.TableNull = new ArrayList();
             this.oracleTableData.TableTypeRows = new ArrayList();
+            this.oracleTableData.TableNewRows = new ArrayList();
+            this.oracleTableData.TableEditRows = new ArrayList();
             this.oracleTableData.TablePK = String.Empty;
         }
 
