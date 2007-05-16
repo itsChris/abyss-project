@@ -101,6 +101,7 @@ namespace Abyss_Client {
             if (update) {
                 server_cbx.Enabled = false;
                 MemberOf_btn.Enabled = true;
+                cpuName_txt.Enabled = false;
                 if (adComputer.Role == ADComputerData.Computer.WORKSTATION_TRUST_ACCOUNT) {
                     role_txt.Text = "Workstation or server";
                 }

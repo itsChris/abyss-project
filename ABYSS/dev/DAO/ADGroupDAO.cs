@@ -79,6 +79,7 @@ namespace DAO {
             foreach (String distinguishedName in list) {
                 try {
                     Utility.removeProperty(directoryEntry, "Member", distinguishedName);
+                    directoryEntry.CommitChanges();
                 }
                 catch (Exception) {
                 }
@@ -86,6 +87,7 @@ namespace DAO {
             foreach (String distinguishedName in adGroupData.Members) {
                 try {
                     Utility.setProperty(directoryEntry, "Member", distinguishedName);
+                    directoryEntry.CommitChanges();
                 }
                 catch (Exception) {
                 }

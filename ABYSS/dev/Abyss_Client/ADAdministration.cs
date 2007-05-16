@@ -502,7 +502,7 @@ namespace Abyss_Client {
         private string getGroupTypeFromGroup(ADGroup group) {
             String groupType = null;
             if (group.SecurityGroupe) {
-                groupType = "seccurity group - ";
+                groupType = "security group - ";
             }
             else {
                 groupType = "distribution group - ";
