@@ -6,7 +6,6 @@ namespace Persistence {
     [Serializable()]public class OracleViewData {
         #region Attribut
         private string viewName;
-        private string viewSchema;
         private string viewQuery;
         #endregion
 
@@ -19,11 +18,6 @@ namespace Persistence {
         public string ViewName {
             get { return viewName; }
             set { viewName = value; }
-        }
-
-        public string ViewSchema {
-            get { return viewSchema; }
-            set { viewSchema = value; }
         }
 
         public string ViewQuery {

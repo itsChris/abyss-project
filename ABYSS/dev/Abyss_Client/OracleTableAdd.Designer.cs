@@ -54,7 +54,7 @@
             this.tableName_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.tableName_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.tableName_txt.Location = new System.Drawing.Point(127, 10);
-            this.tableName_txt.Mandatory = false;
+            this.tableName_txt.Mandatory = true;
             this.tableName_txt.Name = "tableName_txt";
             this.tableName_txt.Size = new System.Drawing.Size(180, 20);
             this.tableName_txt.TabIndex = 1;
@@ -76,7 +76,7 @@
             this.rowsNumber_txt.ErrorBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.rowsNumber_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.rowsNumber_txt.Location = new System.Drawing.Point(532, 10);
-            this.rowsNumber_txt.Mandatory = false;
+            this.rowsNumber_txt.Mandatory = true;
             this.rowsNumber_txt.Name = "rowsNumber_txt";
             this.rowsNumber_txt.Size = new System.Drawing.Size(43, 20);
             this.rowsNumber_txt.TabIndex = 3;
@@ -176,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 442);
+            this.ClientSize = new System.Drawing.Size(643, 457);
             this.Controls.Add(this.delRows_btn);
             this.Controls.Add(this.rowsAdd_btn);
             this.Controls.Add(this.primaryKey_lbl);
