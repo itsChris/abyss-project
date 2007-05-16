@@ -3,6 +3,7 @@ using Business;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Utils;
+using System.Reflection;
 
 namespace Abyss_Client {
     public partial class ADUserUpdate : Abyss_Client.CompBase.BaseForm {
@@ -110,14 +111,19 @@ namespace Abyss_Client {
                     dialogResult = DialogResult.OK;
                     this.Close();
                 }
+                catch (TargetInvocationException tiex) {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(tiex.InnerException.Message,this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+                }
                 catch (UnauthorizedAccessException uaex) {
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show(uaex.Message);
+                    MessageBox.Show(uaex.Message,this.Text,MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return;
                 }
                 catch (COMException comex) {
                     Cursor.Current = Cursors.Default;
-                    MessageBox.Show(comex.Message);
+                    MessageBox.Show(comex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

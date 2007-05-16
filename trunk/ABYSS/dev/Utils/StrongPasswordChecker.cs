@@ -38,11 +38,11 @@ namespace Utils {
         private static int GetCharSetUsed(string pass) {
             int ret = 0;
             if (ContainsLowerCaseChars(pass)) {
-                ret += 50;
+                ret += 30;
             }
 
             if (ContainsUpperCaseChars(pass)) {
-                ret += 50;
+                ret += 30;
             }
 
             if (ContainsNumbers(pass)) {

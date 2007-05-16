@@ -148,9 +148,9 @@ namespace Abyss_Client {
                     Cursor.Current = Cursors.Default;
                 }
                 else if (node.Tag.GetType() == typeof(OracleView)) {
-                    //OracleView view = (OracleView)node.Tag;
-                    //view.delete();
-                    //refreshCurrentNode();
+                    OracleView view = (OracleView)node.Tag;
+                    view.delete();
+                    refreshCurrentParrentNode();
                 }
             }
             catch (OracleException oex) {
@@ -313,13 +313,13 @@ namespace Abyss_Client {
                 }
                 if (treeNode.Name == "Views") {
                     treeNode.Nodes.Clear();
-                    /*
-                    OracleDataReader reader = table.GetTable();
-
-                    while (reader.Read()) {
-                        node.Nodes.Add(reader.GetValue(0).ToString());
+                    ArrayList list = OracleView.GetViews();
+                    foreach (OracleViewData viewData in list) {
+                        OracleView view = new OracleView(viewData);
+                        TreeNode tmpNode = new TreeNode(view.ViewName, (int)AdImages.View, (int)AdImages.View);
+                        tmpNode.Tag = view;
+                        treeNode.Nodes.Add(tmpNode);
                     }
-                    reader.Close();*/
                 }
                 Cursor.Current = Cursors.Default;
                 treeView.EndUpdate();

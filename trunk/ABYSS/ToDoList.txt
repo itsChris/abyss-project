@@ -5,7 +5,3 @@ Probleme au niveau des member of et members pour un groupe - > reste que ca a mo
 Formulaire OracleAdministration
 - pour executer plusieur requetes de type create contenu dans un fichier texte, regarde le commentaires (split en plusieurs requete)
 
-Formulaire OracleTableAdd
-- regler refresh bizarre des controle quand add table
-- requete alter table Add et alter table mod
-- gerer rename des controles en cas de suppression afin d'eviter des plantages.

@@ -45,6 +45,11 @@ namespace Abyss_Client {
                     MessageBox.Show(tiex.InnerException.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                catch (UnauthorizedAccessException uaex) {
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(uaex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
         }
 

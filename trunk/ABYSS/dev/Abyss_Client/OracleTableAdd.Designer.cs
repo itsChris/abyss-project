@@ -58,7 +58,6 @@
             this.tableName_txt.Name = "tableName_txt";
             this.tableName_txt.Size = new System.Drawing.Size(180, 20);
             this.tableName_txt.TabIndex = 1;
-            this.tableName_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tableName_txt_KeyPress);
             // 
             // rowsNumber_lbl
             // 
