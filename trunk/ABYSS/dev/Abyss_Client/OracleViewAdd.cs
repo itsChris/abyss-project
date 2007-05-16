@@ -32,10 +32,24 @@ namespace Abyss_Client {
                 return;
             }
 
-            oracleView.ViewName = viewName_txt.Text;
-            oracleView.ViewQuery = viewQuery_txt.Text.Replace(";","");
+            if (update) {
+                if (oracleView.ViewQuery != viewQuery_txt.Text.Replace(";", "")) {
+                    oracleView.ViewQuery = viewQuery_txt.Text.Replace(";", "");
+                }
+                else {
+                    DialogResult result = MessageBox.Show("You don't have any modification.\n Would you have quit ?", "Any modification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.No) {
+                        return;
+                    }
+                }
+            }
+            else {
+                oracleView.ViewName = viewName_txt.Text;
+                oracleView.ViewQuery = viewQuery_txt.Text.Replace(";", "");
 
-            oracleView.save();
+                oracleView.save();
+            }
+            this.Close();
         }
         #endregion
     }
