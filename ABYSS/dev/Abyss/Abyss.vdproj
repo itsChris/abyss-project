@@ -27,14 +27,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4C79C3A31050D8C0189750BB163493AA"
-        "OwnerKey" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
+        "MsmKey" = "8:_3CF9AAD85C784E319A1F48DF830ADBFA"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6F58EEA5DB916E5F2F269F75BE886153"
+        "OwnerKey" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,19 +75,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A1F849EF63744774845727D528146A97"
+        "MsmKey" = "8:_9851BC86CCEC46478AB64B9DB9E34FBB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AF8DD9C7009978A832D54EBE7A817E4E"
+        "MsmKey" = "8:_B3B70C2189EF81F232C2AECCAC2D8A78"
         "OwnerKey" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_AF8DD9C7009978A832D54EBE7A817E4E"
+        "MsmKey" = "8:_B3B70C2189EF81F232C2AECCAC2D8A78"
         "OwnerKey" = "8:_774EEC2B3DCEC1A28DA5F3407CD228AA"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -100,7 +106,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AF8DD9C7009978A832D54EBE7A817E4E"
+        "OwnerKey" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,13 +136,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
+        "OwnerKey" = "8:_6F58EEA5DB916E5F2F269F75BE886153"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4C79C3A31050D8C0189750BB163493AA"
+        "OwnerKey" = "8:_B3B70C2189EF81F232C2AECCAC2D8A78"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -157,6 +163,17 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                }
+            }
         }
         "Release"
         {
@@ -173,6 +190,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.2.0"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 2.0"
+                    "ProductCode" = "8:Microsoft.Net.Framework.2.0"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -233,14 +266,34 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4C79C3A31050D8C0189750BB163493AA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3CF9AAD85C784E319A1F48DF830ADBFA"
+            {
+            "SourcePath" = "8:..\\..\\doc\\Installation Documentation.docx"
+            "TargetName" = "8:Installation Documentation.docx"
+            "Tag" = "8:"
+            "Folder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6F58EEA5DB916E5F2F269F75BE886153"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:ExtendedDotNET.Controls, Version=1.0.2125.33876, Culture=neutral"
                 "ScatterAssemblies"
                 {
-                    "_4C79C3A31050D8C0189750BB163493AA"
+                    "_6F58EEA5DB916E5F2F269F75BE886153"
                     {
                     "Name" = "8:ExtendedDotNET.Controls.dll"
                     "Attributes" = "3:512"
@@ -326,10 +379,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A1F849EF63744774845727D528146A97"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9851BC86CCEC46478AB64B9DB9E34FBB"
             {
-            "SourcePath" = "8:..\\..\\doc\\Documentation EN a corrigé.docx"
-            "TargetName" = "8:Documentation EN a corrigé.docx"
+            "SourcePath" = "8:..\\..\\doc\\Installation Documentation.doc"
+            "TargetName" = "8:Installation Documentation.doc"
             "Tag" = "8:"
             "Folder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
             "Condition" = "8:"
@@ -346,14 +399,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AF8DD9C7009978A832D54EBE7A817E4E"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B3B70C2189EF81F232C2AECCAC2D8A78"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Oracle.DataAccess, Version=2.102.2.20, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_AF8DD9C7009978A832D54EBE7A817E4E"
+                    "_B3B70C2189EF81F232C2AECCAC2D8A78"
                     {
                     "Name" = "8:Oracle.DataAccess.dll"
                     "Attributes" = "3:512"
@@ -537,23 +590,23 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Abyss"
+        "ProductName" = "8:Abyss Client"
         "ProductCode" = "8:{3A6ED5A8-E32D-42EA-A5F6-5B8E33D0F112}"
-        "PackageCode" = "8:{E06BCDB0-FE89-4D91-92D3-A6CE11D471B9}"
+        "PackageCode" = "8:{D2456B5F-B6C2-472B-A910-2022F407CE53}"
         "UpgradeCode" = "8:{23FF62AC-8AD5-4884-BB51-3B62FC7C9739}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.2"
-        "Manufacturer" = "8:ABYSS SOFTWARE"
+        "Manufacturer" = "8:Abyss Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Abyss"
+        "Title" = "8:Abyss Client"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:ABYSS SOFTWARE"
+        "ARPCONTACT" = "8:Abyss Software"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Administration program"
+        "ARPCOMMENTS" = "8:Administrative Applicaion On Oracle And Active Directory"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
         "ARPIconIndex" = "3:32512"
@@ -658,6 +711,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_08C598474F1440CD89E69112F9248801"
+            {
+            "Name" = "8:Raccourci vers Installation Documentation.docx"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_3CF9AAD85C784E319A1F48DF830ADBFA"
+            "Folder" = "8:_18034A6808564376A21B30587584ADF4"
+            "WorkingFolder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_183BA54C9A084DD8B7B59651EDC9B353"
             {
             "Name" = "8:Abyss Client"
@@ -686,15 +753,15 @@
             "Icon" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EFFA031289A243D29B6E71D5E1E07F7A"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BF17CA721D454D0D9FE572F67AD72E87"
             {
-            "Name" = "8:Documentation"
+            "Name" = "8:Raccourci vers Installation Documentation.doc"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_A1F849EF63744774845727D528146A97"
+            "Target" = "8:_9851BC86CCEC46478AB64B9DB9E34FBB"
             "Folder" = "8:_18034A6808564376A21B30587584ADF4"
             "WorkingFolder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
             "Icon" = "8:"
