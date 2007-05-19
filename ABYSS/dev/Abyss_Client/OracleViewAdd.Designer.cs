@@ -96,7 +96,7 @@
             this.Controls.Add(this.viewName_txt);
             this.Controls.Add(this.viewName_lbl);
             this.Name = "OracleViewAdd";
-            this.Text = "OracleViewAdd";
+            this.Text = "Oracle View";
             this.ResumeLayout(false);
             this.PerformLayout();
 

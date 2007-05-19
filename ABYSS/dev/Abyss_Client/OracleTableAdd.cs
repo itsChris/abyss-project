@@ -1,13 +1,10 @@
 using Business;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Abyss_Client.CompBase;
 using System.Collections;
+using System.Drawing;
+using Oracle.DataAccess.Client;
 
 namespace Abyss_Client {
     public partial class OracleTableAdd : CompBase.BaseForm {
@@ -26,11 +23,8 @@ namespace Abyss_Client {
         
         public OracleTableAdd(OracleTable table) {
             InitializeComponent();
-
             update = true;
-
             LoadControlAndData(table);                      
-
             createTable_btn.Text = "Update Table";
             rowsNumber_txt.Enabled = false;
         }
@@ -41,12 +35,10 @@ namespace Abyss_Client {
             if (e.KeyChar == (char)Keys.Enter && rowsNumber_txt.Text.Length > 0) {
                 generateRows();                
             }
-
             if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete ||
                 (Char.IsControl(e.KeyChar) && (e.KeyChar == (char)Keys.V || e.KeyChar == (char)Keys.A)))) {
                 e.Handled = true;
-            }
-            
+            }   
         }
 
         private void typeNumber_txt_KeyPress(object sender, KeyPressEventArgs e) {
@@ -54,111 +46,132 @@ namespace Abyss_Client {
                 (Char.IsControl(e.KeyChar) && (e.KeyChar == (char)Keys.V || e.KeyChar == (char)Keys.A)))) {
                 e.Handled = true;
             }
-
         }
 
         private void createTable_btn_Click(object sender, EventArgs e) {
             int i=-1;
             int rowsIndex = 0;
-
-            if (!checkMandatoryFields()) {
+            if (!checkMandatoryFields() || tableRows_pnl.Controls.Count == 0) {
                 return;
             }
+            try {
+                if (update) {
+                    foreach (Control ctrl in tableRows_pnl.Controls) {
+                        if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
+                            BaseTextBox txtN = (BaseTextBox)ctrl;
+                            if (String.IsNullOrEmpty(txtN.Text)) {
+                                return;
+                            }
+                            rowsIndex = Convert.ToInt32(txtN.Name.Substring(txtN.Name.IndexOf("_") - 1, 1));
 
-            if (update) {
-                foreach (Control ctrl in tableRows_pnl.Controls) {
-                    if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
-                        BaseTextBox txtN = (BaseTextBox)ctrl;
-                        rowsIndex=Convert.ToInt32(txtN.Name.Substring(txtN.Name.IndexOf("_") - 1, 1));
-
-                        if (!(table.TableNameRows.Count > rowsIndex)) {
-                            table.TableNameRows.Add(txtN.Text);
-                            table.TableNewRows.Add(table.TableNameRows.IndexOf(txtN.Text));
-                            i = Convert.ToInt32(txtN.Name.Substring(txtN.Name.IndexOf("_") - 1, 1));
+                            if (!(table.TableNameRows.Count > rowsIndex)) {
+                                table.TableNameRows.Add(txtN.Text);
+                                table.TableNewRows.Add(table.TableNameRows.IndexOf(txtN.Text));
+                                i = Convert.ToInt32(txtN.Name.Substring(txtN.Name.IndexOf("_") - 1, 1));
+                            }
+                        }
+                        if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
+                            BaseComboBox cbxT = (BaseComboBox)ctrl;
+                            if (cbxT.Name == "rowsType" + i + "_cbx") {
+                                table.TableTypeRows.Add(cbxT.SelectedItem);
+                            }
+                        }
+                        if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
+                            BaseTextBox txtT = (BaseTextBox)ctrl;
+                            if (table.TableTypeRows[rowsIndex].ToString().Contains("VARCHAR2") && String.IsNullOrEmpty(txtT.Text)) {
+                                txtT.Mandatory = true;
+                                txtT.setErrorBackColor(true);
+                                return;
+                            }
+                            else {
+                                txtT.Mandatory = false;
+                                txtT.setErrorBackColor(false);
+                            }
+                            if (table.TableNull.Count > rowsIndex && !table.TableTypeRows[rowsIndex].ToString().Contains(txtT.Text)) {
+                                table.TableTypeRows[rowsIndex] = table.TableTypeRows[rowsIndex].ToString().Substring(0, table.TableTypeRows[rowsIndex].ToString().IndexOf("(") + 1) + txtT.Text + ")";
+                                if (!table.TableEditRows.Contains(rowsIndex)) {
+                                    table.TableEditRows.Add(rowsIndex);
+                                }
+                            }
+                            if (txtT.Name == "rowsTypeNumber" + i + "_cbx") {
+                                if ((string)table.TableTypeRows[i] == "VARCHAR2") {
+                                    table.TableTypeRows[i] += "(" + txtT.Text + ")";
+                                }
+                            }
+                        }
+                        if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
+                            BaseComboBox cbxN = (BaseComboBox)ctrl;
+                            if (table.TableNull.Count > rowsIndex && table.TableNull[rowsIndex].ToString() != cbxN.SelectedItem.ToString().ToUpper()) {
+                                table.TableNull[rowsIndex] = cbxN.SelectedItem.ToString().ToUpper();
+                                if (!table.TableEditRows.Contains(rowsIndex)) {
+                                    table.TableEditRows.Add(rowsIndex);
+                                }
+                            }
+                            if (cbxN.Name == "rowsNull" + i + "_cbx") {
+                                table.TableNull.Add(cbxN.SelectedText);
+                            }
+                        }
+                        if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
+                            BaseRadioButton rbt = (BaseRadioButton)ctrl;
+                            if (rbt.Checked) {
+                                table.TablePK = table.TableNameRows[rowsIndex].ToString();
+                            }
                         }
                     }
-                    if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
-                        BaseComboBox cbxT = (BaseComboBox)ctrl;
-                                                
-                        if (cbxT.Name == "rowsType" + i + "_cbx") {
+                    table.update();
+                }
+                else {
+                    this.table = new OracleTable();
+                    table.TableName = tableName_txt.Text;
+                    i = 0;
+                    foreach (Control ctrl in tableRows_pnl.Controls) {
+                        if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
+                            BaseTextBox txtN = (BaseTextBox)ctrl;
+                            if (String.IsNullOrEmpty(txtN.Text)) {
+                                return;
+                            }
+                            table.TableNameRows.Add(txtN.Text);
+                        }
+                        if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
+                            BaseComboBox cbxT = (BaseComboBox)ctrl;
                             table.TableTypeRows.Add(cbxT.SelectedItem);
                         }
-                    }
-                    if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
-                        BaseTextBox txtT = (BaseTextBox)ctrl;
-
-                        if (table.TableNull.Count > rowsIndex && !table.TableTypeRows[rowsIndex].ToString().Contains(txtT.Text)) {
-                            table.TableTypeRows[rowsIndex] = table.TableTypeRows[rowsIndex].ToString().Substring(0, table.TableTypeRows[rowsIndex].ToString().IndexOf("(")+1) + txtT.Text + ")";
-                            if (!table.TableEditRows.Contains(rowsIndex)) {
-                                table.TableEditRows.Add(rowsIndex);
+                        if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
+                            BaseTextBox txtT = (BaseTextBox)ctrl;
+                            if ((string)table.TableTypeRows[i] == "VARCHAR2" && String.IsNullOrEmpty(txtT.Text)) {
+                                txtT.Mandatory = true;
+                                txtT.setErrorBackColor(true);
+                                return;
                             }
-                        }
-
-                        if (txtT.Name == "rowsTypeNumber" + i + "_cbx") {
+                            else {
+                                txtT.Mandatory = false;
+                                txtT.setErrorBackColor(false);
+                            }
                             if ((string)table.TableTypeRows[i] == "VARCHAR2") {
                                 table.TableTypeRows[i] += "(" + txtT.Text + ")";
-                            }                           
-                        }                        
-                    }
-                    if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
-                        BaseComboBox cbxN = (BaseComboBox)ctrl;
-
-                        if (table.TableNull.Count > rowsIndex && table.TableNull[rowsIndex].ToString() != cbxN.SelectedItem.ToString().ToUpper()) {
-                            table.TableNull[rowsIndex] = cbxN.SelectedItem.ToString().ToUpper();
-                            if (!table.TableEditRows.Contains(rowsIndex)) {
-                                table.TableEditRows.Add(rowsIndex);
                             }
                         }
-
-                        if (cbxN.Name == "rowsNull" + i + "_cbx") {
-                            table.TableNull.Add(cbxN.SelectedText);                            
+                        if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
+                            BaseComboBox cbxN = (BaseComboBox)ctrl;
+                            table.TableNull.Add(cbxN.SelectedText);
+                        }
+                        if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
+                            BaseRadioButton rbt = (BaseRadioButton)ctrl;
+                            if (rbt.Checked) {
+                                table.TablePK = table.TableNameRows[i].ToString();
+                            }
+                            i++;
                         }
                     }
-                    if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
-                        BaseRadioButton rbt = (BaseRadioButton)ctrl;
-                        if (rbt.Checked) {
-                            table.TablePK = table.TableNameRows[rowsIndex].ToString();
-                        }
-                    }
+                    table.save(Convert.ToInt32(rowsNumber_txt.Text));
                 }
-                table.update();
+                dialogResult = DialogResult.OK;
+                this.Close();
             }
-            else {
-                table.TableName = tableName_txt.Text;
-
-                i = 0;
-
-                foreach (Control ctrl in tableRows_pnl.Controls) {
-                    if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
-                        BaseTextBox txtN = (BaseTextBox)ctrl;
-                        table.TableNameRows.Add(txtN.Text);
-                    }
-                    if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
-                        BaseComboBox cbxT = (BaseComboBox)ctrl;
-                        table.TableTypeRows.Add(cbxT.SelectedItem);
-                    }
-                    if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsTypeNumber")) {
-                        BaseTextBox txtT = (BaseTextBox)ctrl;
-                        if ((string)table.TableTypeRows[i] == "VARCHAR2") {
-                            table.TableTypeRows[i] += "(" + txtT.Text + ")";
-                        }
-                    }
-                    if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsNull")) {
-                        BaseComboBox cbxN = (BaseComboBox)ctrl;
-                        table.TableNull.Add(cbxN.SelectedText);
-                    }
-                    if (ctrl is BaseRadioButton && ctrl.Name.Contains("rowsPK")) {
-                        BaseRadioButton rbt = (BaseRadioButton)ctrl;
-                        if (rbt.Checked) {
-                            table.TablePK = table.TableNameRows[i].ToString();
-                        }
-                        i++;
-                    }
-                }
-                table.save(Convert.ToInt32(rowsNumber_txt.Text));
+            catch (OracleException oex) {
+                MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            dialogResult = DialogResult.OK;
-            this.Close();            
         }
 
         private void rowsAdd_btn_Click(object sender, EventArgs e) {
@@ -180,6 +193,7 @@ namespace Abyss_Client {
             txt.Location = new Point(x, y);
             txt.Size = new Size(150, 20);
             txt.Name = "rowsName" + i + "_txt";
+            txt.Mandatory = true;
             tableRows_pnl.Controls.Add(txt);
             txt.Focus();
 
@@ -253,30 +267,22 @@ namespace Abyss_Client {
             foreach (Control ctrl in tableRows_pnl.Controls) {
                 if (ctrl is BaseCheckBox && ctrl.Name.Contains("rowsSel")) {
                     BaseCheckBox chk = (BaseCheckBox)ctrl;
-
-                    if (chk.Checked) {             
-                                                
-                        listDel.Add(chk.Name.Substring(chk.Name.IndexOf("_") - 1, 1));
-                                              
+                    if (chk.Checked) {                                 
+                        listDel.Add(chk.Name.Substring(chk.Name.IndexOf("_") - 1, 1));                            
                     }                    
                 }
             }
-
             for (i = 0; i < listDel.Count; i++) {
                 int index;
-
                 Control ctrl = tableRows_pnl.Controls["rowsName" + listDel[i].ToString() + "_txt"];
                 index = table.TableNameRows.LastIndexOf(ctrl.Text);                
                 tableRows_pnl.Controls.Remove(ctrl);
-
                 tableRows_pnl.Controls.RemoveByKey("rowsType" + listDel[i].ToString() + "_cbx");
                 tableRows_pnl.Controls.RemoveByKey("rowsTypeNumber" + listDel[i].ToString() + "_txt");
                 tableRows_pnl.Controls.RemoveByKey("rowsNull" + listDel[i].ToString() + "_cbx");
                 tableRows_pnl.Controls.RemoveByKey("rowsPK" + listDel[i].ToString() + "_rbt");
                 tableRows_pnl.Controls.RemoveByKey("rowsSel" + listDel[i].ToString() + "_chk");
-
             }
-
             i=0;
             foreach (Control ctrl in tableRows_pnl.Controls) {
                 if (ctrl is BaseCheckBox && ctrl.Name.Contains("rowsSel")) {
@@ -343,6 +349,7 @@ namespace Abyss_Client {
                 txt.Name = "rowsName" + i + "_txt";
                 txt.Text = table.TableNameRows[i].ToString();
                 txt.Enabled = false;
+                txt.Mandatory = true;
                 tableRows_pnl.Controls.Add(txt);
 
                 x = x + txt.Size.Width + 5;
@@ -455,6 +462,7 @@ namespace Abyss_Client {
                     txt.Location = new Point(x, y);
                     txt.Size = new Size(150, 20);
                     txt.Name = "rowsName" + i + "_txt";
+                    txt.Mandatory = true;
                     tableRows_pnl.Controls.Add(txt);
 
                     x = x + txt.Size.Width + 5;
@@ -520,7 +528,6 @@ namespace Abyss_Client {
                 lastY = y;
             }
         }
-
         #endregion
     }
 }

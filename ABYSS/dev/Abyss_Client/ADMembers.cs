@@ -59,9 +59,25 @@ namespace Abyss_Client {
                         foreach (ADGroupData groupData in list) {
                             ADGroup group = new ADGroup(groupData);
                             if (adGroup.Scope != ADGroupData.GroupeScope.DomainLocal) {
-                                ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
-                                lvi.Tag = group;
-                                lastmembers_lst.Items.Add(lvi);
+                                if (group.Scope == ADGroupData.GroupeScope.Global || group.Scope == ADGroupData.GroupeScope.Global) {
+                                    ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
+                                    lvi.Tag = group;
+                                    lastmembers_lst.Items.Add(lvi);
+                                }
+                            }
+                            else {
+                                if (adGroup.Scope == ADGroupData.GroupeScope.DomainLocal && adGroup.SecurityGroupe) {
+                                    if (group.Scope != ADGroupData.GroupeScope.DomainLocal ) {
+                                        ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
+                                        lvi.Tag = group;
+                                        lastmembers_lst.Items.Add(lvi);
+                                    }
+                                }
+                                else if (adGroup.Scope == ADGroupData.GroupeScope.DomainLocal && !adGroup.SecurityGroupe){
+                                    ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
+                                    lvi.Tag = group;
+                                    lastmembers_lst.Items.Add(lvi);
+                                }
                             }
                         }
                     }
@@ -142,23 +158,23 @@ namespace Abyss_Client {
         }
 
         private void newmembers_lst_DoubleClick(object sender, EventArgs e) {
-            if (lastmembers_lst.SelectedItems.Count != 0) {
-                if (lastmembers_lst.SelectedItems[0].Tag.GetType() == typeof(ADGroup)) {
-                    ADGroup group = (ADGroup)lastmembers_lst.SelectedItems[0].Tag;
+            if (newmembers_lst.SelectedItems.Count != 0) {
+                if (newmembers_lst.SelectedItems[0].Tag.GetType() == typeof(ADGroup)) {
+                    ADGroup group = (ADGroup)newmembers_lst.SelectedItems[0].Tag;
                     if (ht.ContainsKey(group.Name)) {
                         ht.Remove(group.Name);
                         updateView();
                     }
                 }
-                else if (lastmembers_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
-                    ADUser user = (ADUser)lastmembers_lst.SelectedItems[0].Tag;
+                else if (newmembers_lst.SelectedItems[0].Tag.GetType() == typeof(ADUser)) {
+                    ADUser user = (ADUser)newmembers_lst.SelectedItems[0].Tag;
                     if (ht.ContainsKey(user.UserName)) {
                         ht.Remove(user.UserName);
                         updateView();
                     }
                 }
                 else {
-                    ADComputer computer = (ADComputer)lastmembers_lst.SelectedItems[0].Tag;
+                    ADComputer computer = (ADComputer)newmembers_lst.SelectedItems[0].Tag;
                     if (ht.ContainsKey(computer.ComputerName)) {
                         ht.Remove(computer.ComputerName);
                         updateView();

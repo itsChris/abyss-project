@@ -149,8 +149,11 @@ namespace Abyss_Client {
                 }
                 else if (node.Tag.GetType() == typeof(OracleView)) {
                     OracleView view = (OracleView)node.Tag;
+                    MessageBox.Show("The delete of this object take a little times, so don't worry", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Cursor.Current = Cursors.WaitCursor;
                     view.delete();
                     refreshCurrentParrentNode();
+                    Cursor.Current = Cursors.Default;
                 }
             }
             catch (OracleException oex) {

@@ -85,9 +85,9 @@
             // 
             this.tableRows_pnl.AutoScroll = true;
             this.tableRows_pnl.BackColor = System.Drawing.Color.Transparent;
-            this.tableRows_pnl.Location = new System.Drawing.Point(2, 76);
+            this.tableRows_pnl.Location = new System.Drawing.Point(6, 76);
             this.tableRows_pnl.Name = "tableRows_pnl";
-            this.tableRows_pnl.Size = new System.Drawing.Size(634, 337);
+            this.tableRows_pnl.Size = new System.Drawing.Size(630, 337);
             this.tableRows_pnl.TabIndex = 4;
             this.tableRows_pnl.Scroll += new System.Windows.Forms.ScrollEventHandler(this.tableRows_pnl_Scroll);
             // 
@@ -175,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 456);
+            this.ClientSize = new System.Drawing.Size(650, 456);
             this.Controls.Add(this.delRows_btn);
             this.Controls.Add(this.rowsAdd_btn);
             this.Controls.Add(this.primaryKey_lbl);
@@ -189,7 +189,7 @@
             this.Controls.Add(this.tableName_txt);
             this.Controls.Add(this.tableName_lbl);
             this.Name = "OracleTableAdd";
-            this.Text = "OracleTableAdd";
+            this.Text = "Oracle Table";
             this.ResumeLayout(false);
             this.PerformLayout();
 

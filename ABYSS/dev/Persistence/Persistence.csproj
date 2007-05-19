@@ -41,9 +41,7 @@
     <Compile Include="OracleTableData.cs" />
     <Compile Include="OracleUserData.cs" />
     <Compile Include="OracleViewData.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

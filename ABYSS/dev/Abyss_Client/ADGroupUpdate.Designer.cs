@@ -114,7 +114,7 @@
             this.cope_gbx.Size = new System.Drawing.Size(197, 132);
             this.cope_gbx.TabIndex = 4;
             this.cope_gbx.TabStop = false;
-            this.cope_gbx.Text = "Groupe Scope";
+            this.cope_gbx.Text = "Group Scope";
             // 
             // universal_rdt
             // 
