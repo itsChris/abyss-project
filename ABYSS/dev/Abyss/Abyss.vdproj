@@ -201,7 +201,7 @@
                 {
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.2.0"
                     {
-                    "Name" = "8:Microsoft .NET Framework 2.0"
+                    "Name" = "8:.NET Framework 2.0"
                     "ProductCode" = "8:Microsoft.Net.Framework.2.0"
                     }
                 }
@@ -592,7 +592,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Abyss Client"
         "ProductCode" = "8:{2C53C585-1745-4641-83D9-5384189A009E}"
-        "PackageCode" = "8:{82F25CEB-92CC-4B92-9A79-C670FE9F60B1}"
+        "PackageCode" = "8:{D8DB4123-FD37-4F86-986D-EAF9289B54DA}"
         "UpgradeCode" = "8:{23FF62AC-8AD5-4884-BB51-3B62FC7C9739}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
