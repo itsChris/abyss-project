@@ -124,12 +124,14 @@ namespace Abyss_Client {
                     this.table = new OracleTable();
                     table.TableName = tableName_txt.Text;
                     i = 0;
+                    int nbRow = 0;
                     foreach (Control ctrl in tableRows_pnl.Controls) {
                         if (ctrl is BaseTextBox && ctrl.Name.Contains("rowsName")) {
                             BaseTextBox txtN = (BaseTextBox)ctrl;
                             if (String.IsNullOrEmpty(txtN.Text)) {
                                 return;
                             }
+                            nbRow = nbRow + 1;
                             table.TableNameRows.Add(txtN.Text);
                         }
                         if (ctrl is BaseComboBox && ctrl.Name.Contains("rowsType")) {
@@ -163,7 +165,7 @@ namespace Abyss_Client {
                             i++;
                         }
                     }
-                    table.save(Convert.ToInt32(rowsNumber_txt.Text));
+                    table.save(nbRow);
                 }
                 dialogResult = DialogResult.OK;
                 this.Close();
@@ -177,7 +179,7 @@ namespace Abyss_Client {
         private void rowsAdd_btn_Click(object sender, EventArgs e) {
             int x = 13;
             int y = lastY;
-            int i = lastI + 1;
+            int i = lastI;
 
             this.SuspendLayout();
             BaseCheckBox chk = new BaseCheckBox();
@@ -245,6 +247,9 @@ namespace Abyss_Client {
             else {
                 rbt.Checked = false;
             }
+            if (update) {
+                rbt.Enabled = false;
+            }
             rbt.Name = "rowsPK" + i + "_rbt";
             rbt.Text = "";
             tableRows_pnl.Controls.Add(rbt);
@@ -254,7 +259,7 @@ namespace Abyss_Client {
             rowsNumber_txt.Text = (i + 1).ToString();
 
             lastY = y;
-            lastI = i;
+            lastI = i+1;
             this.ResumeLayout();
             this.PerformLayout();
         }
@@ -418,7 +423,10 @@ namespace Abyss_Client {
 
                 BaseRadioButton rbt = new BaseRadioButton();
                 rbt.Location = new Point(x, y);
-                if (table.TablePK.Contains(table.TableNameRows[i].ToString())) {
+                String test = table.TablePK.Replace(table.TableName + "_", "");
+                test = test.Replace("_PK", "");
+                if(test.Contains(table.TableNameRows[i].ToString())){
+                //if (table.TablePK.Contains(table.TableNameRows[i].ToString())) {
                     rbt.Checked = true;
                 }
                 else {

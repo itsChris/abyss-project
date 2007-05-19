@@ -87,7 +87,7 @@
             // 
             this.tableRows_pnl.AutoScroll = true;
             this.tableRows_pnl.BackColor = System.Drawing.Color.Transparent;
-            this.tableRows_pnl.Location = new System.Drawing.Point(6, 76);
+            this.tableRows_pnl.Location = new System.Drawing.Point(8, 93);
             this.tableRows_pnl.Name = "tableRows_pnl";
             this.tableRows_pnl.Size = new System.Drawing.Size(630, 337);
             this.tableRows_pnl.TabIndex = 4;
@@ -141,7 +141,7 @@
             // 
             this.createTable_btn.BackColor = System.Drawing.Color.LightGray;
             this.createTable_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.createTable_btn.Location = new System.Drawing.Point(281, 422);
+            this.createTable_btn.Location = new System.Drawing.Point(281, 436);
             this.createTable_btn.Name = "createTable_btn";
             this.createTable_btn.Size = new System.Drawing.Size(126, 23);
             this.createTable_btn.TabIndex = 5;
@@ -153,7 +153,7 @@
             // 
             this.rowsAdd_btn.BackColor = System.Drawing.Color.LightGray;
             this.rowsAdd_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.rowsAdd_btn.Location = new System.Drawing.Point(160, 422);
+            this.rowsAdd_btn.Location = new System.Drawing.Point(160, 436);
             this.rowsAdd_btn.Name = "rowsAdd_btn";
             this.rowsAdd_btn.Size = new System.Drawing.Size(75, 23);
             this.rowsAdd_btn.TabIndex = 6;
@@ -165,7 +165,7 @@
             // 
             this.delRows_btn.BackColor = System.Drawing.Color.LightGray;
             this.delRows_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.delRows_btn.Location = new System.Drawing.Point(12, 422);
+            this.delRows_btn.Location = new System.Drawing.Point(12, 436);
             this.delRows_btn.Name = "delRows_btn";
             this.delRows_btn.Size = new System.Drawing.Size(142, 23);
             this.delRows_btn.TabIndex = 7;
@@ -177,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 456);
+            this.ClientSize = new System.Drawing.Size(650, 471);
             this.Controls.Add(this.delRows_btn);
             this.Controls.Add(this.rowsAdd_btn);
             this.Controls.Add(this.primaryKey_lbl);
