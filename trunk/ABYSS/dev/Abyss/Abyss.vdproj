@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_08A27FAC603E4ED6A5E6E75B4A25AC43"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0E617D2B412E5E09A48B0CDEC29C216D"
         "OwnerKey" = "8:_774EEC2B3DCEC1A28DA5F3407CD228AA"
         "MsmSig" = "8:_UNDEFINED"
@@ -23,12 +29,6 @@
         {
         "MsmKey" = "8:_0E617D2B412E5E09A48B0CDEC29C216D"
         "OwnerKey" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3CF9AAD85C784E319A1F48DF830ADBFA"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,6 +57,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7CF70238CC5D47A3800C6F5F3F44CD54"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7EB7FFD481AC605A5FA172BA94B258A0"
         "OwnerKey" = "8:_774EEC2B3DCEC1A28DA5F3407CD228AA"
         "MsmSig" = "8:_UNDEFINED"
@@ -71,12 +77,6 @@
         {
         "MsmKey" = "8:_7EB7FFD481AC605A5FA172BA94B258A0"
         "OwnerKey" = "8:_CD190E032C93C448E57E3ADE53FDD172"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9851BC86CCEC46478AB64B9DB9E34FBB"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -101,6 +101,18 @@
         {
         "MsmKey" = "8:_CD190E032C93C448E57E3ADE53FDD172"
         "OwnerKey" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D835ACA829B040AC8E26639859E08FB5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F17D4F06497540989C9D00F9978E6EA7"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -235,6 +247,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_08A27FAC603E4ED6A5E6E75B4A25AC43"
+            {
+            "SourcePath" = "8:C:\\Documents and Settings\\Sephiroth\\Bureau\\abyss.ico"
+            "TargetName" = "8:abyss.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_A5AD05A97EA04EE0911F72CF69F9C277"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0E617D2B412E5E09A48B0CDEC29C216D"
             {
             "AssemblyRegister" = "3:1"
@@ -264,26 +296,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3CF9AAD85C784E319A1F48DF830ADBFA"
-            {
-            "SourcePath" = "8:..\\..\\doc\\Installation Documentation.docx"
-            "TargetName" = "8:Installation Documentation.docx"
-            "Tag" = "8:"
-            "Folder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6F58EEA5DB916E5F2F269F75BE886153"
@@ -348,6 +360,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CF70238CC5D47A3800C6F5F3F44CD54"
+            {
+            "SourcePath" = "8:..\\..\\doc\\User Manual.doc"
+            "TargetName" = "8:User Manual.doc"
+            "Tag" = "8:"
+            "Folder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7EB7FFD481AC605A5FA172BA94B258A0"
             {
             "AssemblyRegister" = "3:1"
@@ -377,26 +409,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9851BC86CCEC46478AB64B9DB9E34FBB"
-            {
-            "SourcePath" = "8:..\\..\\doc\\Installation Documentation.doc"
-            "TargetName" = "8:Installation Documentation.doc"
-            "Tag" = "8:"
-            "Folder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B3B70C2189EF81F232C2AECCAC2D8A78"
@@ -481,6 +493,46 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D835ACA829B040AC8E26639859E08FB5"
+            {
+            "SourcePath" = "8:..\\..\\doc\\Installation Documentation.doc"
+            "TargetName" = "8:Installation Documentation.doc"
+            "Tag" = "8:"
+            "Folder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F17D4F06497540989C9D00F9978E6EA7"
+            {
+            "SourcePath" = "8:..\\..\\doc\\Technical Manual.doc"
+            "TargetName" = "8:Technical Manual.doc"
+            "Tag" = "8:"
+            "Folder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -539,6 +591,17 @@
                     "Property" = "8:_64CACBBB5545483C8E291168094F0557"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_2DCBE2613F5A4A168CC7E3B372381A6D"
+                            {
+                            "Name" = "8:Documentation"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_128D243A3E454FDF86E6B1D897B17E82"
+                                "Folders"
+                                {
+                                }
+                            }
                             "{9EF0B969-E518-4E46-987F-47570745A589}:_F261F5C2208B4978814D8566FAF64FC2"
                             {
                             "Name" = "8:Abyss Client"
@@ -548,17 +611,6 @@
                             "Property" = "8:_55CC141151674A039E11C8D29C965AAC"
                                 "Folders"
                                 {
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_18034A6808564376A21B30587584ADF4"
-                                    {
-                                    "Name" = "8:Documentation"
-                                    "AlwaysCreate" = "11:FALSE"
-                                    "Condition" = "8:"
-                                    "Transitive" = "11:FALSE"
-                                    "Property" = "8:_128D243A3E454FDF86E6B1D897B17E82"
-                                        "Folders"
-                                        {
-                                        }
-                                    }
                                 }
                             }
                         }
@@ -591,14 +643,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Abyss Client"
-        "ProductCode" = "8:{2C53C585-1745-4641-83D9-5384189A009E}"
-        "PackageCode" = "8:{D8DB4123-FD37-4F86-986D-EAF9289B54DA}"
+        "ProductCode" = "8:{1A3CF536-7755-4D50-A8A8-F7811920B4DF}"
+        "PackageCode" = "8:{BE53C138-430C-4C0B-A4DC-F29814A9128C}"
         "UpgradeCode" = "8:{23FF62AC-8AD5-4884-BB51-3B62FC7C9739}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.4"
+        "ProductVersion" = "8:3.0"
         "Manufacturer" = "8:Abyss Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -711,18 +763,18 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_08C598474F1440CD89E69112F9248801"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_128044C8DAE14B319738B7FC3EBB9579"
             {
-            "Name" = "8:Raccourci vers Installation Documentation.docx"
+            "Name" = "8:Installation Documentation.doc"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_3CF9AAD85C784E319A1F48DF830ADBFA"
-            "Folder" = "8:_18034A6808564376A21B30587584ADF4"
+            "Target" = "8:_D835ACA829B040AC8E26639859E08FB5"
+            "Folder" = "8:_2DCBE2613F5A4A168CC7E3B372381A6D"
             "WorkingFolder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
-            "Icon" = "8:"
+            "Icon" = "8:_08A27FAC603E4ED6A5E6E75B4A25AC43"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_183BA54C9A084DD8B7B59651EDC9B353"
@@ -753,18 +805,32 @@
             "Icon" = "8:_4EF89C04ADAF46969C11F83CA9D2523B"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BF17CA721D454D0D9FE572F67AD72E87"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_5C97098D38A94D51B3468B3505638069"
             {
-            "Name" = "8:Raccourci vers Installation Documentation.doc"
+            "Name" = "8:Technical Manual.doc"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_9851BC86CCEC46478AB64B9DB9E34FBB"
-            "Folder" = "8:_18034A6808564376A21B30587584ADF4"
+            "Target" = "8:_F17D4F06497540989C9D00F9978E6EA7"
+            "Folder" = "8:_2DCBE2613F5A4A168CC7E3B372381A6D"
             "WorkingFolder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
-            "Icon" = "8:"
+            "Icon" = "8:_08A27FAC603E4ED6A5E6E75B4A25AC43"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AFDED47019B64CECB2EA2C0D28ABBC77"
+            {
+            "Name" = "8:User Manual.doc"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_7CF70238CC5D47A3800C6F5F3F44CD54"
+            "Folder" = "8:_2DCBE2613F5A4A168CC7E3B372381A6D"
+            "WorkingFolder" = "8:_9D8F930EDD314D62B89C4D9BA01B5D4F"
+            "Icon" = "8:_08A27FAC603E4ED6A5E6E75B4A25AC43"
             "Feature" = "8:"
             }
         }
