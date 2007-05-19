@@ -75,7 +75,7 @@ namespace Abyss_Client.CompBase {
             bool result = true;
             foreach (Control group in parent.Controls) {
                 if (group.Visible) {
-                    if (group is BaseGroupBox) {
+                    if (group is BaseGroupBox || group is Panel) {
                         foreach (Control control in group.Controls) {
                             if (control is BaseTextBox) {
                                 BaseTextBox tb = (BaseTextBox)control;

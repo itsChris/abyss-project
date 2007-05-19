@@ -239,7 +239,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Utils, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Utils, Version=1.1.1.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_0E617D2B412E5E09A48B0CDEC29C216D"
@@ -321,7 +321,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DAO, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:DAO, Version=1.1.1.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_774EEC2B3DCEC1A28DA5F3407CD228AA"
@@ -352,7 +352,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Persistence, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Persistence, Version=1.1.1.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_7EB7FFD481AC605A5FA172BA94B258A0"
@@ -454,7 +454,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Business, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Business, Version=1.1.1.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_CD190E032C93C448E57E3ADE53FDD172"
@@ -532,7 +532,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_2B7649EF7AE647B989D072740E0918A5"
                     {
-                    "Name" = "8:Abyss"
+                    "Name" = "8:Abyss Software"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -591,14 +591,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Abyss Client"
-        "ProductCode" = "8:{3A6ED5A8-E32D-42EA-A5F6-5B8E33D0F112}"
-        "PackageCode" = "8:{D2456B5F-B6C2-472B-A910-2022F407CE53}"
+        "ProductCode" = "8:{2C53C585-1745-4641-83D9-5384189A009E}"
+        "PackageCode" = "8:{82F25CEB-92CC-4B92-9A79-C670FE9F60B1}"
         "UpgradeCode" = "8:{23FF62AC-8AD5-4884-BB51-3B62FC7C9739}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2"
+        "ProductVersion" = "8:1.4"
         "Manufacturer" = "8:Abyss Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

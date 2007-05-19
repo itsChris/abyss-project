@@ -85,8 +85,9 @@ namespace DAO {
                 }
             }
             foreach (String distinguishedName in adGroupData.Members) {
+                DirectoryEntry entry = Utility.getDirectoryObjectByDistinguishedName(distinguishedName);
                 try {
-                    Utility.setProperty(directoryEntry, "Member", distinguishedName);
+                    Utility.setProperty(directoryEntry, "Member",Utility.getProperty(entry,"distinguishedName"));
                     directoryEntry.CommitChanges();
                 }
                 catch (Exception) {

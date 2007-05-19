@@ -54,9 +54,41 @@ namespace Abyss_Client {
                 ArrayList list = ADGroup.getGroupsList();
                 foreach (ADGroupData groupData in list) {
                     ADGroup group = new ADGroup(groupData);
-                    ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
-                    lvi.Tag = group;
-                    lastmemberof_lst.Items.Add(lvi);
+                    if (businessOject.GetType() == typeof(ADGroup)) {
+                        ADGroup adGroup = (ADGroup)businessOject;
+                        if (adGroup.Scope == ADGroupData.GroupeScope.Global) {
+                            if (group.Scope != ADGroupData.GroupeScope.Global || !group.SecurityGroupe) {
+
+                                ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
+                                lvi.Tag = group;
+                                lastmemberof_lst.Items.Add(lvi);
+                            }
+                        }
+                        else if (adGroup.Scope == ADGroupData.GroupeScope.DomainLocal) {
+                            if (group.Scope == ADGroupData.GroupeScope.DomainLocal && !group.SecurityGroupe) {
+                                ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
+                                lvi.Tag = group;
+                                lastmemberof_lst.Items.Add(lvi);
+                            }
+                        }
+                        else if (adGroup.Scope == ADGroupData.GroupeScope.Universel) {
+                            if (!adGroup.SecurityGroupe && group.Scope != ADGroupData.GroupeScope.Global) {
+                                ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
+                                lvi.Tag = group;
+                                lastmemberof_lst.Items.Add(lvi);
+                            }
+                            else if (!adGroup.SecurityGroupe && group.Scope == ADGroupData.GroupeScope.Global) {
+                                ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
+                                lvi.Tag = group;
+                                lastmemberof_lst.Items.Add(lvi);
+                            }
+                        }
+                    }
+                    else {
+                        ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Description }, (int)AdImages.Group);
+                        lvi.Tag = group;
+                        lastmemberof_lst.Items.Add(lvi);
+                    }
                 }
 
                 if (businessOject.GetType() == typeof(ADUser)) {

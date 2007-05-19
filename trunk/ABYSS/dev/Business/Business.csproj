@@ -44,6 +44,7 @@
     <Compile Include="OracleTable.cs" />
     <Compile Include="OracleUser.cs" />
     <Compile Include="OracleView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">
@@ -54,9 +55,6 @@
       <Project>{D42C17B2-E6C2-44C3-9592-69E7BBABCA8E}</Project>
       <Name>Persistence</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,18 +1,17 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Resources;
 
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("Abyss Client")]
-[assembly: AssemblyDescription("Oracle and Active Directory Administration")]
+[assembly: AssemblyTitle("Business.Properties")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SUPINFO")]
-[assembly: AssemblyProduct("Abyss Client")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Business.Properties")]
 [assembly: AssemblyCopyright("Copyright ©  2007")]
-[assembly: AssemblyTrademark("Abyss Technologies")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // L'affectation de la valeur false à ComVisible rend les types invisibles dans cet assembly 
@@ -21,7 +20,7 @@ using System.Resources;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("e995e58b-7b34-4717-8c6a-47a8d51f1456")]
+[assembly: Guid("30abfe68-edaf-45d1-b041-ee2d444eaf62")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //
@@ -32,4 +31,3 @@ using System.Resources;
 //
 [assembly: AssemblyVersion("1.1.1.1")]
 [assembly: AssemblyFileVersion("1.1.1.1")]
-[assembly: NeutralResourcesLanguageAttribute("")]

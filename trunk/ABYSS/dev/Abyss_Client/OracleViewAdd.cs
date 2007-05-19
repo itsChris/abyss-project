@@ -1,6 +1,7 @@
 using System;
 using Business;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
 
 namespace Abyss_Client {
     public partial class OracleViewAdd : CompBase.BaseForm {
@@ -31,25 +32,32 @@ namespace Abyss_Client {
             if (!checkMandatoryFields()) {
                 return;
             }
-
-            if (update) {
-                if (oracleView.ViewQuery != viewQuery_txt.Text.Replace(";", "")) {
-                    oracleView.ViewQuery = viewQuery_txt.Text.Replace(";", "");
+            try {
+                if (update) {
+                    if (oracleView.ViewQuery != viewQuery_txt.Text.Replace(";", "")) {
+                        oracleView.ViewQuery = viewQuery_txt.Text.Replace(";", "");
+                    }
+                    else {
+                        DialogResult result = MessageBox.Show("You don't have any modification.\n Would you have quit ?", "Any modification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.No) {
+                            return;
+                        }
+                    }
+                    oracleView.update();
                 }
                 else {
-                    DialogResult result = MessageBox.Show("You don't have any modification.\n Would you have quit ?", "Any modification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.No) {
-                        return;
-                    }
-                }
-            }
-            else {
-                oracleView.ViewName = viewName_txt.Text;
-                oracleView.ViewQuery = viewQuery_txt.Text.Replace(";", "");
+                    oracleView.ViewName = viewName_txt.Text;
+                    oracleView.ViewQuery = viewQuery_txt.Text.Replace(";", "");
 
-                oracleView.save();
+                    oracleView.save();
+                }
+                dialogResult = DialogResult.OK;
+                this.Close();
             }
-            this.Close();
+            catch (OracleException oex) {
+                MessageBox.Show(oex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
         #endregion
     }
