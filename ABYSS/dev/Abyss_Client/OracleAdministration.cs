@@ -81,19 +81,19 @@ namespace Abyss_Client {
             if (node.Tag.GetType() == typeof(OracleUser)) {
                 OracleUser user = (OracleUser)node.Tag;
                 if (openForm(new OracleUserAdd(user)) == DialogResult.OK) {
-                    refreshCurrentParrentNode();
+                    refreshCurrentNode();
                 }
             }
             else if (node.Tag.GetType() == typeof(OracleTable)) {
                 OracleTable table = (OracleTable)node.Tag;
                 if (openForm(new OracleTableAdd(table)) == DialogResult.OK) {
-                    refreshCurrentParrentNode();
+                    refreshCurrentNode();
                 }
             }
             else {
                 OracleView view = (OracleView)node.Tag;
                 if (openForm(new OracleViewAdd(view)) == DialogResult.OK) {
-                    refreshCurrentParrentNode();
+                    refreshCurrentNode();
                 }
             }
         }
@@ -104,7 +104,7 @@ namespace Abyss_Client {
                 if (node.Tag.GetType() == typeof(OracleUser)) {
                     OracleUser user = (OracleUser)node.Tag;
                     user.LockUser();
-                    refreshCurrentParrentNode();
+                    refreshCurrentNode();
                 }
             }
             catch (OracleException oex) {
@@ -119,7 +119,7 @@ namespace Abyss_Client {
                 if (node.Tag.GetType() == typeof(OracleUser)) {
                     OracleUser user = (OracleUser)node.Tag;
                     user.UnlockUser();
-                    refreshCurrentParrentNode();
+                    refreshCurrentNode();
                 }
             }
             catch (OracleException oex) {
@@ -136,7 +136,7 @@ namespace Abyss_Client {
                     MessageBox.Show("The delete of this object take a little times, so don't worry", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Cursor.Current = Cursors.WaitCursor;
                     user.delete();
-                    refreshCurrentParrentNode();
+                    refreshCurrentNode();
                     Cursor.Current = Cursors.Default;
                 }
                 else if (node.Tag.GetType() == typeof(OracleTable)) {
@@ -144,7 +144,7 @@ namespace Abyss_Client {
                     MessageBox.Show("The delete of this object take a little times, so don't worry", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Cursor.Current = Cursors.WaitCursor;
                     table.delete();
-                    refreshCurrentParrentNode();
+                    refreshCurrentNode();
                     Cursor.Current = Cursors.Default;
                 }
                 else if (node.Tag.GetType() == typeof(OracleView)) {
@@ -152,7 +152,7 @@ namespace Abyss_Client {
                     MessageBox.Show("The delete of this object take a little times, so don't worry", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Cursor.Current = Cursors.WaitCursor;
                     view.delete();
-                    refreshCurrentParrentNode();
+                    refreshCurrentNode();
                     Cursor.Current = Cursors.Default;
                 }
             }
