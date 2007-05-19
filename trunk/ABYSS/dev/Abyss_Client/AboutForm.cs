@@ -19,7 +19,7 @@ namespace Abyss_Client {
             baseLabel10.Text = Application.ProductName;
             baseLabel9.Text = Application.CompanyName;
             baseLabel8.Text = Application.ProductVersion;
-            baseLabel7.Text = "Kevin Le Douget, Campos Pierre Allexandre, Sascha PAOLO";
+            baseLabel7.Text = "Kevin Le Douget, Campos Pierre-Alexandre, Sascha PAOLO";
             baseLabel5.Text = "We wish, you enjoyed use this application. See you next time";
         }
         #endregion

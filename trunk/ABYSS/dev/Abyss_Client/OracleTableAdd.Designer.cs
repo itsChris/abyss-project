@@ -69,6 +69,7 @@
             this.rowsNumber_lbl.Size = new System.Drawing.Size(93, 13);
             this.rowsNumber_lbl.TabIndex = 2;
             this.rowsNumber_lbl.Text = "Rows Number :";
+            this.rowsNumber_lbl.Visible = false;
             // 
             // rowsNumber_txt
             // 
@@ -79,6 +80,7 @@
             this.rowsNumber_txt.Name = "rowsNumber_txt";
             this.rowsNumber_txt.Size = new System.Drawing.Size(43, 20);
             this.rowsNumber_txt.TabIndex = 3;
+            this.rowsNumber_txt.Visible = false;
             this.rowsNumber_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rowsNumber_txt_KeyPress);
             // 
             // tableRows_pnl
