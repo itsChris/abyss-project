@@ -1,7 +1,0 @@
-Formulaire ADAdministration.
-- Optionel : Dans les process lié au user AD faire en sorte que l'orsque le compte est supprimé, suprim aussi ds oracle. Idem pour Add, modify...
-Probleme au niveau des member of et members pour un groupe - > reste que ca a modifié
-
-Formulaire OracleAdministration
-- pour executer plusieur requetes de type create contenu dans un fichier texte, regarde le commentaires (split en plusieurs requete)
-
