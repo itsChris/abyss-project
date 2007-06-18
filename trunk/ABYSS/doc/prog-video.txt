@@ -1,0 +1,20 @@
+- Installation de l'application souS Xp
+
+- Lancement & connection a l'application
+
+- Utilisation de la partie AD
+	- Présentation Menu
+	- Visionage des objets (tree arbre) --> User / group / computer
+	- Ajout d'un user via click droit +  sauvegarde
+	- Modification de l'user + memberof --> un groupe ("member of" AND "members") 
+	- Suppression de l'user
+	
+- Utilsation de la partie Oracle
+	- Visionage des objets (tree arbre)
+	- Requete a la con
+	- Creation d'une table
+	- Modification de la table --> suppr 1 champs
+	- suppression de la table
+	
+	Exit
+
