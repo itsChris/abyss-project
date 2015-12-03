@@ -1,0 +1,3 @@
+Skar
+Spaeda
+Sephiroth
